@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce5a7cdd8445e4eb18204aca18f7389e, type: 3}
-  m_Name: MainCharacter
+  m_Script: {fileID: 11500000, guid: 2c7a0889a49dcc34cb76e297dceafeae, type: 3}
+  m_Name: EnemyMedium
   m_EditorClassIdentifier: 
-  CurrentMoodLevel: 2
+  Name: Medium Enemy
+  Visual: {fileID: 21300000, guid: d39fe34d97624dd4eae071d7f6d320c4, type: 3}
   StatPower:
-    XP: 800
+    level: 4
   StatMagic:
-    XP: 300
-  ProvenLevel: 2
+    level: 4
+  ArenaImage: {fileID: 21300000, guid: 901aee92afa9c1949b8b1ee0c87f8a0e, type: 3}

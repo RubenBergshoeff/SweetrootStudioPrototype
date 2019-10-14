@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 600}
+  m_SizeDelta: {x: 1160, y: 1160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8892842497107348302
 CanvasRenderer:
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8892842497999730048}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.46153846
+  m_Size: 0.42647058
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -390,7 +390,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1300, y: 600}
+  m_SizeDelta: {x: 2420, y: 1160}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &8892842497750129460
 MonoBehaviour:
@@ -410,7 +410,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 50
+  m_Spacing: 100
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef8ed209e2e68d47bdf45a7817fc4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  widthPerChild: 500
+  widthPerChild: 1060
 --- !u!1 &8892842497999730051
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,12 +583,12 @@ PrefabInstance:
     - target: {fileID: 6508160440994302104, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 1060
       objectReference: {fileID: 0}
     - target: {fileID: 6508160440994302104, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 1060
       objectReference: {fileID: 0}
     - target: {fileID: 6508160440994302104, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
@@ -620,11 +620,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 9170993171477780599, guid: e35910afc1eaff04e8a07ce165b93506,
+    - target: {fileID: 1912994019419370672, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
-      propertyPath: broker
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 88415b7027efe9c45bb85080d3d9a62b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e35910afc1eaff04e8a07ce165b93506, type: 3}
 --- !u!224 &1006605929226531526 stripped
@@ -713,12 +714,12 @@ PrefabInstance:
     - target: {fileID: 6508160440994302104, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 1060
       objectReference: {fileID: 0}
     - target: {fileID: 6508160440994302104, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 1060
       objectReference: {fileID: 0}
     - target: {fileID: 6508160440994302104, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
@@ -750,36 +751,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 9170993171477780599, guid: e35910afc1eaff04e8a07ce165b93506,
+    - target: {fileID: 1912994019419370672, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
-      propertyPath: broker
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2885147443527225799, guid: e35910afc1eaff04e8a07ce165b93506,
+      objectReference: {fileID: 21300000, guid: 88415b7027efe9c45bb85080d3d9a62b,
         type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 2885147443527225799, guid: e35910afc1eaff04e8a07ce165b93506,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2885147443527225799, guid: e35910afc1eaff04e8a07ce165b93506,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2885147443527225799, guid: e35910afc1eaff04e8a07ce165b93506,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2885147443527225799, guid: e35910afc1eaff04e8a07ce165b93506,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e35910afc1eaff04e8a07ce165b93506, type: 3}
 --- !u!224 &2393689944954768431 stripped

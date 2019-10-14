@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public interface IStat {
     int Level { get; }
@@ -11,6 +12,16 @@ public enum StatType {
 
 [System.Serializable]
 public class PlayerStat : IStat {
+
+    public static Dictionary<int, int> MinLevelXPs = new Dictionary<int, int> {
+        {0, 0},
+        {1, 100},
+        {2, 500},
+        {3, 2000},
+        {4, 5000},
+        {5, 100000}
+    };
+
     public int Level {
         get {
             if (XP < 100) { return 0; }

@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu]
 public class PlayerCharacterData : ScriptableObject {
     public int CurrentMoodLevel;
-    public int PotentialLevel {
+    public int TotalPoints {
         get {
-            return (StatPower.Level + StatMagic.Level) / 2;
+            return (StatPower.Level + StatMagic.Level);
         }
     }
     public PlayerStat StatPower;
