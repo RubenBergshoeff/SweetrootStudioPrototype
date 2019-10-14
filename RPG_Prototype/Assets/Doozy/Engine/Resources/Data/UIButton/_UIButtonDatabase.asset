@@ -16,8 +16,8 @@ MonoBehaviour:
   CategoryNames:
   - Custom
   - Example
-  - General
   - FastRPG
+  - General
   Categories:
   - {fileID: 11400000, guid: 40f9e81ff80114a47a3721228ba749ed, type: 2}
   - {fileID: 11400000, guid: 8a692ec9195644b05938773b25fc799c, type: 2}

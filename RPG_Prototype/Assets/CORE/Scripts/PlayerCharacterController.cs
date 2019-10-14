@@ -9,26 +9,20 @@ public class PlayerCharacterController : MonoBehaviour {
     public int MaxLevelDeviation = 2;
 
     public void FillFood() {
-        Data.CurrentFoodAmount = MaxFood;
+        Data.CurrentMoodLevel = MaxFood;
     }
 
-    public bool UseFood(int amount) {
-        if (Data.CurrentFoodAmount >= amount) {
-            Data.CurrentFoodAmount -= amount;
+    public bool LowerMoodBy(int amount) {
+        if (Data.CurrentMoodLevel >= amount) {
+            Data.CurrentMoodLevel -= amount;
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
 
     public void SetProvenSkillLevel(int level) {
-        Data.ProvenSkillLevel = level;
-    }
-
-    public void IncreasePotentialSkillLevel(int amount) {
-        Data.PotentialSkillLevel += amount;
-        if (Data.PotentialSkillLevel - Data.ProvenSkillLevel > MaxLevelDeviation) {
-            Data.PotentialSkillLevel = Data.ProvenSkillLevel + MaxLevelDeviation;
-        }
+        Data.ProvenLevel = level;
     }
 }

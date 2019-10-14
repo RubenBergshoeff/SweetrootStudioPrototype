@@ -18,9 +18,7 @@ MonoBehaviour:
   - Accept
   - Cancel
   - ToArena
-  - ToArenaEasy
-  - ToArenaHard
-  - ToArenaMedium
   - ToCharacter
-  - ToCook
+  - ToFood
+  - ToMap
   - ToTraining

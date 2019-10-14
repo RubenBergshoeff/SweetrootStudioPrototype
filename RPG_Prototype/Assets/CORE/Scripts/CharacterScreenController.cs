@@ -9,7 +9,7 @@ public class CharacterScreenController : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI foodLvlField = null;
 
     private void OnEnable() {
-        provenPowerLvlField.text = playerCharacterController.Data.ProvenSkillLevel.ToString();
-        foodLvlField.text = playerCharacterController.Data.CurrentFoodAmount.ToString();
+        provenPowerLvlField.text = playerCharacterController.Data.ProvenLevel.ToString();
+        foodLvlField.text = playerCharacterController.Data.CurrentMoodLevel.ToString();
     }
 }

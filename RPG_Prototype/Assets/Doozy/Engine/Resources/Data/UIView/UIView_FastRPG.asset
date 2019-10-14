@@ -15,9 +15,12 @@ MonoBehaviour:
   CategoryName: FastRPG
   DatabaseType: 2
   Names:
-  - Arena
   - ArenaBroker
+  - ArenaResult
   - Character
-  - Cook
+  - FoodBroker
+  - FoodResult
   - MainMap
-  - Trainer
+  - TrainingBroker
+  - TrainingResult
+  - NewTraining
