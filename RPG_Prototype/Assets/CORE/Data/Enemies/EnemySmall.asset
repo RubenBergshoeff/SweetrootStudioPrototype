@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Small Enemy
   Visual: {fileID: 21300000, guid: 88415b7027efe9c45bb85080d3d9a62b, type: 3}
   StatPower:
-    level: 2
+    level: 1
   StatMagic:
-    level: 2
+    level: 1
   ArenaImage: {fileID: 21300000, guid: f49096df3b4ff84468ff1f967b7d9a48, type: 3}
+  NewTrainingData: {fileID: 0}

@@ -17,4 +17,5 @@ public class EnemyData : ResultDataBase {
     public EnemyStat StatPower;
     public EnemyStat StatMagic;
     public Sprite ArenaImage;
+    public TrainingData NewTrainingData;
 }

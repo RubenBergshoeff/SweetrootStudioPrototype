@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5a7cdd8445e4eb18204aca18f7389e, type: 3}
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
-  CurrentMoodLevel: 2
+  CurrentMoodLevel: 0
   StatPower:
-    XP: 800
+    XP: 100
   StatMagic:
-    XP: 300
-  ProvenLevel: 2
+    XP: 100
+  ProvenLevel: 0

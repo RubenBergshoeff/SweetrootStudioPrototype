@@ -211,7 +211,10 @@ MonoBehaviour:
   - Category: FastRPG
     InstantAction: 0
     Name: ArenaBroker
-  m_onEnterHideViews: []
+  m_onEnterHideViews:
+  - Category: FastRPG
+    InstantAction: 0
+    Name: Character
   m_onExitShowViews: []
   m_onExitHideViews:
   - Category: FastRPG
@@ -340,7 +343,10 @@ MonoBehaviour:
   - Category: FastRPG
     InstantAction: 0
     Name: TrainingBroker
-  m_onEnterHideViews: []
+  m_onEnterHideViews:
+  - Category: FastRPG
+    InstantAction: 0
+    Name: Character
   m_onExitShowViews: []
   m_onExitHideViews:
   - Category: FastRPG
@@ -469,7 +475,10 @@ MonoBehaviour:
   - Category: FastRPG
     InstantAction: 0
     Name: FoodBroker
-  m_onEnterHideViews: []
+  m_onEnterHideViews:
+  - Category: FastRPG
+    InstantAction: 0
+    Name: Character
   m_onExitShowViews: []
   m_onExitHideViews:
   - Category: FastRPG
@@ -777,7 +786,7 @@ MonoBehaviour:
     m_id: c7a401b5-1d71-48ff-a276-e897cc5b5249
     m_nodeId: ca6f3264-5f50-44da-b0b8-51db899722ca
     m_socketName: OutputSocket_0
-    m_value: '{"ButtonCategory":"General","ButtonName":"Back","GameEvent":"","TimeDelay":3.0,"Trigger":0}'
+    m_value: '{"ButtonCategory":"FastRPG","ButtonName":"Cancel","GameEvent":"","TimeDelay":3.0,"Trigger":0}'
     m_valueTypeQualifiedName: Doozy.Engine.UI.Connections.UIConnection, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_nodeType: 4
@@ -1212,7 +1221,7 @@ MonoBehaviour:
     m_id: 0f4ab137-6a13-4795-96f1-84428b2f8daf
     m_nodeId: 0e45f746-cf07-4379-a66a-dfbece62b43a
     m_socketName: OutputSocket_0
-    m_value: '{"ButtonCategory":"General","ButtonName":"Back","GameEvent":"","TimeDelay":3.0,"Trigger":0}'
+    m_value: '{"ButtonCategory":"FastRPG","ButtonName":"Cancel","GameEvent":"","TimeDelay":3.0,"Trigger":0}'
     m_valueTypeQualifiedName: Doozy.Engine.UI.Connections.UIConnection, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_nodeType: 4

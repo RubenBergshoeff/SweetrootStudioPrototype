@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Medium Enemy
   Visual: {fileID: 21300000, guid: d39fe34d97624dd4eae071d7f6d320c4, type: 3}
   StatPower:
-    level: 4
+    level: 3
   StatMagic:
-    level: 4
+    level: 3
   ArenaImage: {fileID: 21300000, guid: 901aee92afa9c1949b8b1ee0c87f8a0e, type: 3}
+  NewTrainingData: {fileID: 11400000, guid: a28ac8fee6309f14e8c4acf1e0075ba4, type: 2}
