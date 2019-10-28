@@ -158,6 +158,12 @@ MonoBehaviour:
       StatMagic:
         XP: 0
       ProvenLevel: 0
+    TrainingCollection:
+      Objects:
+      - Object: {fileID: 0}
+        IsUnlocked: 0
+      - Object: {fileID: 0}
+        IsUnlocked: 0
   preDefinedSettings: {fileID: 11400000, guid: dff30105f53a05e48a036eb0c2031d78, type: 2}
 --- !u!4 &342435048
 Transform:

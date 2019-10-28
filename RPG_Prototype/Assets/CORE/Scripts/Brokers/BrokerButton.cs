@@ -13,6 +13,12 @@ public class BrokerButton : MonoBehaviour {
     [SerializeField] private TMPro.TextMeshProUGUI nameField = null;
     [SerializeField] private Image visual = null;
 
+    public void SetupButton(BrokerBase broker, ResultDataBase resultData) {
+        this.broker = broker;
+        this.resultData = resultData;
+        UpdateView();
+    }
+
     private void OnEnable() {
         if (button == null) {
             button = GetComponent<Button>();
@@ -29,6 +35,10 @@ public class BrokerButton : MonoBehaviour {
     }
 
     private void OnValidate() {
+        UpdateView();
+    }
+
+    private void UpdateView() {
         if (nameField == null || visual == null) { return; }
 
         if (resultData == null) {

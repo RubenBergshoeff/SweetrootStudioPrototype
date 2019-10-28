@@ -11,7 +11,7 @@ using UnityEngine;
 //}
 
 [System.Serializable]
-public class UnlockableCollection<T, U> where T : LockObject<U> where U : MonoBehaviour {
+public class UnlockableCollection<T, U> where T : LockObject<U> where U : UnityEngine.Object {
     public List<T> Objects = new List<T>();
 
     public bool GetLockState(U item) {
@@ -45,7 +45,7 @@ public class UnlockableCollection<T, U> where T : LockObject<U> where U : MonoBe
 }
 
 [System.Serializable]
-public class LockObject<T> where T : MonoBehaviour {
+public class LockObject<T> where T : UnityEngine.Object {
     public T Object;
     public bool IsUnlocked;
 }

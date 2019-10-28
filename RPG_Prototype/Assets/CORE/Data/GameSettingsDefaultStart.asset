@@ -14,5 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameData:
     PlayerData:
-      SomeIntVariable: 0
-      SomeStringVariable: hullo
+      CurrentMoodLevel: 1
+      StatPower:
+        XP: 0
+      StatMagic:
+        XP: 0
+      ProvenLevel: 0
+    TrainingCollection:
+      Objects:
+      - Object: {fileID: 11400000, guid: e64873d7983957b44aa0f649ce1207d0, type: 2}
+        IsUnlocked: 1
+      - Object: {fileID: 11400000, guid: ab2c89c4c600b854eadfc19f25478c2e, type: 2}
+        IsUnlocked: 1
+      - Object: {fileID: 11400000, guid: a28ac8fee6309f14e8c4acf1e0075ba4, type: 2}
+        IsUnlocked: 1
+    MoodCollection:
+      Objects:
+      - Object: {fileID: 11400000, guid: 95dc5bf0f60362547a650f44ab6521bb, type: 2}
+        IsUnlocked: 1
+      - Object: {fileID: 11400000, guid: e638a98a881dd4d40aec5e6fa4a927bb, type: 2}
+        IsUnlocked: 1
