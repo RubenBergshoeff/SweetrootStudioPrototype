@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Instigator {
     User,
@@ -12,13 +13,12 @@ public enum Instigator {
 
 public class SaveController : MonoBehaviour {
 
-    public static bool IsInitialized;
-    public static Action OnInitializedAction;
     public static SaveController Instance {
         get {
             return privateInstance;
         }
     }
+    public static bool IsInitialized;
     private static SaveController privateInstance;
 
     public GameData GameData;
@@ -41,7 +41,10 @@ public class SaveController : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
         IsInitialized = true;
-        OnInitializedAction?.Invoke();
+    }
+
+    private void Start() {
+        SceneManager.LoadScene("Main");
     }
 
     public void SaveGame() {

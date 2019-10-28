@@ -21,20 +21,7 @@ public class BrokerResultTraining : BrokerResultBase {
     public override void SetResult(ResultDataBase result) {
         base.SetResult(result);
         training = result as TrainingData;
-        if (training.StatType == StatType.Magic) {
-            sliderPowerContainer.SetActive(false);
-            sliderMagicContainer.SetActive(true);
-            float magicProgress = GetProgressForStat(playerCharacterController.Data.StatMagic);
-            sliderMagic.SetValues(0, magicProgress);
-            magicLevelField.text = "level " + playerCharacterController.Data.StatMagic.Level.ToString();
-        }
-        else if (training.StatType == StatType.Power) {
-            sliderMagicContainer.SetActive(false);
-            sliderPowerContainer.SetActive(true);
-            float powerProgress = GetProgressForStat(playerCharacterController.Data.StatPower);
-            sliderPower.SetValues(0, powerProgress);
-            powerLevelField.text = "level " + playerCharacterController.Data.StatPower.Level.ToString();
-        }
+        UpdateDisplay();
     }
 
     private void OnEnable() {
@@ -47,29 +34,36 @@ public class BrokerResultTraining : BrokerResultBase {
         yield return new WaitForSeconds(2.5f);
 
         // apply training
-        switch (training.StatType) {
-            case StatType.Power:
-                playerCharacterController.Data.StatPower.XP += training.XP;
-                float powerProgress = GetProgressForStat(playerCharacterController.Data.StatPower);
-                sliderPower.SetValues(0, powerProgress);
-                powerLevelField.text = "level " + playerCharacterController.Data.StatPower.Level.ToString();
-                break;
-            case StatType.Magic:
-                playerCharacterController.Data.StatMagic.XP += training.XP;
-                float magicProgress = GetProgressForStat(playerCharacterController.Data.StatMagic);
-                sliderMagic.SetValues(0, magicProgress);
-                magicLevelField.text = "level " + playerCharacterController.Data.StatMagic.Level.ToString();
-                break;
-        }
+        playerCharacterController.AddXP(training.StatType, training.XP);
+        UpdateDisplay();
 
         yield return new WaitForSeconds(1f);
 
         backButton.gameObject.SetActive(true);
     }
 
-    private float GetProgressForStat(PlayerStat stat) {
-        int relativeXPValue = stat.XP - PlayerStat.MinLevelXPs[stat.Level];
-        int xpInLevel = PlayerStat.MinLevelXPs[stat.Level + 1] - PlayerStat.MinLevelXPs[stat.Level];
+    private void UpdateDisplay() {
+        switch (training.StatType) {
+            case StatType.Power:
+                sliderMagicContainer.SetActive(false);
+                sliderPowerContainer.SetActive(true);
+                float powerProgress = GetProgressForStat(playerCharacterController.LevelPower, playerCharacterController.XPPower);
+                sliderPower.SetValues(0, powerProgress);
+                powerLevelField.text = "level " + playerCharacterController.LevelPower.ToString();
+                break;
+            case StatType.Magic:
+                sliderPowerContainer.SetActive(false);
+                sliderMagicContainer.SetActive(true);
+                float magicProgress = GetProgressForStat(playerCharacterController.LevelMagic, playerCharacterController.XPMagic);
+                sliderMagic.SetValues(0, magicProgress);
+                magicLevelField.text = "level " + playerCharacterController.LevelMagic.ToString();
+                break;
+        }
+    }
+
+    private float GetProgressForStat(int level, int xp) {
+        int relativeXPValue = xp - PlayerStat.MinLevelXPs[level];
+        int xpInLevel = PlayerStat.MinLevelXPs[level + 1] - PlayerStat.MinLevelXPs[level];
         return relativeXPValue / (float)xpInLevel;
     }
 }

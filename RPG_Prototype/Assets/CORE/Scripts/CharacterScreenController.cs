@@ -12,18 +12,18 @@ public class CharacterScreenController : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI magicLevelField = null;
 
     private void OnEnable() {
-        moodSlider.SetValues(0, playerCharacterController.Data.CurrentMoodLevel / 3.0f);
-        float powerProgress = GetProgressForStat(playerCharacterController.Data.StatPower);
+        moodSlider.SetValues(0, playerCharacterController.LevelMood / 3.0f);
+        float powerProgress = GetProgressForStat(playerCharacterController.LevelPower, playerCharacterController.XPPower);
         powerSlider.SetValues(0, powerProgress);
-        powerLevelField.text = "level " + playerCharacterController.Data.StatPower.Level.ToString();
-        float magicProgress = GetProgressForStat(playerCharacterController.Data.StatMagic);
+        powerLevelField.text = "level " + playerCharacterController.LevelPower.ToString();
+        float magicProgress = GetProgressForStat(playerCharacterController.LevelMagic, playerCharacterController.XPMagic);
         magicSlider.SetValues(0, magicProgress);
-        magicLevelField.text = "level " + playerCharacterController.Data.StatMagic.Level.ToString();
+        magicLevelField.text = "level " + playerCharacterController.LevelMagic.ToString();
     }
 
-    private float GetProgressForStat(PlayerStat stat) {
-        int relativeXPValue = stat.XP - PlayerStat.MinLevelXPs[stat.Level];
-        int xpInLevel = PlayerStat.MinLevelXPs[stat.Level + 1] - PlayerStat.MinLevelXPs[stat.Level];
+    private float GetProgressForStat(int level, int xp) {
+        int relativeXPValue = xp - PlayerStat.MinLevelXPs[level];
+        int xpInLevel = PlayerStat.MinLevelXPs[level + 1] - PlayerStat.MinLevelXPs[level];
         return relativeXPValue / (float)xpInLevel;
     }
 }

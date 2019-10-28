@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class PlayerCharacterData : ScriptableObject {
+[System.Serializable]
+public class PlayerCharacterData {
     public int CurrentMoodLevel;
     public int TotalPoints {
         get {

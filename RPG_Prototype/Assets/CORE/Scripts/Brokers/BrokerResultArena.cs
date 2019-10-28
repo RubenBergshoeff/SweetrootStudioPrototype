@@ -54,12 +54,12 @@ public class BrokerResultArena : BrokerResultBase {
     }
 
     public void ShowFightResult(EnemyData enemy) {
-        slider.UpdateValues((playerCharacterController.Data.CurrentMoodLevel / 2.0f) / (float)enemy.TotalPoints,
-            playerCharacterController.Data.StatPower.Level / (float)enemy.TotalPoints,
-            playerCharacterController.Data.StatMagic.Level / (float)enemy.TotalPoints);
+        slider.UpdateValues((playerCharacterController.LevelMood / 2.0f) / (float)enemy.TotalPoints,
+            playerCharacterController.LevelPower / (float)enemy.TotalPoints,
+            playerCharacterController.LevelMagic / (float)enemy.TotalPoints);
 
         // enemy too weak
-        if (playerCharacterController.Data.ProvenLevel >= enemy.Level + 1) {
+        if (playerCharacterController.ProvenLevel >= enemy.Level + 1) {
             easyWinDisplay.SetActive(true);
             playerCharacterController.LowerMoodBy(1);
             if (enemy.NewTrainingData != null) {
@@ -67,14 +67,14 @@ public class BrokerResultArena : BrokerResultBase {
             }
         }
         // enemy too strong
-        else if (playerCharacterController.Data.TotalPoints + (playerCharacterController.Data.CurrentMoodLevel / 2.0f) < enemy.TotalPoints - 2) {
+        else if (playerCharacterController.TotalPoints + (playerCharacterController.LevelMood / 2.0f) < enemy.TotalPoints - 2) {
             defeatedDisplay.SetActive(true);
             playerCharacterController.LowerMoodBy(1);
         }
         // proven skill
         else {
-            playerCharacterController.Data.ProvenLevel = Mathf.Min(playerCharacterController.Data.TotalPoints / 2, enemy.Level + 1);
-            provenSkillLevelField.text = playerCharacterController.Data.ProvenLevel.ToString();
+            playerCharacterController.SetProvenLevel(Mathf.Min(playerCharacterController.TotalPoints / 2, enemy.Level + 1));
+            provenSkillLevelField.text = playerCharacterController.ProvenLevel.ToString();
             gainedDisplay.SetActive(true);
             if (enemy.NewTrainingData != null) {
                 newTrainingData = enemy.NewTrainingData;
@@ -86,6 +86,6 @@ public class BrokerResultArena : BrokerResultBase {
     }
 
     private void UpdateProvenSkillLevelDisplay() {
-        provenSkillLevelField.text = playerCharacterController.Data.ProvenLevel.ToString();
+        provenSkillLevelField.text = playerCharacterController.ProvenLevel.ToString();
     }
 }

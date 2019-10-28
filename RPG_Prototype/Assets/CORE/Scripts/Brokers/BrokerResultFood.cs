@@ -11,10 +11,9 @@ public class BrokerResultFood : BrokerResultBase {
 
     public override void SetResult(ResultDataBase result) {
         base.SetResult(result);
-        slider.SetValues(0, playerCharacterController.Data.CurrentMoodLevel / 3.0f);
-        if (playerCharacterController.Data.CurrentMoodLevel < 3) {
-            playerCharacterController.Data.CurrentMoodLevel += (result as MoodData).MoodImproveAmount;
-            playerCharacterController.Data.CurrentMoodLevel = Mathf.Min(playerCharacterController.Data.CurrentMoodLevel, 3);
+        slider.SetValues(0, playerCharacterController.LevelMood / 3.0f);
+        if (playerCharacterController.LevelMood < 3) {
+            playerCharacterController.SetMoodLevel(Mathf.Min(playerCharacterController.LevelMood + (result as MoodData).MoodImproveAmount, 3));
         }
     }
 
@@ -25,7 +24,7 @@ public class BrokerResultFood : BrokerResultBase {
 
     private IEnumerator ShowFoodAnimation() {
         yield return new WaitForSeconds(2.5f);
-        slider.SetValues(0, playerCharacterController.Data.CurrentMoodLevel / 3.0f);
+        slider.SetValues(0, playerCharacterController.LevelMood / 3.0f);
 
         yield return new WaitForSeconds(1f);
         backButton.gameObject.SetActive(true);

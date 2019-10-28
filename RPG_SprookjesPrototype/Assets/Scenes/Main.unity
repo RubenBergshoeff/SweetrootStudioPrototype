@@ -1899,6 +1899,9 @@ MonoBehaviour:
     PlayerData:
       SomeIntVariable: 0
       SomeStringVariable: hullo
+    Skills:
+      Objects: []
+  preDefinedSettings: {fileID: 11400000, guid: 5aef13425ce247f4bbebcba00126f241, type: 2}
 --- !u!4 &2011543183
 Transform:
   m_ObjectHideFlags: 0

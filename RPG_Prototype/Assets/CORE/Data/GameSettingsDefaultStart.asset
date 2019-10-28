@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce5a7cdd8445e4eb18204aca18f7389e, type: 3}
-  m_Name: MainCharacter
+  m_Script: {fileID: 11500000, guid: d93600d410012e142b6422ca9feff78b, type: 3}
+  m_Name: GameSettingsDefaultStart
   m_EditorClassIdentifier: 
-  CurrentMoodLevel: 0
-  StatPower:
-    XP: 100
-  StatMagic:
-    XP: 100
-  ProvenLevel: 0
+  GameData:
+    PlayerData:
+      SomeIntVariable: 0
+      SomeStringVariable: hullo
