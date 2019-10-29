@@ -7,7 +7,6 @@ public class ScrollViewContentScaler : MonoBehaviour {
     [SerializeField] private float widthPerChild = 500;
 
     public void UpdateView() {
-        Debug.Log("updating view");
         HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
         float padding = 0;
 

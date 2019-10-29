@@ -8,6 +8,7 @@ public class GameData {
     //public UnlockableSkillCollection Skills = new UnlockableSkillCollection();
     public UnlockableTrainingCollection TrainingCollection = new UnlockableTrainingCollection();
     public UnlockableMoodCollection MoodCollection = new UnlockableMoodCollection();
+    public UnlockableEnemyCollection EnemyCollection = new UnlockableEnemyCollection();
 }
 
 // Training Unlock
@@ -23,3 +24,10 @@ public class UnlockableMoodCollection : UnlockableCollection<LockedMood, MoodDat
 
 [System.Serializable]
 public class LockedMood : LockObject<MoodData> { }
+
+// Arena Unlock
+[System.Serializable]
+public class UnlockableEnemyCollection : UnlockableCollection<LockedEnemy, EnemyData> { }
+
+[System.Serializable]
+public class LockedEnemy : LockObject<EnemyData> { }

@@ -15,22 +15,39 @@ MonoBehaviour:
   GameData:
     PlayerData:
       CurrentMoodLevel: 1
-      StatPower:
-        XP: 0
-      StatMagic:
-        XP: 0
+      ActiveSkillCategories:
+      - Category: {fileID: 11400000, guid: 3280fdcbf3ac93b48a6e26c92f025efa, type: 2}
+        ActiveSkills:
+        - Skill: {fileID: 11400000, guid: 8e7989d56c2604549bd4e1d7294d1980, type: 2}
+          ActiveSkillLevels:
+          - SkillLevel: {fileID: 11400000, guid: d20d4cd7a2ba42242b0da3778136c248,
+              type: 2}
+            IsCompleted: 0
+          XP: 0
+        - Skill: {fileID: 11400000, guid: ac272ad2d6e0bf34795641adfe95ade5, type: 2}
+          ActiveSkillLevels:
+          - SkillLevel: {fileID: 11400000, guid: 8b04d68762b41ba41afd0e049929e4d7,
+              type: 2}
+            IsCompleted: 0
+          XP: 0
       ProvenLevel: 0
     TrainingCollection:
       Objects:
-      - Object: {fileID: 11400000, guid: e64873d7983957b44aa0f649ce1207d0, type: 2}
+      - Object: {fileID: 11400000, guid: 3a9224140fd64154197d9f52865e8e28, type: 2}
         IsUnlocked: 1
-      - Object: {fileID: 11400000, guid: ab2c89c4c600b854eadfc19f25478c2e, type: 2}
-        IsUnlocked: 1
-      - Object: {fileID: 11400000, guid: a28ac8fee6309f14e8c4acf1e0075ba4, type: 2}
+      - Object: {fileID: 11400000, guid: bd24d4e3f88a3ed4ba0ddf5b421f6c93, type: 2}
         IsUnlocked: 1
     MoodCollection:
       Objects:
       - Object: {fileID: 11400000, guid: 95dc5bf0f60362547a650f44ab6521bb, type: 2}
         IsUnlocked: 1
       - Object: {fileID: 11400000, guid: e638a98a881dd4d40aec5e6fa4a927bb, type: 2}
+        IsUnlocked: 1
+    EnemyCollection:
+      Objects:
+      - Object: {fileID: 11400000, guid: 48eb9efd6c0147b44b4b002f82e72afd, type: 2}
+        IsUnlocked: 1
+      - Object: {fileID: 11400000, guid: 45c2c13d0098e024c8e4d26ce78faed9, type: 2}
+        IsUnlocked: 1
+      - Object: {fileID: 11400000, guid: 55e894df4dc99434093d2f65b175fff1, type: 2}
         IsUnlocked: 1

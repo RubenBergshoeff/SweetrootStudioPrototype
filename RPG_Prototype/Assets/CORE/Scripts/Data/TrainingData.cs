@@ -3,6 +3,6 @@ using System.Collections;
 
 [CreateAssetMenu]
 public class TrainingData : ResultDataBase {
-    public int XP = 100;
-    public StatType StatType = StatType.Power;
+    public Skill TargetSkill = null;
+    public int XPGainTraining = 250;
 }

@@ -54,9 +54,9 @@ public class BrokerResultArena : BrokerResultBase {
     }
 
     public void ShowFightResult(EnemyData enemy) {
-        slider.UpdateValues((playerCharacterController.LevelMood / 2.0f) / (float)enemy.TotalPoints,
-            playerCharacterController.LevelPower / (float)enemy.TotalPoints,
-            playerCharacterController.LevelMagic / (float)enemy.TotalPoints);
+        slider.UpdateValues((playerCharacterController.LevelMood / 2.0f) / (float)enemy.TotalPoints /*,
+           playerCharacterController.LevelPower / (float)enemy.TotalPoints,
+            playerCharacterController.LevelMagic / (float)enemy.TotalPoints*/);
 
         // enemy too weak
         if (playerCharacterController.ProvenLevel >= enemy.Level + 1) {

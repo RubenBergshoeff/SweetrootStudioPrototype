@@ -10,10 +10,8 @@ public class BrokerResultTraining : BrokerResultBase {
     [SerializeField] private GameObject gainedDisplay = null;
     [SerializeField] private GameObject sliderMagicContainer = null;
     [SerializeField] private GameObject sliderPowerContainer = null;
-    [SerializeField] private FillSlider sliderMagic = null;
-    [SerializeField] private FillSlider sliderPower = null;
-    [SerializeField] private TextMeshProUGUI magicLevelField = null;
-    [SerializeField] private TextMeshProUGUI powerLevelField = null;
+    [SerializeField] private FillSlider fillSlider = null;
+    [SerializeField] private TextMeshProUGUI sliderTextField = null;
     [SerializeField] private Button backButton = null;
 
     private TrainingData training;
@@ -21,44 +19,49 @@ public class BrokerResultTraining : BrokerResultBase {
     public override void SetResult(ResultDataBase result) {
         base.SetResult(result);
         training = result as TrainingData;
-        UpdateDisplay();
     }
 
     private void OnEnable() {
         gainedDisplay.SetActive(false);
         backButton.gameObject.SetActive(false);
+        if (training == null) { return; }
         StartCoroutine(TrainingAnimation());
     }
 
     private IEnumerator TrainingAnimation() {
-        yield return new WaitForSeconds(2.5f);
-
-        // apply training
-        playerCharacterController.AddXP(training.StatType, training.XP);
-        UpdateDisplay();
+        SetStartDisplay();
 
         yield return new WaitForSeconds(1f);
+
+        // apply training
+        int oldXP = playerCharacterController.GetActiveSkillXP(training.TargetSkill);
+        playerCharacterController.AddActiveSkillXP(training.TargetSkill, training.XPGainTraining);
+        AnimateDisplay(oldXP, 1.3f);
+
+        yield return new WaitForSeconds(1.8f);
 
         backButton.gameObject.SetActive(true);
     }
 
-    private void UpdateDisplay() {
-        switch (training.StatType) {
-            case StatType.Power:
-                sliderMagicContainer.SetActive(false);
-                sliderPowerContainer.SetActive(true);
-                float powerProgress = GetProgressForStat(playerCharacterController.LevelPower, playerCharacterController.XPPower);
-                sliderPower.SetValues(0, powerProgress);
-                powerLevelField.text = "level " + playerCharacterController.LevelPower.ToString();
-                break;
-            case StatType.Magic:
-                sliderPowerContainer.SetActive(false);
-                sliderMagicContainer.SetActive(true);
-                float magicProgress = GetProgressForStat(playerCharacterController.LevelMagic, playerCharacterController.XPMagic);
-                sliderMagic.SetValues(0, magicProgress);
-                magicLevelField.text = "level " + playerCharacterController.LevelMagic.ToString();
-                break;
-        }
+    private void AnimateDisplay(int oldXP, float time) {
+        int XPCap = playerCharacterController.GetActiveSkillXPCap(training.TargetSkill);
+        fillSlider.SetValues(
+            0,
+            (float)oldXP / XPCap,
+            (float)playerCharacterController.GetActiveSkillXP(training.TargetSkill) / XPCap,
+            time,
+            training.TargetSkill.SkillCategory.color);
+
+        sliderTextField.text = "Level " + playerCharacterController.GetActiveSkillLevel(training.TargetSkill);
+    }
+
+    private void SetStartDisplay() {
+        fillSlider.SetValues(
+            0,
+            (float)playerCharacterController.GetActiveSkillXP(training.TargetSkill) / playerCharacterController.GetActiveSkillXPCap(training.TargetSkill),
+            training.TargetSkill.SkillCategory.color);
+
+        sliderTextField.text = "Level " + playerCharacterController.GetActiveSkillLevel(training.TargetSkill);
     }
 
     private float GetProgressForStat(int level, int xp) {

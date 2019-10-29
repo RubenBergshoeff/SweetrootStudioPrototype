@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,29 +17,29 @@ public class PlayerCharacterController : MonoBehaviour {
         }
     }
 
-    public int LevelPower {
-        get {
-            return data.StatPower.Level;
-        }
-    }
+    //public int LevelPower {
+    //    get {
+    //        return data.StatPower.Level;
+    //    }
+    //}
 
-    public int XPPower {
-        get {
-            return data.StatPower.XP;
-        }
-    }
+    //public int XPPower {
+    //    get {
+    //        return data.StatPower.XP;
+    //    }
+    //}
 
-    public int LevelMagic {
-        get {
-            return data.StatMagic.Level;
-        }
-    }
+    //public int LevelMagic {
+    //    get {
+    //        return data.StatMagic.Level;
+    //    }
+    //}
 
-    public int XPMagic {
-        get {
-            return data.StatMagic.XP;
-        }
-    }
+    //public int XPMagic {
+    //    get {
+    //        return data.StatMagic.XP;
+    //    }
+    //}
 
     public int ProvenLevel {
         get {
@@ -77,20 +78,37 @@ public class PlayerCharacterController : MonoBehaviour {
         data.ProvenLevel = level;
     }
 
-    public void AddXP(StatType stat, int amount) {
-        switch (stat) {
-            case StatType.Power:
-                data.StatPower.XP += amount;
-                break;
-            case StatType.Magic:
-                data.StatMagic.XP += amount;
-                break;
-            default:
-                throw new System.ArgumentException("Stat not implemented " + stat);
-        }
+    public void AddActiveSkillXP(Skill targetSkill, int amount) {
+        ActiveSkill activeSkill = GetActiveSkill(targetSkill);
+        activeSkill.XP += amount;
+        activeSkill.XP = Mathf.Min(activeSkill.XP, activeSkill.GetXPCap());
+    }
+
+    public int GetActiveSkillXPCap(Skill targetSkill) {
+        return GetActiveSkill(targetSkill).GetXPCap();
+    }
+
+    public int GetActiveSkillXP(Skill targetSkill) {
+        return GetActiveSkill(targetSkill).XP;
+    }
+
+    public int GetActiveSkillLevel(Skill targetSkill) {
+        return GetActiveSkill(targetSkill).GetLevel();
     }
 
     public void SetProvenSkillLevel(int level) {
         data.ProvenLevel = level;
+    }
+
+    private ActiveSkill GetActiveSkill(Skill targetSkill) {
+        ActiveSkillCategory activeSkillCategory = data.GetActiveSkillCategory(targetSkill.SkillCategory);
+        if (activeSkillCategory == null) {
+            throw new System.ArgumentException("No active skillcategory found for category " + targetSkill.SkillCategory);
+        }
+        ActiveSkill activeSkill = activeSkillCategory.GetActiveSkill(targetSkill);
+        if (activeSkill == null) {
+            throw new System.ArgumentException("No active skill found for skill " + targetSkill);
+        }
+        return activeSkill;
     }
 }

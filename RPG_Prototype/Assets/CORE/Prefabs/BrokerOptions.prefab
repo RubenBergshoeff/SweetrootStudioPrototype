@@ -509,6 +509,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8892842497750129462}
     m_Modifications:
+    - target: {fileID: 1574799079943369242, guid: e35910afc1eaff04e8a07ce165b93506,
+        type: 3}
+      propertyPath: m_Name
+      value: BrokerButton - Small Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6508160440994302104, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -613,11 +618,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574799079943369242, guid: e35910afc1eaff04e8a07ce165b93506,
-        type: 3}
-      propertyPath: m_Name
-      value: BrokerButton - Small Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1912994019419370672, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
