@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public class BrokerResultFood : BrokerResultBase {
+public class BrokerFoodResult : BrokerBaseResult {
 
     [SerializeField] private PlayerCharacterController playerCharacterController = null;
     [SerializeField] private FillSlider slider = null;

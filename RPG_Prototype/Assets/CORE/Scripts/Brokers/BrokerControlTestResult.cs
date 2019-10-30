@@ -6,7 +6,7 @@ using TMPro;
 using System;
 using UnityEngine.UI;
 
-public class BrokerResultControlTest : BrokerResultBase {
+public class BrokerControlTestResult : BrokerBaseResult {
 
     [SerializeField] private PlayerCharacterController playerCharacterController = null;
     [SerializeField] private FillSlider fillSlider = null;

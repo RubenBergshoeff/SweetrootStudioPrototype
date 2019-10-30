@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public class BrokerResultBase : MonoBehaviour {
+public class BrokerBaseResult : MonoBehaviour {
     [SerializeField] private TMPro.TextMeshProUGUI resultNameContainer = null;
     [SerializeField] private Image resultVisualContainer = null;
 

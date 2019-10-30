@@ -4,7 +4,7 @@ using System;
 using UnityEngine.UI;
 using TMPro;
 
-public class BrokerResultTraining : BrokerResultBase {
+public class BrokerTrainingResult : BrokerBaseResult {
 
     [SerializeField] private PlayerCharacterController playerCharacterController = null;
     [SerializeField] private FillSlider fillSlider = null;

@@ -7,7 +7,7 @@ using System;
 
 
 public abstract class BrokerBase : MonoBehaviour {
-    [SerializeField] private BrokerResultBase resultController = null;
+    [SerializeField] private BrokerBaseResult resultController = null;
     [SerializeField] private string uiEventString = "";
 
     public void PickResult(ActiveResultData result) {
