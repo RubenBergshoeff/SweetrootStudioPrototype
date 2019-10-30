@@ -7,8 +7,8 @@ public class BrokerResultBase : MonoBehaviour {
     [SerializeField] private TMPro.TextMeshProUGUI resultNameContainer = null;
     [SerializeField] private Image resultVisualContainer = null;
 
-    public virtual void SetResult(ResultDataBase result) {
-        resultNameContainer.text = result.Name;
-        resultVisualContainer.sprite = result.Visual;
+    public virtual void SetResult(ActiveResultData activeResult) {
+        resultNameContainer.text = activeResult.Data.Name;
+        resultVisualContainer.sprite = activeResult.Data.Visual;
     }
 }

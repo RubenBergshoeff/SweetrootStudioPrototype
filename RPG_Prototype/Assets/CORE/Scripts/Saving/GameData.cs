@@ -4,11 +4,12 @@ using UnityEngine;
 
 [System.Serializable]
 public class GameData {
-    public PlayerCharacterData PlayerData = new PlayerCharacterData();
+    public PlayerCharacterCollection CharacterCollection = new PlayerCharacterCollection();
+    public PlayerMoodCollection MoodCollection = new PlayerMoodCollection();
     //public UnlockableSkillCollection Skills = new UnlockableSkillCollection();
-    public UnlockableTrainingCollection TrainingCollection = new UnlockableTrainingCollection();
-    public UnlockableMoodCollection MoodCollection = new UnlockableMoodCollection();
-    public UnlockableEnemyCollection EnemyCollection = new UnlockableEnemyCollection();
+    //public UnlockableTrainingCollection TrainingCollection = new UnlockableTrainingCollection();
+    //public UnlockableMoodCollection MoodCollection = new UnlockableMoodCollection();
+    //public UnlockableEnemyCollection EnemyCollection = new UnlockableEnemyCollection();
 }
 
 // Training Unlock

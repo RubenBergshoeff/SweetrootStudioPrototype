@@ -10,17 +10,17 @@ public abstract class BrokerBase : MonoBehaviour {
     [SerializeField] private BrokerResultBase resultController = null;
     [SerializeField] private string uiEventString = "";
 
-    public void PickResult(ResultDataBase result) {
+    public void PickResult(ActiveResultData result) {
         resultController.SetResult(result);
         GameEventMessage.SendEvent(uiEventString);
     }
 }
 
-public abstract class BrokerBase<T, U, V> : BrokerBase where T : UnlockableCollection<U, V> where U : LockObject<V> where V : ResultDataBase {
+public abstract class BrokerBase<T, U> : BrokerBase where T : ActiveResultData {
     [SerializeField] private BrokerButton templateButton = null;
     [SerializeField] private Transform buttonContainer = null;
 
-    protected abstract UnlockableCollection<U, V> UnlockableCollection {
+    protected abstract List<T> Collection {
         get;
     }
 
@@ -33,17 +33,15 @@ public abstract class BrokerBase<T, U, V> : BrokerBase where T : UnlockableColle
             }
         }
 
-        foreach (var item in UnlockableCollection.Objects) {
-            if (item.IsUnlocked) {
-                AddItem(item.Object);
-            }
+        foreach (var item in Collection) {
+            AddItem(item);
         }
 
         templateButton.gameObject.SetActive(false);
         GetComponentInChildren<ScrollViewContentScaler>().UpdateView();
     }
 
-    private void AddItem(V item) {
+    private void AddItem(ActiveResultData item) {
         BrokerButton newButton = Instantiate(templateButton.gameObject, buttonContainer).GetComponent<BrokerButton>();
         newButton.SetupButton(this, item);
     }

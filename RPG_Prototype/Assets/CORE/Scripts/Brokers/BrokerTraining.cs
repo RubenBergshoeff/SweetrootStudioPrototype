@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BrokerTraining : BrokerBase<UnlockableTrainingCollection, LockedTraining, TrainingData> {
-    protected override UnlockableCollection<LockedTraining, TrainingData> UnlockableCollection {
+public class BrokerTraining : BrokerBase<ActiveTraining, TrainingData> {
+    protected override List<ActiveTraining> Collection {
         get {
-            return SaveController.Instance.GameData.TrainingCollection;
+            return SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.GetAllActiveTrainingData();
         }
     }
 }

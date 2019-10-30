@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1dfb2d8400dbb45979566ce26d6912, type: 3}
   m_Name: Skill01Lvl01
   m_EditorClassIdentifier: 
+  Name: Skill01Lvl01
+  Visual: {fileID: 0}
   Skill: {fileID: 11400000, guid: 8e7989d56c2604549bd4e1d7294d1980, type: 2}
   Level: 1
   XPCap: 500
   SkillCategoryScore: 5
-  Visual: {fileID: 0}

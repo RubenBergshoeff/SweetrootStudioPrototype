@@ -205,12 +205,12 @@ MonoBehaviour:
   m_minimumOutputSocketsCount: 1
   m_graphId: a1ee0c2d-b1cf-46e0-9ebb-f1f331345f0d
   m_id: 814993bb-6d37-4cd1-bfe8-8a0ab7b2d1f6
-  m_name: Arena Broker
+  m_name: BrokerControlTest
   m_notes: 
   m_onEnterShowViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: ArenaBroker
+    Name: BrokerControlTest
   m_onEnterHideViews:
   - Category: FastRPG
     InstantAction: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_onExitHideViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: ArenaBroker
+    Name: BrokerControlTest
 --- !u!114 &-3555093527670105149
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_onEnterShowViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: TrainingBroker
+    Name: BrokerTraining
   m_onEnterHideViews:
   - Category: FastRPG
     InstantAction: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_onExitHideViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: TrainingBroker
+    Name: BrokerTraining
 --- !u!114 &-1822930811310330203
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_onEnterShowViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: FoodBroker
+    Name: BrokerMood
   m_onEnterHideViews:
   - Category: FastRPG
     InstantAction: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_onExitHideViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: FoodBroker
+    Name: BrokerMood
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -810,13 +810,13 @@ MonoBehaviour:
   m_onEnterShowViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: TrainingResult
+    Name: BrokerTrainingResult
   m_onEnterHideViews: []
   m_onExitShowViews: []
   m_onExitHideViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: TrainingResult
+    Name: BrokerTrainingResult
 --- !u!114 &1867956877549389811
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1149,13 +1149,13 @@ MonoBehaviour:
   m_onEnterShowViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: ArenaResult
+    Name: BrokerControlTestResult
   m_onEnterHideViews: []
   m_onExitShowViews: []
   m_onExitHideViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: ArenaResult
+    Name: BrokerControlTestResult
 --- !u!114 &4785268475579382513
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1245,13 +1245,13 @@ MonoBehaviour:
   m_onEnterShowViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: FoodResult
+    Name: BrokerMoodResult
   m_onEnterHideViews: []
   m_onExitShowViews: []
   m_onExitHideViews:
   - Category: FastRPG
     InstantAction: 0
-    Name: FoodResult
+    Name: BrokerMoodResult
 --- !u!114 &4970279759514116258
 MonoBehaviour:
   m_ObjectHideFlags: 1

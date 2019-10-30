@@ -6,16 +6,16 @@ using System;
 public class BrokerButton : MonoBehaviour {
 
     [SerializeField] private BrokerBase broker = null;
-    [SerializeField] private ResultDataBase resultData = null;
+    [SerializeField] private ActiveResultData activeResultData = null;
     private Button button;
 
     [Header("Editor")]
     [SerializeField] private TMPro.TextMeshProUGUI nameField = null;
     [SerializeField] private Image visual = null;
 
-    public void SetupButton(BrokerBase broker, ResultDataBase resultData) {
+    public void SetupButton(BrokerBase broker, ActiveResultData resultData) {
         this.broker = broker;
-        this.resultData = resultData;
+        this.activeResultData = resultData;
         UpdateView();
     }
 
@@ -27,7 +27,7 @@ public class BrokerButton : MonoBehaviour {
     }
 
     private void OnClickResult() {
-        broker.PickResult(resultData);
+        broker.PickResult(activeResultData);
     }
 
     private void OnDisable() {
@@ -41,15 +41,15 @@ public class BrokerButton : MonoBehaviour {
     private void UpdateView() {
         if (nameField == null || visual == null) { return; }
 
-        if (resultData == null) {
+        if (activeResultData == null) {
             gameObject.name = "BrokerButton";
             nameField.text = "button";
             visual.sprite = null;
         }
         else {
-            gameObject.name = "BrokerButton - " + resultData.Name;
-            nameField.text = resultData.Name;
-            visual.sprite = resultData.Visual;
+            gameObject.name = "BrokerButton - " + activeResultData.Data.Name;
+            nameField.text = activeResultData.Data.Name;
+            visual.sprite = activeResultData.Data.Visual;
         }
     }
 }

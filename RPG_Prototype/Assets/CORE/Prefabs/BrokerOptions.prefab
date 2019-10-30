@@ -512,7 +512,7 @@ PrefabInstance:
     - target: {fileID: 1574799079943369242, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
       propertyPath: m_Name
-      value: BrokerButton - Small Enemy
+      value: BrokerButton
       objectReference: {fileID: 0}
     - target: {fileID: 6508160440994302104, guid: e35910afc1eaff04e8a07ce165b93506,
         type: 3}
@@ -623,8 +623,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 88415b7027efe9c45bb85080d3d9a62b,
-        type: 3}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e35910afc1eaff04e8a07ce165b93506, type: 3}
 --- !u!224 &1006605929226531526 stripped

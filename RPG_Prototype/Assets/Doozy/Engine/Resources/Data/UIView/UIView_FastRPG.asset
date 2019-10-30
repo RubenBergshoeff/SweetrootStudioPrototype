@@ -15,12 +15,13 @@ MonoBehaviour:
   CategoryName: FastRPG
   DatabaseType: 2
   Names:
-  - ArenaBroker
-  - ArenaResult
+  - BrokerControlTest
+  - BrokerControlTestResult
+  - BrokerMood
+  - BrokerMoodResult
+  - BrokerResultTraining
+  - BrokerSkillTestResult
+  - BrokerTraining
+  - BrokerTrainingResult
   - Character
-  - FoodBroker
-  - FoodResult
   - MainMap
-  - TrainingBroker
-  - TrainingResult
-  - NewTraining

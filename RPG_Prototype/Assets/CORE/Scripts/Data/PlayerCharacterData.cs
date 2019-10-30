@@ -21,66 +21,26 @@ public class PlayerCharacterData {
         }
         return null;
     }
-}
 
-[System.Serializable]
-public class ActiveSkillCategory {
-    public SkillCategory Category = null;
-    public List<ActiveSkill> ActiveSkills = new List<ActiveSkill>();
-
-    public int GetScore() {
-        int score = 0;
-        foreach (var activeSkill in ActiveSkills) {
-            score += activeSkill.GetScore();
-        }
-        return score;
-    }
-
-    public ActiveSkill GetActiveSkill(Skill skill) {
-        foreach (var activeSkill in ActiveSkills) {
-            if (activeSkill.Skill == skill) {
-                return activeSkill;
+    public List<ActiveSkillLevel> GetAllActiveSkillLevels() {
+        List<ActiveSkillLevel> skillLevels = new List<ActiveSkillLevel>();
+        foreach (var activeSkillCategory in ActiveSkillCategories) {
+            foreach (var activeSkill in activeSkillCategory.ActiveSkills) {
+                foreach (var activeSkillLevel in activeSkill.ActiveSkillLevels) {
+                    skillLevels.Add(activeSkillLevel);
+                }
             }
         }
-        return null;
-    }
-}
-
-[System.Serializable]
-public class ActiveSkill {
-    public Skill Skill = null;
-    public List<ActiveSkillLevel> ActiveSkillLevels = new List<ActiveSkillLevel>();
-    public int XP = 0;
-
-    public int GetScore() {
-        int score = 0;
-        foreach (var activeSkillLevel in ActiveSkillLevels) {
-            score += activeSkillLevel.SkillLevel.SkillCategoryScore;
-        }
-        return score;
+        return skillLevels;
     }
 
-    public int GetXPCap() {
-        int XPCap = 0;
-        foreach (var activeSkillLevel in ActiveSkillLevels) {
-            XPCap = Mathf.Max(XPCap, activeSkillLevel.SkillLevel.XPCap);
-        }
-        return XPCap;
-    }
-
-    public int GetLevel() {
-        int level = 0;
-        foreach (var activeSkillLevel in ActiveSkillLevels) {
-            if (activeSkillLevel.IsCompleted) {
-                level = activeSkillLevel.SkillLevel.Level;
+    public List<ActiveTraining> GetAllActiveTrainingData() {
+        List<ActiveTraining> trainingData = new List<ActiveTraining>();
+        foreach (var activeSkillCategory in ActiveSkillCategories) {
+            foreach (var activeSkill in activeSkillCategory.ActiveSkills) {
+                trainingData.Add(activeSkill.ActiveTraining);
             }
         }
-        return level;
+        return trainingData;
     }
-}
-
-[System.Serializable]
-public class ActiveSkillLevel {
-    public SkillLevel SkillLevel;
-    public bool IsCompleted = false;
 }

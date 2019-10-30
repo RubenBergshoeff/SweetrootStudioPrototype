@@ -9,11 +9,14 @@ public class BrokerResultFood : BrokerResultBase {
     [SerializeField] private FillSlider slider = null;
     [SerializeField] private Button backButton = null;
 
-    public override void SetResult(ResultDataBase result) {
+    private ActiveMoodData activeMoodData;
+
+    public override void SetResult(ActiveResultData result) {
         base.SetResult(result);
+        activeMoodData = result as ActiveMoodData;
         slider.SetValues(0, playerCharacterController.LevelMood / 3.0f);
         if (playerCharacterController.LevelMood < 3) {
-            playerCharacterController.SetMoodLevel(Mathf.Min(playerCharacterController.LevelMood + (result as MoodData).MoodImproveAmount, 3));
+            playerCharacterController.SetMoodLevel(Mathf.Min(playerCharacterController.LevelMood + activeMoodData.MoodData.MoodImproveAmount, 3));
         }
     }
 

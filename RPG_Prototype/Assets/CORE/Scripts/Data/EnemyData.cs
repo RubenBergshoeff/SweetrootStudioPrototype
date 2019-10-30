@@ -19,3 +19,12 @@ public class EnemyData : ResultDataBase {
     public Sprite ArenaImage;
     public TrainingData NewTrainingData;
 }
+
+[System.Serializable]
+public class ActiveEnemyData : ActiveResultData {
+    public EnemyData EnemyData {
+        get {
+            return Data as EnemyData;
+        }
+    }
+}
