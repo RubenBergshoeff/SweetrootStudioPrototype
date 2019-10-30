@@ -33,15 +33,16 @@ public class BrokerControlTestResult : BrokerBaseResult {
         yield return new WaitForSeconds(1f);
 
         // test character skill
-        bool skillLeveledUp = activeSkillLevel.SkillLevel.XPCap <= playerCharacterController.GetActiveSkillXP(activeSkillLevel.SkillLevel.Skill);
+        float completionLevel = playerCharacterController.GetActiveSkillXP(activeSkillLevel.SkillLevel.Skill) / (float)activeSkillLevel.SkillLevel.XPCap;
         AnimateDisplay(1.3f);
 
         yield return new WaitForSeconds(1.8f);
 
-        if (skillLeveledUp) {
+        if (completionLevel >= 1) {
             activeSkillLevel.IsCompleted = true;
             SetStartDisplay();
         }
+        activeSkillLevel.LastCompletionLevel = Mathf.Min(completionLevel, 1);
 
         yield return new WaitForSeconds(0.3f);
 

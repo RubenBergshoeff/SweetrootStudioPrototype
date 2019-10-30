@@ -17,4 +17,5 @@ public class ActiveSkillLevel : ActiveResultData {
         }
     }
     public bool IsCompleted = false;
+    public float LastCompletionLevel = 0;
 }

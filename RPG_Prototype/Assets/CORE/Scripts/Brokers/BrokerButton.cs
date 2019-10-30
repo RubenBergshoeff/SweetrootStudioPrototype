@@ -6,7 +6,7 @@ using System;
 public class BrokerButton : MonoBehaviour {
 
     [SerializeField] private BrokerBase broker = null;
-    [SerializeField] private ActiveResultData activeResultData = null;
+    [SerializeField] protected ActiveResultData activeResultData = null;
     private Button button;
 
     [Header("Editor")]
@@ -38,7 +38,7 @@ public class BrokerButton : MonoBehaviour {
         UpdateView();
     }
 
-    private void UpdateView() {
+    protected virtual void UpdateView() {
         if (nameField == null || visual == null) { return; }
 
         if (activeResultData == null) {
