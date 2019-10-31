@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 [System.Serializable]
 public class PlayerCharacterCollection {
-    public PlayerCharacterData ActiveCharacter {
+    public ActiveCharacterData ActiveCharacter {
         get {
             return Characters[selectedCharacter];
         }
     }
 
-    public List<PlayerCharacterData> Characters = new List<PlayerCharacterData>();
+    public List<ActiveCharacterData> Characters = new List<ActiveCharacterData>();
     private int selectedCharacter = 0;
 }

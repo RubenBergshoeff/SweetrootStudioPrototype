@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class BrokerSkillTestMain : MonoBehaviour {
+public class BrokerSkillTestMain : UIDisplayController {
     private List<ActiveSkillCategory> activeSkillCategories {
         get {
             return SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.ActiveSkillCategories;
@@ -13,8 +13,11 @@ public class BrokerSkillTestMain : MonoBehaviour {
     [SerializeField] private BrokerSkillTestCategory categoryTemplate = null;
     [SerializeField] private Transform categoryContainer = null;
 
-    private void OnEnable() {
+    protected override void OnVisible() {
         UpdateView();
+    }
+
+    protected override void OnInvisible() {
     }
 
     private void UpdateView() {
@@ -31,7 +34,6 @@ public class BrokerSkillTestMain : MonoBehaviour {
         }
 
         categoryTemplate.gameObject.SetActive(false);
-        GetComponentInChildren<ScrollViewContentScaler>().UpdateView();
     }
 
     private void AddItem(ActiveSkillCategory item) {

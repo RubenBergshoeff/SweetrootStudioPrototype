@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System;
 
 
-public abstract class BrokerBase : MonoBehaviour {
+public abstract class BrokerBase : UIDisplayController {
     [SerializeField] private BrokerBaseResult resultController = null;
     [SerializeField] private string uiEventString = "";
 

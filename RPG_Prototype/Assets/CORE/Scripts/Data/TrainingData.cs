@@ -14,5 +14,10 @@ public class ActiveTraining : ActiveResultData {
             return Data as TrainingData;
         }
     }
+
+    public ActiveTraining(TrainingData data) : base(data) {
+
+    }
+
     public int TimesUsed = 0;
 }

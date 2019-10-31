@@ -22,3 +22,5 @@ MonoBehaviour:
   - ToFood
   - ToMap
   - ToTraining
+  - ToSkillTest
+  - ToControlTest

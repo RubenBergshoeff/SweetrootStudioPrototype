@@ -20,8 +20,10 @@ MonoBehaviour:
   - BrokerMood
   - BrokerMoodResult
   - BrokerResultTraining
+  - BrokerSkillTest
   - BrokerSkillTestResult
   - BrokerTraining
   - BrokerTrainingResult
   - Character
   - MainMap
+  - StartScreen

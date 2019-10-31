@@ -15,14 +15,15 @@ public class BrokerSkillTestResultCategory : MonoBehaviour {
 
     public void Animate(float time) {
         float endFill =
-            (activeSkillCategory.GetScore() - activeSkillCategory.SelectedTest.MinCategoryScore) /
-            (activeSkillCategory.SelectedTest.MaxCategoryScore - activeSkillCategory.SelectedTest.MinCategoryScore);
+            (activeSkillCategory.LastResult.Score - activeSkillCategory.LastResult.Test.MinCategoryScore) /
+            (float)(activeSkillCategory.LastResult.Test.MaxCategoryScore - activeSkillCategory.LastResult.Test.MinCategoryScore);
+        endFill = Mathf.Max(0, endFill);
         fillSlider.SetValues(0, 0, endFill, time, activeSkillCategory.Category.color);
     }
 
     private void UpdateStartView() {
         nameField.text = activeSkillCategory.Category.Name;
-        testLevelField.text = activeSkillCategory.SelectedTest.Level.ToString();
+        testLevelField.text = activeSkillCategory.LastResult.Test.Level.ToString();
         fillSlider.SetValues(0, 0);
     }
 }

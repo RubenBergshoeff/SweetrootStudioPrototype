@@ -21,10 +21,12 @@ public class BrokerControlTestResult : BrokerBaseResult {
         activeSkillLevel = activeResult as ActiveSkillLevel;
     }
 
-    private void OnEnable() {
+    protected override void OnVisible() {
         backButton.gameObject.SetActive(false);
-        if (activeSkillLevel == null) { return; }
         StartCoroutine(ControlTestAnimation());
+    }
+
+    protected override void OnInvisible() {
     }
 
     private IEnumerator ControlTestAnimation() {

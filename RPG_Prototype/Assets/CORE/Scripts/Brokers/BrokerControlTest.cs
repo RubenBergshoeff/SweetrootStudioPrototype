@@ -11,4 +11,10 @@ public class BrokerControlTest : BrokerBase<ActiveSkillLevel, SkillLevel> {
             return SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.GetAllActiveSkillLevels();
         }
     }
+
+    protected override void OnInvisible() {
+    }
+
+    protected override void OnVisible() {
+    }
 }

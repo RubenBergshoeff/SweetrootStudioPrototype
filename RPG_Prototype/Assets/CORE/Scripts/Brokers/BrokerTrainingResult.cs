@@ -16,12 +16,16 @@ public class BrokerTrainingResult : BrokerBaseResult {
     public override void SetResult(ActiveResultData result) {
         base.SetResult(result);
         activeTraining = result as ActiveTraining;
+        Debug.Log(activeTraining.Data.Name);
+        Debug.Log(activeTraining.Training.TargetSkill.Name);
     }
 
-    private void OnEnable() {
+    protected override void OnVisible() {
         backButton.gameObject.SetActive(false);
-        if (activeTraining == null) { return; }
         StartCoroutine(TrainingAnimation());
+    }
+
+    protected override void OnInvisible() {
     }
 
     private IEnumerator TrainingAnimation() {

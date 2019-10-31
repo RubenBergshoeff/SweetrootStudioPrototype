@@ -8,4 +8,10 @@ public class BrokerFood : BrokerBase<ActiveMoodData, MoodData> {
             return SaveController.Instance.GameData.MoodCollection.ActiveMoodDataItems;
         }
     }
+
+    protected override void OnVisible() {
+    }
+
+    protected override void OnInvisible() {
+    }
 }

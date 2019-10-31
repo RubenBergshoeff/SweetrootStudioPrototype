@@ -8,6 +8,13 @@ public class ResultDataBase : ScriptableObject {
 
 [System.Serializable]
 public abstract class ActiveResultData {
+    public ActiveResultData() {
+
+    }
+    public ActiveResultData(ResultDataBase data) {
+        this.Data = data;
+    }
+
     public ResultDataBase Data;
 }
 

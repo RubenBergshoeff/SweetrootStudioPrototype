@@ -34,14 +34,10 @@ public class BrokerButton : MonoBehaviour {
         button.onClick.RemoveListener(OnClickResult);
     }
 
-    private void OnValidate() {
-        UpdateView();
-    }
-
     protected virtual void UpdateView() {
         if (nameField == null || visual == null) { return; }
 
-        if (activeResultData == null) {
+        if (activeResultData == null || activeResultData.Data == null) {
             gameObject.name = "BrokerButton";
             nameField.text = "button";
             visual.sprite = null;

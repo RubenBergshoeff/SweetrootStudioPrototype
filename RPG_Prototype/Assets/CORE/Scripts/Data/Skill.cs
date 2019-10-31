@@ -15,14 +15,20 @@ public class ActiveSkill : ActiveResultData {
             return Data as Skill;
         }
     }
-    public ActiveTraining ActiveTraining = new ActiveTraining();
+    public ActiveTraining ActiveTraining = new ActiveTraining(null);
     public List<ActiveSkillLevel> ActiveSkillLevels = new List<ActiveSkillLevel>();
     public int XP = 0;
+
+    public ActiveSkill(Skill data) : base(data) {
+
+    }
 
     public int GetScore() {
         int score = 0;
         foreach (var activeSkillLevel in ActiveSkillLevels) {
-            score += activeSkillLevel.SkillLevel.SkillCategoryScore;
+            if (activeSkillLevel.IsCompleted) {
+                score += activeSkillLevel.SkillLevel.SkillCategoryScore;
+            }
         }
         return score;
     }
@@ -43,5 +49,14 @@ public class ActiveSkill : ActiveResultData {
             }
         }
         return level;
+    }
+
+    public ActiveSkillLevel GetActiveSkillLevel(SkillLevel skillLevel) {
+        foreach (var activeSkillLevel in ActiveSkillLevels) {
+            if (activeSkillLevel.SkillLevel == skillLevel) {
+                return activeSkillLevel;
+            }
+        }
+        return null;
     }
 }

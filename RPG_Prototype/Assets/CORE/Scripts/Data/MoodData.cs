@@ -13,5 +13,12 @@ public class ActiveMoodData : ActiveResultData {
             return Data as MoodData;
         }
     }
+    public ActiveMoodData(MoodData data) : base(data) {
+
+    }
+    public ActiveMoodData(MoodData data, int amount) : base(data) {
+        this.Amount = amount;
+    }
+
     public int Amount = 0;
 }

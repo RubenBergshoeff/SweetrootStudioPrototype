@@ -15,3 +15,21 @@ MonoBehaviour:
   Name: SkillCat 1
   Visual: {fileID: 0}
   color: {r: 0.9622642, g: 0.73119605, b: 0.35857958, a: 1}
+  Tests:
+  - Name: Skill Category Test 01
+    Level: 1
+    MinCategoryScore: 0
+    MaxCategoryScore: 30
+  - Name: Skill Category Test 02
+    Level: 2
+    MinCategoryScore: 15
+    MaxCategoryScore: 45
+  - Name: Skill Category Test 03
+    Level: 3
+    MinCategoryScore: 30
+    MaxCategoryScore: 60
+  PotentialUnlocks:
+  - RequiredScore: 5
+    ResultToUnlock: {fileID: 11400000, guid: bd24d4e3f88a3ed4ba0ddf5b421f6c93, type: 2}
+  - RequiredScore: 5
+    ResultToUnlock: {fileID: 11400000, guid: 8b04d68762b41ba41afd0e049929e4d7, type: 2}

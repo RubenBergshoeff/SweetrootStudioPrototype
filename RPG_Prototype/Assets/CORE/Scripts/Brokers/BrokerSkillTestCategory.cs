@@ -15,6 +15,16 @@ public class BrokerSkillTestCategory : MonoBehaviour {
     public void Setup(ActiveSkillCategory activeSkillCategory) {
         this.activeSkillCategory = activeSkillCategory;
         UpdateView();
+        selectedIndex = 0;
+        nameField.text = activeSkillCategory.Category.Name;
+        if (activeSkillCategory.LastResult != null) {
+            for (int i = 0; i < activeSkillCategory.Category.Tests.Count; i++) {
+                if (activeSkillCategory.Category.Tests[i] == activeSkillCategory.LastResult.Test) {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+        }
         UpdateSelection();
     }
 
@@ -45,16 +55,6 @@ public class BrokerSkillTestCategory : MonoBehaviour {
     }
 
     private void UpdateView() {
-        selectedIndex = 0;
-        if (activeSkillCategory.LastResult != null) {
-            for (int i = 0; i < activeSkillCategory.Category.Tests.Count; i++) {
-                if (activeSkillCategory.Category.Tests[i] == activeSkillCategory.LastResult.Test) {
-                    selectedIndex = i;
-                    break;
-                }
-            }
-        }
-        nameField.text = activeSkillCategory.Category.Name;
         testLevelField.text = activeSkillCategory.Category.Tests[selectedIndex].Level.ToString();
         levelDownButton.interactable = false;
         levelUpButton.interactable = false;

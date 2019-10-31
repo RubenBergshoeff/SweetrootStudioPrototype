@@ -11,6 +11,12 @@ public enum Instigator {
     System
 }
 
+public enum UnlockReturn {
+    NewUnlock,
+    FailedUnlock,
+    WasUnlocked
+}
+
 public class SaveController : MonoBehaviour {
 
     public static SaveController Instance {
@@ -104,7 +110,14 @@ public class SaveController : MonoBehaviour {
     private void LoadDefaultGame() {
         GameData = new GameData();
         if (preDefinedSettings != null) {
-            GameData = preDefinedSettings.GameData;
+            GameData = new GameData();
+            foreach (var characterData in preDefinedSettings.StartCharacters) {
+                ActiveCharacterData activeCharacterData = new ActiveCharacterData(characterData);
+                GameData.CharacterCollection.Characters.Add(activeCharacterData);
+            }
+            foreach (var moodDataSet in preDefinedSettings.StartMoodItems) {
+                GameData.MoodCollection.AddMoodData(moodDataSet.MoodData, moodDataSet.Amount);
+            }
         }
         OnLoadAction?.Invoke();
     }

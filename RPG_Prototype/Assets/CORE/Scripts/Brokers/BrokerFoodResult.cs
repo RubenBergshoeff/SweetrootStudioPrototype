@@ -20,9 +20,12 @@ public class BrokerFoodResult : BrokerBaseResult {
         }
     }
 
-    private void OnEnable() {
+    protected override void OnVisible() {
         backButton.gameObject.SetActive(false);
         StartCoroutine(ShowFoodAnimation());
+    }
+
+    protected override void OnInvisible() {
     }
 
     private IEnumerator ShowFoodAnimation() {

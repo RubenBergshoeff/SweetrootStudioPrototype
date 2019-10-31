@@ -16,6 +16,11 @@ public class ActiveSkillLevel : ActiveResultData {
             return Data as SkillLevel;
         }
     }
+
+    public ActiveSkillLevel(SkillLevel data) : base(data) {
+
+    }
+
     public bool IsCompleted = false;
     public float LastCompletionLevel = 0;
 }

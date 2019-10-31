@@ -12,33 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93600d410012e142b6422ca9feff78b, type: 3}
   m_Name: GameSettingsDefaultStart
   m_EditorClassIdentifier: 
-  GameData:
-    CharacterCollection:
-      Characters:
-      - CurrentMoodLevel: 2
-        ActiveSkillCategories:
-        - Data: {fileID: 11400000, guid: 3280fdcbf3ac93b48a6e26c92f025efa, type: 2}
-          ActiveSkills:
-          - Data: {fileID: 11400000, guid: 8e7989d56c2604549bd4e1d7294d1980, type: 2}
-            ActiveTraining:
-              Data: {fileID: 11400000, guid: 3a9224140fd64154197d9f52865e8e28, type: 2}
-              TimesUsed: 0
-            ActiveSkillLevels:
-            - Data: {fileID: 11400000, guid: d20d4cd7a2ba42242b0da3778136c248, type: 2}
-              IsCompleted: 0
-            XP: 0
-          - Data: {fileID: 11400000, guid: ac272ad2d6e0bf34795641adfe95ade5, type: 2}
-            ActiveTraining:
-              Data: {fileID: 11400000, guid: bd24d4e3f88a3ed4ba0ddf5b421f6c93, type: 2}
-              TimesUsed: 0
-            ActiveSkillLevels:
-            - Data: {fileID: 11400000, guid: 8b04d68762b41ba41afd0e049929e4d7, type: 2}
-              IsCompleted: 0
-            XP: 0
-        ProvenLevel: 0
-    MoodCollection:
-      ActiveMoodDataItems:
-      - Data: {fileID: 11400000, guid: 95dc5bf0f60362547a650f44ab6521bb, type: 2}
-        Amount: 0
-      - Data: {fileID: 11400000, guid: e638a98a881dd4d40aec5e6fa4a927bb, type: 2}
-        Amount: 0
+  StartCharacters:
+  - {fileID: 11400000, guid: fc7abd514d3f0f24c87e82cc6e45dadf, type: 2}
+  StartMoodItems:
+  - MoodData: {fileID: 11400000, guid: 95dc5bf0f60362547a650f44ab6521bb, type: 2}
+    Amount: 2
+  - MoodData: {fileID: 11400000, guid: e638a98a881dd4d40aec5e6fa4a927bb, type: 2}
+    Amount: 5

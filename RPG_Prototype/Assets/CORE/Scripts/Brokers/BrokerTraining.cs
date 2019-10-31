@@ -9,4 +9,10 @@ public class BrokerTraining : BrokerBase<ActiveTraining, TrainingData> {
             return SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.GetAllActiveTrainingData();
         }
     }
+
+    protected override void OnVisible() {
+    }
+
+    protected override void OnInvisible() {
+    }
 }
