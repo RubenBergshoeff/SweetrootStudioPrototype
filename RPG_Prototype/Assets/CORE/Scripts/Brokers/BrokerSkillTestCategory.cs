@@ -26,6 +26,7 @@ public class BrokerSkillTestCategory : MonoBehaviour {
             }
         }
         UpdateSelection();
+        UpdateView();
     }
 
     private void OnEnable() {

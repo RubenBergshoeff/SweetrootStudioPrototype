@@ -782,3 +782,39 @@
 4:24:28 PM User clicked button FastRPGAccept
 4:24:28 PM System entered node ResultSkillTest
 4:24:31 PM System saved game
+4:34:50 PM System loaded game
+4:34:51 PM System entered node Start
+4:34:51 PM System entered node Character
+4:34:56 PM User clicked button FastRPGToMap
+4:34:56 PM System entered node Main Map
+4:34:58 PM User clicked button FastRPGToSkillTest
+4:34:58 PM System entered node BrokerSkillTest
+4:35:17 PM User clicked button FastRPGAccept
+4:35:17 PM System entered node ResultSkillTest
+4:35:20 PM User clicked button FastRPGCancel
+4:35:20 PM System entered node Character
+4:35:21 PM User clicked button FastRPGToMap
+4:35:21 PM System entered node Main Map
+4:35:22 PM User clicked button FastRPGToSkillTest
+4:35:22 PM System entered node BrokerSkillTest
+4:35:27 PM System saved game
+4:42:23 PM System loaded game
+4:42:26 PM System entered node Start
+4:42:26 PM System entered node Character
+4:42:28 PM User clicked button FastRPGToMap
+4:42:28 PM System entered node Main Map
+4:42:37 PM User clicked button FastRPGToSkillTest
+4:42:37 PM System entered node BrokerSkillTest
+4:42:41 PM User clicked button FastRPGAccept
+4:42:41 PM System entered node ResultSkillTest
+4:42:45 PM User clicked button FastRPGCancel
+4:42:45 PM System entered node Character
+4:42:47 PM User clicked button FastRPGToMap
+4:42:47 PM System entered node Main Map
+4:42:48 PM User clicked button FastRPGToSkillTest
+4:42:48 PM System entered node BrokerSkillTest
+4:42:53 PM User clicked button FastRPGAccept
+4:42:53 PM System entered node ResultSkillTest
+4:42:57 PM User clicked button FastRPGCancel
+4:42:57 PM System entered node Character
+4:43:00 PM System saved game
