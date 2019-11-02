@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0988f46562c1a394582ab1ef48c426f3, type: 3}
   m_Name: FoodBig
   m_EditorClassIdentifier: 
-  Name: Chunky Chicken
+  Name: Bordspel Spelen
   Visual: {fileID: 0}
+  MoodImproveAmount: 2

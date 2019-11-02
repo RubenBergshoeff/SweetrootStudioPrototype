@@ -37,8 +37,7 @@ public class SaveController : MonoBehaviour {
     private void Awake() {
         if (privateInstance == null) {
             privateInstance = this;
-        }
-        else if (privateInstance != this) {
+        } else if (privateInstance != this) {
             Destroy(gameObject);
         }
 
@@ -88,8 +87,7 @@ public class SaveController : MonoBehaviour {
         if (File.Exists(GetSavePath()) == false) {
             Debug.Log("No Game Saved");
             LoadDefaultGame();
-        }
-        else {
+        } else {
             //BinaryFormatter bf = new BinaryFormatter();
             //FileStream file = File.Open(GetSavePath(), FileMode.Open);
             //GameData = (GameData)bf.Deserialize(file);
@@ -99,8 +97,7 @@ public class SaveController : MonoBehaviour {
                 GameData = JsonUtility.FromJson(jsonSaveData, typeof(GameData)) as GameData;
                 Debug.Log("Game Loaded");
                 OnLoadAction?.Invoke();
-            }
-            catch {
+            } catch {
                 Debug.LogWarning("Something went wrong casting the json, loading default game");
                 LoadDefaultGame();
             }
@@ -118,6 +115,10 @@ public class SaveController : MonoBehaviour {
             foreach (var moodDataSet in preDefinedSettings.StartMoodItems) {
                 GameData.MoodCollection.AddMoodData(moodDataSet.MoodData, moodDataSet.Amount);
             }
+            GameData.IsMoodEnabled = preDefinedSettings.IsMoodEnabled;
+            GameData.IsTrainingEnabled = preDefinedSettings.IsTrainingEnabled;
+            GameData.IsControlTestEnabled = preDefinedSettings.IsControlTestEnabled;
+            GameData.IsSkillTestEnabled = preDefinedSettings.IsSkillTestEnabled;
         }
         OnLoadAction?.Invoke();
     }

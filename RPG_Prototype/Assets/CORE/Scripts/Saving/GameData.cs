@@ -4,6 +4,10 @@ using UnityEngine;
 
 [System.Serializable]
 public class GameData {
+    public bool IsTrainingEnabled = true;
+    public bool IsMoodEnabled = true;
+    public bool IsControlTestEnabled = true;
+    public bool IsSkillTestEnabled = true;
     public PlayerCharacterCollection CharacterCollection = new PlayerCharacterCollection();
     public PlayerMoodCollection MoodCollection = new PlayerMoodCollection();
     //public UnlockableSkillCollection Skills = new UnlockableSkillCollection();
