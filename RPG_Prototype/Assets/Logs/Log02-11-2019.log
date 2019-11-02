@@ -513,3 +513,578 @@
 13:09:00 User clicked button FastRPGToMap
 13:09:00 System entered node Main Map
 13:09:43 System saved game
+13:11:11 System loaded game
+13:11:13 System entered node Start
+13:11:13 System entered node Character
+13:11:17 User clicked button FastRPGToMap
+13:11:17 System entered node Main Map
+13:11:21 User clicked button FastRPGToTraining
+13:11:21 System entered node Trainer
+13:11:24 User clicked button FastRPGCancel
+13:11:24 System entered node Character
+13:11:25 User clicked button FastRPGToMap
+13:11:25 System entered node Main Map
+13:11:26 User clicked button FastRPGToTraining
+13:11:26 System entered node Trainer
+13:11:28 User clicked button FastRPGCancel
+13:11:28 System entered node Character
+13:11:28 User clicked button FastRPGToMap
+13:11:28 System entered node Main Map
+13:11:30 User clicked button FastRPGCancel
+13:11:30 System entered node Character
+13:11:32 User clicked button FastRPGToMap
+13:11:32 System entered node Main Map
+13:11:36 System saved game
+13:13:38 System loaded game
+13:13:40 System entered node Start
+13:13:40 System entered node Character
+13:13:42 User clicked button FastRPGToMap
+13:13:42 System entered node Main Map
+13:13:44 User clicked button FastRPGToTraining
+13:13:44 System entered node Trainer
+13:13:46 User clicked button FastRPGCancel
+13:13:46 System entered node Character
+13:13:46 User clicked button FastRPGToMap
+13:13:46 System entered node Main Map
+13:13:48 User clicked button FastRPGCancel
+13:13:48 System entered node Character
+13:13:49 User clicked button FastRPGToMap
+13:13:49 System entered node Main Map
+13:13:50 User clicked button FastRPGToFood
+13:13:50 System entered node Cook
+13:13:53 System entered node CookResult
+13:13:57 User clicked button FastRPGCancel
+13:13:57 System entered node Character
+13:13:58 User clicked button FastRPGToMap
+13:13:58 System entered node Main Map
+13:14:00 User clicked button FastRPGToTraining
+13:14:00 System entered node Trainer
+13:14:01 System entered node TrainerResult
+13:14:05 User clicked button FastRPGCancel
+13:14:05 System entered node Character
+13:14:06 User clicked button FastRPGToMap
+13:14:06 System entered node Main Map
+13:14:09 User clicked button FastRPGToControlTest
+13:14:09 System entered node BrokerControlTest
+13:14:09 System entered node ResultControlTest
+13:14:14 User clicked button FastRPGCancel
+13:14:14 System entered node Character
+13:14:15 User clicked button FastRPGToMap
+13:14:15 System entered node Main Map
+13:14:16 User clicked button FastRPGToControlTest
+13:14:16 System entered node BrokerControlTest
+13:14:24 System saved game
+13:44:12 System loaded game
+13:44:14 System entered node Start
+13:44:14 System entered node Character
+13:44:19 User clicked button FastRPGToMap
+13:44:19 System entered node Main Map
+13:44:21 User clicked button FastRPGToTraining
+13:44:21 System entered node Trainer
+13:44:22 System entered node TrainerResult
+13:44:26 User clicked button FastRPGCancel
+13:44:26 System entered node Character
+13:44:27 User clicked button FastRPGToMap
+13:44:27 System entered node Main Map
+13:44:29 User clicked button FastRPGToControlTest
+13:44:29 System entered node BrokerControlTest
+13:44:30 System entered node ResultControlTest
+13:44:37 User clicked button FastRPGCancel
+13:44:37 System entered node Character
+13:44:43 System saved game
+13:45:07 System loaded game
+13:45:10 System entered node Start
+13:45:10 System entered node Character
+13:45:13 User clicked button FastRPGToMap
+13:45:13 System entered node Main Map
+13:45:15 User clicked button FastRPGToControlTest
+13:45:15 System entered node BrokerControlTest
+13:45:18 System entered node ResultControlTest
+13:45:22 User clicked button FastRPGCancel
+13:45:22 System entered node Character
+13:45:23 User clicked button FastRPGToMap
+13:45:23 System entered node Main Map
+13:45:24 User clicked button FastRPGToTraining
+13:45:24 System entered node Trainer
+13:45:24 System entered node TrainerResult
+13:45:29 User clicked button FastRPGCancel
+13:45:29 System entered node Character
+13:45:30 User clicked button FastRPGToMap
+13:45:30 System entered node Main Map
+13:45:35 User clicked button FastRPGToControlTest
+13:45:35 System entered node BrokerControlTest
+13:45:36 System entered node ResultControlTest
+13:45:51 System saved game
+13:46:21 System loaded game
+13:46:23 System entered node Start
+13:46:23 System entered node Character
+13:46:25 User clicked button FastRPGToMap
+13:46:25 System entered node Main Map
+13:46:26 User clicked button FastRPGToTraining
+13:46:26 System entered node Trainer
+13:46:27 System entered node TrainerResult
+13:46:31 User clicked button FastRPGCancel
+13:46:31 System entered node Character
+13:46:32 User clicked button FastRPGToMap
+13:46:32 System entered node Main Map
+13:46:33 User clicked button FastRPGToControlTest
+13:46:33 System entered node BrokerControlTest
+13:46:35 System entered node ResultControlTest
+13:46:42 User clicked button CustomOk
+13:46:43 User clicked button FastRPGCancel
+13:46:43 System entered node Character
+13:46:44 User clicked button FastRPGToMap
+13:46:44 System entered node Main Map
+13:46:45 User clicked button FastRPGToTraining
+13:46:45 System entered node Trainer
+13:46:46 System entered node TrainerResult
+13:46:51 User clicked button FastRPGCancel
+13:46:51 System entered node Character
+13:46:52 User clicked button FastRPGToMap
+13:46:52 System entered node Main Map
+13:46:54 User clicked button FastRPGToControlTest
+13:46:54 System entered node BrokerControlTest
+13:46:55 System entered node ResultControlTest
+13:47:07 User clicked button CustomOk
+13:47:10 User clicked button FastRPGCancel
+13:47:10 System entered node Character
+13:47:12 User clicked button FastRPGToMap
+13:47:12 System entered node Main Map
+13:47:14 User clicked button FastRPGToSkillTest
+13:47:14 System entered node BrokerSkillTest
+13:47:16 User clicked button FastRPGAccept
+13:47:16 System entered node ResultSkillTest
+13:47:20 User clicked button CustomOk
+13:47:21 User clicked button CustomOk
+13:47:22 User clicked button FastRPGCancel
+13:47:22 System entered node Character
+13:47:25 User clicked button FastRPGToMap
+13:47:25 System entered node Main Map
+13:47:26 User clicked button FastRPGCancel
+13:47:26 System entered node Character
+13:47:28 System saved game
+13:56:01 System loaded game
+13:56:02 System entered node Start
+13:56:02 System entered node Character
+13:56:05 User clicked button FastRPGToMap
+13:56:05 System entered node Main Map
+13:56:06 User clicked button FastRPGToFood
+13:56:06 System entered node Cook
+13:56:08 User clicked button FastRPGCancel
+13:56:08 System entered node Character
+13:56:09 User clicked button FastRPGToMap
+13:56:09 System entered node Main Map
+13:56:10 User clicked button FastRPGToTraining
+13:56:10 System entered node Trainer
+13:56:11 System entered node TrainerResult
+13:56:15 User clicked button FastRPGCancel
+13:56:15 System entered node Character
+13:56:16 User clicked button FastRPGToMap
+13:56:16 System entered node Main Map
+13:56:17 User clicked button FastRPGToControlTest
+13:56:17 System entered node BrokerControlTest
+13:56:18 System entered node ResultControlTest
+13:56:24 User clicked button CustomOk
+13:56:25 User clicked button FastRPGCancel
+13:56:25 System entered node Character
+13:56:26 User clicked button FastRPGToMap
+13:56:26 System entered node Main Map
+13:56:27 User clicked button FastRPGToTraining
+13:56:27 System entered node Trainer
+13:56:29 System entered node TrainerResult
+13:56:32 User clicked button FastRPGCancel
+13:56:32 System entered node Character
+13:56:33 User clicked button FastRPGToMap
+13:56:33 System entered node Main Map
+13:56:34 User clicked button FastRPGToControlTest
+13:56:34 System entered node BrokerControlTest
+13:56:35 System entered node ResultControlTest
+13:56:49 User clicked button CustomOk
+13:56:50 User clicked button FastRPGCancel
+13:56:50 System entered node Character
+13:56:51 User clicked button FastRPGToMap
+13:56:51 System entered node Main Map
+13:56:52 User clicked button FastRPGCancel
+13:56:52 System entered node Character
+13:56:54 User clicked button FastRPGToMap
+13:56:54 System entered node Main Map
+13:56:55 User clicked button FastRPGToControlTest
+13:56:55 System entered node BrokerControlTest
+13:56:56 User clicked button FastRPGCancel
+13:56:56 System entered node Character
+13:56:57 User clicked button FastRPGToMap
+13:56:57 System entered node Main Map
+13:56:58 User clicked button FastRPGToSkillTest
+13:56:58 System entered node BrokerSkillTest
+13:57:01 User clicked button FastRPGAccept
+13:57:01 System entered node ResultSkillTest
+13:57:06 User clicked button CustomOk
+13:57:07 User clicked button CustomOk
+13:57:08 User clicked button FastRPGCancel
+13:57:08 System entered node Character
+13:57:09 User clicked button FastRPGToMap
+13:57:09 System entered node Main Map
+13:57:10 User clicked button FastRPGToTraining
+13:57:10 System entered node Trainer
+13:57:11 System entered node TrainerResult
+13:57:15 User clicked button FastRPGCancel
+13:57:15 System entered node Character
+13:57:16 User clicked button FastRPGToMap
+13:57:16 System entered node Main Map
+13:57:19 User clicked button FastRPGToSkillTest
+13:57:19 System entered node BrokerSkillTest
+13:57:21 User clicked button FastRPGAccept
+13:57:21 System entered node ResultSkillTest
+13:57:24 User clicked button FastRPGCancel
+13:57:24 System entered node Character
+13:57:25 User clicked button FastRPGToMap
+13:57:25 System entered node Main Map
+13:57:26 User clicked button FastRPGToControlTest
+13:57:26 System entered node BrokerControlTest
+13:57:27 System entered node ResultControlTest
+13:57:34 User clicked button CustomOk
+13:57:35 User clicked button FastRPGCancel
+13:57:35 System entered node Character
+13:57:36 User clicked button FastRPGToMap
+13:57:36 System entered node Main Map
+13:57:37 User clicked button FastRPGToTraining
+13:57:37 System entered node Trainer
+13:57:38 System entered node TrainerResult
+13:57:42 User clicked button FastRPGCancel
+13:57:42 System entered node Character
+13:57:43 User clicked button FastRPGToMap
+13:57:43 System entered node Main Map
+13:57:43 User clicked button FastRPGToTraining
+13:57:43 System entered node Trainer
+13:57:44 System entered node TrainerResult
+13:57:48 User clicked button FastRPGCancel
+13:57:48 System entered node Character
+13:57:49 User clicked button FastRPGToMap
+13:57:49 System entered node Main Map
+13:57:50 User clicked button FastRPGToControlTest
+13:57:50 System entered node BrokerControlTest
+13:57:51 System entered node ResultControlTest
+13:58:02 User clicked button CustomOk
+13:58:03 User clicked button FastRPGCancel
+13:58:03 System entered node Character
+13:58:04 User clicked button FastRPGToMap
+13:58:04 System entered node Main Map
+13:58:05 User clicked button FastRPGToSkillTest
+13:58:05 System entered node BrokerSkillTest
+13:58:06 User clicked button FastRPGAccept
+13:58:06 System entered node ResultSkillTest
+13:58:10 User clicked button FastRPGCancel
+13:58:10 System entered node Character
+13:58:14 User clicked button FastRPGToMap
+13:58:14 System entered node Main Map
+13:58:16 User clicked button FastRPGToSkillTest
+13:58:16 System entered node BrokerSkillTest
+13:58:18 User clicked button FastRPGAccept
+13:58:18 System entered node ResultSkillTest
+13:58:21 User clicked button FastRPGCancel
+13:58:21 System entered node Character
+13:58:23 User clicked button FastRPGToMap
+13:58:23 System entered node Main Map
+13:58:23 User clicked button FastRPGToSkillTest
+13:58:23 System entered node BrokerSkillTest
+13:58:25 User clicked button FastRPGAccept
+13:58:25 System entered node ResultSkillTest
+13:58:28 User clicked button FastRPGCancel
+13:58:28 System entered node Character
+13:58:29 User clicked button FastRPGToMap
+13:58:29 System entered node Main Map
+13:58:30 User clicked button FastRPGToFood
+13:58:30 System entered node Cook
+13:58:32 User clicked button FastRPGCancel
+13:58:32 System entered node Character
+13:58:33 User clicked button FastRPGToMap
+13:58:33 System entered node Main Map
+13:58:34 User clicked button FastRPGCancel
+13:58:34 System entered node Character
+13:58:36 User clicked button FastRPGToMap
+13:58:36 System entered node Main Map
+13:58:37 User clicked button FastRPGToFood
+13:58:37 System entered node Cook
+13:58:38 User clicked button FastRPGCancel
+13:58:38 System entered node Character
+13:58:39 User clicked button FastRPGToMap
+13:58:39 System entered node Main Map
+13:58:40 User clicked button FastRPGToFood
+13:58:40 System entered node Cook
+13:58:43 User clicked button FastRPGCancel
+13:58:43 System entered node Character
+13:58:44 User clicked button FastRPGToMap
+13:58:44 System entered node Main Map
+13:58:45 User clicked button FastRPGCancel
+13:58:45 System entered node Character
+13:58:46 User clicked button FastRPGToMap
+13:58:46 System entered node Main Map
+13:58:47 User clicked button FastRPGToFood
+13:58:47 System entered node Cook
+13:58:48 User clicked button FastRPGCancel
+13:58:48 System entered node Character
+13:58:49 User clicked button FastRPGToMap
+13:58:49 System entered node Main Map
+13:58:50 User clicked button FastRPGToFood
+13:58:50 System entered node Cook
+13:58:51 User clicked button FastRPGCancel
+13:58:51 System entered node Character
+13:58:52 User clicked button FastRPGToMap
+13:58:52 System entered node Main Map
+13:58:54 User clicked button FastRPGCancel
+13:58:54 System entered node Character
+13:58:55 User clicked button FastRPGToMap
+13:58:55 System entered node Main Map
+13:58:57 User clicked button FastRPGCancel
+13:58:57 System entered node Character
+13:58:58 User clicked button FastRPGToMap
+13:58:58 System entered node Main Map
+13:59:00 User clicked button FastRPGToFood
+13:59:00 System entered node Cook
+13:59:01 User clicked button FastRPGCancel
+13:59:01 System entered node Character
+13:59:02 User clicked button FastRPGToMap
+13:59:02 System entered node Main Map
+13:59:03 User clicked button FastRPGToTraining
+13:59:03 System entered node Trainer
+13:59:04 User clicked button FastRPGCancel
+13:59:04 System entered node Character
+13:59:05 User clicked button FastRPGToMap
+13:59:05 System entered node Main Map
+13:59:06 User clicked button FastRPGToControlTest
+13:59:06 System entered node BrokerControlTest
+13:59:07 User clicked button FastRPGCancel
+13:59:07 System entered node Character
+13:59:08 User clicked button FastRPGToMap
+13:59:08 System entered node Main Map
+13:59:09 User clicked button FastRPGToSkillTest
+13:59:09 System entered node BrokerSkillTest
+13:59:10 User clicked button FastRPGCancel
+13:59:10 System entered node Character
+13:59:11 User clicked button FastRPGToMap
+13:59:11 System entered node Main Map
+13:59:12 User clicked button FastRPGToSkillTest
+13:59:12 System entered node BrokerSkillTest
+13:59:12 User clicked button FastRPGCancel
+13:59:12 System entered node Character
+13:59:13 User clicked button FastRPGToMap
+13:59:13 System entered node Main Map
+13:59:14 User clicked button FastRPGToControlTest
+13:59:14 System entered node BrokerControlTest
+13:59:15 User clicked button FastRPGCancel
+13:59:15 System entered node Character
+13:59:16 User clicked button FastRPGToMap
+13:59:16 System entered node Main Map
+13:59:18 User clicked button FastRPGCancel
+13:59:18 System entered node Character
+13:59:20 User clicked button FastRPGToMap
+13:59:20 System entered node Main Map
+13:59:21 User clicked button FastRPGToTraining
+13:59:21 System entered node Trainer
+13:59:22 User clicked button FastRPGCancel
+13:59:22 System entered node Character
+13:59:23 User clicked button FastRPGToMap
+13:59:23 System entered node Main Map
+13:59:23 User clicked button FastRPGToFood
+13:59:23 System entered node Cook
+13:59:24 User clicked button FastRPGCancel
+13:59:24 System entered node Character
+13:59:26 User clicked button FastRPGToMap
+13:59:26 System entered node Main Map
+13:59:26 User clicked button FastRPGCancel
+13:59:26 System entered node Character
+13:59:28 User clicked button FastRPGToMap
+13:59:28 System entered node Main Map
+13:59:35 User clicked button FastRPGToFood
+13:59:35 System entered node Cook
+13:59:37 System entered node CookResult
+13:59:42 User clicked button FastRPGCancel
+13:59:42 System entered node Character
+13:59:43 User clicked button FastRPGToMap
+13:59:43 System entered node Main Map
+13:59:44 User clicked button FastRPGToControlTest
+13:59:44 System entered node BrokerControlTest
+13:59:45 System entered node ResultControlTest
+13:59:49 User clicked button FastRPGCancel
+13:59:49 System entered node Character
+13:59:50 User clicked button FastRPGToMap
+13:59:50 System entered node Main Map
+13:59:51 User clicked button FastRPGToTraining
+13:59:51 System entered node Trainer
+13:59:52 User clicked button FastRPGCancel
+13:59:52 System entered node Character
+13:59:55 System saved game
+14:00:06 System loaded game
+14:00:07 System entered node Start
+14:00:07 System entered node Character
+14:00:09 User clicked button FastRPGToMap
+14:00:09 System entered node Main Map
+14:00:10 User clicked button FastRPGToFood
+14:00:10 System entered node Cook
+14:00:11 User clicked button FastRPGCancel
+14:00:11 System entered node Character
+14:00:12 User clicked button FastRPGToMap
+14:00:12 System entered node Main Map
+14:00:16 User clicked button FastRPGToTraining
+14:00:16 System entered node Trainer
+14:00:18 System entered node TrainerResult
+14:00:22 User clicked button FastRPGCancel
+14:00:22 System entered node Character
+14:00:23 User clicked button FastRPGToMap
+14:00:23 System entered node Main Map
+14:00:24 User clicked button FastRPGToTraining
+14:00:24 System entered node Trainer
+14:00:25 System entered node TrainerResult
+14:00:29 User clicked button FastRPGCancel
+14:00:29 System entered node Character
+14:00:30 User clicked button FastRPGToMap
+14:00:30 System entered node Main Map
+14:00:31 User clicked button FastRPGToControlTest
+14:00:31 System entered node BrokerControlTest
+14:00:32 System entered node ResultControlTest
+14:00:41 System saved game
+14:01:18 System loaded game
+14:01:20 System entered node Start
+14:01:20 System entered node Character
+14:01:21 User clicked button FastRPGToMap
+14:01:21 System entered node Main Map
+14:01:22 User clicked button FastRPGToFood
+14:01:22 System entered node Cook
+14:01:24 User clicked button FastRPGCancel
+14:01:24 System entered node Character
+14:01:24 User clicked button FastRPGToMap
+14:01:24 System entered node Main Map
+14:01:28 User clicked button FastRPGToTraining
+14:01:28 System entered node Trainer
+14:01:29 User clicked button FastRPGCancel
+14:01:29 System entered node Character
+14:01:31 User clicked button FastRPGToMap
+14:01:31 System entered node Main Map
+14:01:32 User clicked button FastRPGToTraining
+14:01:32 System entered node Trainer
+14:01:32 System entered node TrainerResult
+14:01:36 User clicked button FastRPGCancel
+14:01:36 System entered node Character
+14:01:37 User clicked button FastRPGToMap
+14:01:37 System entered node Main Map
+14:01:38 User clicked button FastRPGToControlTest
+14:01:38 System entered node BrokerControlTest
+14:01:39 User clicked button FastRPGCancel
+14:01:39 System entered node Character
+14:01:40 User clicked button FastRPGToMap
+14:01:40 System entered node Main Map
+14:01:41 User clicked button FastRPGToTraining
+14:01:41 System entered node Trainer
+14:01:42 System entered node TrainerResult
+14:01:45 User clicked button FastRPGCancel
+14:01:45 System entered node Character
+14:01:46 User clicked button FastRPGToMap
+14:01:46 System entered node Main Map
+14:01:47 User clicked button FastRPGToControlTest
+14:01:47 System entered node BrokerControlTest
+14:01:48 System entered node ResultControlTest
+14:01:55 User clicked button CustomOk
+14:01:55 User clicked button FastRPGCancel
+14:01:55 System entered node Character
+14:01:56 User clicked button FastRPGToMap
+14:01:56 System entered node Main Map
+14:01:57 User clicked button FastRPGToSkillTest
+14:01:57 System entered node BrokerSkillTest
+14:01:58 User clicked button FastRPGAccept
+14:01:58 System entered node ResultSkillTest
+14:02:02 User clicked button CustomOk
+14:02:03 User clicked button CustomOk
+14:02:04 User clicked button FastRPGCancel
+14:02:04 System entered node Character
+14:02:06 System saved game
+14:04:02 System loaded game
+14:04:04 System entered node Start
+14:04:04 System entered node Character
+14:04:07 User clicked button FastRPGToMap
+14:04:07 System entered node Main Map
+14:04:09 User clicked button FastRPGToTraining
+14:04:09 System entered node Trainer
+14:04:12 User clicked button FastRPGCancel
+14:04:12 System entered node Character
+14:04:13 User clicked button FastRPGToMap
+14:04:13 System entered node Main Map
+14:04:16 User clicked button FastRPGToTraining
+14:04:16 System entered node Trainer
+14:04:17 System entered node TrainerResult
+14:04:23 User clicked button FastRPGCancel
+14:04:23 System entered node Character
+14:04:24 User clicked button FastRPGToMap
+14:04:24 System entered node Main Map
+14:04:25 User clicked button FastRPGToTraining
+14:04:25 System entered node Trainer
+14:04:26 System entered node TrainerResult
+14:04:30 User clicked button FastRPGCancel
+14:04:30 System entered node Character
+14:04:31 User clicked button FastRPGToMap
+14:04:31 System entered node Main Map
+14:04:32 User clicked button FastRPGToControlTest
+14:04:32 System entered node BrokerControlTest
+14:04:34 System entered node ResultControlTest
+14:04:40 User clicked button CustomOk
+14:04:41 User clicked button FastRPGCancel
+14:04:41 System entered node Character
+14:04:42 User clicked button FastRPGToMap
+14:04:42 System entered node Main Map
+14:04:43 User clicked button FastRPGToSkillTest
+14:04:43 System entered node BrokerSkillTest
+14:04:46 User clicked button FastRPGAccept
+14:04:46 System entered node ResultSkillTest
+14:04:52 User clicked button CustomOk
+14:04:56 User clicked button CustomOk
+14:04:57 User clicked button FastRPGCancel
+14:04:57 System entered node Character
+14:04:58 User clicked button FastRPGToMap
+14:04:58 System entered node Main Map
+14:04:59 User clicked button FastRPGToTraining
+14:04:59 System entered node Trainer
+14:05:01 System entered node TrainerResult
+14:05:05 User clicked button FastRPGCancel
+14:05:05 System entered node Character
+14:05:06 User clicked button FastRPGToMap
+14:05:06 System entered node Main Map
+14:05:07 User clicked button FastRPGToControlTest
+14:05:07 System entered node BrokerControlTest
+14:05:09 System entered node ResultControlTest
+14:05:15 User clicked button CustomOk
+14:05:16 User clicked button FastRPGCancel
+14:05:16 System entered node Character
+14:05:19 User clicked button FastRPGToMap
+14:05:19 System entered node Main Map
+14:05:21 User clicked button FastRPGToSkillTest
+14:05:21 System entered node BrokerSkillTest
+14:05:22 User clicked button FastRPGAccept
+14:05:22 System entered node ResultSkillTest
+14:05:26 User clicked button FastRPGCancel
+14:05:26 System entered node Character
+14:05:31 User clicked button FastRPGToMap
+14:05:31 System entered node Main Map
+14:05:33 User clicked button FastRPGCancel
+14:05:33 System entered node Character
+14:05:34 User clicked button FastRPGToMap
+14:05:34 System entered node Main Map
+14:05:35 User clicked button FastRPGToFood
+14:05:35 System entered node Cook
+14:05:37 User clicked button FastRPGCancel
+14:05:37 System entered node Character
+14:05:38 User clicked button FastRPGToMap
+14:05:38 System entered node Main Map
+14:05:39 User clicked button FastRPGToTraining
+14:05:39 System entered node Trainer
+14:05:40 User clicked button FastRPGCancel
+14:05:40 System entered node Character
+14:05:41 User clicked button FastRPGToMap
+14:05:41 System entered node Main Map
+14:05:42 User clicked button FastRPGToControlTest
+14:05:42 System entered node BrokerControlTest
+14:05:49 User clicked button FastRPGCancel
+14:05:49 System entered node Character
+14:05:53 User clicked button FastRPGToMap
+14:05:53 System entered node Main Map
+14:05:54 User clicked button FastRPGToSkillTest
+14:05:54 System entered node BrokerSkillTest
+14:06:14 System saved game

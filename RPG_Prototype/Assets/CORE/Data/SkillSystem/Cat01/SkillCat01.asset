@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4252e9b271d0e438c67a45d51d24d3, type: 3}
   m_Name: SkillCat01
   m_EditorClassIdentifier: 
-  Name: SkillCat 1
+  Name: Rekenen
   Visual: {fileID: 0}
   color: {r: 0.9622642, g: 0.73119605, b: 0.35857958, a: 1}
   Tests:
@@ -31,5 +31,7 @@ MonoBehaviour:
   PotentialUnlocks:
   - RequiredScore: 5
     ResultToUnlock: {fileID: 11400000, guid: bd24d4e3f88a3ed4ba0ddf5b421f6c93, type: 2}
+    ShowPopup: 1
   - RequiredScore: 5
     ResultToUnlock: {fileID: 11400000, guid: 8b04d68762b41ba41afd0e049929e4d7, type: 2}
+    ShowPopup: 1

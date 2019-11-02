@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5631e88353b2d124ea2320a768382191, type: 3}
   m_Name: Skill01Training
   m_EditorClassIdentifier: 
-  Name: Skill 1 Training
+  Name: Optel Sommen
   Visual: {fileID: 0}
   TargetSkill: {fileID: 11400000, guid: 8e7989d56c2604549bd4e1d7294d1980, type: 2}
   XPGainTraining: 250

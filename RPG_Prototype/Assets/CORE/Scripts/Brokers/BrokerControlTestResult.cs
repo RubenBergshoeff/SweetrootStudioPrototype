@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using TMPro;
 using System;
 using UnityEngine.UI;
+using Doozy.Engine.UI;
 
 public class BrokerControlTestResult : BrokerBaseResult {
 
@@ -35,6 +36,7 @@ public class BrokerControlTestResult : BrokerBaseResult {
         yield return new WaitForSeconds(1f);
 
         // test character skill
+        float previousCompletionLevel = activeSkillLevel.LastCompletionLevel;
         float completionLevel = playerCharacterController.GetActiveSkillXP(activeSkillLevel.SkillLevel.Skill) / (float)activeSkillLevel.SkillLevel.XPCap;
         AnimateDisplay(1.3f);
 
@@ -47,6 +49,14 @@ public class BrokerControlTestResult : BrokerBaseResult {
         activeSkillLevel.LastCompletionLevel = Mathf.Min(completionLevel, 1);
 
         yield return new WaitForSeconds(0.3f);
+
+        int previousStars = Mathf.FloorToInt(previousCompletionLevel * 3);
+        int newStars = Mathf.FloorToInt(activeSkillLevel.LastCompletionLevel * 3);
+
+        if (previousStars < newStars) {
+            ShowPopup(previousStars, newStars);
+            yield return new WaitForSeconds(0.3f);
+        }
 
         backButton.gameObject.SetActive(true);
     }
@@ -70,5 +80,16 @@ public class BrokerControlTestResult : BrokerBaseResult {
             activeSkillLevel.SkillLevel.Skill.SkillCategory.color);
 
         sliderTextField.text = "Level " + playerCharacterController.GetActiveSkillLevel(activeSkillLevel.SkillLevel.Skill);
+    }
+
+    private void ShowPopup(int oldStarAmount, int newStarAmount) {
+        UIPopup popup = UIPopup.GetPopup(Popups.CONTROLSTAR_POPUP);
+
+        if (popup == null) { return; }
+
+        PopupControlTestStars popupUnlock = popup.GetComponent<PopupControlTestStars>();
+        popupUnlock.Setup(oldStarAmount, newStarAmount);
+
+        popup.Show();
     }
 }
