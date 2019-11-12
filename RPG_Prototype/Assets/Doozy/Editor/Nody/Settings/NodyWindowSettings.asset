@@ -46,8 +46,9 @@ MonoBehaviour:
   - {fileID: 3266393315223067119, guid: bd9d34fc7ad044af3b6c88bb17e50ae0, type: 2}
   - {fileID: -8018917311846609366, guid: bd9d34fc7ad044af3b6c88bb17e50ae0, type: 2}
   - {fileID: -6018456545713097012, guid: bd9d34fc7ad044af3b6c88bb17e50ae0, type: 2}
+  - {fileID: -6023837919710668959, guid: bd9d34fc7ad044af3b6c88bb17e50ae0, type: 2}
   SelectedNodes:
-  - {fileID: -3555093527670105149, guid: bd9d34fc7ad044af3b6c88bb17e50ae0, type: 2}
+  - {fileID: 575470547974708414, guid: bd9d34fc7ad044af3b6c88bb17e50ae0, type: 2}
   GraphTabs:
   - IsRootTab: 1
     Graph: {fileID: 11400000, guid: bd9d34fc7ad044af3b6c88bb17e50ae0, type: 2}
@@ -57,7 +58,7 @@ MonoBehaviour:
     SelectedNodes: []
     DeletedNodes: []
   CurrentView: 1
-  CurrentPanOffset: {x: -27.077454, y: 268.86865}
+  CurrentPanOffset: {x: 98.92255, y: 87.86865}
   DefaultPanOffset: {x: 0, y: 0}
   IsDirty: 0
   SaveCurrentGraphWithControlS: 1

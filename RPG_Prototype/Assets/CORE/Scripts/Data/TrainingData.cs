@@ -3,6 +3,7 @@ using System.Collections;
 
 [CreateAssetMenu]
 public class TrainingData : ResultDataBase {
+    public TrainingGameController TrainingGameController = null;
     public Skill TargetSkill = null;
     public int XPGainTraining = 250;
 }

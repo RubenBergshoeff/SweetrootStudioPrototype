@@ -23,6 +23,7 @@ MonoBehaviour:
   - BrokerSkillTest
   - BrokerSkillTestResult
   - BrokerTraining
+  - BrokerTrainingGameResult
   - BrokerTrainingResult
   - Character
   - MainMap
