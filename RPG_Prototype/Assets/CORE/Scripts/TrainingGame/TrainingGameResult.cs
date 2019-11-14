@@ -9,11 +9,12 @@ public class TrainingGameResult : UIDisplayController {
     [SerializeField] private TextMeshProUGUI xpAmountField = null;
     [SerializeField] private Image skillSpriteImage = null;
 
+    protected override void OnVisible() {
+
+    }
+
     protected override void OnInvisible() {
 
     }
 
-    protected override void OnVisible() {
-
-    }
 }
