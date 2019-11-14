@@ -78,10 +78,14 @@ public class PlayerCharacterController : MonoBehaviour {
         data.ProvenLevel = level;
     }
 
-    public void AddActiveSkillXP(Skill targetSkill, int amount) {
-        ActiveSkill activeSkill = GetActiveSkill(targetSkill);
-        activeSkill.XP += amount;
+    public void AddTrainingResult(TrainingData training, int gainedXP) {
+        ActiveSkill activeSkill = GetActiveSkill(training.TargetSkill);
+        activeSkill.XP += gainedXP;
         activeSkill.XP = Mathf.Min(activeSkill.XP, activeSkill.GetXPCap());
+        SkillTrainingResult newTrainingResult = new SkillTrainingResult();
+        newTrainingResult.Training = training;
+        newTrainingResult.XPGain = gainedXP;
+        activeSkill.TrainingResults.Add(newTrainingResult);
     }
 
     public int GetActiveSkillXPCap(Skill targetSkill) {

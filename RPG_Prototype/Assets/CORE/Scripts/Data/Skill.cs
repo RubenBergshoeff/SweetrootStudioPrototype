@@ -15,7 +15,18 @@ public class ActiveSkill : ActiveResultData {
             return Data as Skill;
         }
     }
+    public SkillTrainingResult LastTrainingResult {
+        get {
+            if (TrainingResults.Count == 0) {
+                return null;
+            }
+            else {
+                return TrainingResults[TrainingResults.Count - 1];
+            }
+        }
+    }
     public ActiveTraining ActiveTraining = new ActiveTraining(null);
+    public List<SkillTrainingResult> TrainingResults = new List<SkillTrainingResult>();
     public List<ActiveSkillLevel> ActiveSkillLevels = new List<ActiveSkillLevel>();
     public int XP = 0;
 
@@ -59,4 +70,10 @@ public class ActiveSkill : ActiveResultData {
         }
         return null;
     }
+}
+
+[System.Serializable]
+public class SkillTrainingResult {
+    public TrainingData Training = null;
+    public int XPGain = 0;
 }

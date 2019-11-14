@@ -1,23 +1,61 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class TapReactionGameController : TrainingGameController {
 
-    [SerializeField] private TapReactionItem tapReactionItemTemplate = null;
-    [SerializeField] private float allowedReactionTime = 4f;
+    private float maxGametime {
+        get {
+            return maxWaitTime + allowedReactionTime + 1;
+        }
+    }
 
-    private List<TapReactionItem> reactionItems = new List<TapReactionItem>();
+    [SerializeField] private float minWaitTime = 6;
+    [SerializeField] private float maxWaitTime = 22;
+    [SerializeField] private float allowedReactionTime = 4f;
+    [SerializeField] private int gainedXPPerItem = 10;
+    [SerializeField] private List<TapReactionItem> reactionItems = new List<TapReactionItem>();
+
+    private ActiveTraining activeTraining = null;
+    private bool isTrainingRunning = false;
+    private float trainingRunTime = 0;
 
     public override void Setup(ActiveTraining training) {
-        tapReactionItemTemplate.gameObject.SetActive(false);
+        activeTraining = training;
+        trainingRunTime = 0;
+        foreach (TapReactionItem item in reactionItems) {
+            item.Setup(minWaitTime, maxWaitTime, allowedReactionTime);
+            item.OnTapped += OnItemTapped;
+        }
+    }
+
+    private void OnItemTapped(TapReactionItem item) {
+        if (item.IsCorrect) {
+            OnXPGain?.Invoke(gainedXPPerItem);
+        }
     }
 
     public override void StartTraining() {
-        throw new System.NotImplementedException();
+        isTrainingRunning = true;
     }
 
     public override void Cleanup() {
-        throw new System.NotImplementedException();
+        isTrainingRunning = false;
+    }
+
+    private void Update() {
+        if (isTrainingRunning == false) { return; }
+
+        trainingRunTime += Time.deltaTime;
+
+        foreach (TapReactionItem item in reactionItems) {
+            item.UpdateItem(Time.deltaTime);
+        }
+
+        if (trainingRunTime > maxGametime) {
+            OnGameFinished?.Invoke();
+            isTrainingRunning = false;
+        }
     }
 }
