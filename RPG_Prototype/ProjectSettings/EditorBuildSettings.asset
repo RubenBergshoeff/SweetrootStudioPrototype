@@ -10,5 +10,8 @@ EditorBuildSettings:
     guid: 871d29734a02c7244add2c561e266b3b
   - enabled: 1
     path: Assets/CORE/Scenes/Main.unity
+    guid: b12020fb7e8c39641af6d3c2d6133874
+  - enabled: 0
+    path: Assets/CORE/Scenes/Main_old.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
