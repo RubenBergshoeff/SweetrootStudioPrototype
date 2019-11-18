@@ -1309,6 +1309,7 @@ MonoBehaviour:
   resultVisualContainer: {fileID: 916331152}
   playerCharacterController: {fileID: 1266526003}
   gameControllerContainer: {fileID: 1954837719}
+  uiEventStringGameResult: 
 --- !u!1 &71820796
 GameObject:
   m_ObjectHideFlags: 0
@@ -40857,6 +40858,7 @@ MonoBehaviour:
   resultVisualContainer: {fileID: 1460954415}
   playerCharacterController: {fileID: 1266526003}
   gameControllerContainer: {fileID: 0}
+  uiEventStringGameResult: 
 --- !u!114 &1309493478
 MonoBehaviour:
   m_ObjectHideFlags: 0
