@@ -15,7 +15,12 @@ MonoBehaviour:
   CategoryName: SprookjesRPG
   DatabaseType: 2
   Names:
-  - HubOverlay
+  - CharacterScreen
+  - Hub
   - Settings
   - SettingsButtonOverlay
-  - TestTypeOverlay
+  - TestTypeChoice
+  - TrainingBroker
+  - TrainingBrokerGameResult
+  - TrainingBrokerResult
+  - ControlTestBroker

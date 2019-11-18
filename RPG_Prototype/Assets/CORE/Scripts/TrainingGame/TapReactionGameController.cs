@@ -20,19 +20,30 @@ public class TapReactionGameController : TrainingGameController {
     private ActiveTraining activeTraining = null;
     private bool isTrainingRunning = false;
     private float trainingRunTime = 0;
+    private int itemsDone = 0;
 
     public override void Setup(ActiveTraining training) {
         activeTraining = training;
         trainingRunTime = 0;
+        itemsDone = 0;
         foreach (TapReactionItem item in reactionItems) {
             item.Setup(minWaitTime, maxWaitTime, allowedReactionTime);
             item.OnTapped += OnItemTapped;
+            item.OnTimedOut += OnItemTimedOut;
         }
+    }
+
+    private void OnItemTimedOut(TapReactionItem item) {
+        itemsDone++;
     }
 
     private void OnItemTapped(TapReactionItem item) {
         if (item.IsCorrect) {
             OnXPGain?.Invoke(gainedXPPerItem);
+            itemsDone++;
+        }
+        if (item.IsCorrect == false && item.IsTimedOut == false) {
+            itemsDone++;
         }
     }
 
@@ -53,7 +64,7 @@ public class TapReactionGameController : TrainingGameController {
             item.UpdateItem(Time.deltaTime);
         }
 
-        if (trainingRunTime > maxGametime) {
+        if (trainingRunTime > maxGametime || itemsDone == reactionItems.Count) {
             OnGameFinished?.Invoke();
             isTrainingRunning = false;
         }

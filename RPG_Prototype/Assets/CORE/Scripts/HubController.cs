@@ -2,26 +2,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Doozy.Engine;
 
-public class HubController : BaseSubController {
+public class HubController : UIDisplayController {
     [SerializeField] private ObjectClickTracker characterHouse = null;
     [SerializeField] private ObjectClickTracker trainingHouse = null;
+    [SerializeField] private string uiEventStringToTraining = "";
+    [SerializeField] private string uiEventStringToCharacter = "";
 
-    private void OnEnable() {
+    private void OnCharacterHouseClicked() {
+        GameEventMessage.SendEvent(uiEventStringToCharacter);
+    }
+
+    private void OnTrainingHouseClicked() {
+        GameEventMessage.SendEvent(uiEventStringToTraining);
+    }
+
+    protected override void OnVisible() {
         characterHouse.OnObjectClicked += OnCharacterHouseClicked;
         trainingHouse.OnObjectClicked += OnTrainingHouseClicked;
     }
 
-    private void OnDisable() {
+    protected override void OnInvisible() {
         characterHouse.OnObjectClicked -= OnCharacterHouseClicked;
         trainingHouse.OnObjectClicked -= OnTrainingHouseClicked;
-    }
-
-    private void OnCharacterHouseClicked() {
-        Debug.Log("character house clicked");
-    }
-
-    private void OnTrainingHouseClicked() {
-        GameController.GoToScreen(Screens.TrainingChoice);
     }
 }

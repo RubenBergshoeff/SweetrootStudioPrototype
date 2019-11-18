@@ -15,5 +15,5 @@ MonoBehaviour:
   CategoryName: SprookjesRPG
   DatabaseType: 0
   Names:
+  - Back
   - ToTestTypeChoice
-  - ToHub

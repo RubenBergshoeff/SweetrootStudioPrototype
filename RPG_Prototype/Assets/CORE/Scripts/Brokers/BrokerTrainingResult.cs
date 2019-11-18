@@ -4,6 +4,7 @@ using Doozy.Engine;
 public class BrokerTrainingResult : BrokerBaseResult {
 
     [SerializeField] private PlayerCharacterController playerCharacterController = null;
+    [SerializeField] private TrainingGameResult trainingGameResult = null;
     [SerializeField] private Transform gameControllerContainer = null;
     [SerializeField] private string uiEventStringGameResult = "";
 
@@ -35,6 +36,7 @@ public class BrokerTrainingResult : BrokerBaseResult {
     private void OnGameFinished() {
         activeGameController.Cleanup();
         playerCharacterController.AddTrainingResult(activeTraining.Training, gainedXP);
+        trainingGameResult.SetResult(activeTraining, gainedXP);
         GameEventMessage.SendEvent(uiEventStringGameResult);
     }
 

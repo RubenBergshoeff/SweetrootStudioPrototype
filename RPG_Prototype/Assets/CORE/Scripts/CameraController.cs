@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour {
     [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraHub = null;
     [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraTestChoice = null;
     [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraTraining = null;
+    [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraOpenBook = null;
 
     private Cinemachine.CinemachineVirtualCamera previousActiveCamera = null;
 
@@ -30,6 +31,11 @@ public class CameraController : MonoBehaviour {
         SwitchToVirtualCamera(virtualCameraTraining);
     }
 
+    [ContextMenu("Switch To Book")]
+    public void SwitchToBook() {
+        SwitchToVirtualCamera(virtualCameraOpenBook);
+    }
+
     private void SwitchToVirtualCamera(Cinemachine.CinemachineVirtualCamera camera) {
         if (previousActiveCamera != null) {
             previousActiveCamera.gameObject.SetActive(false);
@@ -42,5 +48,6 @@ public class CameraController : MonoBehaviour {
         virtualCameraHub.gameObject.SetActive(false);
         virtualCameraTestChoice.gameObject.SetActive(false);
         virtualCameraTraining.gameObject.SetActive(false);
+        virtualCameraOpenBook.gameObject.SetActive(false);
     }
 }

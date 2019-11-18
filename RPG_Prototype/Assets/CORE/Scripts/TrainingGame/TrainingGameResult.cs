@@ -17,4 +17,9 @@ public class TrainingGameResult : UIDisplayController {
 
     }
 
+    public void SetResult(ActiveTraining activeTraining, int gainedXP) {
+        skillNameField.text = activeTraining.Training.Name;
+        skillSpriteImage.sprite = activeTraining.Training.Visual;
+        xpAmountField.text = gainedXP.ToString();
+    }
 }

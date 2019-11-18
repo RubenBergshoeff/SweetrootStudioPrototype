@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Doozy.Engine;
 
-public class TestChoiceController : BaseSubController {
+public class TestChoiceController : UIDisplayController {
     [SerializeField] private ObjectClickTracker skillCatTest = null;
     [SerializeField] private ObjectClickTracker skillTest = null;
+    [SerializeField] private string uiEventStringToSkillCatTest = "";
+    [SerializeField] private string uiEventStringToSkillTest = "";
 
-    private void OnEnable() {
+    protected override void OnVisible() {
         skillCatTest.OnObjectClicked += OnSkillCatTestClicked;
         skillTest.OnObjectClicked += OnSkillTestClicked;
     }
 
-    private void OnSkillTestClicked() {
-        GameController.GoToScreen(Screens.SkillTestChoice);
+    protected override void OnInvisible() {
+        skillCatTest.OnObjectClicked -= OnSkillCatTestClicked;
+        skillTest.OnObjectClicked -= OnSkillTestClicked;
     }
 
     private void OnSkillCatTestClicked() {
-        GameController.GoToScreen(Screens.SkillCatTestChoice);
+        GameEventMessage.SendEvent(uiEventStringToSkillCatTest);
     }
 
-    private void OnDisable() {
-        skillCatTest.OnObjectClicked -= OnSkillCatTestClicked;
-        skillTest.OnObjectClicked -= OnSkillTestClicked;
+    private void OnSkillTestClicked() {
+        GameEventMessage.SendEvent(uiEventStringToSkillTest);
     }
 }
