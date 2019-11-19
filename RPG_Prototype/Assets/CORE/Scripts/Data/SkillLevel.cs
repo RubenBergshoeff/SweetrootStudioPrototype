@@ -2,7 +2,7 @@
 using System.Collections;
 
 [CreateAssetMenu]
-public class SkillLevel : ResultDataBase {
+public class SkillLevel : BaseData {
     public Skill Skill = null;
     public int Level = 1;
     public int XPCap = 1000;
@@ -10,7 +10,7 @@ public class SkillLevel : ResultDataBase {
 }
 
 [System.Serializable]
-public class ActiveSkillLevel : ActiveResultData {
+public class ActiveSkillLevel : ActiveBaseData {
     public SkillLevel SkillLevel {
         get {
             return Data as SkillLevel;

@@ -6,14 +6,14 @@ using System;
 public class BrokerButton : MonoBehaviour {
 
     [SerializeField] private BrokerBase broker = null;
-    [SerializeField] protected ActiveResultData activeResultData = null;
+    [SerializeField] protected ActiveBaseData activeResultData = null;
     private Button button;
 
     [Header("Editor")]
     [SerializeField] private TMPro.TextMeshProUGUI nameField = null;
     [SerializeField] private Image visual = null;
 
-    public void SetupButton(BrokerBase broker, ActiveResultData resultData) {
+    public void SetupButton(BrokerBase broker, ActiveBaseData resultData) {
         this.broker = broker;
         this.activeResultData = resultData;
         UpdateView();

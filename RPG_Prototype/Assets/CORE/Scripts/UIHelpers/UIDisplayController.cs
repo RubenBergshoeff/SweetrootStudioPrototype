@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Doozy.Engine.UI;
+using System;
 
 public abstract class UIDisplayController : MonoBehaviour {
 
@@ -19,15 +21,25 @@ public abstract class UIDisplayController : MonoBehaviour {
         }
     }
 
-    private void OnVisibilityChanged(bool visible) {
-        if (visible) {
-            OnVisible();
-        }
-        else {
-            OnInvisible();
+    private void OnVisibilityChanged(UIView.VisibleEventState state) {
+        switch (state) {
+            case UIView.VisibleEventState.StartVisible:
+                OnShowing();
+                break;
+            case UIView.VisibleEventState.EndVisible:
+                OnVisible();
+                break;
+            case UIView.VisibleEventState.StartInvisible:
+                OnHiding();
+                break;
+            case UIView.VisibleEventState.EndInvisible:
+                OnInvisible();
+                break;
         }
     }
 
     protected abstract void OnVisible();
     protected abstract void OnInvisible();
+    protected abstract void OnShowing();
+    protected abstract void OnHiding();
 }

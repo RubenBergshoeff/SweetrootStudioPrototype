@@ -20,14 +20,20 @@ public class BrokerSkillTestResult : UIDisplayController {
     private List<UnlockResult> newUnlocks = new List<UnlockResult>();
 
     protected override void OnVisible() {
-        Cleanup();
-        ResolveTests();
-        CreateNewCategoryResults();
-        backButton.gameObject.SetActive(false);
         StartCoroutine(ShowTestResults());
     }
 
     protected override void OnInvisible() {
+    }
+
+    protected override void OnShowing() {
+        Cleanup();
+        ResolveTests();
+        CreateNewCategoryResults();
+        backButton.gameObject.SetActive(false);
+    }
+
+    protected override void OnHiding() {
     }
 
     private void ResolveTests() {

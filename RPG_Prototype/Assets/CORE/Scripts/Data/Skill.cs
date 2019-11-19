@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 [CreateAssetMenu]
-public class Skill : ResultDataBase {
+public class Skill : BaseData {
     public SkillCategory SkillCategory = null;
     public TrainingData Training = null;
 }
 
 [System.Serializable]
-public class ActiveSkill : ActiveResultData {
+public class ActiveSkill : ActiveBaseData {
     public Skill Skill {
         get {
             return Data as Skill;
@@ -19,8 +19,7 @@ public class ActiveSkill : ActiveResultData {
         get {
             if (TrainingResults.Count == 0) {
                 return null;
-            }
-            else {
+            } else {
                 return TrainingResults[TrainingResults.Count - 1];
             }
         }

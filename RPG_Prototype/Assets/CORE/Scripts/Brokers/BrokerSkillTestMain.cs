@@ -14,10 +14,16 @@ public class BrokerSkillTestMain : UIDisplayController {
     [SerializeField] private Transform categoryContainer = null;
 
     protected override void OnVisible() {
-        UpdateView();
     }
 
     protected override void OnInvisible() {
+    }
+
+    protected override void OnShowing() {
+        UpdateView();
+    }
+
+    protected override void OnHiding() {
     }
 
     private void UpdateView() {

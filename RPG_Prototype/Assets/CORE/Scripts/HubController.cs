@@ -27,4 +27,12 @@ public class HubController : UIDisplayController {
         characterHouse.OnObjectClicked -= OnCharacterHouseClicked;
         trainingHouse.OnObjectClicked -= OnTrainingHouseClicked;
     }
+
+    protected override void OnShowing() {
+
+    }
+
+    protected override void OnHiding() {
+
+    }
 }

@@ -8,7 +8,10 @@ public class CameraController : MonoBehaviour {
     [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraHub = null;
     [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraTestChoice = null;
     [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraTraining = null;
-    [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraOpenBook = null;
+    [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraBookControl = null;
+    [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraBookSkill = null;
+    [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraTestControl = null;
+    [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCameraTestSkill = null;
 
     private Cinemachine.CinemachineVirtualCamera previousActiveCamera = null;
 
@@ -31,23 +34,41 @@ public class CameraController : MonoBehaviour {
         SwitchToVirtualCamera(virtualCameraTraining);
     }
 
-    [ContextMenu("Switch To Book")]
-    public void SwitchToBook() {
-        SwitchToVirtualCamera(virtualCameraOpenBook);
+    [ContextMenu("Switch To Book Control")]
+    public void SwitchToBookControl() {
+        SwitchToVirtualCamera(virtualCameraBookControl);
     }
 
-    private void SwitchToVirtualCamera(Cinemachine.CinemachineVirtualCamera camera) {
+    [ContextMenu("Switch To Book Skill")]
+    public void SwitchToBookSkill() {
+        SwitchToVirtualCamera(virtualCameraBookSkill);
+    }
+
+    [ContextMenu("Switch To Test Control")]
+    public void SwitchToTestControl() {
+        SwitchToVirtualCamera(virtualCameraTestControl);
+    }
+
+    [ContextMenu("Switch To Test Skill")]
+    public void SwitchToTestSkill() {
+        SwitchToVirtualCamera(virtualCameraTestSkill);
+    }
+
+    private void SwitchToVirtualCamera(Cinemachine.CinemachineVirtualCamera virtualCamera) {
         if (previousActiveCamera != null) {
             previousActiveCamera.gameObject.SetActive(false);
         }
-        camera.gameObject.SetActive(true);
-        previousActiveCamera = camera;
+        virtualCamera.gameObject.SetActive(true);
+        previousActiveCamera = virtualCamera;
     }
 
     private void DisableAllVirtualCameras() {
         virtualCameraHub.gameObject.SetActive(false);
         virtualCameraTestChoice.gameObject.SetActive(false);
         virtualCameraTraining.gameObject.SetActive(false);
-        virtualCameraOpenBook.gameObject.SetActive(false);
+        virtualCameraBookControl.gameObject.SetActive(false);
+        virtualCameraBookSkill.gameObject.SetActive(false);
+        virtualCameraTestControl.gameObject.SetActive(false);
+        virtualCameraTestSkill.gameObject.SetActive(false);
     }
 }

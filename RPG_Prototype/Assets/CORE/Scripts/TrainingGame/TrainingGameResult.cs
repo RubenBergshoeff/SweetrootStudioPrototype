@@ -22,4 +22,12 @@ public class TrainingGameResult : UIDisplayController {
         skillSpriteImage.sprite = activeTraining.Training.Visual;
         xpAmountField.text = gainedXP.ToString();
     }
+
+    protected override void OnShowing() {
+
+    }
+
+    protected override void OnHiding() {
+
+    }
 }

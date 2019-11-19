@@ -2,12 +2,12 @@
 using System.Collections;
 
 [CreateAssetMenu]
-public class MoodData : ResultDataBase {
+public class MoodData : BaseData {
     public int MoodImproveAmount = 1;
 }
 
 [System.Serializable]
-public class ActiveMoodData : ActiveResultData {
+public class ActiveMoodData : ActiveBaseData {
     public MoodData MoodData {
         get {
             return Data as MoodData;

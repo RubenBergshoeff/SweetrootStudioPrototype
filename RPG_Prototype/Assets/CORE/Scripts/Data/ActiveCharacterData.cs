@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ActiveCharacterData : ActiveResultData {
+public class ActiveCharacterData : ActiveBaseData {
     public int CurrentMoodLevel;
     public int TotalPoints {
         get {
@@ -24,7 +24,7 @@ public class ActiveCharacterData : ActiveResultData {
         CurrentMoodLevel = data.StartMoodLevel;
     }
 
-    public UnlockReturn HandleUnlock(ResultDataBase newUnlock) {
+    public UnlockReturn HandleUnlock(BaseData newUnlock) {
         if (newUnlock is Skill) {
             Skill newSkill = newUnlock as Skill;
             ActiveSkillCategory activeSkillCategory = GetActiveSkillCategory(newSkill.SkillCategory);
