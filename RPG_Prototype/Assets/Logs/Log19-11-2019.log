@@ -465,3 +465,20 @@
 12:06:52 System entered node TestTypeChoice
 12:06:54 System entered node ControlTestBroker
 12:57:48 System saved game
+13:24:54 System loaded game
+13:24:56 System entered node Start
+13:24:56 System entered node Hub
+13:24:57 System entered node TrainingBroker
+13:24:58 User clicked button SprookjesRPGBack
+13:24:59 System entered node Hub
+13:25:00 User clicked button SprookjesRPGToTestTypeChoice
+13:25:00 System entered node TestTypeChoice
+13:25:02 System entered node ControlTestBroker
+13:25:05 User clicked button SprookjesRPGBack
+13:25:05 System entered node TestTypeChoice
+13:25:06 System entered node ControlTestBroker
+13:25:09 User clicked button SprookjesRPGBack
+13:25:09 System entered node TestTypeChoice
+13:25:10 User clicked button SprookjesRPGBack
+13:25:10 System entered node Hub
+13:25:12 System saved game

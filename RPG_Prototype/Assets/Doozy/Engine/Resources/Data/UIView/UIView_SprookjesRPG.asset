@@ -24,4 +24,9 @@ MonoBehaviour:
   - TrainingBrokerGameResult
   - TrainingBrokerResult
   - ControlTestBroker
-  - ControlTestBrokerResult
+  - ControlTestLinearMap
+  - SkillTestBroker
+  - SkillTestLinearMap
+  - ControlTestBrokerResultScore
+  - SkillTestBrokerResultScore
+  - 
