@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ResultDataBase : ScriptableObject {
+public class BaseData : ScriptableObject {
     public string Name;
     public Sprite Visual;
 }
 
 [System.Serializable]
-public abstract class ActiveResultData {
-    public ActiveResultData() {
+public abstract class ActiveBaseData {
+    public ActiveBaseData() {
 
     }
-    public ActiveResultData(ResultDataBase data) {
+    public ActiveBaseData(BaseData data) {
         this.Data = data;
     }
 
-    public ResultDataBase Data;
+    public BaseData Data;
 }
 
 //[System.Serializable]

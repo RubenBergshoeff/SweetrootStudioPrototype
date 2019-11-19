@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 [CreateAssetMenu]
-public class SkillCategory : ResultDataBase {
+public class SkillCategory : BaseData {
     public Color color = Color.grey;
     public List<SkillCategoryTest> Tests = new List<SkillCategoryTest>();
     public List<UnlockResult> PotentialUnlocks = new List<UnlockResult>();
 }
 
 [System.Serializable]
-public class ActiveSkillCategory : ActiveResultData {
+public class ActiveSkillCategory : ActiveBaseData {
     public SkillCategory Category {
         get {
             return Data as SkillCategory;
@@ -61,6 +61,6 @@ public class SkillCategoryTestResult {
 [System.Serializable]
 public class UnlockResult {
     public int RequiredScore = 0;
-    public ResultDataBase ResultToUnlock = null;
+    public BaseData ResultToUnlock = null;
     public bool ShowPopup = true;
 }

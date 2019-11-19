@@ -2,7 +2,7 @@
 using System.Collections;
 
 [CreateAssetMenu]
-public class EnemyData : ResultDataBase {
+public class EnemyData : BaseData {
     public int Level {
         get {
             return TotalPoints / 2;
@@ -21,7 +21,7 @@ public class EnemyData : ResultDataBase {
 }
 
 [System.Serializable]
-public class ActiveEnemyData : ActiveResultData {
+public class ActiveEnemyData : ActiveBaseData {
     public EnemyData EnemyData {
         get {
             return Data as EnemyData;

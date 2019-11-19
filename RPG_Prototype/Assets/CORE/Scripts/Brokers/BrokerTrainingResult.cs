@@ -12,7 +12,7 @@ public class BrokerTrainingResult : BrokerBaseResult {
     private ActiveTraining activeTraining;
     private int gainedXP = 0;
 
-    public override void SetResult(ActiveResultData result) {
+    public override void SetResult(ActiveBaseData result) {
         base.SetResult(result);
         activeTraining = result as ActiveTraining;
         activeGameController = CreateActiveGameController(activeTraining);

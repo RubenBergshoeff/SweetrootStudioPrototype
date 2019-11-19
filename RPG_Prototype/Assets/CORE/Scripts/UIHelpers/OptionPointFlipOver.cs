@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class OptionPointFlipOver : MonoBehaviour {
 
-    public ResultDataBase Data {
+    public BaseData Data {
         get {
             return data;
         }
     }
 
-    public Action<ActiveResultData> OnPointClicked;
+    public Action<ActiveBaseData> OnPointClicked;
 
-    [SerializeField] private ResultDataBase data = null;
+    [SerializeField] private BaseData data = null;
     private FlipPlane[] flipPlanes = new FlipPlane[0];
-    private ActiveResultData activeResultData = null;
+    private ActiveBaseData activeResultData = null;
 
     private void Awake() {
         flipPlanes = GetComponentsInChildren<FlipPlane>();
     }
 
-    public void Initialize(ActiveResultData activeResultData) {
+    public void Initialize(ActiveBaseData activeResultData) {
         this.activeResultData = activeResultData;
     }
 

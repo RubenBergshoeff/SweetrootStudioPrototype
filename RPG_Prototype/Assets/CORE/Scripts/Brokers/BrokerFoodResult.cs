@@ -11,7 +11,7 @@ public class BrokerFoodResult : BrokerBaseResult {
 
     private ActiveMoodData activeMoodData;
 
-    public override void SetResult(ActiveResultData result) {
+    public override void SetResult(ActiveBaseData result) {
         base.SetResult(result);
         activeMoodData = result as ActiveMoodData;
         slider.SetValues(0, playerCharacterController.LevelMood / 3.0f);

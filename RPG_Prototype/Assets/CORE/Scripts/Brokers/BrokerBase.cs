@@ -10,13 +10,13 @@ public abstract class BrokerBase : UIDisplayController {
     [SerializeField] private BrokerBaseResult resultController = null;
     [SerializeField] private string uiEventString = "";
 
-    public void PickResult(ActiveResultData result) {
+    public void PickResult(ActiveBaseData result) {
         resultController.SetResult(result);
         GameEventMessage.SendEvent(uiEventString);
     }
 }
 
-public abstract class BrokerBase<T, U> : BrokerBase where T : ActiveResultData {
+public abstract class BrokerBase<T, U> : BrokerBase where T : ActiveBaseData {
     [SerializeField] private BrokerButton templateButton = null;
     [SerializeField] private Transform buttonContainer = null;
 
@@ -53,13 +53,13 @@ public abstract class BrokerBase<T, U> : BrokerBase where T : ActiveResultData {
 
     }
 
-    private void AddItem(ActiveResultData item) {
+    private void AddItem(ActiveBaseData item) {
         BrokerButton newButton = Instantiate(templateButton.gameObject, buttonContainer).GetComponent<BrokerButton>();
         newButton.SetupButton(this, item);
     }
 }
 
-public abstract class BrokerBaseFlipOver<T> : BrokerBase where T : ActiveResultData {
+public abstract class BrokerBaseFlipOver<T> : BrokerBase where T : ActiveBaseData {
 
     protected abstract List<T> Collection {
         get;
@@ -98,7 +98,7 @@ public abstract class BrokerBaseFlipOver<T> : BrokerBase where T : ActiveResultD
         }
     }
 
-    private void SetupOption(OptionPointFlipOver option, ActiveResultData activeData) {
+    private void SetupOption(OptionPointFlipOver option, ActiveBaseData activeData) {
         if (activeOptions.Contains(option) == false) {
             activeOptions.Add(option);
             option.gameObject.SetActive(true);
@@ -110,7 +110,7 @@ public abstract class BrokerBaseFlipOver<T> : BrokerBase where T : ActiveResultD
         }
     }
 
-    private OptionPointFlipOver GetOption(ResultDataBase desiredData) {
+    private OptionPointFlipOver GetOption(BaseData desiredData) {
         foreach (var option in options) {
             if (option.Data == desiredData) {
                 return option;

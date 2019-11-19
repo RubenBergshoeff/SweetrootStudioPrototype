@@ -17,7 +17,7 @@ public class BrokerControlTestResult : BrokerBaseResult {
     private ActiveSkillLevel activeSkillLevel;
     private TrainingData newTrainingData;
 
-    public override void SetResult(ActiveResultData activeResult) {
+    public override void SetResult(ActiveBaseData activeResult) {
         base.SetResult(activeResult);
         activeSkillLevel = activeResult as ActiveSkillLevel;
     }
