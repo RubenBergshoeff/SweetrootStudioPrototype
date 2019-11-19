@@ -417,3 +417,51 @@
 10:54:43 System entered node TestTypeChoice
 10:54:45 System entered node ControlTestBroker
 10:54:48 System saved game
+11:47:54 System loaded game
+11:47:55 System entered node Start
+11:47:55 System entered node Hub
+11:47:58 User clicked button SprookjesRPGToTestTypeChoice
+11:47:58 System entered node TestTypeChoice
+11:48:00 System entered node ControlTestBroker
+11:48:03 User clicked button SprookjesRPGBack
+11:48:03 System entered node TestTypeChoice
+11:48:04 System entered node ControlTestBroker
+11:48:07 User clicked button SprookjesRPGBack
+11:48:07 System entered node TestTypeChoice
+11:48:07 System entered node ControlTestBroker
+11:48:10 User clicked button SprookjesRPGBack
+11:48:10 System entered node TestTypeChoice
+11:48:12 System entered node ControlTestBroker
+11:48:19 System saved game
+11:53:24 System loaded game
+11:53:25 System entered node Start
+11:53:25 System entered node Hub
+11:53:27 User clicked button SprookjesRPGToTestTypeChoice
+11:53:27 System entered node TestTypeChoice
+11:53:29 System entered node ControlTestBroker
+11:53:32 User clicked button SprookjesRPGBack
+11:53:32 System entered node TestTypeChoice
+11:54:06 System entered node ControlTestBroker
+11:54:10 User clicked button SprookjesRPGBack
+11:54:10 System entered node TestTypeChoice
+11:54:12 System entered node ControlTestBroker
+11:54:16 User clicked button SprookjesRPGBack
+11:54:16 System entered node TestTypeChoice
+11:54:18 System entered node ControlTestBroker
+11:55:27 System saved game
+12:06:04 System loaded game
+12:06:07 System entered node Start
+12:06:07 System entered node Hub
+12:06:09 User clicked button SprookjesRPGToTestTypeChoice
+12:06:09 System entered node TestTypeChoice
+12:06:11 System entered node ControlTestBroker
+12:06:17 User clicked button SprookjesRPGBack
+12:06:17 System entered node TestTypeChoice
+12:06:43 System entered node ControlTestBroker
+12:06:47 User clicked button SprookjesRPGBack
+12:06:47 System entered node TestTypeChoice
+12:06:49 System entered node ControlTestBroker
+12:06:52 User clicked button SprookjesRPGBack
+12:06:52 System entered node TestTypeChoice
+12:06:54 System entered node ControlTestBroker
+12:57:48 System saved game

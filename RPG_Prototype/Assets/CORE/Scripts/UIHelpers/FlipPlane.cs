@@ -7,6 +7,7 @@ using System;
 public class FlipPlane : MonoBehaviour {
     [SerializeField] private Vector3 startEulerRotation;
     [SerializeField] private Vector3 endEulerRotation;
+    [SerializeField] private float flipDelay = 0;
 
     public void GoToStartRotation() {
         transform.rotation = Quaternion.Euler(startEulerRotation);
@@ -14,8 +15,13 @@ public class FlipPlane : MonoBehaviour {
 
     [ContextMenu("DoFlip")]
     public void FlipUp() {
+        StartCoroutine(FlipUpDelayed(flipDelay));
+    }
+
+    private IEnumerator FlipUpDelayed(float delay) {
+        yield return new WaitForSeconds(delay);
         transform.rotation = Quaternion.Euler(startEulerRotation);
-        transform.DOLocalRotate(endEulerRotation, 1.3f).SetEase(Ease.InOutQuart);
+        transform.DOLocalRotate(endEulerRotation, UnityEngine.Random.Range(1.1f, 1.4f)).SetEase(Ease.InOutQuart);
     }
 
     [ContextMenu("Current Rotation as Start Rotation")]
