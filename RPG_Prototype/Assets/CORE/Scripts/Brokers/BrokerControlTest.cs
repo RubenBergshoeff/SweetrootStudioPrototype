@@ -5,16 +5,10 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class BrokerControlTest : BrokerBase<ActiveSkillLevel, SkillLevel> {
+public class BrokerControlTest : BrokerBaseFlipOver<ActiveSkillLevel> {
     protected override List<ActiveSkillLevel> Collection {
         get {
             return SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.GetAllActiveSkillLevels();
         }
-    }
-
-    protected override void OnInvisible() {
-    }
-
-    protected override void OnVisible() {
     }
 }

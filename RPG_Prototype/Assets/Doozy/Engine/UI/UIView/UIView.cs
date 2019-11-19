@@ -237,8 +237,15 @@ namespace Doozy.Engine.UI {
         public OnVisibleEvent OnVisible = new OnVisibleEvent();
 
         [System.Serializable]
-        public class OnVisibleEvent : UnityEvent<bool> {
+        public class OnVisibleEvent : UnityEvent<VisibleEventState> {
 
+        }
+
+        public enum VisibleEventState {
+            StartVisible,
+            EndVisible,
+            StartInvisible,
+            EndInvisible
         }
 
         /// <summary> Reference to the GameObject that should be selected after this UIView has been shown. Works only if AutoSelectButtonAfterShow is TRUE </summary>
@@ -529,8 +536,7 @@ namespace Doozy.Engine.UI {
                             StartCoroutine(ExecuteGetOrientationEnumerator());
                         else
                             OnOrientationChange(OrientationDetector.CurrentOrientation);
-                    }
-                    else {
+                    } else {
                         Show();
                         if (HasChildUIViews) StartCoroutine(ShowViewNextFrame(ViewCategory, ViewName, false));
                     }
@@ -552,13 +558,11 @@ namespace Doozy.Engine.UI {
                 newDeviceOrientation == DetectedOrientation.Portrait && TargetOrientation == TargetOrientation.Landscape) {
                 HideView(ViewCategory, ViewName, true); //hide all the views that have the same 'viewCategory' and 'viewName' instantly (in zero seconds)
                 ShowView(ViewCategory, ViewName);       //show all the views that have the same 'viewCategory' and 'viewName'
-            }
-            else if (TargetOrientation == TargetOrientation.Any) //if this UIView targets both landscape and portrait orientations)
-            {
+            } else if (TargetOrientation == TargetOrientation.Any) //if this UIView targets both landscape and portrait orientations)
+              {
                 ShowView(ViewCategory, ViewName); //show all the views that have the same 'viewCategory' and 'viewName'
-            }
-            else //this UIView is not configured to work with the current orientation
-            {
+            } else //this UIView is not configured to work with the current orientation
+              {
                 Hide(true); //hide this UIView instantly (in zero seconds)
             }
         }
@@ -662,6 +666,9 @@ namespace Doozy.Engine.UI {
             UIAnimator.Fade(RectTransform, ShowBehavior.Animation, fadeFrom, fadeTo, instantAction); //initialize and play the SHOW Fade tween
 
             Visibility = VisibilityState.Showing; //update the visibility state
+
+            OnVisible.Invoke(VisibleEventState.StartVisible);
+
             if (!VisibleViews.Contains(this)) VisibleViews.Add(this);
 
             if (instantAction) ShowBehavior.OnStart.Invoke(gameObject, false, false);
@@ -693,7 +700,8 @@ namespace Doozy.Engine.UI {
             }
 
             ShowBehavior.OnFinished.Invoke(gameObject, !instantAction, !instantAction);
-            OnVisible.Invoke(true);
+
+            OnVisible.Invoke(VisibleEventState.EndVisible);
 
             Visibility = VisibilityState.Visible; //update the visibility state
             if (!VisibleViews.Contains(this)) VisibleViews.Add(this);
@@ -744,6 +752,9 @@ namespace Doozy.Engine.UI {
             UIAnimator.Fade(RectTransform, HideBehavior.Animation, fadeFrom, fadeTo, instantAction); //initialize and play the HIDE Fade tween
 
             HideDeselectButton();
+
+            OnVisible.Invoke(VisibleEventState.StartInvisible);
+
             Visibility = VisibilityState.Hiding; //update the visibility state
             if (VisibleViews.Contains(this)) VisibleViews.Remove(this);
             if (m_initialized) {
@@ -780,7 +791,7 @@ namespace Doozy.Engine.UI {
                 HideBehavior.OnFinished.Invoke(gameObject, !instantAction, !instantAction);
             }
 
-            OnVisible.Invoke(false);
+            OnVisible.Invoke(VisibleEventState.EndInvisible);
 
             Visibility = VisibilityState.NotVisible; //update the visibility state
             if (VisibleViews.Contains(this)) VisibleViews.Remove(this);

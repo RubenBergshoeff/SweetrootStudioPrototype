@@ -19,3 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a9224140fd64154197d9f52865e8e28, type: 2}
   AvailableSkillLevels:
   - {fileID: 11400000, guid: d20d4cd7a2ba42242b0da3778136c248, type: 2}
+  - {fileID: 11400000, guid: 8b04d68762b41ba41afd0e049929e4d7, type: 2}
+  - {fileID: 11400000, guid: 327a1bdfb8c7d874ba0c33b1fd40af29, type: 2}
+  - {fileID: 11400000, guid: ea3ed69825ce4014495f9d15a777dc50, type: 2}

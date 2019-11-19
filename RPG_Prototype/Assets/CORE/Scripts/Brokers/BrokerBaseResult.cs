@@ -11,4 +11,20 @@ public abstract class BrokerBaseResult : UIDisplayController {
         resultNameContainer.text = activeResult.Data.Name;
         resultVisualContainer.sprite = activeResult.Data.Visual;
     }
+
+    protected override void OnShowing() {
+
+    }
+
+    protected override void OnVisible() {
+
+    }
+
+    protected override void OnHiding() {
+
+    }
+
+    protected override void OnInvisible() {
+
+    }
 }

@@ -23,4 +23,12 @@ public class CharacterScreenController : UIDisplayController {
         int xpInLevel = PlayerStat.MinLevelXPs[level + 1] - PlayerStat.MinLevelXPs[level];
         return relativeXPValue / (float)xpInLevel;
     }
+
+    protected override void OnShowing() {
+
+    }
+
+    protected override void OnHiding() {
+
+    }
 }

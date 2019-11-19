@@ -26,4 +26,12 @@ public class TestChoiceController : UIDisplayController {
     private void OnSkillTestClicked() {
         GameEventMessage.SendEvent(uiEventStringToSkillTest);
     }
+
+    protected override void OnShowing() {
+
+    }
+
+    protected override void OnHiding() {
+
+    }
 }
