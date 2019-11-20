@@ -116,3 +116,121 @@
 9:55:24 AM User clicked button SprookjesRPGBack
 9:55:24 AM System entered node Hub
 9:55:29 AM System saved game
+10:32:41 AM System loaded game
+10:32:43 AM System entered node Start
+10:32:43 AM System entered node Hub
+10:34:13 AM System entered node TrainingBroker
+10:34:16 AM User clicked button SprookjesRPGBack
+10:34:16 AM System entered node Hub
+10:35:09 AM System entered node TrainingBroker
+10:35:37 AM System entered node TrainingBrokerResult
+10:35:59 AM System entered node TrainingGameResult
+10:36:17 AM User clicked button SprookjesRPGBack
+10:36:17 AM System entered node Hub
+10:36:25 AM System entered node TrainingBroker
+10:36:28 AM User clicked button SprookjesRPGBack
+10:36:28 AM System entered node Hub
+10:36:48 AM System entered node TrainingBroker
+10:36:49 AM System entered node TrainingBrokerResult
+10:36:56 AM System entered node TrainingGameResult
+10:37:17 AM User clicked button SprookjesRPGBack
+10:37:17 AM System entered node Hub
+10:37:19 AM System entered node CharacterHome
+10:38:19 AM User clicked button SprookjesRPGBack
+10:38:19 AM System entered node Hub
+10:38:23 AM System entered node CharacterHome
+10:38:24 AM User clicked button SprookjesRPGBack
+10:38:24 AM System entered node Hub
+10:38:26 AM System entered node TrainingBroker
+10:38:27 AM User clicked button SprookjesRPGBack
+10:38:27 AM System entered node Hub
+10:38:28 AM User clicked button SprookjesRPGToTestTypeChoice
+10:38:28 AM System entered node TestTypeChoice
+10:39:27 AM System entered node ControlTestBroker
+10:41:32 AM User clicked button SprookjesRPGBack
+10:41:32 AM System entered node TestTypeChoice
+10:41:33 AM System entered node ControlTestBroker
+10:41:41 AM System entered node ControlTestLinearMap
+10:41:43 AM System entered node ControlTestResult
+10:42:27 AM User clicked button SprookjesRPGBack
+10:42:27 AM System entered node Hub
+10:42:31 AM User clicked button SprookjesRPGToTestTypeChoice
+10:42:31 AM System entered node TestTypeChoice
+10:42:32 AM System entered node SkillTestBroker
+10:43:07 AM System entered node SkillTestLinearMap
+10:43:09 AM System entered node SkillTestResult
+10:43:27 AM User clicked button SprookjesRPGBack
+10:43:27 AM System entered node Hub
+10:43:31 AM User clicked button SprookjesRPGToSettings
+10:43:31 AM System entered node Settings
+10:43:50 AM User clicked button SprookjesRPGBack
+10:43:50 AM System entered node Hub
+10:45:40 AM User clicked button SprookjesRPGToTestTypeChoice
+10:45:40 AM System entered node TestTypeChoice
+10:45:41 AM System entered node ControlTestBroker
+10:45:53 AM System saved game
+10:46:26 AM System loaded game
+10:46:27 AM System entered node Start
+10:46:27 AM System entered node Hub
+10:47:08 AM User clicked button SprookjesRPGToTestTypeChoice
+10:47:08 AM System entered node TestTypeChoice
+10:47:15 AM User clicked button SprookjesRPGBack
+10:47:15 AM System entered node Hub
+10:47:53 AM User clicked button SprookjesRPGToTestTypeChoice
+10:47:53 AM System entered node TestTypeChoice
+10:48:01 AM User clicked button SprookjesRPGBack
+10:48:01 AM System entered node Hub
+10:48:09 AM System saved game
+11:20:43 AM System loaded game
+11:20:44 AM System entered node Start
+11:20:44 AM System entered node Hub
+11:20:47 AM User clicked button SprookjesRPGToTestTypeChoice
+11:20:47 AM System entered node TestTypeChoice
+11:20:49 AM System entered node SkillTestBroker
+11:20:50 AM System entered node SkillTestLinearMap
+11:20:55 AM System saved game
+11:36:31 AM System loaded game
+11:36:33 AM System entered node Start
+11:36:33 AM System entered node Hub
+11:36:35 AM User clicked button SprookjesRPGToTestTypeChoice
+11:36:35 AM System entered node TestTypeChoice
+11:36:37 AM System entered node SkillTestBroker
+11:36:38 AM System entered node SkillTestLinearMap
+11:36:40 AM System entered node SkillTestResult
+11:36:42 AM User clicked button SprookjesRPGBack
+11:36:42 AM System entered node Hub
+11:36:45 AM System entered node TrainingBroker
+11:36:49 AM User clicked button SprookjesRPGBack
+11:36:49 AM System entered node Hub
+11:37:38 AM User clicked button SprookjesRPGToTestTypeChoice
+11:37:38 AM System entered node TestTypeChoice
+11:37:40 AM System entered node ControlTestBroker
+11:37:41 AM System entered node ControlTestLinearMap
+11:37:42 AM System entered node ControlTestResult
+11:37:45 AM User clicked button SprookjesRPGBack
+11:37:45 AM System entered node Hub
+11:37:47 AM User clicked button SprookjesRPGToTestTypeChoice
+11:37:47 AM System entered node TestTypeChoice
+11:37:49 AM System entered node SkillTestBroker
+11:37:51 AM System entered node SkillTestLinearMap
+11:37:52 AM System entered node SkillTestResult
+11:38:02 AM User clicked button SprookjesRPGBack
+11:38:02 AM System entered node Hub
+11:38:05 AM System saved game
+11:39:33 AM System loaded game
+11:39:34 AM System entered node Start
+11:39:34 AM System entered node Hub
+11:39:43 AM System saved game
+11:39:59 AM System loaded game
+11:40:00 AM System entered node Start
+11:40:00 AM System entered node Hub
+11:40:13 AM User clicked button SprookjesRPGToTestTypeChoice
+11:40:13 AM System entered node TestTypeChoice
+11:40:15 AM User clicked button SprookjesRPGBack
+11:40:15 AM System entered node Hub
+11:40:16 AM User clicked button SprookjesRPGToTestTypeChoice
+11:40:16 AM System entered node TestTypeChoice
+11:40:18 AM System entered node ControlTestBroker
+11:40:19 AM User clicked button SprookjesRPGBack
+11:40:19 AM System entered node TestTypeChoice
+11:40:21 AM System saved game

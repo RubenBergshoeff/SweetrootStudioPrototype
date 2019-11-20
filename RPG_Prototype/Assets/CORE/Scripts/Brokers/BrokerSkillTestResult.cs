@@ -6,7 +6,7 @@ using Doozy.Engine.UI;
 
 public class BrokerSkillTestResult : BrokerBaseResult {
 
-    [SerializeField] private PlayerCharacterController playerCharacterController = null;
+    //[SerializeField] private PlayerCharacterController playerCharacterController = null;
     [SerializeField] private SkillTestResult skillTestResult = null;
     [SerializeField] private string uiEventStringDone = "";
 
@@ -29,12 +29,12 @@ public class BrokerSkillTestResult : BrokerBaseResult {
         newUnlocks = new List<UnlockResult>();
 
         SkillCategoryTestResult result = new SkillCategoryTestResult();
-        result.Test = activeSkillCategory.SelectedTest;
+        //result.Test = activeSkillCategory.SelectedTest;
         int score = activeSkillCategory.GetScore();
-        if (score < activeSkillCategory.SelectedTest.MinCategoryScore) {
-            score = activeSkillCategory.LastResult == null ? 0 : activeSkillCategory.LastResult.Score;
-        }
-        result.Score = Mathf.Min(score, activeSkillCategory.SelectedTest.MaxCategoryScore);
+        //if (score < activeSkillCategory.SelectedTest.MinCategoryScore) {
+        //    score = activeSkillCategory.LastResult == null ? 0 : activeSkillCategory.LastResult.Score;
+        //}
+        result.Score = score;// Mathf.Min(score, activeSkillCategory.SelectedTest.MaxCategoryScore);
 
         int previousScore = activeSkillCategory.LastResult == null ? 0 : activeSkillCategory.LastResult.Score;
 
