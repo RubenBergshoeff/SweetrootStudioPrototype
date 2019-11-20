@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+﻿// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Doozy.Engine.Extensions;
+using Doozy.Engine.Layouts;
 using Doozy.Engine.Orientation;
 using Doozy.Engine.Progress;
 using Doozy.Engine.Settings;
@@ -319,6 +320,15 @@ namespace Doozy.Engine.UI {
         /// <summary> Internal variable used to suppress invoking events when the first Hide is executed </summary>
         private bool m_initialized;
 
+        /// <summary> Internal variable used to keep a reference to the LayoutController that controls the RectTransform of this view (only if a LayoutGroup is used) </summary>
+        private LayoutController m_layoutController;
+
+        /// <summary> Internal variable used to keep track if this view has a LayoutController referenced (optimization needed to reduce the number of null checks) </summary>
+        private bool m_hasLayoutController;
+
+        /// <summary> Internal variable used to keep track if this view is directly under a LayoutGroup </summary>
+        private bool m_controlledByLayoutGroup;
+
         #endregion
 
         #region Unity Methods
@@ -337,8 +347,7 @@ namespace Doozy.Engine.UI {
 
         public override void Awake() {
             base.Awake();
-            StartPosition = UseCustomStartAnchoredPosition ? CustomStartAnchoredPosition : RectTransform.anchoredPosition3D;
-            MoveToCustomStartPosition();
+
             LoadPresets();
             m_initialized = false;
 
@@ -348,16 +357,44 @@ namespace Doozy.Engine.UI {
 
         public override void Start() {
             base.Start();
+            CheckForLayoutController();
             Initialize();
+        }
+
+        private void CheckForLayoutController() {
+            //            Debug.Log("CheckForLayoutController");
+            if (!m_controlledByLayoutGroup) {
+                m_controlledByLayoutGroup = GetComponentInParent<LayoutGroup>() != null;
+                if (!m_controlledByLayoutGroup) {
+                    m_hasLayoutController = false;
+                    m_layoutController = null;
+                }
+                else {
+                    m_layoutController = GetComponentInParent<LayoutController>();
+                    m_hasLayoutController = m_layoutController != null;
+                    if (!m_hasLayoutController) m_layoutController = transform.parent.gameObject.AddComponent<LayoutController>();
+                }
+            }
+            else {
+                m_hasLayoutController = m_layoutController != null;
+                if (m_hasLayoutController) m_layoutController.Rebuild(true);
+            }
+
+            if (UseCustomStartAnchoredPosition && m_controlledByLayoutGroup)
+                UseCustomStartAnchoredPosition = false;
+
+            StartPosition = UseCustomStartAnchoredPosition ? CustomStartAnchoredPosition : RectTransform.anchoredPosition3D;
         }
 
         public override void OnEnable() {
             base.OnEnable();
             m_childUIButtons = GetComponentsInChildren<UIButton>();
             m_childUIViews = GetComponentsInChildren<UIView>();
+            if (HasChildUIViews && DisableGameObjectWhenHidden) DisableGameObjectWhenHidden = false;
             if (Settings.UseOrientationDetector && OrientationDetector != null)
                 OrientationDetector.OnOrientationEvent.AddListener(OnOrientationChange); //if using OrientationDetector subscribe to the onOrientationChange UnityEvent every time this UIView is enabled
         }
+
 
         public override void OnDisable() {
             base.OnDisable();
@@ -369,7 +406,7 @@ namespace Doozy.Engine.UI {
             UIAnimator.StopAnimations(RectTransform, AnimationType.Show);
             UIAnimator.StopAnimations(RectTransform, AnimationType.Loop);
 
-            ResetToStartValues();
+            //            ResetToStartValues();
 
             if (Settings.UseOrientationDetector && OrientationDetector != null)
                 OrientationDetector.OnOrientationEvent.RemoveListener(OnOrientationChange); //if using OrientationDetector unsubscribe from the OnOrientationChange UnityEvent every time this UIView is disabled
@@ -407,35 +444,62 @@ namespace Doozy.Engine.UI {
             m_hideCoroutine = StartCoroutine(HideEnumerator(instantAction));
         }
 
-        /// <summary> Hides this UIView after the set delay </summary>
+        /// <summary> Hide this UIView after the set delay </summary>
         /// <param name="delay"> Time delay before this UIView is automatically hidden </param>
         public void Hide(float delay) { m_autoHideCoroutine = StartCoroutine(HideWithDelayEnumerator(delay)); }
 
-        /// <summary> Hides the UIView instantly without triggering any of its actions </summary>
+        /// <summary> Hide this UIView instantly without triggering any of its actions </summary>
         public void InstantHide() {
+            CheckForLayoutController();
+
             StopLoopAnimation();
+
             StopShow();
             StopHide();
+
             ResetToStartValues();
+
             Canvas.enabled = !DisableCanvasWhenHidden;                     //disable the canvas, if the option is enabled
             GraphicRaycaster.enabled = !DisableGraphicRaycasterWhenHidden; //disable the graphic raycaster, if the option is enabled
             gameObject.SetActive(!DisableGameObjectWhenHidden);            //disable the Source the UIView is attached to, if the option is enabled
+
+            HideDeselectButton();
+
             Visibility = VisibilityState.NotVisible;
             if (VisibleViews.Contains(this)) VisibleViews.Remove(this);
+
+            if (m_initialized) NotifySystemOfTriggeredBehavior(UIViewBehaviorType.Hide); //send the global events
+
+            RemoveHiddenFromVisibleViews();
+
             if (!m_initialized) m_initialized = true;
         }
 
-        /// <summary> Shows the UIView instantly without triggering any of its actions </summary>
+        /// <summary> Show this UIView instantly without triggering any of its actions </summary>
         public void InstantShow() {
+            CheckForLayoutController();
+
             StopLoopAnimation();
             StopHide();
             StopShow();
+
             ResetToStartValues();
-            Canvas.enabled = !DisableCanvasWhenHidden;                     //disable the canvas, if the option is enabled
-            GraphicRaycaster.enabled = !DisableGraphicRaycasterWhenHidden; //disable the graphic raycaster, if the option is enabled
-            gameObject.SetActive(!DisableGameObjectWhenHidden);            //disable the Source the UIView is attached to, if the option is enabled
-            Visibility = VisibilityState.NotVisible;
-            if (VisibleViews.Contains(this)) VisibleViews.Remove(this);
+
+            Canvas.enabled = true;           //enable the canvas
+            GraphicRaycaster.enabled = true; //enable the graphic raycaster
+            gameObject.SetActive(true);      //set the active state to true (in case it has been disabled when hidden)
+
+            Visibility = VisibilityState.Visible;
+            if (!VisibleViews.Contains(this)) VisibleViews.Add(this);
+
+            NotifySystemOfTriggeredBehavior(UIViewBehaviorType.Show); //send the global events
+
+            if (AutoHideAfterShow) Hide(AutoHideAfterShowDelay);
+            ShowSelectDeselectButton(); //select the selectedButton
+
+            RemoveHiddenFromVisibleViews();
+
+            if (HasChildUIViews) StartCoroutine(ShowViewNextFrame(ViewCategory, ViewName, true));
         }
 
         /// <summary> Sends an UIViewMessage notifying the system that an UIViewBehavior has been triggered </summary>
@@ -452,6 +516,21 @@ namespace Doozy.Engine.UI {
         /// <inheritdoc />
         /// <summary> Resets this UIView's RectTransform.anchoredPosition3D to the CurrentStartPosition value </summary>
         public override void ResetPosition() { RectTransform.anchoredPosition3D = CurrentStartPosition; }
+
+        /// <summary> Sets the 'visibility' of this UIView by showing or hiding it </summary>
+        /// <param name="visible"> If TRUE it will show the UIView (if hidden). If FALSE it will hide the UIView (if visible) </param>
+        public void SetVisibility(bool visible) {
+            if (visible) Show();
+            else Hide();
+        }
+
+        /// <summary> Sets the 'visibility' of this UIView by showing or hiding it </summary>
+        /// <param name="visible"> If TRUE it will show the UIView (if hidden). If FALSE it will hide the UIView (if visible) </param>
+        /// <param name="instantAction"> Should the animation happen instantly? (zero seconds) </param>
+        public void SetVisibility(bool visible, bool instantAction) {
+            if (visible) Show(instantAction);
+            else Hide(instantAction);
+        }
 
         /// <summary> Shows this UIView </summary>
         /// <param name="instantAction"> Should the animation happen instantly? (zero seconds) </param>
@@ -536,7 +615,8 @@ namespace Doozy.Engine.UI {
                             StartCoroutine(ExecuteGetOrientationEnumerator());
                         else
                             OnOrientationChange(OrientationDetector.CurrentOrientation);
-                    } else {
+                    }
+                    else {
                         Show();
                         if (HasChildUIViews) StartCoroutine(ShowViewNextFrame(ViewCategory, ViewName, false));
                     }
@@ -558,11 +638,13 @@ namespace Doozy.Engine.UI {
                 newDeviceOrientation == DetectedOrientation.Portrait && TargetOrientation == TargetOrientation.Landscape) {
                 HideView(ViewCategory, ViewName, true); //hide all the views that have the same 'viewCategory' and 'viewName' instantly (in zero seconds)
                 ShowView(ViewCategory, ViewName);       //show all the views that have the same 'viewCategory' and 'viewName'
-            } else if (TargetOrientation == TargetOrientation.Any) //if this UIView targets both landscape and portrait orientations)
-              {
+            }
+            else if (TargetOrientation == TargetOrientation.Any) //if this UIView targets both landscape and portrait orientations)
+            {
                 ShowView(ViewCategory, ViewName); //show all the views that have the same 'viewCategory' and 'viewName'
-            } else //this UIView is not configured to work with the current orientation
-              {
+            }
+            else //this UIView is not configured to work with the current orientation
+            {
                 Hide(true); //hide this UIView instantly (in zero seconds)
             }
         }
@@ -641,6 +723,8 @@ namespace Doozy.Engine.UI {
             Canvas.enabled = true;           //enable the canvas
             GraphicRaycaster.enabled = true; //enable the graphic raycaster
 
+            CheckForLayoutController();
+
             //MOVE
             Vector3 moveFrom = UIAnimator.GetAnimationMoveFrom(RectTransform, ShowBehavior.Animation, CurrentStartPosition);
             Vector3 moveTo = UIAnimator.GetAnimationMoveTo(RectTransform, ShowBehavior.Animation, CurrentStartPosition);
@@ -694,14 +778,17 @@ namespace Doozy.Engine.UI {
                         invokedOnStart = true;
                     }
 
+                    if (m_hasLayoutController) m_layoutController.Rebuild(true);
+
                     VisibilityProgress = elapsedTime / totalDuration;
                     yield return null;
                 }
             }
 
-            ShowBehavior.OnFinished.Invoke(gameObject, !instantAction, !instantAction);
+            if (m_hasLayoutController) m_layoutController.Rebuild(true);
 
             OnVisible.Invoke(VisibleEventState.EndVisible);
+            ShowBehavior.OnFinished.Invoke(gameObject, !instantAction, !instantAction);
 
             Visibility = VisibilityState.Visible; //update the visibility state
             if (!VisibleViews.Contains(this)) VisibleViews.Add(this);
@@ -725,9 +812,10 @@ namespace Doozy.Engine.UI {
 
             if (LoopBehavior.Animation.Enabled) UIAnimator.StopAnimations(RectTransform, LoopBehavior.Animation.AnimationType);
 
-            //            RemoveNullChildUIButtons();
+            CheckForLayoutController();
 
             //MOVE
+            if (m_controlledByLayoutGroup) UpdateStartPosition();
             Vector3 moveFrom = UIAnimator.GetAnimationMoveFrom(RectTransform, HideBehavior.Animation, CurrentStartPosition);
             Vector3 moveTo = UIAnimator.GetAnimationMoveTo(RectTransform, HideBehavior.Animation, CurrentStartPosition);
             if (!HideBehavior.Animation.Move.Enabled || instantAction) ResetPosition();
@@ -780,12 +868,16 @@ namespace Doozy.Engine.UI {
                         invokedOnStart = true;
                     }
 
+                    if (m_hasLayoutController) m_layoutController.Rebuild(true);
+
                     VisibilityProgress = 1 - elapsedTime / totalDuration; //operation is reversed in hide than in show
                     yield return null;
                 }
 
                 yield return new WaitForSecondsRealtime(UIViewSettings.DISABLE_WHEN_HIDDEN_TIME_BUFFER); //wait for seconds realtime (ignore Unity's Time.Timescale)
             }
+
+            if (m_hasLayoutController) m_layoutController.Rebuild(true);
 
             if (m_initialized) {
                 HideBehavior.OnFinished.Invoke(gameObject, !instantAction, !instantAction);

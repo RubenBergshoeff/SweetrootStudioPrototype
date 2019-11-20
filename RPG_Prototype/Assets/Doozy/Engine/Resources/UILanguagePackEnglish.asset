@@ -16,6 +16,7 @@ MonoBehaviour:
   Actions: Actions
   ActivateLoadedScenesNodeName: Activate Loaded Scenes
   ActiveNode: Active Node
+  ActiveVariant: Active Variant
   ActiveSceneChange: Active Scene Change
   AddCategory: Add Category
   AddItem: Add Item
@@ -24,9 +25,10 @@ MonoBehaviour:
   AddSymbolToAllBuildTargetGroups: Add symbol to all the BuildTargetGroups?
   AddToPopupQueue: Add to Popup Queue
   After: After
-  AllSoundsBeforePlaying: all sounds before playing
+  AfterDelay: After Delay
   AllowMultipleClicks: Allow Multiple Clicks
   AllowSceneActivation: Allow Scene Activation
+  AllSoundsBeforePlaying: all sounds before playing
   AlternateInput: Alternate Input
   AlternateKeyCode: Alternate Key Code
   AlternateVirtualButton: Alternate Virtual Button
@@ -40,18 +42,26 @@ MonoBehaviour:
   AnimatorEvents: Animator Events
   Animators: Animators
   AnotherEntryExists: There is another entry with the same name.
+  AnyButton: Any Button
   AnyGameEvent: Any GameEvent
   AnyGameEventWillTriggerThisListener: Any game event will trigger this listener
   AnyScene: Any Scene
+  AnyUIButton: Any UIButton
+  AnyUIDrawer: Any UIDrawer
+  AnyUIView: Any UIView
   AnyUIButtonWillTriggerThisListener: Any UIButton will trigger this listener
   AnyUIDrawerWillTriggerThisListener: Any UIDrawer will trigger this listener
   AnyUIViewWillTriggerThisListener: Any UIView will trigger this listener
+  AutoSave: Auto Save
+  AutoSaveDisabled: Auto Save Disabled
+  AutoSaveEnabled: Auto Save Enabled
   ApplicationQuit: Application Quit
   AreYouSureConvertToGraph: Are you sure you want to convert this SubGraph into a
     Graph?
   AreYouSureConvertToSubGraph: Are you sure you want to convert this Graph into a
     SubGraph
   AreYouSureYouWantToDeleteDatabase: Are you sure you want to delete the database?
+  AreYouSureYouWantToDeleteTheme: Are you sure you want to delete the theme?
   AreYouSureYouWantToDeletePopupReference: Are you sure you want to delete the popup
     reference?
   AreYouSureYouWantToRemoveCategory: Are you sure you want to remove the category?
@@ -69,6 +79,7 @@ MonoBehaviour:
   AutoKillIdleControllers: Auto Kill Idle Controllers
   AutoKillIdleControllersDescription: Auto kill any Soundy Controllers that are have
     been unused for the set idle kill duration
+  AutoRebuild: Auto Rebuild
   AutoResetSequence: Auto Reset Sequence
   AutoSelectButtonAfterShow: Auto selected button after Show
   AutoSort: Auto Sort
@@ -78,6 +89,8 @@ MonoBehaviour:
   Behavior: Behavior
   BehaviorAtStart: Behavior at Start
   Behaviors: Behaviors
+  BlockBackButton: Block Back Button
+  BorderWidth: Border Width
   BuildIndex: Build Index
   ButtonCategory: Button Category
   ButtonLabel: Button Label
@@ -93,6 +106,11 @@ MonoBehaviour:
   CenterSelectedNodes: Center Selected Nodes
   Chance: Chance
   CheckingForIssues: Checking for issues
+  ChildHeight: Child Height
+  ChildHeightFactor: Child Height Factor
+  ChildRotation: Child Rotation
+  ChildWidth: Child Width
+  ChildWidthFactor: Child Width Factor
   Clear: Clear
   ClearRecentOpenedGraphsList: Clear Recent Graphs
   ClearRecentOpenedGraphsListDescription: Clears the list of recently opened graphs
@@ -101,12 +119,14 @@ MonoBehaviour:
   ClickContainer: Click Container
   ClickMode: Click Mode
   ClickOverlay: Click Overlay
+  Clockwise: Clockwise
   Close: Close
+  Closed: Closed
   CloseDirection: Close Direction
+  ClosedPosition: Closed Position
   CloseDrawer: Close Drawer
   CloseSpeed: Close Speed
-  Closed: Closed
-  ClosedPosition: Closed Position
+  Color: Color
   Compiling: Compiling
   ComponentDisabled: Component disabled
   Connected: Connected
@@ -115,6 +135,8 @@ MonoBehaviour:
   Container: Container
   ContainerSize: Container Size
   Continue: Continue
+  ControlChildHeight: Control Child Height
+  ControlChildWidth: Control Child Width
   ControllerIdleKillDuration: Controller Idle Kill Duration
   ControllerIdleKillDurationDescription: The duration (in seconds) a Soundy Controller
     needs to be idle to be considered killable
@@ -142,6 +164,7 @@ MonoBehaviour:
   Cut: Cut
   Database: Database
   DatabaseAlreadyExists: Database name already exists. Enter a new name and try again.
+  ThemeNameAlreadyExists: Theme name already exists. Enter a new name and try again.
   DatabaseHasBeenReset: Database has been reset
   DatabaseIsEmpty: Database is empty...
   DatabaseName: Database Name
@@ -157,9 +180,10 @@ MonoBehaviour:
   DefaultZoomDescription: Default zoom value used when creating a new graph
   Delete: Delete
   DeleteDatabase: Delete Database
+  DeleteTheme: Delete Theme
+  DeletedPopupReference: Deleted Popup Reference
   DeletePopupReference: Delete Popup Reference
   DeletePreset: Delete Preset
-  DeletedPopupReference: Deleted Popup Reference
   Description: Description
   Deselect: Deselect
   DeselectAnyButton: If any button is selected, deselect it on
@@ -171,11 +195,12 @@ MonoBehaviour:
   Disable: Disable
   DisableButtonInterval: Disable Button Interval
   DisableCanvas: Disable Canvas
+  Disabled: Disabled
   DisableFunctionality: Disable Functionality
   DisableGameObject: Disable GameObject
   DisableInterval: Disable Interval
   DisablePlugin: Disable Plugin
-  Disabled: Disabled
+  DisableTriggerAfterActivation: Disable Trigger After Activation
   Disconnect: Disconnect
   DispatchButtonClicks: Dispatch Button Clicks
   DispatchGameEvents: Dispatch Game Events
@@ -189,17 +214,19 @@ MonoBehaviour:
   Duration: Duration
   Ease: Ease
   EaseType: Ease NamesDatabaseType
+  EditMode: Edit Mode
   Effect: Effect
   Elasticity: Elasticity
   Email: Email
   Empty: Empty
   Enable: Enable
+  Enabled: Enabled
   EnableFunctionality: Enable Functionality
   EnablePlugin: Enable Plugin
   EnableSupportForMasterAudio: Enable support for MasterAudio in the Control Panel
-  Enabled: Enabled
   EnterCategoryName: Enter a category name
   EnterDatabaseName: Enter a database name
+  EnterThemeName: Enter a theme name
   EnterGameEventToListenFor: Enter a game event to listen for
   EnterNodeName: Enter
   Error: Error
@@ -208,12 +235,21 @@ MonoBehaviour:
   EverySwipeWillTriggerThisListener: Every Swipe will trigger this listener
   EveryTapWillTriggerThisListener: Every Tap will trigger this listener
   ExitNodeName: Exit
+  ExposedParameterName: Exposed Parameter Name
   Fade: Fade
   FadeBy: Fade By Alpha Value (0-1)
   FadeFrom: Fade From Alpha Value (0-1)
   FadeOutContainer: Fade Out Container
   FadeTo: Fade To Alpha Value (0-1)
+  Feather: Feather
+  FeatherExpandsSize: Feather Expands Size
+  FillAmount: Fill Amount
+  FillCenter: Fill Center
+  FillMethod: Fill Method
+  FillOrigin: Fill Origin
   FixedSize: FixedSize
+  Font: Font
+  FontAsset: Font Asset
   FsmName: FSM Name
   Functionality: Functionality
   FunctionalityDescription: Toggle system capabilities
@@ -231,15 +267,18 @@ MonoBehaviour:
   GoToStartNode: Go to Start Node
   Graph: Graph
   GraphHasNoNodes: Graph has no nodes
+  GraphicRaycaster: Graphic Raycaster
   GraphId: Graph Id
   GraphModel: Graph Model
-  GraphicRaycaster: Graphic Raycaster
   HasBeenAddedToClipboard: has been added to clipboard...
   Height: Height
+  HeightFromRadius: Height From Radius
+  HeightRadiusFactor: Height Radius Factor
   Help: Help
   HelpResources: Help Resources
   Hide: Hide
   HideAnimationWillNotWork: Hide animation will not work.
+  HideOnBackButton: Hide on Back Button
   HidePopup: Hide Popup
   HideProgressor: Hide Progressor
   HideUIPopupBy: Hide UIPopup by
@@ -253,6 +292,7 @@ MonoBehaviour:
   IgnoreTimescale: Ignore Timescale
   Image: Image
   Images: Images
+  ImageType: Image Type
   IncludeAudioClipNamesInSearch: Include AudioClip names in search
   Info: Info
   InputConnected: Input Connected
@@ -271,20 +311,21 @@ MonoBehaviour:
   Language: Language
   LastModified: Last Modified
   Left: Left
-  ListIsEmpty: List is empty...
+  ListenFor: Listen for
   ListenForAllGameEvents: Listen for all GameEvents
   ListenForAllUIButtons: Listen for all UIButtons
   ListenForAllUIDrawers: Listen for all UIDrawers
   ListenForAllUIViews: Listen for all UIViews
   ListeningForGameEvent: Listening for GameEvent
+  ListIsEmpty: List is empty...
   Load: Load
   LoadBehavior: Load Behavior
+  LoadedGraph: Loaded Graph
   LoadPreset: Load Preset
   LoadSceneBy: Load Scene By
   LoadSceneMode: Load Scene Mode
   LoadSceneNodeName: Load Scene
   LoadSelectedPresetAtRuntime: Load selected preset at runtime.
-  LoadedGraph: Loaded Graph
   LongTapDuration: Long Tap Duration
   LongTapDurationDescription: Time duration, for a light touch on a touch-sensitive
     screen, to be considered a long tap (long press)
@@ -292,15 +333,21 @@ MonoBehaviour:
   LoopType: Loop Type
   LoopView: View Loop
   Manual: Manual
+  Material: Material
   Max: Max
+  MaxAngle: Max Angle
+  MaxHeightFactor: Max Height Factor
+  MaxRadius: Max Radius
   MaxValue: Max Value
+  MaxWidthFactor: Max Width Factor
   Min: Min
-  MinValue: Min Value
+  MinAngle: Min Angle
   MinimumNumberOfControllers: Minimum Number of Controllers
   MinimumNumberOfControllersDescription: The minimum number of Soundy Controllers
     that should be available in the Soundy Pooler, that will not get automatically
     killed even if they are killable
   MinimumSize: Minimum Size
+  MinValue: Min Value
   MissingPrefabReference: Missing prefab reference
   Move: Move
   MoveBy: Move By
@@ -315,38 +362,50 @@ MonoBehaviour:
   NewCategory: New Category
   NewCategoryNameCannotBeEmpty: Category name cannot be empty. Please enter a category
     name.
+  NewColor: New Color
   NewDatabase: New Database
+  NewFont: New Font
+  NewFontAsset: New Font Asset
   NewPopup: New Popup
   NewPreset: New Preset
   NewPresetNameCannotBeEmpty: Preset name cannot be empty. Please enter a new preset
     name.
-  NewSoundDatabase: New Sound Database
+  NewSprite: New Sprite
+  NewTexture: New Texture
   News: News
+  NewSoundDatabase: New Sound Database
+  NewTheme: New Theme
+  NewThemeName: New Theme Name
+  NewThemeVariant: New Theme Variant
   No: No
   NoAnimationEnabled: No Animation Enabled
   NoAnimatorFound: No Animator Found
-  NoGraphReferenced: No graph referenced
-  NoSound: No Sound
-  NoSoundsHaveBeenAdded: No sounds have been added
   Node: Node
   NodeId: Node Id
   NodeName: Node Name
   NodeNameTooltip: The name of this node. Should be an unique name inside the graph.
+  Nodes: Nodes
   NodeState: Node State
   NodeWidth: Node Width
-  Nodes: Nodes
   NodySettings: Nody Settings
+  NoGraphReferenced: No graph referenced
+  NoPropertyFound: No property found
   NormalLoopAnimation: Normal Loop Animation
+  NoSound: No Sound
+  NoSoundsHaveBeenAdded: No sounds have been added
   NotConnected: Not connected
-  NotInstalled: Not Installed
+  Notes: Notes
   NoteworthyInformation: Noteworthy information
+  NotInstalled: Not Installed
   NumberOfLoops: Loops
   Ok: Ok
   OnAnimationFinished: OnAnimationFinished
   OnAnimationStart: OnAnimationStart
   OnClick: OnClick
   OnDeselected: OnDeselected
+  OnDisable: OnDisable
   OnDoubleClick: OnDoubleClick
+  OnEnable: OnEnable
   OnEnter: On Enter
   OnEnterNode: On Enter Node
   OnExit: On Exit
@@ -362,6 +421,7 @@ MonoBehaviour:
   OnPointerEnter: OnPointerEnter
   OnPointerExit: OnPointerExit
   OnPointerUp: OnPointerUp
+  OnRightClick: OnRightClick
   OnSceneLoaded: On Scene Loaded
   OnSelected: OnSelected
   OnTrigger: OnTrigger
@@ -370,12 +430,12 @@ MonoBehaviour:
   OpenControlPanel: Open Control Panel
   OpenDatabase: Open Database
   OpenDrawer: Open Drawer
+  Opened: Opened
+  OpenedPosition: Opened Position
   OpenGraph: Open Graph
   OpenNody: Open Nody
   OpenSpeed: Open Speed
   OpenSubGraph: Open SubGraph
-  Opened: Opened
-  OpenedPosition: Opened Position
   OperationCannotBeUndone: Operation cannot be undone.
   OrientationDetectorDescription: Detect the current screen orientation of the target
     device
@@ -387,6 +447,7 @@ MonoBehaviour:
   OutputNotConnected: Output Not Connected
   Overlay: Overlay
   Override: Override
+  OverrideAlpha: Override Alpha
   OverrideColor: Override Color
   Overview: Overview
   OverviewZoom: Overview Zoom
@@ -406,34 +467,44 @@ MonoBehaviour:
   PopupPrefab: Popup Prefab
   Portal: Portal
   PortalNodeName: Portal Node
+  Prefab: Prefab
   Prefix: Prefix
+  PreserveAspect: Preserve Aspect
   PresetCategory: Preset Category
   PresetName: Preset Name
   PreviewAnimation: Preview Animation
   Progress: Progress
-  ProgressTargets: Progress Targets
   Progressor: Progressor
   Progressors: Progressors
+  ProgressTargets: Progress Targets
   PunchBy: Punch By
+  Radius: Radius
+  RadiusControlsHeight: Radius Controls Height
+  RadiusControlsWidth: Radius Controls Width
+  RadiusHeightFactor: Radius Height Factor
+  RadiusWidthFactor: Radius Width Factor
   RandomDuration: Random Duration
   RandomNodeName: Random
+  Range: Range
+  RawImage: Raw Image
+  RaycastTarget: Raycast Target
   Recent: Recent
   Refresh: Refresh
   RefreshDatabase: Refresh Database
   RegisterInterval: Register Interval
   Remove: Remove
   RemoveCategory: Remove Category
+  RemovedDuplicateEntries: Removed duplicate entries
+  RemovedEntriesWithNoName: Removed entries with no name
+  RemovedEntriesWithNullPrefabs: Removed entries with null prefabs
+  RemovedEntry: Removed Entry
+  RemovedNullEntries: Removed null entries
   RemoveDuplicates: Remove Duplicates
   RemoveEmptyCategories: Remove Empty Categories
   RemoveEmptyEntries: Remove Empty Categories
   RemoveItem: Remove Item
   RemoveNullEntries: Remove Null Entries
   RemoveSymbolFromAllBuildTargetGroups: Remove symbol from all the BuildTargetGroups?
-  RemovedDuplicateEntries: Removed duplicate entries
-  RemovedEntriesWithNoName: Removed entries with no name
-  RemovedEntriesWithNullPrefabs: Removed entries with null prefabs
-  RemovedEntry: Removed Entry
-  RemovedNullEntries: Removed null entries
   Rename: Rename
   RenameCategory: Rename Category
   RenameCategoryDialogMessage: All the UI settings (and code references) that use
@@ -442,6 +513,7 @@ MonoBehaviour:
   RenameNodeTo: Rename Node to
   RenamePrefix: Rename Prefix
   RenameSoundDatabase: Rename Sound Database
+  RenameTheme: Rename Theme
   RenameSoundDatabaseDialogMessage: All the UI settings (and code references) that
     use this database name, will not get automatically changed.
   RenameSuffix: Rename Suffix
@@ -450,6 +522,7 @@ MonoBehaviour:
   ResetAnimationSettings: Reset Animation Settings
   ResetClosedPosition: Reset Closed Position
   ResetDatabase: Reset Database
+  ResetDelay: Reset Delay
   ResetOpenedPosition: Reset Opened Position
   ResetPosition: Reset Position
   ResetRoot: Reset Root
@@ -459,6 +532,7 @@ MonoBehaviour:
   Right: Right
   Rotate: Rotate
   RotateBy: Rotate By
+  RotateChildren: Rotate Children
   RotateFrom: Rotate From
   RotateMode: Rotate Mode
   RotateTo: Rotate To
@@ -482,12 +556,14 @@ MonoBehaviour:
   SearchForCategories: Search for categories
   SearchForDatabases: Search for databases
   SearchForUIPopupLinks: Search for UIPopup links
+  SearchForThemes: Search for themes
   Seconds: Seconds
   SecondsDelay: Seconds Delay
   Select: Select
   SelectButton: Select Button
-  SelectSwipeDirection: Select Swipe Direction
   SelectedLoopAnimation: Selected Loop Animation
+  SelectedTheme: Selected Theme
+  SelectSwipeDirection: Select Swipe Direction
   Send: Send
   SendGameEvent: Send Game Event
   SendGameEvents: Send Game Events
@@ -498,14 +574,16 @@ MonoBehaviour:
   SetIntValueTo: Set Int value to
   SetPosition: Set Position
   SetTargetGameObject: Set Target GameObject
+  Settings: Settings
   SetUIButtonToListenFor: Set an UIButton to listen for
   SetUIDrawerToListenFor: Set an UIDrawer to listen for
   SetUIViewToListenFor: Set an UIView to listen for
   SetValue: Set Value
-  Settings: Settings
   Show: Show
   ShowAnimationWillNotWork: Show animation will not work.
   ShowCurveModifier: Show Curve Modifier
+  ShowNodeNotes: Show Node Notes
+  ShowNodeNotesDescription: Toggle visibility of node notes
   ShowPopup: Show Popup
   ShowProgressor: Show Progressor
   ShowView: Show View
@@ -521,15 +599,21 @@ MonoBehaviour:
   SoundDatabases: Sound Databases
   SoundName: Sound Name
   SoundNodeName: Sound Node
-  SoundSource: Sound Source
   Sounds: Sounds
+  SoundSource: Sound Source
   Soundy: Soundy
   SoundyDatabase: Soundy Database
+  ThemeName: Theme Name
   SoundySettings: Soundy Settings
+  SourceImage: Source Image
   SourceName: Source Name
   Sources: Sources
+  Spacing: Spacing
   SpatialBlend: Spatial Blend (0-1)
   Speed: Speed
+  Sprite: Sprite
+  SpriteRenderer: Sprite Renderer
+  StartAngle: Start Angle
   StartDelay: Start Delay
   StartNodeName: Start
   StopAllSounds: Stop All Sounds
@@ -554,15 +638,31 @@ MonoBehaviour:
   TargetFsm: Target FSM
   TargetGameObject: Target GameObject
   TargetLabel: Target Label
+  TargetMixer: Target Mixer
   TargetOrientation: Target Orientation
   TargetProgress: Target Progress
+  TargetTheme: Target Theme
   TargetTimeScale: Target Time Scale
   TargetValue: Target Value
   TargetVariable: Target Variable
+  TargetVariant: Target Variant
   Text: Text
   TextLabel: Text Label
   TextMeshPro: TextMeshPro
   TextMeshProLabel: TextMeshPro Label
+  Texture: Texture
+  ThemeNode: Theme Node
+  Themes: Themes
+  ThemesAutoSaveEnabled: 'The themes automated auto save system has been enabled.
+
+    Changing the active theme variant will be automatically saved and loaded by the
+    system at runtime.'
+  ThemesAutoSaveDisabled: 'The themes automated auto save system has been disabled.
+
+    Changing the active theme variant will NOT be automatically saved and loaded by
+    the system at runtime.'
+  ThemesDisableAutoSave: Disable the themes runtime automated Auto Save system?
+  ThemesEnableAutoSave: Enable the themes runtime automated Auto Save system?
   Time: Time
   TimeScaleNodeName: TimeScale
   ToggleComponentBehaviors: Toggle component Behaviors
@@ -572,10 +672,12 @@ MonoBehaviour:
   ToggleProgressor: Toggle Progressor
   ToggleSettings: Toggle Settings
   ToggleSupportForThirdPartyPlugins: Toggle support for third party plug-ins
+  Tolerance: Tolerance
   TouchySettings: Touchy Settings
   TriggerAction: Trigger Action
   TriggerEventsAfterAnimation: Trigger events after animation
   TriggerName: Trigger Name
+  TriggerValue: Trigger Value
   UIDrawerNodeName: UIDrawer
   UINodeNodeName: UI Node
   UIPopupDatabase: UIPopup Database
@@ -587,6 +689,10 @@ MonoBehaviour:
   Up: Up
   UpdateContainer: Update Container
   UpdateEffect: Update Effect
+  TriggerActions: Trigger Actions
+  Is: is
+  And: and
+  To: to
   UpdateOnHide: Update on Hide
   UpdateOnShow: Update on Show
   UpdatePopupName: Update Popup Name
@@ -594,8 +700,10 @@ MonoBehaviour:
   UpdateValue: Update Value
   UseBackButtonDescription: Use the 'Back' button functionality
   UseCustomFromAndTo: Custom From & To
-  UseMultiplier: Use Multiplier
   UsefulLinks: Useful Links
+  UseLogarithmicConversion: Use Logarithmic Conversion
+  UseMultiplier: Use Multiplier
+  UseUnscaledTime: Use Unscaled Time
   Value: Value
   Version: Version
   Vibrato: Vibrato
@@ -609,6 +717,7 @@ MonoBehaviour:
   WaitNodeName: Wait
   Warning: Warning
   Weight: Weight
+  When: When
   WhenClosed: When Closed
   WhenUIDrawerIsClosed: When this UIDrawer is closed
   WhenUIPopupIsHiddenDisable: When this UIPopup is hidden disable the Container

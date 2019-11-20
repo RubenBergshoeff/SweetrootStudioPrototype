@@ -1,4 +1,4 @@
-// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -15,6 +15,7 @@ namespace Doozy.Editor
         AddToPopupQueue,
         AllowMultipleClicks,
         AllowSceneActivation,
+        Alpha,
         AnimateValue,
         Animation,
         AnimationCurve,
@@ -134,6 +135,7 @@ namespace Doozy.Editor
         Labels,
         Left,
         LeftBar,
+        ListenFor,
         ListenForAllGameEvents,
         ListenForAllUIButtons,
         ListenForAllUIDrawers,
@@ -273,6 +275,7 @@ namespace Doozy.Editor
         OpenSpeed,
         OutputAudioMixerGroup,
         Overlay,
+        OverrideAlpha,
         OverrideColor,
         OverrideTarget,
         OverrideTargetFsm,
@@ -319,6 +322,7 @@ namespace Doozy.Editor
         Sounds,
         SoundSource,
         SpatialBlend,
+        SpriteRenderer,
         StartDelay,
         StateAnimation,
         StopBehavior,
@@ -345,6 +349,9 @@ namespace Doozy.Editor
         TriggerMaxValue,
         TriggerMinValue,
         TriggerValue,
+        UIButtonTriggerAction,
+        UIDrawerTriggerAction,
+        UIViewTriggerAction,
         Up,
         UpdateHideProgressorOnShow,
         UpdateShowProgressorOnHide,

@@ -1,4 +1,4 @@
-// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -23,6 +23,7 @@ namespace Doozy.Engine.Utils
         private const int PROGRESS_MENU_ORDER = 13;
         private const int SCENE_MANAGEMENT_MENU_ORDER = 13;
         private const int SOUNDY_MENU_ORDER = 13;
+        private const int THEMES_MENU_ORDER = 13;
         private const int TOUCHY_MENU_ORDER = 13;
         private const int UI_MENU_ORDER = 2;
 
@@ -261,6 +262,12 @@ namespace Doozy.Engine.Utils
         public const string SwitchBackNode_Manual = "http://doozyui.com/nodes/#SwitchBackNode";
         public const string SwitchBackNode_YouTube = "https://www.youtube.com/watch?v=oKg1Im0_P54";
 
+        //Theme Node
+        public const string ThemeNode_CreateNodeMenu_Name = "Theme";
+        public const int    ThemeNode_CreateNodeMenu_Order = DefaultNodeOrder;
+        public const string ThemeNode_Manual = "http://doozyui.com/nodes/#ThemeNode";
+        public const string ThemeNode_YouTube = "https://youtu.be/kG6Oe6SXKdo";
+        
         //TimeScale Node
         public const string TimeScaleNode_CreateNodeMenu_Name = "System/TimeScale";
         public const int TimeScaleNode_CreateNodeMenu_Order = DefaultNodeOrder;
@@ -478,6 +485,135 @@ namespace Doozy.Engine.Utils
 
         #endregion
 
+        #region Themes
+        
+        //------------
+        //-- THEMES --
+        //------------
+        
+        private const string Themes_AddComponentMenu_Path = "Doozy/Themes/";
+        private const string Themes_MenuItem_Path = "GameObject/Doozy/Themes/";
+        
+        //Theme Manager
+        public const string ThemeManager_GameObject_Name = "Theme Manager";
+        public const string ThemeManager_AddComponentMenu_MenuName = Themes_AddComponentMenu_Path + ThemeManager_GameObject_Name;
+        public const int    ThemeManager_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string ThemeManager_MenuItem_ItemName = Themes_MenuItem_Path + ThemeManager_GameObject_Name;
+        public const int    ThemeManager_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string ThemeManager_Manual = "http://doozyui.com/theme-manager/";
+        public const string ThemeManager_YouTube = "https://youtu.be/h3Q8AvugeWc";
+        
+        #region Themes / Targets
+
+        //------------------------
+        //-- THEMES / TARGETS --
+        //------------------------
+
+        private const string Themes_Targets_AddComponentMenu_Path = Themes_AddComponentMenu_Path + "Targets/";
+        private const string Themes_Targets_MenuItem_Path = Themes_MenuItem_Path + "Targets/";
+
+        //ColorTargetImage
+        public const string ColorTargetImage_GameObject_Name = "Color Target Image";
+        public const string ColorTargetImage_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + ColorTargetImage_GameObject_Name;
+        public const int    ColorTargetImage_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string ColorTargetImage_MenuItem_ItemName = Themes_Targets_MenuItem_Path + ColorTargetImage_GameObject_Name;
+        public const int    ColorTargetImage_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string ColorTargetImage_Manual = "http://doozyui.com/color-target-image/";
+        public const string ColorTargetImage_YouTube = "https://youtu.be/RCo_mh15vDw";
+        
+        //ColorTargetParticleSystem
+        public const string ColorTargetParticleSystem_GameObject_Name = "Color Target ParticleSystem";
+        public const string ColorTargetParticleSystem_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + ColorTargetParticleSystem_GameObject_Name;
+        public const int    ColorTargetParticleSystem_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string ColorTargetParticleSystem_MenuItem_ItemName = Themes_Targets_MenuItem_Path + ColorTargetParticleSystem_GameObject_Name;
+        public const int    ColorTargetParticleSystem_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string ColorTargetParticleSystem_Manual = "http://doozyui.com/color-target-particlesystem/";
+        public const string ColorTargetParticleSystem_YouTube = "https://youtu.be/eePa65aT_4Q";
+        
+        //ColorTargetRawImage
+        public const string ColorTargetRawImage_GameObject_Name = "Color Target RawImage";
+        public const string ColorTargetRawImage_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + ColorTargetRawImage_GameObject_Name;
+        public const int    ColorTargetRawImage_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string ColorTargetRawImage_MenuItem_ItemName = Themes_Targets_MenuItem_Path + ColorTargetRawImage_GameObject_Name;
+        public const int    ColorTargetRawImage_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string ColorTargetRawImage_Manual = "http://doozyui.com/color-target-rawimage/";
+        public const string ColorTargetRawImage_YouTube = "https://youtu.be/5wgYhIY5hVQ";
+        
+        //ColorTargetSpriteRenderer
+        public const string ColorTargetSpriteRenderer_GameObject_Name = "Color Target SpriteRenderer";
+        public const string ColorTargetSpriteRenderer_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + ColorTargetSpriteRenderer_GameObject_Name;
+        public const int    ColorTargetSpriteRenderer_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string ColorTargetSpriteRenderer_MenuItem_ItemName = Themes_Targets_MenuItem_Path + ColorTargetSpriteRenderer_GameObject_Name;
+        public const int    ColorTargetSpriteRenderer_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string ColorTargetSpriteRenderer_Manual = "http://doozyui.com/color-target-spriterenderer/";
+        public const string ColorTargetSpriteRenderer_YouTube = "https://youtu.be/OJCM7nbIoQc";
+        
+        //ColorTargetText
+        public const string ColorTargetText_GameObject_Name = "Color Target Text";
+        public const string ColorTargetText_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + ColorTargetText_GameObject_Name;
+        public const int    ColorTargetText_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string ColorTargetText_MenuItem_ItemName = Themes_Targets_MenuItem_Path + ColorTargetText_GameObject_Name;
+        public const int    ColorTargetText_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string ColorTargetText_Manual = "http://doozyui.com/color-target-text/";
+        public const string ColorTargetText_YouTube = "https://youtu.be/5HLQnq013ls";
+        
+        //ColorTargetTextMeshPro
+        public const string ColorTargetTextMeshPro_GameObject_Name = "Color Target TextMeshPro";
+        public const string ColorTargetTextMeshPro_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + ColorTargetTextMeshPro_GameObject_Name;
+        public const int    ColorTargetTextMeshPro_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string ColorTargetTextMeshPro_MenuItem_ItemName = Themes_Targets_MenuItem_Path + ColorTargetTextMeshPro_GameObject_Name;
+        public const int    ColorTargetTextMeshPro_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string ColorTargetTextMeshPro_Manual = "http://doozyui.com/color-target-textmeshpro/";
+        public const string ColorTargetTextMeshPro_YouTube = "https://youtu.be/WEisFz1q0Uw";
+        
+        //FontTargetText
+        public const string FontTargetText_GameObject_Name = "Font Target Text";
+        public const string FontTargetText_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + FontTargetText_GameObject_Name;
+        public const int    FontTargetText_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string FontTargetText_MenuItem_ItemName = Themes_Targets_MenuItem_Path + FontTargetText_GameObject_Name;
+        public const int    FontTargetText_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string FontTargetText_Manual = "http://doozyui.com/font-target-text/";
+        public const string FontTargetText_YouTube = "https://youtu.be/Nwfj83VrMuM";
+        
+        //FontTargetTextMeshPro
+        public const string FontTargetTextMeshPro_GameObject_Name = "Font Target TextMeshPro";
+        public const string FontTargetTextMeshPro_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + FontTargetTextMeshPro_GameObject_Name;
+        public const int    FontTargetTextMeshPro_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string FontTargetTextMeshPro_MenuItem_ItemName = Themes_Targets_MenuItem_Path + FontTargetTextMeshPro_GameObject_Name;
+        public const int    FontTargetTextMeshPro_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string FontTargetTextMeshPro_Manual = "http://doozyui.com/font-target-textmeshpro/";
+        public const string FontTargetTextMeshPro_YouTube = "https://youtu.be/3YUXhF_eY8w";
+        
+        //SpriteTargetImage
+        public const string SpriteTargetImage_GameObject_Name = "Sprite Target Image";
+        public const string SpriteTargetImage_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + SpriteTargetImage_GameObject_Name;
+        public const int    SpriteTargetImage_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string SpriteTargetImage_MenuItem_ItemName = Themes_Targets_MenuItem_Path + SpriteTargetImage_GameObject_Name;
+        public const int    SpriteTargetImage_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string SpriteTargetImage_Manual = "http://doozyui.com/sprite-target-image/";
+        public const string SpriteTargetImage_YouTube = "https://youtu.be/dZlHNHfR0po";
+        
+        //SpriteTargetSpriteRenderer
+        public const string SpriteTargetSpriteRenderer_GameObject_Name = "Sprite Target SpriteRenderer";
+        public const string SpriteTargetSpriteRenderer_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + SpriteTargetSpriteRenderer_GameObject_Name;
+        public const int    SpriteTargetSpriteRenderer_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string SpriteTargetSpriteRenderer_MenuItem_ItemName = Themes_Targets_MenuItem_Path + SpriteTargetSpriteRenderer_GameObject_Name;
+        public const int    SpriteTargetSpriteRenderer_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string SpriteTargetSpriteRenderer_Manual = "http://doozyui.com/sprite-target-spriterenderer/";
+        public const string SpriteTargetSpriteRenderer_YouTube = "https://youtu.be/umoIvXb57Ys";
+        
+        //TextureTargetRawImage
+        public const string TextureTargetRawImage_GameObject_Name = "Texture Target RawImage";
+        public const string TextureTargetRawImage_AddComponentMenu_MenuName = Themes_Targets_AddComponentMenu_Path + TextureTargetRawImage_GameObject_Name;
+        public const int    TextureTargetRawImage_AddComponentMenu_Order = THEMES_MENU_ORDER;
+        public const string TextureTargetRawImage_MenuItem_ItemName = Themes_Targets_MenuItem_Path + TextureTargetRawImage_GameObject_Name;
+        public const int    TextureTargetRawImage_MenuItem_Priority = THEMES_MENU_ORDER;
+        public const string TextureTargetRawImage_Manual = "http://doozyui.com/texture-target-rawimage/";
+        public const string TextureTargetRawImage_YouTube = "https://youtu.be/ZJkcAoiCV4Q";
+        #endregion
+        
+        #endregion
+        
         #region Touchy
 
         //------------
@@ -587,6 +723,10 @@ namespace Doozy.Engine.Utils
         public const string DoozyWindow_MenuItem_ItemName = "Tools/Doozy/Control Panel" + DoozyWindow_OpenShortcut;
         public const string DoozyWindow_OpenShortcut = " &d"; // Keyboard Shortcut: Alt + D
         public const int DoozyWindow_MenuItem_Order = 0;
+        
+        public const string Refresh_MenuItem_ItemName = "Tools/Doozy/Refresh" + Refresh_OpenShortcut;
+        public const string Refresh_OpenShortcut = ""; // Keyboard Shortcut: Alt + D
+        public const int Refresh_MenuItem_Order = 1;
 
         //Nody Window (Nody)
         public const string NodyWindow_MenuItem_ItemName = "Tools/Doozy/Nody" + NodyWindow_OpenShortcut;

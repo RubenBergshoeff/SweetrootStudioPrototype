@@ -1,4 +1,4 @@
-// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -8,9 +8,9 @@ using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Settings;
 using Doozy.Engine.Utils;
 using UnityEngine;
+
 #if UNITY_EDITOR
 using UnityEditor;
-
 #endif
 
 // ReSharper disable ClassWithVirtualMembersNeverInherited.Global
@@ -141,6 +141,18 @@ namespace Doozy.Engine.Nody
             InitializeGraph();
 
             if (DontDestroyControllerOnLoad) DontDestroyOnLoad(gameObject);
+        }
+
+        private void OnEnable()
+        {
+            if (Graph == null) return;
+            Graph.Enabled = true;
+        }
+
+        private void OnDisable()
+        {
+            if (Graph == null) return;
+            Graph.Enabled = false;
         }
 
         public virtual void OnDestroy() { Database.Remove(this); }

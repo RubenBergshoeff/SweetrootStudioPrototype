@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+﻿// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -20,18 +20,20 @@ using UnityEditor.AnimatedValues;
 // ReSharper disable UnusedParameter.Global
 // ReSharper disable VirtualMemberNeverOverridden.Global
 
-namespace Doozy.Engine.Nody.Models {
+namespace Doozy.Engine.Nody.Models
+{
     /// <summary>
     ///     Base class for all nodes.
     /// </summary>
     [Serializable]
     [NodeMenu(MenuUtils.HiddenNode, MenuUtils.BaseNodeOrder)]
-    public class Node : ScriptableObject {
+    public class Node : ScriptableObject
+    {
         #region UNITY EDITOR ONLY
 
 #if UNITY_EDITOR
         private AnimBool m_showHover;
-        public AnimBool IsHovered { get { return m_showHover ?? (m_showHover = new AnimBool(false) { speed = 2f }); } }
+        public AnimBool IsHovered { get { return m_showHover ?? (m_showHover = new AnimBool(false) {speed = 2f}); } }
 
         public virtual bool HasErrors { get { return ErrorNodeNameIsEmpty || ErrorDuplicateNameFoundInGraph; } }
 
@@ -70,6 +72,7 @@ namespace Doozy.Engine.Nody.Models {
         [SerializeField] private string m_notes;
 
         [NonSerialized] private Graph m_activeGraph;
+        [NonSerialized] protected bool m_activated;
 
         #endregion
 
@@ -146,8 +149,11 @@ namespace Doozy.Engine.Nody.Models {
         #region Public Methods
 
         /// <summary> Activate is called when the parent graph is started and this is a global node </summary>
-        public virtual void Activate(Graph portalGraph) {
+        public virtual void Activate(Graph portalGraph)
+        {
+            if (m_activated) return;
             if (m_debugMode) DDebug.Log("Node '" + m_name + "': Activated");
+            m_activated = true;
         }
 
         /// <summary> [Editor Only] AddDefaultSockets is used when the node is created, only in the editor, and is intended to inject the default or custom sockets for this particular node type </summary>
@@ -157,7 +163,8 @@ namespace Doozy.Engine.Nody.Models {
         ///     [Editor Only] Checks if this node has any errors. Because each type of node can have different errors, this method is used to define said custom errors and reflect that in the NodeGraph (for the NodeGUI) and in the Inspector (for
         ///     the NodeEditor)
         /// </summary>
-        public virtual void CheckForErrors() {
+        public virtual void CheckForErrors()
+        {
 #if UNITY_EDITOR
             CheckThatNodeNameIsNotEmpty();
 #endif
@@ -165,7 +172,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> Used to create copies </summary>
         /// <param name="original"> Target node that provides the data that needs to be copied </param>
-        public virtual void CopyNode(Node original) {
+        public virtual void CopyNode(Node original)
+        {
             name = original.name;
             m_id = original.Id;
             m_graphId = original.GraphId;
@@ -192,8 +200,11 @@ namespace Doozy.Engine.Nody.Models {
         }
 
         /// <summary> Deactivate is called when the parent graph is stopped and this is a global node </summary>
-        public virtual void Deactivate() {
+        public virtual void Deactivate()
+        {
+            if (!m_activated) return;
             if (m_debugMode) DDebug.Log("Node '" + m_name + "': Deactivated ");
+            m_activated = false;
         }
 
         /// <summary> [Editor Only] Returns the default node height set in NodySettings </summary>
@@ -207,7 +218,8 @@ namespace Doozy.Engine.Nody.Models {
         /// <param name="pos"> Graph position </param>
         /// <param name="minimumInputSocketsCount"> Sets the minimum number of input sockets this node can have </param>
         /// <param name="minimumOutputSocketsCount"> Sets the minimum number of output sockets this node can have </param>
-        public virtual void InitNode(Graph graph, Vector2 pos, int minimumInputSocketsCount = 1, int minimumOutputSocketsCount = 1) {
+        public virtual void InitNode(Graph graph, Vector2 pos, int minimumInputSocketsCount = 1, int minimumOutputSocketsCount = 1)
+        {
             name = GetType().Name;
             GenerateNewId();
             m_graphId = graph.Id;
@@ -233,15 +245,16 @@ namespace Doozy.Engine.Nody.Models {
         /// <summary> OnEnterNode is called on the frame when this node becomes active just before any of the node's Update methods are called for the first time </summary>
         /// <param name="previousActiveNode"> The node that was active before this one </param>
         /// <param name="connection"> The connection that activated this node </param>
-        public virtual void OnEnter(Node previousActiveNode, Connection connection) {
-            LogController.LogAction(Instigator.System, "entered node " + Name);
+        public virtual void OnEnter(Node previousActiveNode, Connection connection)
+        {
             if (m_debugMode) DDebug.Log("Node '" + m_name + "': OnEnter");
         }
 
         /// <summary> OnExitNode is called just before this node becomes inactive </summary>
         /// <param name="nextActiveNode"> The node that will become active next</param>
         /// <param name="connection"> The connection that activates the next node </param>
-        public virtual void OnExit(Node nextActiveNode, Connection connection) {
+        public virtual void OnExit(Node nextActiveNode, Connection connection)
+        {
             if (m_debugMode) DDebug.Log("Node '" + m_name + "': OnExit");
             Ping = true;
             if (connection != null) connection.Ping = true;
@@ -313,12 +326,14 @@ namespace Doozy.Engine.Nody.Models {
         /// <param name="valueType"> The serialized class that holds additional socket values </param>
         /// <param name="canBeDeleted"> Determines if this socket is a special socket that cannot be deleted </param>
         /// <param name="canBeReordered"> Determines if this socket is a special socket that cannot be reordered </param>
-        private Socket AddSocket(string socketName, SocketDirection direction, ConnectionMode connectionMode, List<Vector2> connectionPoints, Type valueType, bool canBeDeleted, bool canBeReordered = true) {
+        private Socket AddSocket(string socketName, SocketDirection direction, ConnectionMode connectionMode, List<Vector2> connectionPoints, Type valueType, bool canBeDeleted, bool canBeReordered = true)
+        {
             if (connectionPoints == null) connectionPoints = new List<Vector2>(GetLeftAndRightConnectionPoints());
             if (connectionPoints.Count == 0) connectionPoints.AddRange(GetLeftAndRightConnectionPoints());
             var socketNames = new List<string>();
             int counter;
-            switch (direction) {
+            switch (direction)
+            {
                 case SocketDirection.Input:
                     foreach (Socket socket in InputSockets)
                         socketNames.Add(socket.SocketName);
@@ -343,7 +358,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> Returns TRUE if the target socket can be deleted, after checking is it is marked as 'deletable' and that by deleting it the node minimum sockets count does not go below the set threshold </summary>
         /// <param name="socket">Target socket</param>
-        public bool CanDeleteSocket(Socket socket) {
+        public bool CanDeleteSocket(Socket socket)
+        {
             if (!socket.CanBeDeleted) return false;                                        //if socket is market as cannot be deleted -> return false -> do not allow the dev to delete this socket
             if (socket.IsInput) return InputSockets.Count > m_minimumInputSocketsCount;    //if socket is input -> make sure the node has a minimum input sockets count before allowing deletion
             if (socket.IsOutput) return OutputSockets.Count > m_minimumOutputSocketsCount; //if socket is output -> make sure the node has a minimum output sockets count before allowing deletion
@@ -359,40 +375,47 @@ namespace Doozy.Engine.Nody.Models {
         public bool ContainsSocket(string socketId) { return GetSocketFromId(socketId) != null; }
 
         /// <summary> Removes all connections this node has. This means that all Input and Output connections will get removed </summary>
-        public void Disconnect() {
+        public void Disconnect()
+        {
             foreach (Socket inputSocket in InputSockets) inputSocket.Disconnect();
             foreach (Socket outputSocket in OutputSockets) outputSocket.Disconnect();
         }
 
         /// <summary> Removes all connections to and from the given node id. This means that both Input and Output connections to and from the target node id will get removed </summary>
         /// <param name="nodeId"> Target node id </param>
-        public void DisconnectFromNode(string nodeId) {
+        public void DisconnectFromNode(string nodeId)
+        {
             foreach (Socket inputSocket in InputSockets) inputSocket.DisconnectFromNode(nodeId);
             foreach (Socket outputSocket in OutputSockets) outputSocket.DisconnectFromNode(nodeId);
         }
 
         /// <summary> Generates a new unique node id for this node and returns the newly generated id value </summary>
-        public string GenerateNewId() {
+        public string GenerateNewId()
+        {
             m_id = Guid.NewGuid().ToString();
             return m_id;
         }
 
         /// <summary> [Editor Only] Returns the default center connection point position for a socket </summary>
-        public Vector2 GetCenterConnectionPointPosition() {
+        public Vector2 GetCenterConnectionPointPosition()
+        {
             return new Vector2(GetWidth() / 2 - NodySettings.Instance.ConnectionPointWidth / 2,
                                NodySettings.Instance.SocketHeight / 2 - NodySettings.Instance.ConnectionPointHeight / 2);
         }
 
         /// <summary> Returns a connection, from this node, with the matching connection id. Returns null if no connection with the given id is found </summary>
         /// <param name="connectionId"> Target connection id </param>
-        public Connection GetConnection(string connectionId) {
+        public Connection GetConnection(string connectionId)
+        {
             Connection connection;
-            foreach (Socket inputSocket in InputSockets) {
+            foreach (Socket inputSocket in InputSockets)
+            {
                 connection = inputSocket.GetConnection(connectionId);
                 if (connection != null) return connection;
             }
 
-            foreach (Socket outputSocket in OutputSockets) {
+            foreach (Socket outputSocket in OutputSockets)
+            {
                 connection = outputSocket.GetConnection(connectionId);
                 if (connection != null) return connection;
             }
@@ -401,9 +424,11 @@ namespace Doozy.Engine.Nody.Models {
         }
 
         /// <summary> Returns a id list of all the input nodes connected to this node via its output sockets </summary>
-        public List<string> GetConnectedInputNodesIds() {
+        public List<string> GetConnectedInputNodesIds()
+        {
             var list = new List<string>();
-            foreach (Socket outputSocket in OutputSockets) {
+            foreach (Socket outputSocket in OutputSockets)
+            {
                 if (!outputSocket.IsConnected) continue;
                 list.AddRange(outputSocket.GetConnectedNodesIds());
             }
@@ -412,9 +437,11 @@ namespace Doozy.Engine.Nody.Models {
         }
 
         /// <summary> Returns a id list of all the input sockets connected to this node via its output sockets </summary>
-        public List<string> GetConnectedInputSocketsIds() {
+        public List<string> GetConnectedInputSocketsIds()
+        {
             var list = new List<string>();
-            foreach (Socket outputSocket in OutputSockets) {
+            foreach (Socket outputSocket in OutputSockets)
+            {
                 if (!outputSocket.IsConnected) continue;
                 list.AddRange(outputSocket.GetConnectedSocketIds());
             }
@@ -423,9 +450,11 @@ namespace Doozy.Engine.Nody.Models {
         }
 
         /// <summary> Returns a id list of all the output nodes connected to this node via its input sockets </summary>
-        public List<string> GetConnectedOutputNodesIds() {
+        public List<string> GetConnectedOutputNodesIds()
+        {
             var list = new List<string>();
-            foreach (Socket inputSocket in InputSockets) {
+            foreach (Socket inputSocket in InputSockets)
+            {
                 if (!inputSocket.IsConnected) continue;
                 list.AddRange(inputSocket.GetConnectedNodesIds());
             }
@@ -434,9 +463,11 @@ namespace Doozy.Engine.Nody.Models {
         }
 
         /// <summary> Returns a id list of all the output sockets connected to this node via its input sockets </summary>
-        public List<string> GetConnectedOutputSocketsIds() {
+        public List<string> GetConnectedOutputSocketsIds()
+        {
             var list = new List<string>();
-            foreach (Socket inputSocket in InputSockets) {
+            foreach (Socket inputSocket in InputSockets)
+            {
                 if (!inputSocket.IsConnected) continue;
                 list.AddRange(inputSocket.GetConnectedSocketIds());
             }
@@ -455,7 +486,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> Returns an input socket, of this node, with the matching socket id. Returns null if no socket with the given id is found </summary>
         /// <param name="socketId"> Target input socket id </param>
-        public Socket GetInputSocketFromId(string socketId) {
+        public Socket GetInputSocketFromId(string socketId)
+        {
             foreach (Socket socket in InputSockets)
                 if (socket.Id == socketId)
                     return socket;
@@ -465,7 +497,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> Returns an input socket, of this node, with the matching socket name. Returns null if no socket with the given name is found </summary>
         /// <param name="socketName"> Target input socket id </param>
-        public Socket GetInputSocketFromName(string socketName) {
+        public Socket GetInputSocketFromName(string socketName)
+        {
             foreach (Socket socket in InputSockets)
                 if (socket.SocketName == socketName)
                     return socket;
@@ -474,23 +507,25 @@ namespace Doozy.Engine.Nody.Models {
         }
 
         /// <summary> [Editor Only] Returns a list of three connection points positions to the left of, the center of and right of the socket </summary>
-        private List<Vector2> GetLeftAndCenterAndRightConnectionPoints() { return new List<Vector2> { GetLeftConnectionPointPosition(), GetCenterConnectionPointPosition(), GetRightConnectionPointPosition() }; }
+        private List<Vector2> GetLeftAndCenterAndRightConnectionPoints() { return new List<Vector2> {GetLeftConnectionPointPosition(), GetCenterConnectionPointPosition(), GetRightConnectionPointPosition()}; }
 
         /// <summary> [Editor Only] Returns the default left connection point position for a socket </summary>
-        public Vector2 GetLeftConnectionPointPosition() {
+        public Vector2 GetLeftConnectionPointPosition()
+        {
             return new Vector2(NodySettings.Instance.ConnectionPointOffsetFromLeftMargin,
                                NodySettings.Instance.SocketHeight / 2 - NodySettings.Instance.ConnectionPointHeight / 2);
         }
 
         /// <summary> [Editor Only] Returns a list of two connection points positions to the left of and the right of the socket </summary>
-        public List<Vector2> GetLeftAndRightConnectionPoints() { return new List<Vector2> { GetLeftConnectionPointPosition(), GetRightConnectionPointPosition() }; }
+        public List<Vector2> GetLeftAndRightConnectionPoints() { return new List<Vector2> {GetLeftConnectionPointPosition(), GetRightConnectionPointPosition()}; }
 
         /// <summary> [Editor Only] Returns the position of this node </summary>
         public Vector2 GetPosition() { return new Vector2(m_x, m_y); }
 
         /// <summary> Returns an output socket, of this node, with the matching socket id. Returns null if no socket with the given id is found </summary>
         /// <param name="socketId"> Target output socket id </param>
-        public Socket GetOutputSocketFromId(string socketId) {
+        public Socket GetOutputSocketFromId(string socketId)
+        {
             foreach (Socket socket in OutputSockets)
                 if (socket.Id == socketId)
                     return socket;
@@ -500,7 +535,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> Returns an output socket, of this node, with the matching socket name. Returns null if no socket with the given name is found </summary>
         /// <param name="socketName"> Target output socket id </param>
-        public Socket GetOutputSocketFromName(string socketName) {
+        public Socket GetOutputSocketFromName(string socketName)
+        {
             foreach (Socket socket in OutputSockets)
                 if (socket.SocketName == socketName)
                     return socket;
@@ -512,7 +548,8 @@ namespace Doozy.Engine.Nody.Models {
         public Rect GetRect() { return new Rect(m_x, m_y, GetWidth(), m_height); }
 
         /// <summary> [Editor Only] Returns the default right connection point position for a socket </summary>
-        public Vector2 GetRightConnectionPointPosition() {
+        public Vector2 GetRightConnectionPointPosition()
+        {
             return new Vector2(GetWidth() + NodySettings.Instance.ConnectionPointOffsetFromRightMargin - NodySettings.Instance.ConnectionPointWidth,
                                NodySettings.Instance.SocketHeight / 2 - NodySettings.Instance.ConnectionPointHeight / 2);
         }
@@ -525,7 +562,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> Returns a socket, of this node, with the matching socket id. Returns null if no socket with the given id is found </summary>
         /// <param name="socketId"> Target socket id </param>
-        public Socket GetSocketFromId(string socketId) {
+        public Socket GetSocketFromId(string socketId)
+        {
             foreach (Socket socket in InputSockets)
                 if (socket.Id == socketId)
                     return socket;
@@ -539,7 +577,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> Returns a socket, of this node, with the matching socket name. Returns null if no socket with the given name is found </summary>
         /// <param name="socketName"> Target socket name </param>
-        public Socket GetSocketFromName(string socketName) {
+        public Socket GetSocketFromName(string socketName)
+        {
             foreach (Socket socket in InputSockets)
                 if (socket.SocketName == socketName)
                     return socket;
@@ -558,7 +597,8 @@ namespace Doozy.Engine.Nody.Models {
         public float GetY() { return m_y; }
 
         /// <summary> Returns TRUE if at least one socket is connected </summary>
-        public bool IsConnected() {
+        public bool IsConnected()
+        {
             foreach (Socket inputSocket in InputSockets)
                 if (inputSocket.IsConnected)
                     return true;
@@ -571,7 +611,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> Returns TRUE if this node is connected to the target nodeId </summary>
         /// <param name="nodeId"> Target node id</param>
-        public bool IsConnectedToNode(string nodeId) {
+        public bool IsConnectedToNode(string nodeId)
+        {
             foreach (Socket inputSocket in InputSockets)
                 if (inputSocket.IsConnectedToNode(nodeId))
                     return true;
@@ -584,7 +625,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> Returns TRUE if one of this node's sockets is connected to the target socket </summary>
         /// <param name="socketId"> Target socket id </param>
-        public bool IsConnectedToSocket(string socketId) {
+        public bool IsConnectedToSocket(string socketId)
+        {
             foreach (Socket inputSocket in InputSockets)
                 if (inputSocket.IsConnectedToSocket(socketId))
                     return true;
@@ -597,7 +639,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> Removes the connection with the given id. If a connection with the given id does not exist on this socket, nothing will happen </summary>
         /// <param name="connectionId"> Target connection id </param>
-        public void RemoveConnection(string connectionId) {
+        public void RemoveConnection(string connectionId)
+        {
             foreach (Socket inputSocket in InputSockets) inputSocket.RemoveConnection(connectionId);
             foreach (Socket outputSocket in OutputSockets) outputSocket.RemoveConnection(connectionId);
         }
@@ -624,7 +667,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> [Editor Only] Set the position of this node's Rect </summary>
         /// <param name="position"> The new position value </param>
-        public void SetPosition(Vector2 position) {
+        public void SetPosition(Vector2 position)
+        {
             m_x = position.x;
             m_y = position.y;
         }
@@ -632,14 +676,16 @@ namespace Doozy.Engine.Nody.Models {
         /// <summary> [Editor Only] Set the position of this node's Rect </summary>
         /// <param name="x"> The new x coordinate value </param>
         /// <param name="y"> The new y coordinate value </param>
-        public void SetPosition(float x, float y) {
+        public void SetPosition(float x, float y)
+        {
             m_x = x;
             m_y = y;
         }
 
         /// <summary> [Editor Only] Set the Rect values for this node </summary>
         /// <param name="rect"> The new rect values </param>
-        public void SetRect(Rect rect) {
+        public void SetRect(Rect rect)
+        {
             m_x = rect.x;
             m_y = rect.y;
             m_width = rect.width;
@@ -649,7 +695,8 @@ namespace Doozy.Engine.Nody.Models {
         /// <summary> [Editor Only] Set the Rect values for this node </summary>
         /// <param name="position"> The new position value </param>
         /// <param name="size"> The new size value </param>
-        public void SetRect(Vector2 position, Vector2 size) {
+        public void SetRect(Vector2 position, Vector2 size)
+        {
             m_x = position.x;
             m_y = position.y;
             m_width = size.x;
@@ -661,7 +708,8 @@ namespace Doozy.Engine.Nody.Models {
         /// <param name="y"> The new y coordinate value </param>
         /// <param name="width"> The new width value </param>
         /// <param name="height"> The new height value </param>
-        public void SetRect(float x, float y, float width, float height) {
+        public void SetRect(float x, float y, float width, float height)
+        {
             m_x = x;
             m_x = y;
             m_width = width;
@@ -670,7 +718,8 @@ namespace Doozy.Engine.Nody.Models {
 
         /// <summary> [Editor Only] Set the size of this node's Rect </summary>
         /// <param name="size"> The new node size (x is width, y is height) </param>
-        public void SetSize(Vector2 size) {
+        public void SetSize(Vector2 size)
+        {
             m_width = size.x;
             m_height = size.y;
         }
@@ -678,7 +727,8 @@ namespace Doozy.Engine.Nody.Models {
         /// <summary> [Editor Only] Set the size of this node's Rect </summary>
         /// <param name="width"> The new width value </param>
         /// <param name="height"> The new height value </param>
-        public void SetSize(float width, float height) {
+        public void SetSize(float width, float height)
+        {
             m_width = width;
             m_height = height;
         }
@@ -703,7 +753,8 @@ namespace Doozy.Engine.Nody.Models {
 
         #region Private Methods
 
-        private void CheckThatNodeNameIsNotEmpty() {
+        private void CheckThatNodeNameIsNotEmpty()
+        {
 #if UNITY_EDITOR
             ErrorNodeNameIsEmpty = false;
             if (AllowEmptyNodeName) return;

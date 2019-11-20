@@ -1,4 +1,4 @@
-// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -605,6 +605,27 @@ namespace Doozy.Engine.UI
             m_hideCoroutine = StartCoroutine(HideEnumerator(instantAction));
         }
 
+        /// <summary> Hide this UIPopup instantly without triggering any of its actions </summary>
+        public void InstantHide()
+        {
+            StopShow();
+            StopHide();
+            
+            Container.ResetToStartValues();
+            if (Overlay.Enabled) Overlay.ResetToStartValues();
+            ResetToStartValues();
+            
+            Container.Disable(); //disable the gameobject, canvas and graphic raycaster - if their disable options are set to true
+            Overlay.Disable();   //disable the gameobject, canvas and graphic raycaster - if their disable options are set to true
+            
+            Visibility = VisibilityState.NotVisible; //update the visibility state
+            if (VisiblePopups.Contains(this)) VisiblePopups.Remove(this);
+            
+            RemoveHiddenFromVisiblePopups();
+            
+            if (!m_initialized) m_initialized = true;
+        }
+
         /// <summary> Reset this UIPopup's DisplayTarget to the PopupCanvas (the default canvas used for all UIPopups) </summary>
         /// <param name="reparentImmediately"> Should this UIPopup also get re-parented to the PopupCanvas? </param>
         public void ResetTargetCanvasToPopupCanvas(bool reparentImmediately = true)
@@ -678,7 +699,8 @@ namespace Doozy.Engine.UI
             m_childUIButtons = GetComponentsInChildren<UIButton>();
             UpdateChildUIButtonsStartValues();
 
-            Hide(true);
+            InstantHide();
+//            Hide(true);
 
             if (DebugComponent) DDebug.Log("Initialize", this);
         }
@@ -699,7 +721,6 @@ namespace Doozy.Engine.UI
             Visibility = VisibilityState.NotVisible;
             UIAnimator.StopAnimations(RectTransform, AnimationType.Hide);
             if (Settings.AutoDisableUIInteractions) EnableUIInteractions();
-            if (!m_initialized) m_initialized = true;
         }
 
         private void StopShow()
@@ -788,10 +809,10 @@ namespace Doozy.Engine.UI
 
             Visibility = VisibilityState.Showing; //update the visibility state
             if (!VisiblePopups.Contains(this)) VisiblePopups.Add(this);
-            
-            if(instantAction) ShowBehavior.OnStart.Invoke(gameObject, false, false);
+
+            if (instantAction) ShowBehavior.OnStart.Invoke(gameObject, false, false);
             NotifySystemOfTriggeredBehavior(AnimationType.Show); //send the global events
-            
+
             if (HideProgressor != null) HideProgressor.SetValue(0f);
 
             float startTime = Time.realtimeSinceStartup;
@@ -806,13 +827,13 @@ namespace Doozy.Engine.UI
                 while (elapsedTime <= totalDuration) //wait for seconds realtime (ignore Unity's Time.Timescale)
                 {
                     elapsedTime = Time.realtimeSinceStartup - startTime;
-                    
+
                     if (!invokedOnStart && elapsedTime > startDelay)
                     {
                         ShowBehavior.OnStart.Invoke(gameObject);
                         invokedOnStart = true;
                     }
-                    
+
                     VisibilityProgress = elapsedTime / totalDuration;
                     yield return null;
                 }
@@ -880,9 +901,12 @@ namespace Doozy.Engine.UI
 
             StartCoroutine(ExecuteHideDeselectButtonEnumerator());
             Visibility = VisibilityState.Hiding; //update the visibility state
-            
-            if (instantAction) HideBehavior.OnStart.Invoke(gameObject, false, false);
-            NotifySystemOfTriggeredBehavior(AnimationType.Hide); //send the global events
+
+            if (m_initialized)
+            {
+                if (instantAction) HideBehavior.OnStart.Invoke(gameObject, false, false);
+                NotifySystemOfTriggeredBehavior(AnimationType.Hide); //send the global events
+            }
 
             float startTime = Time.realtimeSinceStartup;
             if (!instantAction) //wait for the animation to finish
@@ -896,13 +920,13 @@ namespace Doozy.Engine.UI
                 while (elapsedTime <= totalDuration) //wait for seconds realtime (ignore Unity's Time.Timescale)
                 {
                     elapsedTime = Time.realtimeSinceStartup - startTime;
-                    
+
                     if (!invokedOnStart && elapsedTime > startDelay)
                     {
                         HideBehavior.OnStart.Invoke(gameObject);
                         invokedOnStart = true;
                     }
-                    
+
                     VisibilityProgress = 1 - elapsedTime / totalDuration; //operation is reversed in hide than in show
                     yield return null;
                 }
@@ -910,7 +934,11 @@ namespace Doozy.Engine.UI
                 yield return new WaitForSecondsRealtime(UIPopupSettings.DISABLE_WHEN_HIDDEN_TIME_BUFFER); //wait for seconds realtime (ignore Unity's Time.Timescale)
             }
 
-            HideBehavior.OnFinished.Invoke(gameObject, !instantAction, !instantAction);
+            if (m_initialized)
+            {
+                HideBehavior.OnFinished.Invoke(gameObject, !instantAction, !instantAction);
+            }
+
             Visibility = VisibilityState.NotVisible; //update the visibility state
             if (VisiblePopups.Contains(this)) VisiblePopups.Remove(this);
 

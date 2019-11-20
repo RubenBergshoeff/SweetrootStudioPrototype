@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+﻿// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -30,6 +30,46 @@ namespace Doozy.Engine.Soundy
 
         private static bool DebugComponent { get { return DoozySettings.Instance.DebugSoundyController; } }
 
+        /// <summary> Global variable that keeps track if all controllers are paused or not </summary>
+        private static bool s_pauseAllControllers;
+        
+        /// <summary> Global toggle to pause / unpause all controllers </summary>
+        public static bool PauseAllControllers
+        {
+            get
+            {
+                return s_pauseAllControllers;
+            }
+            set
+            {
+                s_pauseAllControllers = value;
+                if (s_pauseAllControllers) return;
+                RemoveNullControllersFromDatabase();
+                foreach (SoundyController controller in s_database)
+                    controller.Unpause();
+            }
+        }
+
+        /// <summary> Global variable that keeps track if all controllers are muted or not </summary>
+        private static bool s_muteAllControllers;
+        
+        /// <summary> Global toggle to mute / unmute all controllers </summary>
+        public static bool MuteAllControllers
+        {
+            get
+            {
+                return s_muteAllControllers;
+            }
+            set
+            {
+                s_muteAllControllers = value;
+                if (s_muteAllControllers) return;
+                RemoveNullControllersFromDatabase();
+                foreach (SoundyController controller in s_database)
+                    controller.Unmute();
+            }
+        }
+
         #endregion
 
         #region Properties
@@ -44,10 +84,10 @@ namespace Doozy.Engine.Soundy
         public float PlayProgress { get { return m_playProgress; } private set { m_playProgress = value; } }
 
         /// <summary> Keeps track if this controller is paused or not </summary>
-        public bool IsPaused { get { return m_isPaused; } private set { m_isPaused = value; } }
+        public bool IsPaused { get { return m_isPaused || s_pauseAllControllers; } private set { m_isPaused = value; } }
 
         /// <summary> Keeps track if this controller is muted or not </summary>
-        public bool IsMuted { get { return m_isMuted; } private set { m_isMuted = value; } }
+        public bool IsMuted { get { return m_isMuted || MuteAllControllers; } private set { m_isMuted = value; } }
 
         /// <summary> Keeps track of when was the last time this controller was used (info needed for the dynamic pooling system) </summary>
         public float LastPlayedTime { get { return m_lastPlayedTime; } private set { m_lastPlayedTime = value; } }
@@ -82,12 +122,14 @@ namespace Doozy.Engine.Soundy
 
         /// <summary> Internal variable that keeps track of when was the last time this controller was used </summary>
         private float m_lastPlayedTime;
- 
+
         /// <summary> Internal variable that keeps track if the Play() method has been called on this controller. It's set to FALSE when the Stop() method is called. </summary>
         private bool m_isPlaying;
-        
+
         /// <summary> Internal variable used to detect then Unity Pauses this controller's AudioSource (this happens on app switch for example and Unity does not give any info about this happening) </summary>
         private bool m_autoPaused;
+
+        private bool m_muted, m_paused;
 
         #endregion
 
@@ -107,6 +149,21 @@ namespace Doozy.Engine.Soundy
 
         private void Update()
         {
+            if (IsMuted || IsPaused || AudioSource.isPlaying) UpdateLastPlayedTime();
+            
+            if (IsMuted != m_muted)
+            {
+                AudioSource.mute = IsMuted;
+                m_muted = IsMuted;
+            }
+
+            if (IsPaused != m_paused)
+            {
+                if (IsPaused && AudioSource.isPlaying) AudioSource.Pause();
+                if (!IsPaused) AudioSource.UnPause();
+                m_paused = IsPaused;
+            }
+
             UpdatePlayProgress();
 
             if (PlayProgress >= 1f) //check if the sound finished playing
@@ -119,7 +176,7 @@ namespace Doozy.Engine.Soundy
 //            if (DebugComponent) DDebug.Log("InUse: " + InUse + " / AudioSource.isPlaying: " + AudioSource.isPlaying + " / IsPaused: " + IsPaused + " / IsMuted: " + IsMuted);
 
             m_autoPaused = InUse && m_isPlaying && !AudioSource.isPlaying && PlayProgress > 0;
-            
+
             if (InUse && !m_autoPaused && !AudioSource.isPlaying && !IsPaused && !IsMuted) //second check if the sound finished playing
             {
                 Stop();
@@ -144,16 +201,13 @@ namespace Doozy.Engine.Soundy
         /// <summary> Mute the target AudioSource </summary>
         public void Mute()
         {
-            if (IsMuted) return;
             IsMuted = true;
-            AudioSource.mute = true;
             if (DebugComponent) DDebug.Log("Mute '" + name + "' SoundyController", this);
         }
 
         /// <summary> Pause the target AudioSource </summary>
         public void Pause()
         {
-            AudioSource.Pause();
             IsPaused = true;
             if (DebugComponent) DDebug.Log("Pause '" + name + "' SoundyController", this);
         }
@@ -220,17 +274,13 @@ namespace Doozy.Engine.Soundy
         /// <summary> Unmute the target AudioSource if it was previously muted </summary>
         public void Unmute()
         {
-            if (!IsMuted) return;
             IsMuted = false;
-            AudioSource.mute = false;
             if (DebugComponent) DDebug.Log("Unmute '" + name + "' SoundyController", this);
         }
 
         /// <summary> Unpause the target AudioSource if it was previously paused </summary>
         public void Unpause()
         {
-            if (!IsPaused) return;
-            AudioSource.UnPause();
             IsPaused = false;
             if (DebugComponent) DDebug.Log("Unpause '" + name + "' SoundyController", this);
         }
@@ -288,8 +338,7 @@ namespace Doozy.Engine.Soundy
         {
             if (DebugComponent) DDebug.Log("Mute All");
             RemoveNullControllersFromDatabase();
-            foreach (SoundyController controller in s_database)
-                controller.Mute();
+            MuteAllControllers = true;
         }
 
         /// <summary> Pause all the controllers that are currently playing </summary>
@@ -297,12 +346,7 @@ namespace Doozy.Engine.Soundy
         {
             if (DebugComponent) DDebug.Log("Pause All");
             RemoveNullControllersFromDatabase();
-            foreach (SoundyController controller in s_database)
-            {
-                if (!controller.InUse) continue;
-                if (!controller.AudioSource.isPlaying) return;
-                controller.Pause();
-            }
+            PauseAllControllers = true;
         }
 
         /// <summary> Remove any null controller references from the database </summary>
@@ -325,17 +369,14 @@ namespace Doozy.Engine.Soundy
         {
             if (DebugComponent) DDebug.Log("Unmute All");
             RemoveNullControllersFromDatabase();
-            foreach (SoundyController controller in s_database)
-                controller.Unmute();
+            MuteAllControllers = false;
         }
 
         /// <summary> Unpause all the controllers that were previously paused </summary>
         public static void UnpauseAll()
         {
             if (DebugComponent) DDebug.Log("Unpause All");
-            RemoveNullControllersFromDatabase();
-            foreach (SoundyController controller in s_database)
-                controller.Unpause();
+            PauseAllControllers = false;
         }
 
         #endregion

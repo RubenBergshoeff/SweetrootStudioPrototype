@@ -1,4 +1,4 @@
-// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -12,6 +12,14 @@ namespace Doozy.Engine.Utils
         private const int MANAGER = -200;
         
         public const int BACK_BUTTON = MANAGER;
+        public const int COLOR_TARGET_IMAGE = COMPONENT;
+        public const int COLOR_TARGET_PARTICLE_SYSTEM = COMPONENT;
+        public const int COLOR_TARGET_RAW_IMAGE = COMPONENT;
+        public const int COLOR_TARGET_SPRITE_RENDERER = COMPONENT;
+        public const int COLOR_TARGET_TEXT = COMPONENT;
+        public const int COLOR_TARGET_TEXTMESHPRO = COMPONENT;
+        public const int FONT_TARGET_TEXT = COMPONENT;
+        public const int FONT_TARGET_TEXTMESHPRO = COMPONENT;
         public const int GAME_EVENT_LISTENER = COMPONENT;
         public const int GAME_EVENT_MANAGER = MANAGER;
         public const int GESTURE_LISTENER = COMPONENT;
@@ -33,6 +41,10 @@ namespace Doozy.Engine.Utils
         public const int SOUNDY_CONTROLLER = COMPONENT;
         public const int SOUNDY_MANAGER = MANAGER;
         public const int SOUNDY_POOLER = COMPONENT;
+        public const int SPRITE_TARGET_IMAGE = COMPONENT;
+        public const int SPRITE_TARGET_SPRITE_RENDERER = COMPONENT;
+        public const int TEXTURE_TARGET_RAW_IMAGE = COMPONENT;
+        public const int THEME_MANAGER = MANAGER;
         public const int TOUCH_DETECTOR = MANAGER;
         public const int UIBUTTON = COMPONENT;
         public const int UIBUTTON_LISTENER = COMPONENT;

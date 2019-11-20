@@ -1,4 +1,4 @@
-// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -124,13 +124,19 @@ namespace Doozy.Engine.Progress
 
         #region Private Methods
 
-        private void Reset() { Text = GetComponent<Text>(); }
+        private void Reset() { UpdateReference(); }
 
         private void Init()
         {
-            if (Text == null) Reset();
+            UpdateReference();
             if (m_stringBuilder == null) m_stringBuilder = new StringBuilder();
             m_initialized = true;
+        }
+
+        private void UpdateReference()
+        {
+            if (Text == null)
+                Text = GetComponent<Text>();
         }
 
         #endregion

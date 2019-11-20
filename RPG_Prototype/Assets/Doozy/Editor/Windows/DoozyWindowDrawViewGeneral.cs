@@ -1,4 +1,4 @@
-// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -26,7 +26,7 @@ namespace Doozy.Editor.Windows
 
         private static bool s_needsToUpdateScriptingDefineSymbols;
 
-        private float GeneralColumnWidth { get { return (ViewWidth - ViewContentLeftHorizontalPadding * 2 - ViewContentRightHorizontalPadding * 2 - DynamicViewVerticalSpace(2)) / 2; } }
+        private float GeneralColumnWidth { get { return (FullViewWidth - ViewContentLeftHorizontalPadding * 2 - ViewContentRightHorizontalPadding * 2 - DynamicViewVerticalSpace(2)) / 2; } }
 
         private void DrawViewGeneral()
         {
@@ -308,7 +308,7 @@ namespace Doozy.Editor.Windows
             DGUI.WindowUtils.DrawIconTitle(Styles.StyleName.IconFaNewspaper, UILabels.News, UILabels.NoteworthyInformation, DGUI.Colors.LightOrDarkColorName);
             DrawDynamicViewVerticalSpace(0.5f);
 
-            GUILayout.BeginHorizontal(GUILayout.Width(ViewWidth - ViewContentLeftHorizontalPadding * 2 - ViewContentRightHorizontalPadding * 2));
+            GUILayout.BeginHorizontal(GUILayout.Width(FullViewWidth - ViewContentLeftHorizontalPadding * 2 - ViewContentRightHorizontalPadding * 2));
             {
                 GUILayout.Space(40 * CurrentViewExpanded.faded);
                 GUILayout.BeginVertical();

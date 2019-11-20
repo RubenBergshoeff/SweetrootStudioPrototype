@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+﻿// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -35,6 +35,7 @@ namespace Doozy.Engine.Utils
         public string Actions = "Actions";
         public string ActivateLoadedScenesNodeName = "Activate Loaded Scenes";
         public string ActiveNode = "Active Node";
+        public string ActiveVariant = "Active Variant";
         public string ActiveSceneChange = "Active Scene Change";
         public string AddCategory = "Add Category";
         public string AddItem = "Add Item";
@@ -63,13 +64,20 @@ namespace Doozy.Engine.Utils
         public string AnyGameEvent = "Any GameEvent";
         public string AnyGameEventWillTriggerThisListener = "Any game event will trigger this listener";
         public string AnyScene = "Any Scene";
+        public string AnyUIButton = "Any UIButton";
+        public string AnyUIDrawer = "Any UIDrawer";
+        public string AnyUIView = "Any UIView";
         public string AnyUIButtonWillTriggerThisListener = "Any UIButton will trigger this listener";
         public string AnyUIDrawerWillTriggerThisListener = "Any UIDrawer will trigger this listener";
         public string AnyUIViewWillTriggerThisListener = "Any UIView will trigger this listener";
+        public string AutoSave = "Auto Save";
+        public string AutoSaveDisabled = "Auto Save Disabled";
+        public string AutoSaveEnabled = "Auto Save Enabled";
         public string ApplicationQuit = "Application Quit";
         public string AreYouSureConvertToGraph = "Are you sure you want to convert this SubGraph into a Graph?";
         public string AreYouSureConvertToSubGraph = "Are you sure you want to convert this Graph into a SubGraph";
         public string AreYouSureYouWantToDeleteDatabase = "Are you sure you want to delete the database?";
+        public string AreYouSureYouWantToDeleteTheme = "Are you sure you want to delete the theme?";
         public string AreYouSureYouWantToDeletePopupReference = "Are you sure you want to delete the popup reference?";
         public string AreYouSureYouWantToRemoveCategory = "Are you sure you want to remove the category?";
         public string AreYouSureYouWantToRemoveTheEntry = "Are you sure you want to remove the database entry?";
@@ -167,6 +175,7 @@ namespace Doozy.Engine.Utils
         public string Cut = "Cut";
         public string Database = "Database";
         public string DatabaseAlreadyExists = "Database name already exists. Enter a new name and try again.";
+        public string ThemeNameAlreadyExists = "Theme name already exists. Enter a new name and try again.";
         public string DatabaseHasBeenReset = "Database has been reset";
         public string DatabaseIsEmpty = "Database is empty...";
         public string DatabaseName = "Database Name";
@@ -181,6 +190,7 @@ namespace Doozy.Engine.Utils
         public string DefaultZoomDescription = "Default zoom value used when creating a new graph";
         public string Delete = "Delete";
         public string DeleteDatabase = "Delete Database";
+        public string DeleteTheme = "Delete Theme";
         public string DeletedPopupReference = "Deleted Popup Reference";
         public string DeletePopupReference = "Delete Popup Reference";
         public string DeletePreset = "Delete Preset";
@@ -214,6 +224,7 @@ namespace Doozy.Engine.Utils
         public string Duration = "Duration";
         public string Ease = "Ease";
         public string EaseType = "Ease NamesDatabaseType";
+        public string EditMode = "Edit Mode";
         public string Effect = "Effect";
         public string Elasticity = "Elasticity";
         public string Email = "Email";
@@ -225,6 +236,7 @@ namespace Doozy.Engine.Utils
         public string EnableSupportForMasterAudio = "Enable support for MasterAudio in the Control Panel";
         public string EnterCategoryName = "Enter a category name";
         public string EnterDatabaseName = "Enter a database name";
+        public string EnterThemeName = "Enter a theme name";
         public string EnterGameEventToListenFor = "Enter a game event to listen for";
         public string EnterNodeName = "Enter";
         public string Error = "Error";
@@ -246,6 +258,8 @@ namespace Doozy.Engine.Utils
         public string FillMethod = "Fill Method";
         public string FillOrigin = "Fill Origin";
         public string FixedSize = "FixedSize";
+        public string Font = "Font";
+        public string FontAsset = "Font Asset";
         public string FsmName = "FSM Name";
         public string Functionality = "Functionality";
         public string FunctionalityDescription = "Toggle system capabilities";
@@ -306,6 +320,7 @@ namespace Doozy.Engine.Utils
         public string Language = "Language";
         public string LastModified = "Last Modified";
         public string Left = "Left";
+        public string ListenFor = "Listen for";
         public string ListenForAllGameEvents = "Listen for all GameEvents";
         public string ListenForAllUIButtons = "Listen for all UIButtons";
         public string ListenForAllUIDrawers = "Listen for all UIDrawers";
@@ -352,12 +367,20 @@ namespace Doozy.Engine.Utils
         public string New = "New";
         public string NewCategory = "New Category";
         public string NewCategoryNameCannotBeEmpty = "Category name cannot be empty. Please enter a category name.";
+        public string NewColor = "New Color";
         public string NewDatabase = "New Database";
+        public string NewFont = "New Font";
+        public string NewFontAsset = "New Font Asset";
         public string NewPopup = "New Popup";
         public string NewPreset = "New Preset";
         public string NewPresetNameCannotBeEmpty = "Preset name cannot be empty. Please enter a new preset name.";
+        public string NewSprite = "New Sprite";
+        public string NewTexture = "New Texture";
         public string News = "News";
         public string NewSoundDatabase = "New Sound Database";
+        public string NewTheme = "New Theme";
+        public string NewThemeName = "New Theme Name";
+        public string NewThemeVariant = "New Theme Variant";
         public string No = "No";
         public string NoAnimationEnabled = "No Animation Enabled";
         public string NoAnimatorFound = "No Animator Found";
@@ -370,6 +393,7 @@ namespace Doozy.Engine.Utils
         public string NodeWidth = "Node Width";
         public string NodySettings = "Nody Settings";
         public string NoGraphReferenced = "No graph referenced";
+        public string NoPropertyFound = "No property found";
         public string NormalLoopAnimation = "Normal Loop Animation";
         public string NoSound = "No Sound";
         public string NoSoundsHaveBeenAdded = "No sounds have been added";
@@ -426,6 +450,7 @@ namespace Doozy.Engine.Utils
         public string OutputNotConnected = "Output Not Connected";
         public string Overlay = "Overlay";
         public string Override = "Override";
+        public string OverrideAlpha = "Override Alpha";
         public string OverrideColor = "Override Color";
         public string Overview = "Overview";
         public string OverviewZoom = "Overview Zoom";
@@ -445,6 +470,7 @@ namespace Doozy.Engine.Utils
         public string PopupPrefab = "Popup Prefab";
         public string Portal = "Portal";
         public string PortalNodeName = "Portal Node";
+        public string Prefab = "Prefab";
         public string Prefix = "Prefix";
         public string PreserveAspect = "Preserve Aspect";
         public string PresetCategory = "Preset Category";
@@ -463,6 +489,7 @@ namespace Doozy.Engine.Utils
         public string RandomDuration = "Random Duration";
         public string RandomNodeName = "Random";
         public string Range = "Range";
+        public string RawImage = "Raw Image";
         public string RaycastTarget = "Raycast Target";
         public string Recent = "Recent";
         public string Refresh = "Refresh";
@@ -477,7 +504,7 @@ namespace Doozy.Engine.Utils
         public string RemovedNullEntries = "Removed null entries";
         public string RemoveDuplicates = "Remove Duplicates";
         public string RemoveEmptyCategories = "Remove Empty Categories";
-        public string RemoveEmptyEntries = "Remove Empty Categories";
+        public string RemoveEmptyEntries = "Remove Empty Entries";
         public string RemoveItem = "Remove Item";
         public string RemoveNullEntries = "Remove Null Entries";
         public string RemoveSymbolFromAllBuildTargetGroups = "Remove symbol from all the BuildTargetGroups?";
@@ -488,6 +515,7 @@ namespace Doozy.Engine.Utils
         public string RenameNodeTo = "Rename Node to";
         public string RenamePrefix = "Rename Prefix";
         public string RenameSoundDatabase = "Rename Sound Database";
+        public string RenameTheme = "Rename Theme";
         public string RenameSoundDatabaseDialogMessage = "All the UI settings (and code references) that use this database name, will not get automatically changed.";
         public string RenameSuffix = "Rename Suffix";
         public string RenameTo = "Rename to";
@@ -501,7 +529,6 @@ namespace Doozy.Engine.Utils
         public string ResetRoot = "Reset Root";
         public string ResetTrigger = "Reset Trigger";
         public string ResetValue = "Reset Value";
-        public string ReversedProgress = "Reversed Progress";
         public string Right = "Right";
         public string Rotate = "Rotate";
         public string RotateBy = "Rotate By";
@@ -529,11 +556,13 @@ namespace Doozy.Engine.Utils
         public string SearchForCategories = "Search for categories";
         public string SearchForDatabases = "Search for databases";
         public string SearchForUIPopupLinks = "Search for UIPopup links";
+        public string SearchForThemes = "Search for themes";
         public string Seconds = "Seconds";
         public string SecondsDelay = "Seconds Delay";
         public string Select = "Select";
         public string SelectButton = "Select Button";
         public string SelectedLoopAnimation = "Selected Loop Animation";
+        public string SelectedTheme = "Selected Theme";
         public string SelectSwipeDirection = "Select Swipe Direction";
         public string Send = "Send";
         public string SendGameEvent = "Send Game Event";
@@ -574,6 +603,7 @@ namespace Doozy.Engine.Utils
         public string SoundSource = "Sound Source";
         public string Soundy = "Soundy";
         public string SoundyDatabase = "Soundy Database";
+        public string ThemeName = "Theme Name";
         public string SoundySettings = "Soundy Settings";
         public string SourceImage = "Source Image";
         public string SourceName = "Source Name";
@@ -581,6 +611,8 @@ namespace Doozy.Engine.Utils
         public string Spacing = "Spacing";
         public string SpatialBlend = "Spatial Blend (0-1)";
         public string Speed = "Speed";
+        public string Sprite = "Sprite";
+        public string SpriteRenderer = "Sprite Renderer";
         public string StartAngle = "Start Angle";
         public string StartDelay = "Start Delay";
         public string StartNodeName = "Start";
@@ -607,21 +639,28 @@ namespace Doozy.Engine.Utils
         public string TargetMixer = "Target Mixer";
         public string TargetOrientation = "Target Orientation";
         public string TargetProgress = "Target Progress";
+        public string TargetTheme = "Target Theme";
         public string TargetTimeScale = "Target Time Scale";
         public string TargetValue = "Target Value";
         public string TargetVariable = "Target Variable";
+        public string TargetVariant = "Target Variant";
         public string Text = "Text";
         public string TextLabel = "Text Label";
         public string TextMeshPro = "TextMeshPro";
         public string TextMeshProLabel = "TextMeshPro Label";
+        public string Texture = "Texture";
+        public string ThemeNode = "Theme Node";
+        public string Themes = "Themes";
+        public string ThemesAutoSaveEnabled = "The themes automated auto save system has been enabled.\n\nChanging the active theme variant will be automatically saved and loaded by the system at runtime.";
+        public string ThemesAutoSaveDisabled = "The themes automated auto save system has been disabled.\n\nChanging the active theme variant will NOT be automatically saved and loaded by the system at runtime.";
+        public string ThemesDisableAutoSave = "Disable the themes runtime automated Auto Save system?";
+        public string ThemesEnableAutoSave = "Enable the themes runtime automated Auto Save system?";
         public string Time = "Time";
         public string TimeScaleNodeName = "TimeScale";
         public string ToggleComponentBehaviors = "Toggle component Behaviors";
-        public string ToggleLabel = "Toggle Label";
         public string ToggleOFF = "Toggle OFF";
         public string ToggleON = "Toggle ON";
         public string ToggleProgressor = "Toggle Progressor";
-        public string ToggleSettings = "Toggle Settings";
         public string ToggleSupportForThirdPartyPlugins = "Toggle support for third party plug-ins";
         public string Tolerance = "Tolerance";
         public string TouchySettings = "Touchy Settings";
@@ -669,7 +708,6 @@ namespace Doozy.Engine.Utils
         public string Warning = "Warning";
         public string Weight = "Weight";
         public string When = "When";
-        public string WhenClosed = "When Closed";
         public string WhenUIDrawerIsClosed = "When this UIDrawer is closed";
         public string WhenUIPopupIsHiddenDisable = "When this UIPopup is hidden disable the Container";
         public string WhenUIViewIsHiddenDisable = "When UIView is hidden disable";
@@ -679,7 +717,6 @@ namespace Doozy.Engine.Utils
         public string Y = "Y";
         public string Yes = "Yes";
         public string YouAreResponsibleToUpdateYourCode = "You are responsible to update your code and the UI settings.";
-        public string YouCanOnlyAddPrefabsToDatabase = "You can only add prefabs to the database";
         public string YouTube = "YouTube";
 
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -387,12 +387,14 @@ namespace Doozy.Editor.Nody.Windows
                 if (m_currentHoveredVirtualPoint != null)
                 {
                     //lifted left mouse button over a socket connection point
-                    if (m_activeSocket != null &&                                            //if there is an active socket
-                        m_activeSocket != m_currentHoveredVirtualPoint.Socket &&             //and it's not this one
-                        m_activeSocket.CanConnect(m_currentHoveredVirtualPoint.Socket))      //and the two sockets can get connected
+                    if (m_activeSocket != null &&                                       //if there is an active socket
+                        m_activeSocket != m_currentHoveredVirtualPoint.Socket &&        //and it's not this one
+                        m_activeSocket.CanConnect(m_currentHoveredVirtualPoint.Socket)) //and the two sockets can get connected
+                    {
                         ConnectSockets(m_activeSocket, m_currentHoveredVirtualPoint.Socket); //connect the two sockets
-                    else                                                                     //this was a failed connection attempt
-                        GraphEvent.Send(GraphEvent.EventType.EVENT_CONNECTING_END);          //send a graph event
+                    }
+                    else                                                            //this was a failed connection attempt
+                        GraphEvent.Send(GraphEvent.EventType.EVENT_CONNECTING_END); //send a graph event
 
                     m_activeSocket = null;   //clear the active socket
                     m_mode = GraphMode.None; //set the graph in idle mode

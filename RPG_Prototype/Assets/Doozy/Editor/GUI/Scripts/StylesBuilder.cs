@@ -1,4 +1,4 @@
-// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -32,6 +32,7 @@ namespace Doozy.Editor
         private const string BAR = "Bar";
         private const string BUTTON = "Button";
         private const string CHECKBOX = "CheckBox";
+        private const string COLOR = "Color";
         private const string COMPONENT = "Component";
         private const string DIVIDER = "Divider";
         private const string DOOZY = "Doozy";
@@ -43,6 +44,7 @@ namespace Doozy.Editor
         private const string NODE = "Node";
         private const string RADIO = "Radio";
         private const string ROUNDED = "Rounded";
+        private const string SECONDARY = "Secondary";
         private const string SELECTED = "Selected";
         private const string SWITCH = "Switch";
         private const string VIEW = "View";
@@ -106,10 +108,12 @@ namespace Doozy.Editor
             styles.AddRange(Bars(skin));
 
             styles.AddRange(CheckBoxes(skin));
-
-            styles.AddRange(Dividers(skin));
+            
+            styles.AddRange(ColorButtons());
 
             styles.AddRange(ComponentHeaders(skin));
+
+            styles.AddRange(Dividers(skin));
 
             styles.AddRange(Icons(skin));
             styles.AddRange(IconButtons());
@@ -416,6 +420,40 @@ namespace Doozy.Editor
 
         #endregion
 
+        #region ColorButton
+
+        private static GUIStyle ColorButton(bool selected)
+        {
+            string buttonName = COLOR + BUTTON + (selected ? SELECTED : "");
+            float buttonSize = 18 + (selected ? 6 : 0);
+            return new GUIStyle
+                   {
+                       name = buttonName,
+                       normal = {background = GetTexture(buttonName + StyleState.Normal)},
+                       hover = {background = GetTexture(buttonName + StyleState.Hover)},
+                       active = {background = GetTexture(buttonName + StyleState.Active)},
+                       focused = {background = GetTexture(buttonName + StyleState.Hover)},
+                       onNormal = {background = GetTexture(buttonName + StyleState.Normal)},
+                       onHover = {background = GetTexture(buttonName + StyleState.Hover)},
+                       onActive = {background = GetTexture(buttonName + StyleState.Active)},
+                       onFocused = {background = GetTexture(buttonName + StyleState.Hover)},
+                       imagePosition = ImagePosition.ImageOnly,
+                       fixedHeight = buttonSize,
+                       fixedWidth = buttonSize
+                   };
+        }
+
+        private static List<GUIStyle> ColorButtons()
+        {
+            return new List<GUIStyle>
+                   {
+                       ColorButton(false),
+                       ColorButton(true)
+                   };
+        }
+
+        #endregion
+
         #region ComponentHeaders
 
         public static GUIStyle ComponentHeader(string componentName, Skin skin)
@@ -439,8 +477,17 @@ namespace Doozy.Editor
                              ComponentHeader("ApplicationQuitNode", skin),
                              ComponentHeader("BackButton", skin),
                              ComponentHeader("BackButtonNode", skin),
+                             ComponentHeader("ColorTarget", skin),
+                             ComponentHeader("ColorTargetImage", skin),
+                             ComponentHeader("ColorTargetParticleSystem", skin),
+                             ComponentHeader("ColorTargetRawImage", skin),
+                             ComponentHeader("ColorTargetSpriteRenderer", skin),
+                             ComponentHeader("ColorTargetText", skin),
+                             ComponentHeader("ColorTargetTextMeshPro", skin),
                              ComponentHeader("DebugNode", skin),
                              ComponentHeader("EditorColors", skin),
+                             ComponentHeader("FontTargetText", skin),
+                             ComponentHeader("FontTargetTextMeshPro", skin),
                              ComponentHeader("GameEventListener", skin),
                              ComponentHeader("GameEventManager", skin),
                              ComponentHeader("GameEventNode", skin),
@@ -470,8 +517,13 @@ namespace Doozy.Editor
                              ComponentHeader("SoundyDatabase", skin),
                              ComponentHeader("SoundyManager", skin),
                              ComponentHeader("SoundyPooler", skin),
+                             ComponentHeader("SpriteTargetImage", skin),
+                             ComponentHeader("SpriteTargetSpriteRenderer", skin),
                              ComponentHeader("StylesBuilder", skin),
                              ComponentHeader("StylesUtility", skin),
+                             ComponentHeader("TextureTargetRawImage", skin),
+                             ComponentHeader("ThemeManager", skin),
+                             ComponentHeader("ThemeNode", skin),
                              ComponentHeader("TimeScaleNode", skin),
                              ComponentHeader("TouchDetector", skin),
                              ComponentHeader("UIAnimationData", skin),
@@ -558,6 +610,7 @@ namespace Doozy.Editor
 
             styles.AddRange(DoozyWindowToolbarButton("Animations", skin));
             styles.AddRange(DoozyWindowToolbarButton("Templates", skin));
+            styles.AddRange(DoozyWindowToolbarButton("Themes", skin));
 
             styles.AddRange(DoozyWindowToolbarButton("Settings", skin));
             styles.AddRange(DoozyWindowToolbarButton("Debug", skin));
@@ -565,6 +618,8 @@ namespace Doozy.Editor
 
             styles.AddRange(DoozyWindowToolbarButton("Help", skin));
             styles.AddRange(DoozyWindowToolbarButton("About", skin));
+
+            styles.AddRange(DoozyWindowToolbarSecondaryButton("", skin)); //Doozy Window Toolbar Secondary Button
             return styles;
         }
 
@@ -577,6 +632,48 @@ namespace Doozy.Editor
             Font font = DGUI.Fonts.SansationRegular;
 
             string styleName = DOOZY + WINDOW + TOOLBAR + BUTTON + buttonName;
+            string styleNameSelected = styleName + SELECTED;
+            return new List<GUIStyle>
+                   {
+                       new GUIStyle
+                       {
+                           name = styleName,
+                           normal = {background = GetTexture(styleName + StyleState.Normal + skin), textColor = skin == Skin.Dark ? EditorColors.Instance.UnityLight.Normal : EditorColors.Instance.UnityLight.Dark},
+                           hover = {background = GetTexture(styleName + StyleState.Hover + skin), textColor = skin == Skin.Dark ? new Color().ColorFrom256(229, 229, 229) : EditorColors.Instance.Gray.Normal},
+                           active = {background = GetTexture(styleName + StyleState.Active + skin), textColor = skin == Skin.Dark ? EditorColors.Instance.Gray.Normal : EditorColors.Instance.Gray.Dark},
+                           onNormal = {background = GetTexture(styleName + StyleState.Normal + skin), textColor = skin == Skin.Dark ? EditorColors.Instance.UnityLight.Normal : EditorColors.Instance.UnityLight.Dark},
+                           onHover = {background = GetTexture(styleName + StyleState.Hover + skin), textColor = skin == Skin.Dark ? new Color().ColorFrom256(229, 229, 229) : EditorColors.Instance.Gray.Dark},
+                           onActive = {background = GetTexture(styleName + StyleState.Active + skin), textColor = EditorColors.Instance.Gray.Normal},
+                           alignment = alignment,
+                           border = border,
+                           padding = padding,
+                           fontSize = fontSize,
+                           font = font
+                       },
+
+                       new GUIStyle
+                       {
+                           name = styleNameSelected,
+                           normal = {background = GetTexture(styleNameSelected + skin), textColor = skin == Skin.Dark ? Color.white : EditorColors.Instance.Gray.Normal},
+                           onNormal = {background = GetTexture(styleNameSelected + skin), textColor = skin == Skin.Dark ? Color.white : EditorColors.Instance.Gray.Normal},
+                           alignment = alignment,
+                           border = border,
+                           padding = padding,
+                           fontSize = fontSize,
+                           font = font
+                       }
+                   };
+        }
+
+        private static List<GUIStyle> DoozyWindowToolbarSecondaryButton(string buttonName, Skin skin)
+        {
+            const TextAnchor alignment = TextAnchor.MiddleLeft;
+            var border = new RectOffset(2, 2, 2, 2);
+            var padding = new RectOffset(2, 4, 2, 2);
+            const int fontSize = 12;
+            Font font = DGUI.Fonts.SansationRegular;
+
+            string styleName = DOOZY + WINDOW + TOOLBAR + SECONDARY + BUTTON + buttonName;
             string styleNameSelected = styleName + SELECTED;
             return new List<GUIStyle>
                    {
@@ -629,6 +726,7 @@ namespace Doozy.Editor
                              DoozyWindowViewHeader("Settings", skin),
                              DoozyWindowViewHeader("Soundy", skin),
                              DoozyWindowViewHeader("Templates", skin),
+                             DoozyWindowViewHeader("Themes", skin),
                              DoozyWindowViewHeader("Touchy", skin),
                              DoozyWindowViewHeader("Views", skin)
                          };
@@ -751,6 +849,13 @@ namespace Doozy.Editor
                              Icon("ButtonRightClick"),
                              Icon("ChangeVolume"),
                              Icon("Close"),
+                             Icon("ColorTarget"),
+                             Icon("ColorTargetImage"),
+                             Icon("ColorTargetParticleSystem"),
+                             Icon("ColorTargetRawImage"),
+                             Icon("ColorTargetSpriteRenderer"),
+                             Icon("ColorTargetText"),
+                             Icon("ColorTargetTextMeshPro"),
                              Icon("CloseFilledCircle"),
                              Icon("Debug"),
                              Icon("DisableBackButton"),
@@ -1078,6 +1183,10 @@ namespace Doozy.Editor
                              Icon("Feather"),
                              Icon("FinishAnimation"),
                              Icon("FixedUpdate"),
+                             Icon("Font"),
+                             Icon("FontAsset"),
+                             Icon("FontTargetText"),
+                             Icon("FontTargetTextMeshPro"),
                              Icon("GameEvent"),
                              Icon("GameEventListener"),
                              Icon("GameEventManager"),
@@ -1129,6 +1238,7 @@ namespace Doozy.Editor
                              Icon("ProgressTargetTextMeshPro"),
                              Icon("PunchAnimation"),
                              Icon("RadialLayout"),
+                             Icon("RawImage"),
                              Icon("Recent"),
                              Icon("Reset"),
                              Icon("Rotate"),
@@ -1152,12 +1262,19 @@ namespace Doozy.Editor
                              Icon("SoundyController"),
                              Icon("SoundyDatabase"),
                              Icon("SoundyPooler"),
+                             Icon("Sprite"),
+                             Icon("SpriteRenderer"),
+                             Icon("SpriteTargetImage"),
+                             Icon("SpriteTargetSpriteRenderer"),
                              Icon("StartAnimation"),
                              Icon("StartNode"),
                              Icon("StartProgress"),
                              Icon("StateAnimation"),
                              Icon("StopSound"),
                              Icon("TextMeshPro"),
+                             Icon("Texture"),
+                             Icon("TextureTargetRawImage"),
+                             Icon("ThemeManager"),
                              Icon("Time"),
                              Icon("TimeScale"),
                              Icon("TogglePause"),
@@ -1242,6 +1359,7 @@ namespace Doozy.Editor
                        NodeIcon("PortalNode"),
                        NodeIcon("RandomNode"),
                        NodeIcon("SoundNode"),
+                       NodeIcon("ThemeNode"),
                        NodeIcon("TimeScaleNode"),
                        NodeIcon("UIDrawerNode"),
                        NodeIcon("UINode"),

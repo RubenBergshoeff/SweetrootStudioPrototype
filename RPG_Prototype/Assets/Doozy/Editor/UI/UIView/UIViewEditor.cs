@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+﻿// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -20,17 +20,21 @@ using UnityEditor.AnimatedValues;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Doozy.Editor.UI {
+namespace Doozy.Editor.UI
+{
     [CustomEditor(typeof(UIView))]
     [CanEditMultipleObjects]
-    public class UIViewEditor : BaseEditor {
+    public class UIViewEditor : BaseEditor
+    {
         protected override ColorName ComponentColorName { get { return DGUI.Colors.UIViewColorName; } }
         private UIView m_target;
 
-        private UIView Target {
-            get {
+        private UIView Target
+        {
+            get
+            {
                 if (m_target != null) return m_target;
-                m_target = (UIView)target;
+                m_target = (UIView) target;
                 return m_target;
             }
         }
@@ -50,6 +54,14 @@ namespace Doozy.Editor.UI {
         private readonly Dictionary<UIAction, List<DGUI.IconGroup.Data>> m_behaviorActionsIconsDatabase = new Dictionary<UIAction, List<DGUI.IconGroup.Data>>();
         private readonly Dictionary<UIViewBehavior, List<DGUI.IconGroup.Data>> m_viewBehaviorIconsDatabase = new Dictionary<UIViewBehavior, List<DGUI.IconGroup.Data>>();
 
+        /// <summary> Returns TRUE if this UIView has at least one child UIView </summary> 
+        private bool HasChildUIViews {
+            get
+            {
+                UIView[] childUIViews = Target.GetComponentsInChildren<UIView>();
+                return childUIViews != null && childUIViews.Length > 1;
+            } }
+        
         private SerializedProperty
             m_autoHideAfterShow,
             m_autoHideAfterShowDelay,
@@ -107,7 +119,8 @@ namespace Doozy.Editor.UI {
 
         private string GetRuntimePresetCategoryAndName(UIViewBehavior behavior) { return string.Format(UILabels.RuntimePreset + ": {0} / {1}", behavior.PresetCategory, behavior.PresetName); }
 
-        protected override void LoadSerializedProperty() {
+        protected override void LoadSerializedProperty()
+        {
             base.LoadSerializedProperty();
 
             m_viewCategory = GetProperty(PropertyName.ViewCategory);
@@ -138,7 +151,8 @@ namespace Doozy.Editor.UI {
             m_onInverseVisibilityChanged = GetProperty(PropertyName.OnInverseVisibilityChanged);
         }
 
-        protected override void InitAnimBool() {
+        protected override void InitAnimBool()
+        {
             base.InitAnimBool();
 
             m_autoHideExpanded = GetAnimBool(m_autoHideAfterShow.propertyPath, m_autoHideAfterShow.boolValue);
@@ -158,10 +172,13 @@ namespace Doozy.Editor.UI {
 
         public override bool RequiresConstantRepaint() { return true; }
 
-        protected override void OnEnable() {
+        protected override void OnEnable()
+        {
             base.OnEnable();
             AdjustPositionRotationAndScaleToRoundValues(Target.RectTransform);
-
+            
+            if (HasChildUIViews && Target.DisableGameObjectWhenHidden) Target.DisableGameObjectWhenHidden = false;
+            
             m_showDatabase = Animations.Get(AnimationType.Show);
             m_hideDatabase = Animations.Get(AnimationType.Hide);
             m_loopDatabase = Animations.Get(AnimationType.Loop);
@@ -175,13 +192,15 @@ namespace Doozy.Editor.UI {
             AddInfoMessage(HIDE_INSTANT_ANIMATION, new InfoMessage(DGUI.Icon.Hide, InfoMessage.GetIconColor(InfoMessage.MessageType.Info), InfoMessage.GetIconColor(InfoMessage.MessageType.Info), UILabels.InstantAnimation, false, Repaint));
         }
 
-        protected override void OnDisable() {
+        protected override void OnDisable()
+        {
             base.OnDisable();
             SoundyAudioPlayer.StopAllPlayers();
             if (UIAnimatorUtils.PreviewIsPlaying) UIAnimatorUtils.StopViewPreview(Target);
         }
 
-        public override void OnInspectorGUI() {
+        public override void OnInspectorGUI()
+        {
             base.OnInspectorGUI();
             serializedObject.Update();
             DrawHeader(Styles.GetStyle(Styles.StyleName.ComponentHeaderUIView), "UIView", MenuUtils.UIView_Manual, MenuUtils.UIView_YouTube);
@@ -213,11 +232,13 @@ namespace Doozy.Editor.UI {
             serializedObject.ApplyModifiedProperties();
         }
 
-        private void DrawRuntimeOptions() {
+        private void DrawRuntimeOptions()
+        {
             AnimBool expanded = GetAnimBool(UILabels.RuntimeOptions, EditorApplication.isPlaying);
             expanded.target = EditorApplication.isPlaying;
 
-            if (DGUI.AlphaGroup.Begin(expanded)) {
+            if (DGUI.AlphaGroup.Begin(expanded))
+            {
                 var textSize = Size.XL;
                 float buttonHeight = DGUI.Sizes.BarHeight(textSize);
 
@@ -232,12 +253,15 @@ namespace Doozy.Editor.UI {
                 {
                     GUILayout.BeginHorizontal();
                     {
-                        if (DGUI.Button.Dynamic.DrawIconButton(DGUI.Icon.Show, UILabels.Show, textSize, TextAlign.Left, showButtonBackgroundColorName, showButtonTextColorName, buttonHeight)) {
-                            if (!m_animateAllUIViews) {
+                        if (DGUI.Button.Dynamic.DrawIconButton(DGUI.Icon.Show, UILabels.Show, textSize, TextAlign.Left, showButtonBackgroundColorName, showButtonTextColorName, buttonHeight))
+                        {
+                            if (!m_animateAllUIViews)
+                            {
                                 Target.gameObject.SetActive(true);
                                 Target.Show(m_instantAction);
                             }
-                            else {
+                            else
+                            {
                                 UIView.ShowView(Target.ViewCategory, Target.ViewName, m_instantAction);
                             }
                         }
@@ -245,7 +269,8 @@ namespace Doozy.Editor.UI {
                         GUILayout.Space(DGUI.Properties.Space(4));
 
                         float alpha = GUI.color.a;
-                        switch (Target.Visibility) {
+                        switch (Target.Visibility)
+                        {
                             case VisibilityState.Visible:
                                 GUI.color = GUI.color.WithAlpha(DGUI.Properties.TextIconAlphaValue(false));
                                 DGUI.Icon.Draw(DGUI.Icon.ArrowLeft, buttonHeight, hidingIconBackgroundColorName);
@@ -267,12 +292,15 @@ namespace Doozy.Editor.UI {
 
                         GUILayout.Space(DGUI.Properties.Space(4));
 
-                        if (DGUI.Button.Dynamic.DrawIconButton(DGUI.Icon.Hide, UILabels.Hide, textSize, TextAlign.Left, hideButtonBackgroundColorName, hideButtonTextColorName, buttonHeight)) {
-                            if (!m_animateAllUIViews) {
+                        if (DGUI.Button.Dynamic.DrawIconButton(DGUI.Icon.Hide, UILabels.Hide, textSize, TextAlign.Left, hideButtonBackgroundColorName, hideButtonTextColorName, buttonHeight))
+                        {
+                            if (!m_animateAllUIViews)
+                            {
                                 Target.gameObject.SetActive(true);
                                 Target.Hide(m_instantAction);
                             }
-                            else {
+                            else
+                            {
                                 UIView.HideView(Target.ViewCategory, Target.ViewName, m_instantAction);
                             }
                         }
@@ -290,7 +318,8 @@ namespace Doozy.Editor.UI {
             DGUI.AlphaGroup.End();
         }
 
-        private void DrawDebugModeAndTargetOrientation() {
+        private void DrawDebugModeAndTargetOrientation()
+        {
             GUILayout.BeginHorizontal();
             {
                 DGUI.Toggle.Switch.Draw(GetProperty(PropertyName.DebugMode), UILabels.DebugMode, ColorName.Red, true, false);
@@ -300,18 +329,21 @@ namespace Doozy.Editor.UI {
             GUILayout.EndHorizontal();
         }
 
-        private void DrawTargetOrientation() {
+        private void DrawTargetOrientation()
+        {
             if (!DoozySettings.Instance.UseOrientationDetector) return;
 
             float rowHeight = DGUI.Properties.SingleLineHeight;
             float iconSize = rowHeight * 0.8f;
 
             DGUI.Line.Draw(false, ComponentColorName,
-                           () => {
+                           () =>
+                           {
                                Color color = GUI.color;
                                GUI.color = DGUI.Colors.TextColor(ComponentColorName).WithAlpha(0.8f);
 
-                               switch ((TargetOrientation)m_targetOrientation.intValue) {
+                               switch ((TargetOrientation) m_targetOrientation.intValue)
+                               {
                                    case TargetOrientation.Portrait:
                                        GUILayout.Space(DGUI.Properties.Space());
                                        DGUI.Icon.Draw(DGUI.Icon.Portrait, iconSize, rowHeight);
@@ -338,26 +370,30 @@ namespace Doozy.Editor.UI {
 
         private void DrawCategoryAndName() { DGUI.Database.DrawItemsDatabaseSelector(serializedObject, m_viewCategory, UILabels.ViewCategory, m_viewName, UILabels.ViewName, Database, ComponentColorName); }
 
-        private void DrawRenameGameObjectAndOpenDatabaseButtons() {
+        private void DrawRenameGameObjectAndOpenDatabaseButtons()
+        {
             DGUI.Doozy.DrawRenameGameObjectAndOpenDatabaseButtons(Settings.RenamePrefix,
                                                                   m_viewName.stringValue,
                                                                   Settings.RenameSuffix,
                                                                   Target.gameObject,
                                                                   DoozyWindow.View.Views,
                                                                   false,
-                                                                  () => {
+                                                                  () =>
+                                                                  {
                                                                       DoozyWindow.Instance.GetAnimBool(DoozyWindow.View.Views + Target.ViewCategory).target = true;
                                                                   });
         }
 
-        private void DrawBehaviourAtStart() {
-            bool enabled = (UIViewStartBehavior)m_behaviorAtStart.intValue != (int)UIViewStartBehavior.DoNothing;
+        private void DrawBehaviourAtStart()
+        {
+            bool enabled = (UIViewStartBehavior) m_behaviorAtStart.intValue != (int) UIViewStartBehavior.DoNothing;
 
             ColorName backgroundColorName = DGUI.Colors.GetBackgroundColorName(enabled, ComponentColorName);
             ColorName textColorName = DGUI.Colors.GetTextColorName(enabled, ComponentColorName);
 
             DGUI.Line.Draw(false, backgroundColorName,
-                           () => {
+                           () =>
+                           {
                                GUILayout.Space(DGUI.Properties.Space(2));
                                float alpha = GUI.color.a;
                                GUI.color = GUI.color.WithAlpha(DGUI.Properties.TextIconAlphaValue(enabled));
@@ -369,7 +405,8 @@ namespace Doozy.Editor.UI {
                            });
         }
 
-        private void DrawWhenHidden() {
+        private void DrawWhenHidden()
+        {
             bool enabled = m_disableGameObjectWhenHidden.boolValue || m_disableCanvasWhenHidden.boolValue || m_disableGraphicRaycasterWhenHidden.boolValue;
 
             ColorName backgroundColorName = DGUI.Colors.GetBackgroundColorName(enabled, ComponentColorName);
@@ -392,7 +429,13 @@ namespace Doozy.Editor.UI {
             GUILayout.Space(DGUI.Properties.Space());
             GUILayout.BeginHorizontal();
             {
+                EditorGUI.BeginChangeCheck();
                 DGUI.Toggle.Switch.Draw(m_disableGameObjectWhenHidden, UILabels.GameObject, m_disableGameObjectWhenHidden.boolValue ? ComponentColorName : DGUI.Colors.DisabledBackgroundColorName, false, true);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    if (HasChildUIViews && m_disableGameObjectWhenHidden.boolValue) 
+                        m_disableGameObjectWhenHidden.boolValue = false;
+                }
                 GUILayout.Space(DGUI.Properties.Space());
                 DGUI.Toggle.Switch.Draw(m_disableCanvasWhenHidden, UILabels.Canvas, m_disableCanvasWhenHidden.boolValue ? ComponentColorName : DGUI.Colors.DisabledBackgroundColorName, false, true);
                 GUILayout.Space(DGUI.Properties.Space());
@@ -402,7 +445,8 @@ namespace Doozy.Editor.UI {
             GUILayout.EndHorizontal();
         }
 
-        private void DrawAutoHide() {
+        private void DrawAutoHide()
+        {
             m_autoHideExpanded.target = m_autoHideAfterShow.boolValue;
 
             ColorName backgroundColorName = DGUI.Colors.GetBackgroundColorName(m_autoHideAfterShow.boolValue, ComponentColorName);
@@ -410,13 +454,15 @@ namespace Doozy.Editor.UI {
 
             float alpha = GUI.color.a;
             DGUI.Line.Draw(true, backgroundColorName,
-                           () => {
+                           () =>
+                           {
                                DGUI.Toggle.Switch.Draw(m_autoHideAfterShow, backgroundColorName, DGUI.Properties.SingleLineHeight);
                                GUILayout.Space(DGUI.Properties.Space());
                                GUI.color = GUI.color.WithAlpha(DGUI.Properties.TextIconAlphaValue(m_autoHideAfterShow.boolValue));
                                DGUI.Label.Draw(UILabels.AutoHideAfterShow, Size.S, textColorName, DGUI.Properties.SingleLineHeight);
                                GUI.color = GUI.color.WithAlpha(alpha);
-                               if (DGUI.AlphaGroup.Begin(m_autoHideExpanded.faded)) {
+                               if (DGUI.AlphaGroup.Begin(m_autoHideExpanded.faded))
+                               {
                                    GUILayout.Space(DGUI.Properties.Space());
                                    DGUI.Label.Draw(UILabels.After, Size.S, ComponentColorName, DGUI.Properties.SingleLineHeight);
                                    DGUI.Property.Draw(m_autoHideAfterShowDelay, ComponentColorName, DGUI.Properties.DefaultFieldWidth, DGUI.Properties.SingleLineHeight);
@@ -431,7 +477,8 @@ namespace Doozy.Editor.UI {
 
         private void DrawCustomStartPosition() { DGUI.Doozy.DrawCustomStartPosition(Target.RectTransform, m_useCustomStartAnchoredPosition, m_customStartAnchoredPosition, m_useCustomStartPositionExpanded, ComponentColorName); }
 
-        private void DrawDeselectAnyButtonSelected() {
+        private void DrawDeselectAnyButtonSelected()
+        {
             bool enabled = m_deselectAnyButtonSelectedOnShow.boolValue || m_deselectAnyButtonSelectedOnHide.boolValue;
 
             ColorName backgroundColorName = DGUI.Colors.GetBackgroundColorName(enabled, ComponentColorName);
@@ -439,7 +486,8 @@ namespace Doozy.Editor.UI {
 
             float alpha = GUI.color.a;
             DGUI.Line.Draw(true, backgroundColorName,
-                           () => {
+                           () =>
+                           {
                                GUI.color = GUI.color.WithAlpha(DGUI.Properties.TextIconAlphaValue(enabled));
                                DGUI.Label.Draw(UILabels.DeselectAnyButton, Size.S, textColorName, DGUI.Properties.SingleLineHeight);
                                GUI.color = GUI.color.WithAlpha(alpha);
@@ -451,13 +499,15 @@ namespace Doozy.Editor.UI {
                            });
         }
 
-        private void DrawAutoSelectButton() {
+        private void DrawAutoSelectButton()
+        {
             m_autoSelectButtonExpanded.target = m_autoSelectButtonAfterShow.boolValue;
 
             ColorName backgroundColorName = DGUI.Colors.GetBackgroundColorName(m_autoSelectButtonAfterShow.boolValue, ComponentColorName);
 
             DGUI.Line.Draw(false, backgroundColorName,
-                           () => {
+                           () =>
+                           {
                                DGUI.Toggle.Switch.Draw(m_autoSelectButtonAfterShow, UILabels.AutoSelectButtonAfterShow, backgroundColorName, false, true);
                                GUILayout.Space(DGUI.Properties.Space());
                                DGUI.Property.DrawWithFade(m_selectedButton, m_autoSelectButtonExpanded, DGUI.Properties.SingleLineHeight, ComponentColorName);
@@ -465,7 +515,8 @@ namespace Doozy.Editor.UI {
                            });
         }
 
-        private void DrawBehaviors() {
+        private void DrawBehaviors()
+        {
             DrawBehavior(UILabels.ShowView, Target.ShowBehavior, m_showBehavior, m_showDatabase, DGUI.Icon.Show, m_showExpanded);
             GUILayout.Space(DGUI.Properties.Space());
             DrawBehavior(UILabels.HideView, Target.HideBehavior, m_hideBehavior, m_hideDatabase, DGUI.Icon.Hide, m_hideExpanded);
@@ -474,9 +525,10 @@ namespace Doozy.Editor.UI {
             GUILayout.Space(DGUI.Properties.Space());
         }
 
-        private void DrawBehavior(string behaviorName, UIViewBehavior behavior, SerializedProperty behaviorProperty, UIAnimationsDatabase database, GUIStyle animationIcon, AnimBool behaviorExpanded) {
+        private void DrawBehavior(string behaviorName, UIViewBehavior behavior, SerializedProperty behaviorProperty, UIAnimationsDatabase database, GUIStyle animationIcon, AnimBool behaviorExpanded)
+        {
             SerializedProperty animationProperty = GetProperty(PropertyName.Animation, behaviorProperty);
-            var animationType = (AnimationType)GetProperty(PropertyName.AnimationType, animationProperty).enumValueIndex;
+            var animationType = (AnimationType) GetProperty(PropertyName.AnimationType, animationProperty).enumValueIndex;
             SerializedProperty startProperty = GetProperty(PropertyName.OnStart, behaviorProperty);
             SerializedProperty finishedProperty = GetProperty(PropertyName.OnFinished, behaviorProperty);
             SerializedProperty instantAnimationProperty = null;
@@ -485,13 +537,16 @@ namespace Doozy.Editor.UI {
             AnimBool startExpanded = GetAnimBool(startProperty.propertyPath, startProperty.isExpanded);
             AnimBool finishedExpanded = GetAnimBool(finishedProperty.propertyPath, finishedProperty.isExpanded);
 
-            if (DGUI.Bar.Draw(behaviorName, NORMAL_BAR_SIZE, DGUI.Bar.Caret.CaretType.Caret, ComponentColorName, behaviorExpanded)) {
-                if (!behaviorExpanded.target) {
+            if (DGUI.Bar.Draw(behaviorName, NORMAL_BAR_SIZE, DGUI.Bar.Caret.CaretType.Caret, ComponentColorName, behaviorExpanded))
+            {
+                if (!behaviorExpanded.target)
+                {
                     animationExpanded.target = false;
                     startExpanded.target = false;
                     finishedExpanded.target = false;
                 }
-                else {
+                else
+                {
                     animationExpanded.target = true;
                     startExpanded.target = false;
                     finishedExpanded.target = false;
@@ -504,15 +559,16 @@ namespace Doozy.Editor.UI {
 
             DrawBehaviorIcons(behavior, behaviorExpanded);
 
-            switch (animationType) {
+            switch (animationType)
+            {
                 case AnimationType.Show:
                     instantAnimationProperty = m_showInstantAnimation;
-
+                    
                     m_showInstantAnimationInfoMessage = GetInfoMessage(SHOW_INSTANT_ANIMATION);
                     GUILayout.Space(-DGUI.Properties.Space(2) * m_showInstantAnimationInfoMessage.Show.faded);
                     m_showInstantAnimationInfoMessage.DrawMessageOnly(behavior.InstantAnimation);
                     GUILayout.Space(DGUI.Properties.Space(3) * m_showInstantAnimationInfoMessage.Show.faded);
-
+                    
                     m_noShowAnimationInfoMessage = GetInfoMessage(NO_SHOW_ANIMATION);
                     GUILayout.Space(-DGUI.Properties.Space(2) * m_noShowAnimationInfoMessage.Show.faded);
                     m_noShowAnimationInfoMessage.Draw(!behavior.HasAnimation && !behavior.InstantAnimation, InspectorWidth);
@@ -521,17 +577,17 @@ namespace Doozy.Editor.UI {
                     break;
                 case AnimationType.Hide:
                     instantAnimationProperty = m_hideInstantAnimation;
-
+                    
                     m_hideInstantAnimationInfoMessage = GetInfoMessage(HIDE_INSTANT_ANIMATION);
                     GUILayout.Space(-DGUI.Properties.Space(2) * m_hideInstantAnimationInfoMessage.Show.faded);
                     m_hideInstantAnimationInfoMessage.DrawMessageOnly(behavior.InstantAnimation);
                     GUILayout.Space(DGUI.Properties.Space(3) * m_hideInstantAnimationInfoMessage.Show.faded);
-
+                    
                     m_noHideAnimationInfoMessage = GetInfoMessage(NO_HIDE_ANIMATION);
                     GUILayout.Space(-DGUI.Properties.Space(2) * m_noHideAnimationInfoMessage.Show.faded);
                     m_noHideAnimationInfoMessage.Draw(!behavior.HasAnimation && !behavior.InstantAnimation, InspectorWidth);
                     GUILayout.Space(DGUI.Properties.Space(3) * m_noHideAnimationInfoMessage.Show.faded);
-
+                    
                     break;
             }
 
@@ -541,7 +597,8 @@ namespace Doozy.Editor.UI {
             presetInfoMessage.DrawMessageOnly(behavior.LoadSelectedPresetAtRuntime && !behavior.InstantAnimation);
             GUILayout.Space(DGUI.Properties.Space(3) * presetInfoMessage.Show.faded);
 
-            if (DGUI.FadeOut.Begin(behaviorExpanded, false)) {
+            if (DGUI.FadeOut.Begin(behaviorExpanded, false))
+            {
                 GUILayout.BeginVertical();
                 {
                     GUILayout.Space(DGUI.Properties.Space() * behaviorExpanded.faded);
@@ -567,7 +624,8 @@ namespace Doozy.Editor.UI {
                                                              animationIcon,
                                                              ComponentColorName,
                                                              DGUI.Doozy.GetUIAnimationIcons(behavior.Animation,
-                                                                                            m_behaviorAnimationIconsDatabase))) {
+                                                                                            m_behaviorAnimationIconsDatabase)))
+                        {
                             animationExpanded.target = true;
                             startExpanded.value = false;
                             finishedExpanded.value = false;
@@ -583,7 +641,8 @@ namespace Doozy.Editor.UI {
                                                                ComponentColorName,
                                                                DGUI.Doozy.GetActionsIcons(behavior.OnStart,
                                                                                           m_behaviorActionsIconsDatabase,
-                                                                                          ComponentColorName))) {
+                                                                                          ComponentColorName)))
+                        {
                             animationExpanded.target = false;
                             startExpanded.target = true;
                             finishedExpanded.value = false;
@@ -599,7 +658,8 @@ namespace Doozy.Editor.UI {
                                                               ComponentColorName,
                                                               DGUI.Doozy.GetActionsIcons(behavior.OnFinished,
                                                                                          m_behaviorActionsIconsDatabase,
-                                                                                         ComponentColorName))) {
+                                                                                         ComponentColorName)))
+                        {
                             animationExpanded.target = false;
                             startExpanded.value = false;
                             finishedExpanded.target = true;
@@ -618,8 +678,10 @@ namespace Doozy.Editor.UI {
                     GUILayout.Space(DGUI.Properties.Space(3) * behaviorExpanded.faded);
 
 
-                    if (animationType == AnimationType.Loop) {
-                        if (DGUI.FadeOut.Begin(animationExpanded, false)) {
+                    if (animationType == AnimationType.Loop)
+                    {
+                        if (DGUI.FadeOut.Begin(animationExpanded, false))
+                        {
                             DGUI.Toggle.Switch.Draw(GetProperty(PropertyName.AutoStartLoopAnimation, behaviorProperty), UILabels.AutoStartLoopAnimation, ComponentColorName, true, true, DGUI.Properties.SingleLineHeight);
                             GUILayout.Space(DGUI.Properties.Space(2) * animationExpanded.faded);
                         }
@@ -639,8 +701,10 @@ namespace Doozy.Editor.UI {
             behaviorProperty.isExpanded = behaviorExpanded.target;
         }
 
-        private void DrawAnimationPreset(AnimBool behaviorExpanded, AnimBool animationExpanded, SerializedProperty behaviorProperty, SerializedProperty presetCategoryProperty, SerializedProperty presetNameProperty, UIAnimationsDatabase database, UIViewBehavior behavior) {
-            if (DGUI.FadeOut.Begin(animationExpanded.faded, false)) {
+        private void DrawAnimationPreset(AnimBool behaviorExpanded, AnimBool animationExpanded, SerializedProperty behaviorProperty, SerializedProperty presetCategoryProperty, SerializedProperty presetNameProperty, UIAnimationsDatabase database, UIViewBehavior behavior)
+        {
+            if (DGUI.FadeOut.Begin(animationExpanded.faded, false))
+            {
                 if (UIAnimationUtils.DrawAnimationPreset(serializedObject,
                                                          GetProperty(PropertyName.LoadSelectedPresetAtRuntime, behaviorProperty),
                                                          presetCategoryProperty,
@@ -650,9 +714,11 @@ namespace Doozy.Editor.UI {
                                                          ComponentColorName,
                                                          out behavior.Animation))
                     if (serializedObject.isEditingMultipleObjects)
-                        foreach (Object targetObject in serializedObject.targetObjects) {
-                            var targetView = (UIView)targetObject;
-                            switch (behavior.Animation.AnimationType) {
+                        foreach (Object targetObject in serializedObject.targetObjects)
+                        {
+                            var targetView = (UIView) targetObject;
+                            switch (behavior.Animation.AnimationType)
+                            {
                                 case AnimationType.Show:
                                     targetView.ShowBehavior.PresetCategory = behavior.PresetCategory;
                                     targetView.ShowBehavior.PresetName = behavior.PresetName;
@@ -678,8 +744,10 @@ namespace Doozy.Editor.UI {
             DGUI.FadeOut.End(animationExpanded.faded, false);
         }
 
-        private void DrawBehaviorIcons(UIViewBehavior behavior, AnimBool expanded) {
-            if (DGUI.AlphaGroup.Begin(Mathf.Clamp(1 - expanded.faded, 0.2f, 1f))) {
+        private void DrawBehaviorIcons(UIViewBehavior behavior, AnimBool expanded)
+        {
+            if (DGUI.AlphaGroup.Begin(Mathf.Clamp(1 - expanded.faded, 0.2f, 1f)))
+            {
                 GUILayout.BeginHorizontal(GUILayout.Height(NormalBarHeight));
                 {
                     GUILayout.FlexibleSpace();
@@ -709,7 +777,8 @@ namespace Doozy.Editor.UI {
                                                                                                ComponentColorName);
 
                     //DRAW Actions Icons
-                    if (m_viewBehaviorIconsDatabase[behavior].Count > 0) {
+                    if (m_viewBehaviorIconsDatabase[behavior].Count > 0)
+                    {
                         GUILayout.Space(DGUI.Properties.Space(4));
                         DGUI.IconGroup.Draw(m_viewBehaviorIconsDatabase[behavior], NormalBarHeight - DGUI.Properties.Space(4), false);
                     }
@@ -722,9 +791,11 @@ namespace Doozy.Editor.UI {
             DGUI.AlphaGroup.End();
         }
 
-        private void DrawBehaviorAnimation(UIViewBehavior behavior, SerializedProperty animationProperty, SerializedProperty instantAnimationProperty, AnimBool expanded) {
+        private void DrawBehaviorAnimation(UIViewBehavior behavior, SerializedProperty animationProperty, SerializedProperty instantAnimationProperty, AnimBool expanded)
+        {
             float alpha = GUI.color.a;
-            if (DGUI.FadeOut.Begin(expanded.faded, false)) {
+            if (DGUI.FadeOut.Begin(expanded.faded, false))
+            {
                 SerializedProperty move = GetProperty(PropertyName.Move, animationProperty);
                 SerializedProperty rotate = GetProperty(PropertyName.Rotate, animationProperty);
                 SerializedProperty scale = GetProperty(PropertyName.Scale, animationProperty);
@@ -744,7 +815,8 @@ namespace Doozy.Editor.UI {
 
                 GUILayout.BeginVertical();
                 {
-                    if (instantAnimationProperty != null) {
+                    if (instantAnimationProperty != null)
+                    {
                         DGUI.Toggle.Switch.Draw(instantAnimationProperty, UILabels.InstantAnimation, ComponentColorName, true, true, DGUI.Properties.SingleLineHeight);
                         GUILayout.Space(DGUI.Properties.Space(2) * expanded.faded);
                         GUI.enabled = !instantAnimationProperty.boolValue;
@@ -756,7 +828,7 @@ namespace Doozy.Editor.UI {
 
                     GUILayout.BeginHorizontal();
                     {
-                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Move, (AnimationType)move.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
+                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Move, (AnimationType) move.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
                                           barSize,
                                           DGUI.Bar.Caret.CaretType.Move,
                                           moveExpanded.target ? DGUI.Colors.MoveColorName : DGUI.Colors.DisabledTextColorName,
@@ -765,7 +837,7 @@ namespace Doozy.Editor.UI {
 
                         GUILayout.Space(DGUI.Properties.Space());
 
-                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Rotate, (AnimationType)rotate.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
+                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Rotate, (AnimationType) rotate.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
                                           barSize,
                                           DGUI.Bar.Caret.CaretType.Rotate,
                                           rotateExpanded.target ? DGUI.Colors.RotateColorName : DGUI.Colors.DisabledTextColorName,
@@ -774,7 +846,7 @@ namespace Doozy.Editor.UI {
 
                         GUILayout.Space(DGUI.Properties.Space());
 
-                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Scale, (AnimationType)scale.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
+                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Scale, (AnimationType) scale.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
                                           barSize,
                                           DGUI.Bar.Caret.CaretType.Scale,
                                           scaleExpanded.target ? DGUI.Colors.ScaleColorName : DGUI.Colors.DisabledTextColorName,
@@ -783,7 +855,7 @@ namespace Doozy.Editor.UI {
 
                         GUILayout.Space(DGUI.Properties.Space());
 
-                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Fade, (AnimationType)fade.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
+                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Fade, (AnimationType) fade.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
                                           barSize,
                                           DGUI.Bar.Caret.CaretType.Fade,
                                           fadeExpanded.target ? DGUI.Colors.FadeColorName : DGUI.Colors.DisabledTextColorName,
@@ -808,23 +880,27 @@ namespace Doozy.Editor.UI {
             DGUI.FadeOut.End(expanded, true, alpha);
         }
 
-        private void DrawBehaviorActions(UIAction actions, SerializedProperty actionsProperty, AnimBool expanded, string unityEventDisplayPath) {
+        private void DrawBehaviorActions(UIAction actions, SerializedProperty actionsProperty, AnimBool expanded, string unityEventDisplayPath)
+        {
             float alpha = GUI.color.a;
-            if (DGUI.FadeOut.Begin(expanded, false)) {
+            if (DGUI.FadeOut.Begin(expanded, false))
+            {
                 SerializedProperty soundDataProperty = GetProperty(PropertyName.SoundData, actionsProperty);
                 SerializedProperty effectProperty = GetProperty(PropertyName.Effect, actionsProperty);
                 SerializedProperty animatorEventsProperty = GetProperty(PropertyName.AnimatorEvents, actionsProperty);
                 SerializedProperty gameEventsProperty = GetProperty(PropertyName.GameEvents, actionsProperty);
                 SerializedProperty unityEventProperty = GetProperty(PropertyName.Event, actionsProperty);
 
-                if (!expanded.target) {
+                if (!expanded.target)
+                {
                     m_soundDataExpanded.target = false;
                     m_effectExpanded.target = false;
                     m_animatorEventsExpanded.target = false;
                     m_gameEventsExpanded.target = false;
                     m_unityEventsExpanded.target = false;
                 }
-                else {
+                else
+                {
                     if (!m_soundDataExpanded.target && !m_effectExpanded.target && !m_animatorEventsExpanded.target && !m_gameEventsExpanded.target && !m_unityEventsExpanded.target)
                         m_soundDataExpanded.target = true;
                 }
@@ -838,7 +914,8 @@ namespace Doozy.Editor.UI {
                                                                                    actions.HasSound,
                                                                                    DGUI.IconGroup.IconSize,
                                                                                    DGUI.Icon.Sound, DGUI.Icon.Sound,
-                                                                                   ComponentColorName, DGUI.Colors.DisabledIconColorName))) {
+                                                                                   ComponentColorName, DGUI.Colors.DisabledIconColorName)))
+                    {
                         m_soundDataExpanded.target = true;
                         m_effectExpanded.value = false;
                         m_animatorEventsExpanded.value = false;
@@ -855,7 +932,8 @@ namespace Doozy.Editor.UI {
                                                                                      actions.HasEffect,
                                                                                      DGUI.IconGroup.IconSize,
                                                                                      DGUI.Icon.Effect, DGUI.Icon.Effect,
-                                                                                     ComponentColorName, DGUI.Colors.DisabledIconColorName))) {
+                                                                                     ComponentColorName, DGUI.Colors.DisabledIconColorName)))
+                    {
                         m_soundDataExpanded.value = false;
                         m_effectExpanded.target = true;
                         m_animatorEventsExpanded.value = false;
@@ -874,7 +952,8 @@ namespace Doozy.Editor.UI {
                                                                                                 actions.AnimatorEventsCount,
                                                                                                 DGUI.IconGroup.IconSize,
                                                                                                 DGUI.Icon.Animator, DGUI.Icon.Animator,
-                                                                                                ComponentColorName, DGUI.Colors.DisabledIconColorName))) {
+                                                                                                ComponentColorName, DGUI.Colors.DisabledIconColorName)))
+                    {
                         m_soundDataExpanded.value = false;
                         m_effectExpanded.value = false;
                         m_animatorEventsExpanded.target = true;
@@ -893,7 +972,8 @@ namespace Doozy.Editor.UI {
                                                                                                 actions.GameEventsCount,
                                                                                                 DGUI.IconGroup.IconSize,
                                                                                                 DGUI.Icon.GameEvent, DGUI.Icon.GameEvent,
-                                                                                                ComponentColorName, DGUI.Colors.DisabledIconColorName))) {
+                                                                                                ComponentColorName, DGUI.Colors.DisabledIconColorName)))
+                    {
                         m_soundDataExpanded.value = false;
                         m_effectExpanded.value = false;
                         m_animatorEventsExpanded.value = false;
@@ -912,7 +992,8 @@ namespace Doozy.Editor.UI {
                                                                                                actions.UnityEventListenerCount,
                                                                                                DGUI.IconGroup.IconSize,
                                                                                                DGUI.Icon.UnityEvent, DGUI.Icon.UnityEvent,
-                                                                                               ComponentColorName, DGUI.Colors.DisabledIconColorName))) {
+                                                                                               ComponentColorName, DGUI.Colors.DisabledIconColorName)))
+                    {
                         m_soundDataExpanded.value = false;
                         m_effectExpanded.value = false;
                         m_animatorEventsExpanded.value = false;
@@ -963,13 +1044,15 @@ namespace Doozy.Editor.UI {
             DGUI.FadeOut.End(expanded, true, alpha);
         }
 
-        private void DrawProgressors() {
+        private void DrawProgressors()
+        {
             DrawProgressor(m_showProgressor, UILabels.ShowProgressor, m_updateShowProgressorOnHide, UILabels.UpdateOnHide);
             GUILayout.Space(DGUI.Properties.Space());
             DrawProgressor(m_hideProgressor, UILabels.HideProgressor, m_updateHideProgressorOnShow, UILabels.UpdateOnShow);
         }
 
-        private void DrawProgressor(SerializedProperty progressorProperty, string progressorLabel, SerializedProperty updateProperty, string updateLabel) {
+        private void DrawProgressor(SerializedProperty progressorProperty, string progressorLabel, SerializedProperty updateProperty, string updateLabel)
+        {
             GUILayout.BeginHorizontal();
             {
                 DGUI.Property.Draw(progressorProperty, progressorLabel, ComponentColorName);
@@ -979,13 +1062,15 @@ namespace Doozy.Editor.UI {
             GUILayout.EndHorizontal();
         }
 
-        private void DrawUnityEvents() {
+        private void DrawUnityEvents()
+        {
             DrawUnityEvent(m_onVisibilityChangedExpanded, m_onVisibilityChanged, "OnVisibilityChanged", OnVisibilityChangedEventCount);
             GUILayout.Space(DGUI.Properties.Space());
             DrawUnityEvent(m_onInverseVisibilityChangedExpanded, m_onInverseVisibilityChanged, "OnInverseVisibilityChanged", OnInverseVisibilityChangedEventCount);
         }
 
-        private void DrawUnityEvent(AnimBool expanded, SerializedProperty property, string propertyName, int eventsCount) {
+        private void DrawUnityEvent(AnimBool expanded, SerializedProperty property, string propertyName, int eventsCount)
+        {
             DGUI.Bar.Draw(propertyName, NORMAL_BAR_SIZE, DGUI.Bar.Caret.CaretType.Caret, ComponentColorName, expanded);
             DGUI.Property.UnityEventWithFade(property, expanded, propertyName, ComponentColorName, eventsCount, true, true);
         }

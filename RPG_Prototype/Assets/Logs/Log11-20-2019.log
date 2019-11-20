@@ -234,3 +234,88 @@
 11:40:19 AM User clicked button SprookjesRPGBack
 11:40:19 AM System entered node TestTypeChoice
 11:40:21 AM System saved game
+12:06:29 PM System loaded game
+12:06:31 PM System entered node Start
+12:06:31 PM System entered node Hub
+12:06:34 PM User clicked button SprookjesRPGToTestTypeChoice
+12:06:34 PM System entered node TestTypeChoice
+12:06:35 PM User clicked button SprookjesRPGBack
+12:06:35 PM System entered node Hub
+12:06:37 PM User clicked button SprookjesRPGToTestTypeChoice
+12:06:37 PM System entered node TestTypeChoice
+12:06:39 PM System entered node ControlTestBroker
+12:06:47 PM System entered node ControlTestLinearMap
+12:06:48 PM System entered node ControlTestResult
+12:06:49 PM User clicked button SprookjesRPGBack
+12:06:49 PM System entered node Hub
+12:06:52 PM User clicked button SprookjesRPGToTestTypeChoice
+12:06:52 PM System entered node TestTypeChoice
+12:06:54 PM User clicked button SprookjesRPGBack
+12:06:54 PM System entered node Hub
+12:06:55 PM System entered node TrainingBroker
+12:06:57 PM User clicked button SprookjesRPGBack
+12:06:57 PM System entered node Hub
+12:06:58 PM System entered node CharacterHome
+12:07:00 PM User clicked button SprookjesRPGBack
+12:07:00 PM System entered node Hub
+12:07:01 PM User clicked button SprookjesRPGToTestTypeChoice
+12:07:01 PM System entered node TestTypeChoice
+12:07:03 PM System entered node ControlTestBroker
+12:07:05 PM System entered node ControlTestLinearMap
+12:07:06 PM System entered node ControlTestResult
+12:07:08 PM User clicked button SprookjesRPGBack
+12:07:08 PM System entered node Hub
+12:07:13 PM System saved game
+12:08:51 PM System loaded game
+12:08:53 PM System entered node Start
+12:08:53 PM System entered node Hub
+12:08:57 PM System entered node CharacterHome
+12:09:02 PM User clicked button SprookjesRPGBack
+12:09:02 PM System entered node Hub
+12:09:03 PM System entered node TrainingBroker
+12:09:18 PM User clicked button SprookjesRPGBack
+12:09:18 PM System entered node Hub
+12:09:40 PM System entered node CharacterHome
+12:09:42 PM User clicked button SprookjesRPGBack
+12:09:42 PM System entered node Hub
+12:10:02 PM System entered node CharacterHome
+12:10:03 PM User clicked button SprookjesRPGBack
+12:10:03 PM System entered node Hub
+12:10:04 PM System entered node TrainingBroker
+12:10:13 PM User clicked button SprookjesRPGBack
+12:10:13 PM System entered node Hub
+12:10:15 PM System entered node CharacterHome
+12:10:19 PM User clicked button SprookjesRPGBack
+12:10:19 PM System entered node Hub
+12:10:31 PM System entered node TrainingBroker
+12:10:51 PM User clicked button SprookjesRPGBack
+12:10:51 PM System entered node Hub
+12:11:10 PM System entered node TrainingBroker
+12:11:12 PM User clicked button SprookjesRPGBack
+12:11:12 PM System entered node Hub
+12:17:59 PM System entered node CharacterHome
+12:18:00 PM User clicked button SprookjesRPGBack
+12:18:00 PM System entered node Hub
+12:18:01 PM System entered node TrainingBroker
+12:18:03 PM User clicked button SprookjesRPGBack
+12:18:03 PM System entered node Hub
+12:18:35 PM System entered node TrainingBroker
+12:18:40 PM System entered node TrainingBrokerResult
+12:19:03 PM System entered node TrainingGameResult
+12:19:28 PM User clicked button SprookjesRPGBack
+12:19:28 PM System entered node Hub
+12:19:29 PM System entered node TrainingBroker
+12:19:31 PM System entered node TrainingBrokerResult
+12:19:43 PM System entered node TrainingGameResult
+12:20:05 PM User clicked button SprookjesRPGBack
+12:20:05 PM System entered node Hub
+12:21:07 PM System entered node TrainingBroker
+12:21:08 PM User clicked button SprookjesRPGBack
+12:21:08 PM System entered node Hub
+12:22:36 PM System saved game
+3:12:40 PM System loaded game
+3:13:39 PM System saved game
+3:13:47 PM System loaded game
+3:14:30 PM System saved game
+3:14:36 PM System loaded game
+3:14:42 PM System saved game

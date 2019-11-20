@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+﻿// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -15,7 +15,7 @@ using Doozy.Engine.Utils;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+    
 #if dUI_TextMeshPro
 using TMPro;
 #endif
@@ -27,7 +27,8 @@ using UnityEditor;
 // ReSharper disable UnusedMember.Global
 // ReSharper disable MemberCanBePrivate.Global
 
-namespace Doozy.Engine.UI {
+namespace Doozy.Engine.UI
+{
     /// <summary>
     ///     Core component in the DoozyUI system.
     ///     It contains all the logic needed for a button to work and behave in various ways in order to create complex UI interactions.
@@ -37,7 +38,8 @@ namespace Doozy.Engine.UI {
     [RequireComponent(typeof(Button))]
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(DoozyExecutionOrder.UIBUTTON)]
-    public class UIButton : UIComponentBase<UIButton>, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler {
+    public class UIButton : UIComponentBase<UIButton>, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler
+    {
         #region UNITY_EDITOR
 
 #if UNITY_EDITOR
@@ -45,7 +47,8 @@ namespace Doozy.Engine.UI {
         private static void CreateComponent(MenuCommand menuCommand) { CreateUIButton(GetParent(menuCommand.context as GameObject)); }
 
         /// <summary> (EDITOR ONLY) Creates a UIButton and returns a reference to it </summary>
-        public static UIButton CreateUIButton(GameObject parent) {
+        public static UIButton CreateUIButton(GameObject parent)
+        {
             var go = new GameObject(MenuUtils.UIButton_GameObject_Name, typeof(RectTransform), typeof(Image), typeof(Button), typeof(UIButton));
             GameObjectUtility.SetParentAndAlign(go, parent);
             Undo.RegisterCreatedObjectUndo(go, "Create " + go.name); //undo option
@@ -66,7 +69,8 @@ namespace Doozy.Engine.UI {
         }
 
         /// <summary> [Editor Only] Creates a TextMeshPro label </summary>
-        public static void CreateTextMeshProLabel(UIButton button) {
+        public static void CreateTextMeshProLabel(UIButton button)
+        {
 #if dUI_TextMeshPro
             var label = new GameObject("Label", typeof(RectTransform));
             GameObjectUtility.SetParentAndAlign(label, button.gameObject);
@@ -85,7 +89,8 @@ namespace Doozy.Engine.UI {
         }
 
         /// <summary> [Editor Only] Creates a Text label </summary>
-        public static void CreateTextLabel(UIButton button) {
+        public static void CreateTextLabel(UIButton button)
+        {
             var label = new GameObject("Label", typeof(RectTransform));
             GameObjectUtility.SetParentAndAlign(label, button.gameObject);
 
@@ -132,8 +137,10 @@ namespace Doozy.Engine.UI {
         #region Properties
 
         /// <summary> Reference to the Button component </summary>
-        public Button Button {
-            get {
+        public Button Button
+        {
+            get
+            {
                 if (m_button != null) return m_button;
                 m_button = GetComponent<Button>();
                 return m_button;
@@ -141,8 +148,10 @@ namespace Doozy.Engine.UI {
         }
 
         /// <summary> Reference to the CanvasGroup component </summary>
-        public CanvasGroup CanvasGroup {
-            get {
+        public CanvasGroup CanvasGroup
+        {
+            get
+            {
                 if (m_canvasGroup != null) return m_canvasGroup;
                 m_canvasGroup = GetComponent<CanvasGroup>();
                 if (m_canvasGroup != null) return m_canvasGroup;
@@ -158,9 +167,12 @@ namespace Doozy.Engine.UI {
         ///     <para />
         ///     TargetLabel.TextMeshPro and TextMeshPro support is enabled and TextMeshProLabel != null -> Returns TRUE
         /// </summary>
-        public bool HasLabel {
-            get {
-                switch (TargetLabel) {
+        public bool HasLabel
+        {
+            get
+            {
+                switch (TargetLabel)
+                {
                     case TargetLabel.None: return false;
                     case TargetLabel.Text: return TextLabel != null;
                     case TargetLabel.TextMeshPro:
@@ -303,7 +315,8 @@ namespace Doozy.Engine.UI {
 
         #region Unity Methods
 
-        protected override void Reset() {
+        protected override void Reset()
+        {
             base.Reset();
 
             UIButtonSettings.Instance.ResetComponent(this);
@@ -326,18 +339,21 @@ namespace Doozy.Engine.UI {
             m_longClickRegisterCoroutine = null;
         }
 
-        public override void Awake() {
+        public override void Awake()
+        {
             base.Awake();
             LoadPresets();
         }
 
-        public override void OnEnable() {
+        public override void OnEnable()
+        {
             base.OnEnable();
             if (IsSelected) StartSelectedLoopAnimation();
             else StartNormalLoopAnimation();
         }
 
-        public override void OnDisable() {
+        public override void OnDisable()
+        {
             base.OnDisable();
 
             UIAnimator.StopAnimations(RectTransform, AnimationType.Punch);
@@ -349,20 +365,22 @@ namespace Doozy.Engine.UI {
             ResetToStartValues();
 
             ReadyAllBehaviors();
-
+            
             if (m_disableButtonCoroutine == null) return;
             StopCoroutine(m_disableButtonCoroutine);
             m_disableButtonCoroutine = null;
             EnableButton();
         }
-
-        private void Update() {
+        
+        private void Update()
+        {
             if (InputData.InputMode == InputMode.None) return;
 
             if (!IsSelected) return;
 
             // ReSharper disable once SwitchStatementMissingSomeCases
-            switch (InputData.InputMode) {
+            switch (InputData.InputMode)
+            {
                 case InputMode.KeyCode:
                     if (UnityEngine.Input.GetKeyDown(InputData.KeyCode) ||
                         InputData.EnableAlternateInputs && UnityEngine.Input.GetKeyDown(InputData.KeyCodeAlt))
@@ -386,8 +404,10 @@ namespace Doozy.Engine.UI {
 
         void IPointerUpHandler.OnPointerUp(PointerEventData eventData) { TriggerButtonBehavior(OnPointerUp); }
 
-        void IPointerClickHandler.OnPointerClick(PointerEventData eventData) {
-            switch (eventData.button) {
+        void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+        {
+            switch (eventData.button)
+            {
                 case PointerEventData.InputButton.Left:
                     TriggerButtonBehavior(OnClick);
                     break;
@@ -398,10 +418,12 @@ namespace Doozy.Engine.UI {
             }
         }
 
-        void ISelectHandler.OnSelect(BaseEventData eventData) {
+        void ISelectHandler.OnSelect(BaseEventData eventData)
+        {
             if (eventData.selectedObject != gameObject) return;
             StopNormalLoopAnimation();
-            if (!OnSelected.Enabled) {
+            if (!OnSelected.Enabled)
+            {
                 StartSelectedLoopAnimation();
                 return;
             }
@@ -409,10 +431,12 @@ namespace Doozy.Engine.UI {
             TriggerButtonBehavior(OnSelected);
         }
 
-        void IDeselectHandler.OnDeselect(BaseEventData eventData) {
+        void IDeselectHandler.OnDeselect(BaseEventData eventData)
+        {
             if (eventData.selectedObject != gameObject) return;
             StopSelectedLoopAnimation();
-            if (!OnDeselected.Enabled) {
+            if (!OnDeselected.Enabled)
+            {
                 StartNormalLoopAnimation();
                 return;
             }
@@ -425,7 +449,8 @@ namespace Doozy.Engine.UI {
         #region Public Methods
 
         /// <summary> Deselect this button from the EventSystem (if selected) </summary>
-        public void DeselectButton() {
+        public void DeselectButton()
+        {
             if (!IsSelected) return;
             UnityEventSystem.SetSelectedGameObject(null);
         }
@@ -440,7 +465,8 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Disable the button for a set time duration </summary>
         /// <param name="duration"> How long will the button get disabled for </param>
-        public void DisableButton(float duration) {
+        public void DisableButton(float duration)
+        {
             if (!Interactable) return;
             DisableButton();
             m_disableButtonCoroutine = StartCoroutine(DisableButtonEnumerator(duration));
@@ -451,11 +477,12 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Execute OnPointerEnter actions, if enabled </summary>
         /// <param name="debug"> Enables relevant debug messages to be printed to the console </param>
-        public void ExecutePointerEnter(bool debug = false) {
-            if (!OnPointerEnter.Enabled) {
+        public void ExecutePointerEnter(bool debug = false)
+        {
+            if (!OnPointerEnter.Enabled)
+            {
                 StopNormalLoopAnimation();
                 StopSelectedLoopAnimation();
-
                 return;
             }
 
@@ -467,7 +494,8 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Execute OnPointerExit actions, if enabled </summary>
         /// <param name="debug"> Enables relevant debug messages to be printed to the console </param>
-        public void ExecutePointerExit(bool debug = false) {
+        public void ExecutePointerExit(bool debug = false)
+        {
             if (!OnPointerExit.Enabled) return;
             PrintBehaviorDebugMessage(OnPointerExit, "initiated", debug);
             StartCoroutine(ExecuteButtonBehaviorEnumerator(OnPointerExit));
@@ -477,7 +505,9 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Execute OnPointerDown actions, if enabled </summary>
         /// <param name="debug"> Enables relevant debug messages to be printed to the console </param>
-        public void ExecutePointerDown(bool debug = false) {
+        public void ExecutePointerDown(bool debug = false)
+        {
+            ResetLongClick(debug);
             if (OnLongClick.Enabled && Interactable) RegisterLongClick();
             if (!OnPointerDown.Enabled) return;
             PrintBehaviorDebugMessage(OnPointerDown, "initiated", debug);
@@ -487,7 +517,8 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Execute OnPointerUp actions, if enabled </summary>
         /// <param name="debug"> Enables relevant debug messages to be printed to the console </param>
-        public void ExecutePointerUp(bool debug = false) {
+        public void ExecutePointerUp(bool debug = false)
+        {
             UnregisterLongClick();
             if (!OnPointerUp.Enabled) return;
             PrintBehaviorDebugMessage(OnPointerUp, "initiated", debug);
@@ -497,10 +528,13 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Execute OnClick actions, if enabled </summary>
         /// <param name="debug"> Enables relevant debug messages to be printed to the console </param>
-        public void ExecuteClick(bool debug = false) {
-            if (OnClick.Enabled) {
+        public void ExecuteClick(bool debug = false)
+        {
+            if (OnClick.Enabled)
+            {
                 PrintBehaviorDebugMessage(OnClick, "initiated", debug);
-                if (Interactable) {
+                if (Interactable)
+                {
                     StartCoroutine(ExecuteButtonBehaviorEnumerator(OnClick));
                     PrintBehaviorDebugMessage(OnClick, "executed", debug);
                 }
@@ -515,10 +549,13 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Execute OnDoubleClick actions, if enabled </summary>
         /// <param name="debug"> Enables relevant debug messages to be printed to the console </param>
-        public void ExecuteDoubleClick(bool debug = false) {
-            if (OnDoubleClick.Enabled) {
+        public void ExecuteDoubleClick(bool debug = false)
+        {
+            if (OnDoubleClick.Enabled)
+            {
                 PrintBehaviorDebugMessage(OnDoubleClick, "initiated", debug);
-                if (Interactable) {
+                if (Interactable)
+                {
                     StartCoroutine(ExecuteButtonBehaviorEnumerator(OnDoubleClick));
                     PrintBehaviorDebugMessage(OnDoubleClick, "executed", debug);
                 }
@@ -533,10 +570,13 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Execute OnLongClick actions, if enabled </summary>
         /// <param name="debug"> Enables relevant debug messages to be printed to the console </param>
-        public void ExecuteLongClick(bool debug = false) {
-            if (OnLongClick.Enabled) {
+        public void ExecuteLongClick(bool debug = false)
+        {
+            if (OnLongClick.Enabled)
+            {
                 PrintBehaviorDebugMessage(OnLongClick, "initiated", debug);
-                if (Interactable) {
+                if (Interactable)
+                {
                     StartCoroutine(ExecuteButtonBehaviorEnumerator(OnLongClick));
                     PrintBehaviorDebugMessage(OnLongClick, "executed", debug);
                 }
@@ -551,10 +591,13 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Execute OnRightClick actions, if enabled </summary>
         /// <param name="debug"> Enables relevant debug messages to be printed to the console </param>
-        public void ExecuteRightClick(bool debug = false) {
-            if (OnRightClick.Enabled) {
+        public void ExecuteRightClick(bool debug = false)
+        {
+            if (OnRightClick.Enabled)
+            {
                 PrintBehaviorDebugMessage(OnRightClick, "initiated", debug);
-                if (Interactable) {
+                if (Interactable)
+                {
                     StartCoroutine(ExecuteButtonBehaviorEnumerator(OnRightClick));
                     PrintBehaviorDebugMessage(OnClick, "OnRightClick", debug);
                 }
@@ -569,7 +612,8 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Execute OnDeselected actions, if enabled </summary>
         /// <param name="debug"> Enables relevant debug messages to be printed to the console </param>
-        public void ExecuteOnButtonDeselected(bool debug = false) {
+        public void ExecuteOnButtonDeselected(bool debug = false)
+        {
             if (!OnDeselected.Enabled) return;
             PrintBehaviorDebugMessage(OnDeselected, "initiated", debug);
             StartCoroutine(ExecuteButtonBehaviorEnumerator(OnDeselected));
@@ -579,7 +623,8 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Execute OnSelected actions, if enabled </summary>
         /// <param name="debug"> Enables relevant debug messages to be printed to the console </param>
-        public void ExecuteOnButtonSelected(bool debug = false) {
+        public void ExecuteOnButtonSelected(bool debug = false)
+        {
             if (!OnSelected.Enabled) return;
             PrintBehaviorDebugMessage(OnSelected, "initiated", debug);
             StartCoroutine(ExecuteButtonBehaviorEnumerator(OnSelected));
@@ -588,7 +633,8 @@ namespace Doozy.Engine.UI {
         }
 
         /// <summary> Load all the preset animations, that are set to be loaded at runtime, for all the enabled behaviors </summary>
-        public void LoadPresets() {
+        public void LoadPresets()
+        {
             if (OnPointerEnter.Enabled && OnPointerEnter.LoadSelectedPresetAtRuntime) OnPointerEnter.LoadPreset();
             if (OnPointerExit.Enabled && OnPointerExit.LoadSelectedPresetAtRuntime) OnPointerExit.LoadPreset();
             if (OnPointerDown.Enabled && OnPointerDown.LoadSelectedPresetAtRuntime) OnPointerDown.LoadPreset();
@@ -607,7 +653,8 @@ namespace Doozy.Engine.UI {
 
         /// <summary> Sends an UIButtonMessage notifying the system that an UIButtonBehavior has been triggered </summary>
         /// <param name="behaviorType"> The UIButtonBehaviorType of the UIButtonBehavior that has been triggered </param>
-        public void NotifySystemOfTriggeredBehavior(UIButtonBehaviorType behaviorType) {
+        public void NotifySystemOfTriggeredBehavior(UIButtonBehaviorType behaviorType)
+        {
             if (OnUIButtonAction != null) OnUIButtonAction.Invoke(this, behaviorType);
             Message.Send(new UIButtonMessage(this, behaviorType));
         }
@@ -617,10 +664,12 @@ namespace Doozy.Engine.UI {
 
         /// <summary> If this UIButton has a label referenced, its text will get updated to the given text value </summary>
         /// <param name="text"> The new text value for the referenced label (if there is one) </param>
-        public void SetLabelText(string text) {
+        public void SetLabelText(string text)
+        {
             if (!HasLabel) return;
             // ReSharper disable once SwitchStatementMissingSomeCases
-            switch (TargetLabel) {
+            switch (TargetLabel)
+            {
                 case TargetLabel.Text:
                     TextLabel.text = text;
                     break;
@@ -633,7 +682,8 @@ namespace Doozy.Engine.UI {
         }
 
         /// <summary> Starts playing the normal loop animation </summary>
-        public void StartNormalLoopAnimation() {
+        public void StartNormalLoopAnimation()
+        {
             if (NormalLoopAnimation == null) return;
             if (!NormalLoopAnimation.Enabled) return;
             ResetToStartValues();
@@ -641,7 +691,8 @@ namespace Doozy.Engine.UI {
         }
 
         /// <summary> Start playing the selected loop animation </summary>
-        public void StartSelectedLoopAnimation() {
+        public void StartSelectedLoopAnimation()
+        {
             if (SelectedLoopAnimation == null) return;
             if (!SelectedLoopAnimation.Enabled) return;
             ResetToStartValues();
@@ -649,7 +700,8 @@ namespace Doozy.Engine.UI {
         }
 
         /// <summary> Stops playing the normal loop animation </summary>
-        public void StopNormalLoopAnimation() {
+        public void StopNormalLoopAnimation()
+        {
             if (NormalLoopAnimation == null) return;
             if (!NormalLoopAnimation.IsPlaying) return;
             NormalLoopAnimation.Stop(RectTransform);
@@ -657,7 +709,8 @@ namespace Doozy.Engine.UI {
         }
 
         /// <summary> Stop playing the selected loop animation </summary>
-        public void StopSelectedLoopAnimation() {
+        public void StopSelectedLoopAnimation()
+        {
             if (SelectedLoopAnimation == null) return;
             if (!SelectedLoopAnimation.IsPlaying) return;
             SelectedLoopAnimation.Stop(RectTransform);
@@ -668,12 +721,15 @@ namespace Doozy.Engine.UI {
 
         #region Private Methods
 
-        private void PrintBehaviorDebugMessage(UIButtonBehavior behavior, string action, bool debug = false) {
+        private void PrintBehaviorDebugMessage(UIButtonBehavior behavior, string action, bool debug = false)
+        {
             if (DebugComponent || debug) DDebug.Log("(" + ButtonName + ") UIButton - " + behavior.BehaviorType + " - " + action + ".", this);
         }
 
-        private void TriggerButtonBehavior(UIButtonBehavior behavior, bool debug = false) {
-            switch (behavior.BehaviorType) {
+        private void TriggerButtonBehavior(UIButtonBehavior behavior, bool debug = false)
+        {
+            switch (behavior.BehaviorType)
+            {
                 case UIButtonBehaviorType.OnClick:
                     if (!Interactable || UIInteractionsDisabled) return;
                     if (!behavior.Ready) return;
@@ -726,8 +782,10 @@ namespace Doozy.Engine.UI {
             }
         }
 
-        private void InitiateClick(bool debug = false) {
-            if (m_executedLongClick) {
+        private void InitiateClick(bool debug = false)
+        {
+            if (m_executedLongClick)
+            {
                 ResetLongClick(debug);
                 return;
             }
@@ -735,7 +793,8 @@ namespace Doozy.Engine.UI {
             StartCoroutine(RunOnClickEnumerator(debug));
         }
 
-        private void ReadyAllBehaviors() {
+        private void ReadyAllBehaviors()
+        {
             OnPointerEnter.Ready = true;
             OnPointerExit.Ready = true;
             OnPointerUp.Ready = true;
@@ -747,21 +806,24 @@ namespace Doozy.Engine.UI {
             OnSelected.Ready = true;
             OnDeselected.Ready = true;
         }
-
-        private void RegisterLongClick(bool debug = false) {
+        
+        private void RegisterLongClick(bool debug = false)
+        {
             if (OnLongClick.Enabled) PrintBehaviorDebugMessage(OnLongClick, "registered", debug);
             if (m_executedLongClick) return;
             ResetLongClick(debug);
             m_longClickRegisterCoroutine = StartCoroutine(RunOnLongClickEnumerator(debug));
         }
 
-        private void UnregisterLongClick(bool debug = false) {
+        private void UnregisterLongClick(bool debug = false)
+        {
             if (OnLongClick.Enabled) PrintBehaviorDebugMessage(OnLongClick, "unregistered", debug);
             if (m_executedLongClick) return;
             ResetLongClick(debug);
         }
 
-        private void ResetLongClick(bool debug = false) {
+        private void ResetLongClick(bool debug = false)
+        {
             if (OnLongClick.Enabled) PrintBehaviorDebugMessage(OnLongClick, "reset", debug);
             m_executedLongClick = false;
             m_longClickTimeoutCounter = 0;
@@ -771,18 +833,20 @@ namespace Doozy.Engine.UI {
         }
 
         // ReSharper disable once UnusedMember.Local
-        private bool BehaviorEnabled(UIButtonBehaviorType behaviorType) {
-            switch (behaviorType) {
-                case UIButtonBehaviorType.OnClick: return OnClick.Enabled;
-                case UIButtonBehaviorType.OnDoubleClick: return OnDoubleClick.Enabled;
-                case UIButtonBehaviorType.OnLongClick: return OnLongClick.Enabled;
-                case UIButtonBehaviorType.OnRightClick: return OnRightClick.Enabled;
+        private bool BehaviorEnabled(UIButtonBehaviorType behaviorType)
+        {
+            switch (behaviorType)
+            {
+                case UIButtonBehaviorType.OnClick:        return OnClick.Enabled;
+                case UIButtonBehaviorType.OnDoubleClick:  return OnDoubleClick.Enabled;
+                case UIButtonBehaviorType.OnLongClick:    return OnLongClick.Enabled;
+                case UIButtonBehaviorType.OnRightClick:   return OnRightClick.Enabled;
                 case UIButtonBehaviorType.OnPointerEnter: return OnPointerEnter.Enabled;
-                case UIButtonBehaviorType.OnPointerExit: return OnPointerExit.Enabled;
-                case UIButtonBehaviorType.OnPointerDown: return OnPointerDown.Enabled;
-                case UIButtonBehaviorType.OnPointerUp: return OnPointerUp.Enabled;
-                case UIButtonBehaviorType.OnSelected: return OnSelected.Enabled;
-                case UIButtonBehaviorType.OnDeselected: return OnDeselected.Enabled;
+                case UIButtonBehaviorType.OnPointerExit:  return OnPointerExit.Enabled;
+                case UIButtonBehaviorType.OnPointerDown:  return OnPointerDown.Enabled;
+                case UIButtonBehaviorType.OnPointerUp:    return OnPointerUp.Enabled;
+                case UIButtonBehaviorType.OnSelected:     return OnSelected.Enabled;
+                case UIButtonBehaviorType.OnDeselected:   return OnDeselected.Enabled;
                 default: throw new ArgumentOutOfRangeException("behaviorType", behaviorType, null);
             }
         }
@@ -791,7 +855,8 @@ namespace Doozy.Engine.UI {
 
         #region IEnumerators
 
-        private IEnumerator DeselectButtonEnumerator(float delay) {
+        private IEnumerator DeselectButtonEnumerator(float delay)
+        {
             if (Settings.IgnoreUnityTimescale)                  //check if the UI ignores Unity's Time.Timescale or not
                 yield return new WaitForSecondsRealtime(delay); //wait for seconds realtime (ignore Unity's Time.Timescale)
             else
@@ -799,7 +864,8 @@ namespace Doozy.Engine.UI {
             DeselectButton();
         }
 
-        private IEnumerator ExecuteButtonBehaviorEnumerator(UIButtonBehavior behavior) {
+        private IEnumerator ExecuteButtonBehaviorEnumerator(UIButtonBehavior behavior)
+        {
             if (!behavior.Enabled) yield break;
 
             if (!m_updateStartValuesRequired) //on the first interaction update the start values so that the reset method works as intended 
@@ -809,7 +875,8 @@ namespace Doozy.Engine.UI {
             }
 
             // ReSharper disable once SwitchStatementMissingSomeCases
-            switch (behavior.BehaviorType) {
+            switch (behavior.BehaviorType)
+            {
                 case UIButtonBehaviorType.OnClick:
                 case UIButtonBehaviorType.OnDoubleClick:
                 case UIButtonBehaviorType.OnLongClick:
@@ -839,16 +906,19 @@ namespace Doozy.Engine.UI {
             if (IsBackButton &&
                 (behavior.BehaviorType == UIButtonBehaviorType.OnClick ||
                  behavior.BehaviorType == UIButtonBehaviorType.OnDoubleClick ||
-                 behavior.BehaviorType == UIButtonBehaviorType.OnLongClick)) {
+                 behavior.BehaviorType == UIButtonBehaviorType.OnLongClick))
+            {
                 BackButton.Instance.Execute();
             }
-            else {
+            else
+            {
                 NotifySystemOfTriggeredBehavior(behavior.BehaviorType);
             }
 
 
             // ReSharper disable once SwitchStatementMissingSomeCases
-            switch (behavior.BehaviorType) {
+            switch (behavior.BehaviorType)
+            {
                 case UIButtonBehaviorType.OnSelected:
                     StartSelectedLoopAnimation();
                     break;
@@ -859,21 +929,24 @@ namespace Doozy.Engine.UI {
                 case UIButtonBehaviorType.OnDoubleClick:
                 case UIButtonBehaviorType.OnLongClick:
                 case UIButtonBehaviorType.OnRightClick:
-                    if (DeselectButtonAfterClick) {
+                    if (DeselectButtonAfterClick)
+                    {
                         if (DebugComponent) DDebug.Log("(" + ButtonName + ") UIButton - " + behavior.BehaviorType + " - Deselect Button.", this);
                         DeselectButton();
                     }
 
                     break;
                 case UIButtonBehaviorType.OnPointerEnter:
-                    if (behavior.SelectButton) {
+                    if (behavior.SelectButton)
+                    {
                         if (DebugComponent) DDebug.Log("(" + ButtonName + ") UIButton - " + behavior.BehaviorType + " - Select Button.", this);
                         SelectButton();
                     }
 
                     break;
                 case UIButtonBehaviorType.OnPointerExit:
-                    if (behavior.DeselectButton) {
+                    if (behavior.DeselectButton)
+                    {
                         if (DebugComponent) DDebug.Log("(" + ButtonName + ") UIButton - " + behavior.BehaviorType + " - Deselect Button.", this);
                         DeselectButton();
                     }
@@ -883,14 +956,16 @@ namespace Doozy.Engine.UI {
 
                     break;
                 case UIButtonBehaviorType.OnPointerDown:
-                    if (behavior.SelectButton) {
+                    if (behavior.SelectButton)
+                    {
                         if (DebugComponent) DDebug.Log("(" + ButtonName + ") UIButton - " + behavior.BehaviorType + " - Select Button.", this);
                         SelectButton();
                     }
 
                     break;
                 case UIButtonBehaviorType.OnPointerUp:
-                    if (behavior.DeselectButton) {
+                    if (behavior.DeselectButton)
+                    {
                         if (DebugComponent) DDebug.Log("(" + ButtonName + ") UIButton - " + behavior.BehaviorType + " - Deselect Button.", this);
                         DeselectButton();
                     }
@@ -899,7 +974,8 @@ namespace Doozy.Engine.UI {
             }
         }
 
-        private IEnumerator DisableButtonEnumerator(float duration) {
+        private IEnumerator DisableButtonEnumerator(float duration)
+        {
             DisableButton();
             if (Settings.IgnoreUnityTimescale)                     //check if the UI ignores Unity's Time.Timescale or not
                 yield return new WaitForSecondsRealtime(duration); //wait for seconds realtime (ignore Unity's Time.Timescale)
@@ -909,7 +985,8 @@ namespace Doozy.Engine.UI {
             m_disableButtonCoroutine = null;
         }
 
-        private IEnumerator DisableButtonBehaviorEnumerator(UIButtonBehavior behavior) {
+        private IEnumerator DisableButtonBehaviorEnumerator(UIButtonBehavior behavior)
+        {
             behavior.Ready = false;
             if (Settings.IgnoreUnityTimescale)                                     //check if the UI ignores Unity's Time.Timescale or not
                 yield return new WaitForSecondsRealtime(behavior.DisableInterval); //wait for seconds realtime (ignore Unity's Time.Timescale)
@@ -918,21 +995,26 @@ namespace Doozy.Engine.UI {
             behavior.Ready = true;
         }
 
-        private IEnumerator RunOnClickEnumerator(bool debug = false) {
+        private IEnumerator RunOnClickEnumerator(bool debug = false)
+        {
             if (ClickMode == SingleClickMode.Instant) ExecuteClick(debug);
 
-            if (!m_clickedOnce && m_doubleClickTimeoutCounter < DoubleClickRegisterInterval) {
+            if (!m_clickedOnce && m_doubleClickTimeoutCounter < DoubleClickRegisterInterval)
+            {
                 m_clickedOnce = true;
             }
-            else {
+            else
+            {
                 m_clickedOnce = false;
                 yield break; //button is pressed twice -> don't allow the second function call to fully execute
             }
 
             yield return new WaitForEndOfFrame();
 
-            while (m_doubleClickTimeoutCounter < DoubleClickRegisterInterval) {
-                if (!m_clickedOnce) {
+            while (m_doubleClickTimeoutCounter < DoubleClickRegisterInterval)
+            {
+                if (!m_clickedOnce)
+                {
                     ExecuteDoubleClick(debug);
                     m_doubleClickTimeoutCounter = 0f;
                     m_clickedOnce = false;
@@ -953,8 +1035,10 @@ namespace Doozy.Engine.UI {
             m_clickedOnce = false;
         }
 
-        private IEnumerator RunOnLongClickEnumerator(bool debug = false) {
-            while (m_longClickTimeoutCounter < LongClickRegisterInterval) {
+        private IEnumerator RunOnLongClickEnumerator(bool debug = false)
+        {
+            while (m_longClickTimeoutCounter < LongClickRegisterInterval)
+            {
                 if (Settings.IgnoreUnityTimescale)                       //check if the UI ignores Unity's Time.Timescale or not
                     m_longClickTimeoutCounter += Time.unscaledDeltaTime; //increment counter by change in time between frames (ignore Unity's Time.Timescale)
                 else
@@ -967,18 +1051,20 @@ namespace Doozy.Engine.UI {
         }
 
         #endregion
-
+        
         #region Static Methods
-
+        
         /// <summary>
         /// Returns a list of all the UIButton, registered in the UIButton.Database, with the given button category and button name.
         /// <para/> If no UIButton is found, it will return an empty list.
         /// </summary>
         /// <param name="buttonCategory"> UIButton category to search for</param>
         /// <param name="buttonName"> UIButton name to search for (found in the button category) </param>
-        public static List<UIButton> GetButtons(string buttonCategory, string buttonName) {
+        public static List<UIButton> GetButtons(string buttonCategory, string buttonName)
+        {
             var views = new List<UIButton>(); //create temp list
-            foreach (UIButton button in Database) {
+            foreach (UIButton button in Database)
+            {
                 if (!button.ButtonCategory.Equals(buttonCategory)) continue;
                 if (!button.ButtonName.Equals(buttonName)) continue;
                 views.Add(button); //categories and names match -> add to list
@@ -986,7 +1072,7 @@ namespace Doozy.Engine.UI {
 
             return views; //return list
         }
-
+        
         #endregion
     }
 }

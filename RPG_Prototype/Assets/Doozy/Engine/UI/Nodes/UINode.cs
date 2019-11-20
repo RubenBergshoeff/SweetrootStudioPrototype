@@ -1,4 +1,4 @@
-// Copyright (c) 2015 - 2019 Doozy Entertainment / Marlink Trading SRL. All Rights Reserved.
+// Copyright (c) 2015 - 2019 Doozy Entertainment. All Rights Reserved.
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
@@ -138,6 +138,7 @@ namespace Doozy.Engine.UI.Nodes
 
         private void OnButtonMessage(UIButtonMessage message)
         {
+            if (ActiveGraph != null && !ActiveGraph.Enabled) return;
             if (OutputSockets == null || OutputSockets.Count == 0) return;
 
             UIConnectionTrigger trigger;
@@ -176,6 +177,7 @@ namespace Doozy.Engine.UI.Nodes
 
         private void OnGameEventMessage(GameEventMessage message)
         {
+            if (ActiveGraph != null && !ActiveGraph.Enabled) return;
             if (OutputSockets == null || OutputSockets.Count == 0) return;
 
             foreach (Socket socket in OutputSockets)
@@ -220,10 +222,24 @@ namespace Doozy.Engine.UI.Nodes
             ActiveGraph.SetActiveNodeByConnection(socket.Connections[0]);
         }
 
+        public override void Activate(Graph portalGraph)
+        {
+            if (m_activated) return;
+            base.Activate(portalGraph);
+            AddListeners();
+        }
+
+        public override void Deactivate()
+        {
+            if (!m_activated) return;
+            base.Deactivate();
+            RemoveListeners();
+        }
+
         public override void OnEnter(Node previousActiveNode, Connection connection)
         {
             base.OnEnter(previousActiveNode, connection);
-            AddListeners();
+            Activate(ActiveGraph);
             LookForTimeDelay();
             ShowViews(m_onEnterShowViews);
             HideViews(m_onEnterHideViews);
@@ -242,7 +258,7 @@ namespace Doozy.Engine.UI.Nodes
         public override void OnExit(Node nextActiveNode, Connection connection)
         {
             base.OnExit(nextActiveNode, connection);
-            RemoveListeners();
+            Deactivate();
             ShowViews(m_onExitShowViews);
             HideViews(m_onExitHideViews);
         }
