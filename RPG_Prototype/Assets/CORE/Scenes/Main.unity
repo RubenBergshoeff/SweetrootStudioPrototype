@@ -1892,7 +1892,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls:
           - m_Target: {fileID: 93108162}
-            m_MethodName: SwitchToHub
+            m_MethodName: SwitchToCharacterHome
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -12868,7 +12868,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls:
           - m_Target: {fileID: 93108162}
-            m_MethodName: SwitchToHub
+            m_MethodName: SwitchToCharacterHome
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -20967,18 +20967,7 @@ MonoBehaviour:
         CustomSortingLayer: Default
       Event:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 93108162}
-            m_MethodName: SwitchToHub
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
       GameEvents: []
       SoundData:
         SoundSource: 0
@@ -24870,18 +24859,7 @@ MonoBehaviour:
         CustomSortingLayer: Default
       Event:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 93108162}
-            m_MethodName: SwitchToHub
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
       GameEvents: []
       SoundData:
         SoundSource: 0
@@ -28861,7 +28839,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls:
           - m_Target: {fileID: 93108162}
-            m_MethodName: SwitchToHub
+            m_MethodName: SwitchToCharacterHome
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -52230,18 +52208,7 @@ MonoBehaviour:
         CustomSortingLayer: Default
       Event:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 93108162}
-            m_MethodName: SwitchToHub
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
       GameEvents: []
       SoundData:
         SoundSource: 0
