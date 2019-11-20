@@ -1,18 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using TMPro;
-using System;
-using UnityEngine.UI;
-using Doozy.Engine.UI;
+using Doozy.Engine;
 
 public class BrokerControlTestResult : BrokerBaseResult {
 
     [SerializeField] private PlayerCharacterController playerCharacterController = null;
-    [SerializeField] private FillSlider fillSlider = null;
-    [SerializeField] private TextMeshProUGUI sliderTextField = null;
-    [SerializeField] private Button backButton = null;
+    [SerializeField] private ControlTestResult controlTestResult = null;
+    [SerializeField] private string uiEventStringDone = "";
 
     private ActiveSkillLevel activeSkillLevel;
     private TrainingData newTrainingData;
@@ -23,7 +17,6 @@ public class BrokerControlTestResult : BrokerBaseResult {
     }
 
     protected override void OnVisible() {
-        backButton.gameObject.SetActive(false);
         StartCoroutine(ControlTestAnimation());
     }
 
@@ -31,65 +24,42 @@ public class BrokerControlTestResult : BrokerBaseResult {
     }
 
     private IEnumerator ControlTestAnimation() {
-        SetStartDisplay();
-
-        yield return new WaitForSeconds(1f);
 
         // test character skill
         float previousCompletionLevel = activeSkillLevel.LastCompletionLevel;
         float completionLevel = playerCharacterController.GetActiveSkillXP(activeSkillLevel.SkillLevel.Skill) / (float)activeSkillLevel.SkillLevel.XPCap;
-        AnimateDisplay(1.3f);
 
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(1f);
 
         if (completionLevel >= 1) {
             activeSkillLevel.IsCompleted = true;
-            SetStartDisplay();
+            Debug.Log("yay level completed");
+        }
+        else {
+            Debug.Log("Completion: " + completionLevel);
         }
         activeSkillLevel.LastCompletionLevel = Mathf.Min(completionLevel, 1);
 
-        yield return new WaitForSeconds(0.3f);
+        //int previousStars = Mathf.FloorToInt(previousCompletionLevel * 3);
+        //int newStars = Mathf.FloorToInt(activeSkillLevel.LastCompletionLevel * 3);
 
-        int previousStars = Mathf.FloorToInt(previousCompletionLevel * 3);
-        int newStars = Mathf.FloorToInt(activeSkillLevel.LastCompletionLevel * 3);
+        //if (previousStars < newStars) {
+        //    ShowPopup(previousStars, newStars);
+        //    yield return new WaitForSeconds(0.3f);
+        //}
 
-        if (previousStars < newStars) {
-            ShowPopup(previousStars, newStars);
-            yield return new WaitForSeconds(0.3f);
-        }
-
-        backButton.gameObject.SetActive(true);
+        controlTestResult.SetResult(previousCompletionLevel, activeSkillLevel);
+        GameEventMessage.SendEvent(uiEventStringDone);
     }
 
-    private void AnimateDisplay(float time) {
-        int XPCap = playerCharacterController.GetActiveSkillXPCap(activeSkillLevel.SkillLevel.Skill);
-        fillSlider.SetValues(
-            0,
-            0,
-            (float)playerCharacterController.GetActiveSkillXP(activeSkillLevel.SkillLevel.Skill) / XPCap,
-            time,
-            activeSkillLevel.SkillLevel.Skill.SkillCategory.color);
+    //private void ShowPopup(int oldStarAmount, int newStarAmount) {
+    //    UIPopup popup = UIPopup.GetPopup(Popups.CONTROLSTAR_POPUP);
 
-        sliderTextField.text = "Level " + playerCharacterController.GetActiveSkillLevel(activeSkillLevel.SkillLevel.Skill);
-    }
+    //    if (popup == null) { return; }
 
-    private void SetStartDisplay() {
-        fillSlider.SetValues(
-            0,
-            0,
-            activeSkillLevel.SkillLevel.Skill.SkillCategory.color);
+    //    PopupControlTestStars popupUnlock = popup.GetComponent<PopupControlTestStars>();
+    //    popupUnlock.Setup(oldStarAmount, newStarAmount);
 
-        sliderTextField.text = "Level " + playerCharacterController.GetActiveSkillLevel(activeSkillLevel.SkillLevel.Skill);
-    }
-
-    private void ShowPopup(int oldStarAmount, int newStarAmount) {
-        UIPopup popup = UIPopup.GetPopup(Popups.CONTROLSTAR_POPUP);
-
-        if (popup == null) { return; }
-
-        PopupControlTestStars popupUnlock = popup.GetComponent<PopupControlTestStars>();
-        popupUnlock.Setup(oldStarAmount, newStarAmount);
-
-        popup.Show();
-    }
+    //    popup.Show();
+    //}
 }

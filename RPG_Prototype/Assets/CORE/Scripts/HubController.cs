@@ -9,6 +9,8 @@ public class HubController : UIDisplayController {
     [SerializeField] private ObjectClickTracker trainingHouse = null;
     [SerializeField] private string uiEventStringToTraining = "";
     [SerializeField] private string uiEventStringToCharacter = "";
+    [SerializeField] private string uiEventStringToNewCharacter = "";
+    [SerializeField] private string uiEventStringToEndCharacter = "";
 
     private void OnCharacterHouseClicked() {
         GameEventMessage.SendEvent(uiEventStringToCharacter);

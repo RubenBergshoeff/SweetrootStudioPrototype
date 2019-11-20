@@ -1,62 +1,50 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 using System.Collections.Generic;
 using Doozy.Engine;
 using Doozy.Engine.UI;
 
-public class BrokerSkillTestResult : UIDisplayController {
-    private List<ActiveSkillCategory> activeSkillCategories {
-        get {
-            return SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.ActiveSkillCategories;
-        }
-    }
+public class BrokerSkillTestResult : BrokerBaseResult {
 
-    [SerializeField] private UnityEngine.UI.Button backButton = null;
-    [SerializeField] private BrokerSkillTestResultCategory categoryTemplate = null;
-    [SerializeField] private Transform categoryContainer = null;
+    [SerializeField] private PlayerCharacterController playerCharacterController = null;
+    [SerializeField] private SkillTestResult skillTestResult = null;
+    [SerializeField] private string uiEventStringDone = "";
 
-    private List<BrokerSkillTestResultCategory> categoryResults = new List<BrokerSkillTestResultCategory>();
     private List<UnlockResult> newUnlocks = new List<UnlockResult>();
 
+    private ActiveSkillCategory activeSkillCategory;
+
+    public override void SetResult(ActiveBaseData activeResult) {
+        base.SetResult(activeResult);
+        activeSkillCategory = activeResult as ActiveSkillCategory;
+    }
+
     protected override void OnVisible() {
-        StartCoroutine(ShowTestResults());
-    }
-
-    protected override void OnInvisible() {
-    }
-
-    protected override void OnShowing() {
-        Cleanup();
+        base.OnVisible();
         ResolveTests();
-        CreateNewCategoryResults();
-        backButton.gameObject.SetActive(false);
-    }
-
-    protected override void OnHiding() {
+        StartCoroutine(ShowTestResults());
     }
 
     private void ResolveTests() {
         newUnlocks = new List<UnlockResult>();
-        foreach (var activeSkillCategory in activeSkillCategories) {
-            SkillCategoryTestResult result = new SkillCategoryTestResult();
-            result.Test = activeSkillCategory.SelectedTest;
-            int score = activeSkillCategory.GetScore();
-            if (score < activeSkillCategory.SelectedTest.MinCategoryScore) {
-                score = activeSkillCategory.LastResult == null ? 0 : activeSkillCategory.LastResult.Score;
-            }
-            result.Score = Mathf.Min(score, activeSkillCategory.SelectedTest.MaxCategoryScore);
 
-            int previousScore = activeSkillCategory.LastResult == null ? 0 : activeSkillCategory.LastResult.Score;
-
-            foreach (var potentialUnlock in activeSkillCategory.Category.PotentialUnlocks) {
-                if (potentialUnlock.RequiredScore > previousScore && potentialUnlock.RequiredScore <= result.Score) {
-                    newUnlocks.Add(potentialUnlock);
-                }
-            }
-
-            activeSkillCategory.TestResults.Add(result);
+        SkillCategoryTestResult result = new SkillCategoryTestResult();
+        result.Test = activeSkillCategory.SelectedTest;
+        int score = activeSkillCategory.GetScore();
+        if (score < activeSkillCategory.SelectedTest.MinCategoryScore) {
+            score = activeSkillCategory.LastResult == null ? 0 : activeSkillCategory.LastResult.Score;
         }
+        result.Score = Mathf.Min(score, activeSkillCategory.SelectedTest.MaxCategoryScore);
+
+        int previousScore = activeSkillCategory.LastResult == null ? 0 : activeSkillCategory.LastResult.Score;
+
+        foreach (var potentialUnlock in activeSkillCategory.Category.PotentialUnlocks) {
+            if (potentialUnlock.RequiredScore > previousScore && potentialUnlock.RequiredScore <= result.Score) {
+                newUnlocks.Add(potentialUnlock);
+            }
+        }
+
+        activeSkillCategory.TestResults.Add(result);
 
         for (int i = newUnlocks.Count - 1; i >= 0; i--) {
             UnlockReturn unlockReturn = SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.HandleUnlock(newUnlocks[i].ResultToUnlock);
@@ -66,57 +54,35 @@ public class BrokerSkillTestResult : UIDisplayController {
         }
     }
 
-    private void Cleanup() {
-        for (int i = categoryResults.Count - 1; i >= 0; i--) {
-            Destroy(categoryResults[i].gameObject);
-            categoryResults[i].transform.SetParent(null);
-            categoryResults.RemoveAt(i);
-        }
-    }
-
-    private void CreateNewCategoryResults() {
-        categoryTemplate.gameObject.SetActive(true);
-        foreach (var item in activeSkillCategories) {
-            AddItem(item);
-        }
-        categoryTemplate.gameObject.SetActive(false);
-    }
-
-    private void AddItem(ActiveSkillCategory item) {
-        BrokerSkillTestResultCategory newCategory = Instantiate(categoryTemplate.gameObject, categoryContainer).GetComponent<BrokerSkillTestResultCategory>();
-        newCategory.Setup(item);
-        categoryResults.Add(newCategory);
-    }
 
     private IEnumerator ShowTestResults() {
         yield return new WaitForSeconds(0.5f);
 
-        foreach (var categoryResult in categoryResults) {
-            categoryResult.Animate(1f);
-            yield return new WaitForSeconds(1.2f);
-        }
+        Debug.Log("TestResult Score " + activeSkillCategory.LastResult.Score);
 
         if (newUnlocks.Count > 0) {
             foreach (var newUnlock in newUnlocks) {
                 if (newUnlock.ShowPopup) {
-                    ShowPopup(newUnlock);
+                    Debug.Log("Unlocked " + newUnlock.ResultToUnlock.Name);
+                    //ShowPopup(newUnlock);
                 }
             }
         }
 
         yield return new WaitForSeconds(0.5f);
 
-        backButton.gameObject.SetActive(true);
+        skillTestResult.SetResult(activeSkillCategory, newUnlocks);
+        GameEventMessage.SendEvent(uiEventStringDone);
     }
 
-    private void ShowPopup(UnlockResult newUnlock) {
-        UIPopup popup = UIPopup.GetPopup(Popups.UNLOCK_POPUP);
+    //private void ShowPopup(UnlockResult newUnlock) {
+    //    UIPopup popup = UIPopup.GetPopup(Popups.UNLOCK_POPUP);
 
-        if (popup == null) { return; }
+    //    if (popup == null) { return; }
 
-        PopupUnlock popupUnlock = popup.GetComponent<PopupUnlock>();
-        popupUnlock.Setup(newUnlock);
+    //    PopupUnlock popupUnlock = popup.GetComponent<PopupUnlock>();
+    //    popupUnlock.Setup(newUnlock);
 
-        popup.Show();
-    }
+    //    popup.Show();
+    //}
 }
