@@ -16,17 +16,18 @@ MonoBehaviour:
   DatabaseType: 2
   Names:
   - CharacterScreen
+  - ControlTestBroker
+  - ControlTestBrokerResultScore
+  - ControlTestLinearMap
   - Hub
   - Settings
   - SettingsButtonOverlay
+  - SkillTestBroker
+  - SkillTestBrokerResultScore
+  - SkillTestLinearMap
   - TestTypeChoice
   - TrainingBroker
   - TrainingBrokerGameResult
   - TrainingBrokerResult
-  - ControlTestBroker
-  - ControlTestLinearMap
-  - SkillTestBroker
-  - SkillTestLinearMap
-  - ControlTestBrokerResultScore
-  - SkillTestBrokerResultScore
-  - 
+  - NewCharacter
+  - EndCharacter
