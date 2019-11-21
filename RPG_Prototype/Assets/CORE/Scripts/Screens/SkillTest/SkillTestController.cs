@@ -66,7 +66,7 @@ public class SkillTestController : MonoBehaviour {
             return;
         }
 
-        characterTransform.position = Vector3.MoveTowards(characterTransform.position, targetPosition, 0.75f * Time.deltaTime);
+        characterTransform.position = Vector3.MoveTowards(characterTransform.position, targetPosition, 0.45f * Time.deltaTime);
 
         //if (Vector3.Distance(characterTransform.position, waypoints[currentWaypoint].transform.position) < 0.1f) {
         //    bool canContinue = ResolveWaypoint(waypoints[currentWaypoint]);
