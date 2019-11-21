@@ -88,6 +88,18 @@ public class PlayerCharacterController : MonoBehaviour {
         activeSkill.TrainingResults.Add(newTrainingResult);
     }
 
+    public bool IsSkillActive(Skill targetSkill) {
+        ActiveSkillCategory activeSkillCategory = data.GetActiveSkillCategory(targetSkill.SkillCategory);
+        if (activeSkillCategory == null) {
+            return false;
+        }
+        ActiveSkill activeSkill = activeSkillCategory.GetActiveSkill(targetSkill);
+        if (activeSkill == null) {
+            return false;
+        }
+        return true;
+    }
+
     public int GetActiveSkillXPCap(Skill targetSkill) {
         return GetActiveSkill(targetSkill).GetXPCap();
     }

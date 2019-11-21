@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class Skill : BaseData {
     public SkillCategory SkillCategory = null;
     public TrainingData Training = null;
+    public Sprite Icon;
 }
 
 [System.Serializable]
@@ -19,7 +20,8 @@ public class ActiveSkill : ActiveBaseData {
         get {
             if (TrainingResults.Count == 0) {
                 return null;
-            } else {
+            }
+            else {
                 return TrainingResults[TrainingResults.Count - 1];
             }
         }

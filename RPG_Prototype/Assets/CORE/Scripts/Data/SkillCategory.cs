@@ -55,6 +55,7 @@ public class ActiveSkillCategory : ActiveBaseData {
 [System.Serializable]
 public class SkillCategoryTestResult {
     public SkillCategoryTest Test = null;
+    public List<UnlockResult> Unlocks = new List<UnlockResult>();
     public int Score = 0;
 }
 
@@ -63,4 +64,13 @@ public class UnlockResult {
     public int RequiredScore = 0;
     public BaseData ResultToUnlock = null;
     public bool ShowPopup = true;
+
+    public UnlockResult() {
+
+    }
+
+    public UnlockResult(BaseData resultToUnlock, bool showPopup) {
+        this.ResultToUnlock = resultToUnlock;
+        this.ShowPopup = showPopup;
+    }
 }
