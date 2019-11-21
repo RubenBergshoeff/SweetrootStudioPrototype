@@ -93,6 +93,12 @@ public class ActiveCharacterData : ActiveBaseData {
         throw new System.ArgumentException("Unlock not supported for " + newUnlock);
     }
 
+    public int GetSkillScore(Skill targetSkill) {
+        ActiveSkillCategory activeSkillCategory = GetActiveSkillCategory(targetSkill.SkillCategory);
+        ActiveSkill activeSkill = activeSkillCategory.GetActiveSkill(targetSkill);
+        return activeSkill.GetScore();
+    }
+
     public ActiveSkillCategory GetActiveSkillCategory(SkillCategory skillCategory) {
         foreach (var activeSkillCategory in ActiveSkillCategories) {
             if (activeSkillCategory.Category == skillCategory) {

@@ -3,16 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Doozy.Engine;
 using Doozy.Engine.UI;
+using System;
 
 public class BrokerSkillTestResult : BrokerBaseResult {
 
     //[SerializeField] private PlayerCharacterController playerCharacterController = null;
     [SerializeField] private SkillTestResult skillTestResult = null;
     [SerializeField] private string uiEventStringDone = "";
+    [SerializeField] private SkillTestController[] skillTestControllers = new SkillTestController[0];
 
     private List<UnlockResult> newUnlocks = new List<UnlockResult>();
 
     private ActiveSkillCategory activeSkillCategory;
+    private SkillTestController activeSkillTestController = null;
 
     public override void SetResult(ActiveBaseData activeResult) {
         base.SetResult(activeResult);
@@ -21,8 +24,35 @@ public class BrokerSkillTestResult : BrokerBaseResult {
 
     protected override void OnVisible() {
         base.OnVisible();
-        ResolveTests();
-        StartCoroutine(ShowTestResults());
+        //    ResolveTests();
+        //    StartCoroutine(ShowTestResults());
+        StartTest();
+    }
+
+    private void StartTest() {
+        activeSkillTestController = GetSkillTestController(activeSkillCategory.Data);
+        if (activeSkillTestController == null) {
+            throw new System.ArgumentException("No skilltest for category: " + activeSkillCategory.Category.Name);
+        }
+        activeSkillTestController.OnTestDone += OnTestDone;
+        activeSkillTestController.StartSequence();
+    }
+
+    private void OnTestDone(SkillCategoryTestResult result) {
+        activeSkillTestController.OnTestDone -= OnTestDone;
+        activeSkillCategory.TestResults.Add(result);
+
+        skillTestResult.SetResult(activeSkillCategory);
+        GameEventMessage.SendEvent(uiEventStringDone);
+    }
+
+    private SkillTestController GetSkillTestController(BaseData data) {
+        foreach (var controller in skillTestControllers) {
+            if (controller.Target == data) {
+                return controller;
+            }
+        }
+        return null;
     }
 
     private void ResolveTests() {
@@ -69,10 +99,10 @@ public class BrokerSkillTestResult : BrokerBaseResult {
             }
         }
 
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
 
-        skillTestResult.SetResult(activeSkillCategory, newUnlocks);
-        GameEventMessage.SendEvent(uiEventStringDone);
+        //skillTestResult.SetResult(activeSkillCategory, newUnlocks);
+        //GameEventMessage.SendEvent(uiEventStringDone);
     }
 
     //private void ShowPopup(UnlockResult newUnlock) {
