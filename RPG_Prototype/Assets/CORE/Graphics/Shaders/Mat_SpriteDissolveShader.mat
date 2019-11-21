@@ -20,10 +20,26 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_CAAF90B:
+        m_Texture: {fileID: 2800000, guid: 30089fcf1bdc7c24b86535c9b1f77c86, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: fe50099972d761b4a8832b44304b54f8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex2:
+        m_Texture: {fileID: 2800000, guid: 3472bb6bb95c184498770818d56b1c70, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _visibility: 0.545
-    m_Colors: []
+    - _EdgeSize: 0.0748
+    - _OuterEdgeMultiplier: 1.2
+    - _visibility: 0.656
+    m_Colors:
+    - Color_289B3152: {r: 1, g: 0.4470588, b: 0.97552127, a: 0.4745098}
+    - Color_6FABCA88: {r: 0, g: 0.2472796, b: 1, a: 0.7019608}
