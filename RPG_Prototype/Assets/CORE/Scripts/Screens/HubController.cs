@@ -31,7 +31,11 @@ public class HubController : UIDisplayController {
     }
 
     protected override void OnShowing() {
-
+        foreach (var character in SaveController.Instance.GameData.CharacterCollection.Characters) {
+            if (character.HasBeenIntroduced == false) {
+                GameEventMessage.SendEvent(uiEventStringToNewCharacter);
+            }
+        }
     }
 
     protected override void OnHiding() {

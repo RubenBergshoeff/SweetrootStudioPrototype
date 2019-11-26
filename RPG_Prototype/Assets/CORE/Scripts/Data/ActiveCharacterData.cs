@@ -12,6 +12,7 @@ public class ActiveCharacterData : ActiveBaseData {
     }
     public List<ActiveSkillCategory> ActiveSkillCategories = new List<ActiveSkillCategory>();
     public int ProvenLevel;
+    public bool HasBeenIntroduced = false;
 
     public ActiveCharacterData(CharacterData data) : base(data) {
         ActiveSkillCategories = new List<ActiveSkillCategory>();

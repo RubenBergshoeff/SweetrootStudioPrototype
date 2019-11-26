@@ -7,4 +7,5 @@ public class CharacterData : BaseData {
     public int StartMoodLevel = 0;
     public List<TrainingData> AvailableTrainingData = new List<TrainingData>();
     public List<SkillLevel> AvailableSkillLevels = new List<SkillLevel>();
+    public List<CharacterData> NextCharacters = new List<CharacterData>();
 }
