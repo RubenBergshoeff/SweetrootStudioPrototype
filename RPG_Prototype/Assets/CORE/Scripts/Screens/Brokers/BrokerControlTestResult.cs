@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Doozy.Engine;
+using TMPro;
 
 public class BrokerControlTestResult : BrokerBaseResult {
 
     [SerializeField] private PlayerCharacterController playerCharacterController = null;
+    [SerializeField] private TextMeshProUGUI textmeshSkillName = null;
     [SerializeField] private ControlTestResult controlTestResult = null;
     [SerializeField] private string uiEventStringDone = "";
 
@@ -14,6 +16,7 @@ public class BrokerControlTestResult : BrokerBaseResult {
     public override void SetResult(ActiveBaseData activeResult) {
         base.SetResult(activeResult);
         activeSkillLevel = activeResult as ActiveSkillLevel;
+        textmeshSkillName.text = activeSkillLevel.SkillLevel.Skill.Name;
     }
 
     protected override void OnVisible() {
@@ -29,7 +32,7 @@ public class BrokerControlTestResult : BrokerBaseResult {
         float previousCompletionLevel = activeSkillLevel.LastCompletionLevel;
         float completionLevel = playerCharacterController.GetActiveSkillXP(activeSkillLevel.SkillLevel.Skill) / (float)activeSkillLevel.SkillLevel.XPCap;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
 
         if (completionLevel >= 1) {
             activeSkillLevel.IsCompleted = true;

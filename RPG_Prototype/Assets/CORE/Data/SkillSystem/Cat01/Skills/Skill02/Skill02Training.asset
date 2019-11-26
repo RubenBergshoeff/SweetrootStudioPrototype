@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5631e88353b2d124ea2320a768382191, type: 3}
   m_Name: Skill02Training
   m_EditorClassIdentifier: 
-  Name: Keer Sommen
-  Visual: {fileID: 0}
+  Name: Navigatie
+  Visual: {fileID: 21300000, guid: 9c4b06b0245b75d498db46323a4b01c3, type: 3}
+  TrainingGameController: {fileID: 0}
+  FeedbackController: {fileID: 0}
   TargetSkill: {fileID: 11400000, guid: ac272ad2d6e0bf34795641adfe95ade5, type: 2}
   XPGainTraining: 250

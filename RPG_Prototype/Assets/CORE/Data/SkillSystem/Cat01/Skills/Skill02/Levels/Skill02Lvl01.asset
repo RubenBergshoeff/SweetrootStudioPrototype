@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1dfb2d8400dbb45979566ce26d6912, type: 3}
   m_Name: Skill02Lvl01
   m_EditorClassIdentifier: 
-  Name: Vermenigvuldig Niveau 1
-  Visual: {fileID: 0}
+  Name: Navigatie
+  Visual: {fileID: 21300000, guid: 9c4b06b0245b75d498db46323a4b01c3, type: 3}
   Skill: {fileID: 11400000, guid: ac272ad2d6e0bf34795641adfe95ade5, type: 2}
   Level: 1
   XPCap: 750
