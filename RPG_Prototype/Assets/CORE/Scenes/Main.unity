@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7769,7 +7769,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 156841520}
 --- !u!114 &229496376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10381,7 +10380,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 521542653}
 --- !u!114 &249255451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14126,7 +14124,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 1959477430}
 --- !u!114 &393672208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17877,7 +17874,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 711187323}
 --- !u!114 &434488830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22496,7 +22492,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 1066757574}
 --- !u!114 &546194677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26471,7 +26466,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 1081006534}
 --- !u!114 &607879483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30606,7 +30600,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 400817841}
 --- !u!114 &700953216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34173,7 +34166,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 1157557286}
 --- !u!114 &746403277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36713,7 +36705,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 1031901021}
 --- !u!114 &781046859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40569,7 +40560,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 534285906}
 --- !u!114 &864366173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44943,7 +44933,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 1059677690}
 --- !u!114 &982626455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51039,7 +51028,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 1166205195}
 --- !u!114 &1127336116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54495,7 +54483,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 1619599060}
 --- !u!114 &1199051790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60327,7 +60314,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 829480406}
 --- !u!114 &1388950096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67821,7 +67807,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 167180047}
 --- !u!114 &1747533840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71998,7 +71983,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 286188841}
 --- !u!114 &1855112199
 MonoBehaviour:
   m_ObjectHideFlags: 0
