@@ -9,6 +9,7 @@ public class SkillTestController : MonoBehaviour {
     public BaseData Target = null;
 
     [SerializeField] private PlayerCharacterController playerCharacterController = null;
+    [SerializeField] private SkillTestEnvironmentController environmentController = null;
     [SerializeField] private Transform characterTransform = null;
     [SerializeField] private List<SkillTestWaypoint> waypoints = new List<SkillTestWaypoint>();
     private bool isRunning = false;
@@ -67,6 +68,7 @@ public class SkillTestController : MonoBehaviour {
         }
 
         characterTransform.position = Vector3.MoveTowards(characterTransform.position, targetPosition, 0.45f * Time.deltaTime);
+        environmentController.UpdateChildren(characterTransform.position.x);
 
         //if (Vector3.Distance(characterTransform.position, waypoints[currentWaypoint].transform.position) < 0.1f) {
         //    bool canContinue = ResolveWaypoint(waypoints[currentWaypoint]);

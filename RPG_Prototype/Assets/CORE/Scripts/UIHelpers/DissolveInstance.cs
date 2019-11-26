@@ -13,22 +13,29 @@ public class DissolveInstance : MonoBehaviour {
     private void OnEnable() {
         rend = GetComponent<Renderer>();
         StartSetup();
+        rend.enabled = false;
+    }
+
+    public void StartDissolve() {
+        rend.enabled = true;
+        isRunning = true;
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.A)) {
-            isRunning = !isRunning;
-        }
-        if (Input.GetKeyDown(KeyCode.S)) {
-            StartSetup();
-        }
+        //if (Input.GetKeyDown(KeyCode.A)) {
+        //    isRunning = !isRunning;
+        //}
+        //if (Input.GetKeyDown(KeyCode.S)) {
+        //    StartSetup();
+        //}
         if (isRunning == false) { return; }
 
         if (visibility < 1) {
             visibility += Time.deltaTime / 2.5f;
             visibility = Mathf.Clamp01(visibility);
             rend.material.SetFloat("_Visibility", visibility);
-        } else if (visibility >= 1) {
+        }
+        else if (visibility >= 1) {
             rend.material = endMaterial;
         }
     }

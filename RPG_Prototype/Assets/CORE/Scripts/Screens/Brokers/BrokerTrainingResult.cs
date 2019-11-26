@@ -33,10 +33,12 @@ public class BrokerTrainingResult : BrokerBaseResult {
         activeGameController = null;
     }
 
-    private void OnGameFinished() {
+    private void OnGameFinished(TrainingGameResultFeedbackData data) {
         activeGameController.Cleanup();
         playerCharacterController.AddTrainingResult(activeTraining.Training, gainedXP);
-        trainingGameResult.SetResult(activeTraining, gainedXP);
+        activeGameController.OnXPGain -= OnXPGain;
+        activeGameController.OnGameFinished -= OnGameFinished;
+        trainingGameResult.SetResult(activeTraining, gainedXP, data);
         GameEventMessage.SendEvent(uiEventStringGameResult);
     }
 
