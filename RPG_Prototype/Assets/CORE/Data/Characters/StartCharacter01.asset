@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ef8cc7af6e06f4cb9fbf2846477164, type: 3}
   m_Name: StartCharacter01
   m_EditorClassIdentifier: 
-  Name: Some Character
+  Name: Boterkroon
   Visual: {fileID: 0}
   StartMoodLevel: 0
   AvailableTrainingData:
@@ -20,5 +20,3 @@ MonoBehaviour:
   AvailableSkillLevels:
   - {fileID: 11400000, guid: d20d4cd7a2ba42242b0da3778136c248, type: 2}
   - {fileID: 11400000, guid: 8b04d68762b41ba41afd0e049929e4d7, type: 2}
-  - {fileID: 11400000, guid: 327a1bdfb8c7d874ba0c33b1fd40af29, type: 2}
-  - {fileID: 11400000, guid: ea3ed69825ce4014495f9d15a777dc50, type: 2}

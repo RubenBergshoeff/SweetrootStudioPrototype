@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef4d6d54d46a889439f796e924595228, type: 3}
-  m_Name: Skill02
+  m_Name: Skill01 - Koekjes Bakken
   m_EditorClassIdentifier: 
-  Name: Vermenigvuldigen
-  Visual: {fileID: 0}
+  Name: Koekjes Bakken
+  Visual: {fileID: 21300000, guid: 55879d612e4817e42bfe6262da91ba9e, type: 3}
   SkillCategory: {fileID: 11400000, guid: 3280fdcbf3ac93b48a6e26c92f025efa, type: 2}
   Training: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 55879d612e4817e42bfe6262da91ba9e, type: 3}
