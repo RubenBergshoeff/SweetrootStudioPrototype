@@ -9,8 +9,10 @@ public class SkillTestController : MonoBehaviour {
     public BaseData Target = null;
 
     [SerializeField] private PlayerCharacterController playerCharacterController = null;
+    [SerializeField] private SkillTestEnvironmentController environmentController = null;
     [SerializeField] private Transform characterTransform = null;
     [SerializeField] private List<SkillTestWaypoint> waypoints = new List<SkillTestWaypoint>();
+    [SerializeField] private float dissolveOffset = 1.5f;
     private bool isRunning = false;
     private int currentWaypoint = 0;
     private SkillCategoryTestResult currentResult = null;
@@ -67,6 +69,7 @@ public class SkillTestController : MonoBehaviour {
         }
 
         characterTransform.position = Vector3.MoveTowards(characterTransform.position, targetPosition, 0.45f * Time.deltaTime);
+        environmentController.UpdateChildren(characterTransform.position.x + dissolveOffset);
 
         //if (Vector3.Distance(characterTransform.position, waypoints[currentWaypoint].transform.position) < 0.1f) {
         //    bool canContinue = ResolveWaypoint(waypoints[currentWaypoint]);
@@ -83,12 +86,16 @@ public class SkillTestController : MonoBehaviour {
         currentResult.Unlocks.AddRange(skillTestWaypoint.unlockResults);
 
         if (playerCharacterController.IsSkillActive(skillTestWaypoint.TargetSkill) == false) {
+            currentResult.FailedSkill = skillTestWaypoint.TargetSkill;
             return canContinue;
         }
 
         int skillScore = SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.GetSkillScore(skillTestWaypoint.TargetSkill);
         if (skillScore >= skillTestWaypoint.RequiredSkillScore) {
             canContinue = true;
+        }
+        else {
+            currentResult.FailedSkill = skillTestWaypoint.TargetSkill;
         }
 
         return canContinue;

@@ -4,6 +4,8 @@ using Doozy.Engine;
 public class BrokerTrainingResult : BrokerBaseResult {
 
     [SerializeField] private PlayerCharacterController playerCharacterController = null;
+    [SerializeField] private TMPro.TextMeshProUGUI textMeshTrainingName = null;
+    [SerializeField] private UnityEngine.UI.Image imageTraining = null;
     [SerializeField] private TrainingGameResult trainingGameResult = null;
     [SerializeField] private Transform gameControllerContainer = null;
     [SerializeField] private string uiEventStringGameResult = "";
@@ -15,6 +17,8 @@ public class BrokerTrainingResult : BrokerBaseResult {
     public override void SetResult(ActiveBaseData result) {
         base.SetResult(result);
         activeTraining = result as ActiveTraining;
+        textMeshTrainingName.text = activeTraining.Training.Name;
+        imageTraining.sprite = activeTraining.Training.Visual;
         activeGameController = CreateActiveGameController(activeTraining);
         activeGameController.Setup(activeTraining);
         activeGameController.OnXPGain += OnXPGain;
@@ -33,10 +37,12 @@ public class BrokerTrainingResult : BrokerBaseResult {
         activeGameController = null;
     }
 
-    private void OnGameFinished() {
+    private void OnGameFinished(TrainingGameResultFeedbackData data) {
         activeGameController.Cleanup();
         playerCharacterController.AddTrainingResult(activeTraining.Training, gainedXP);
-        trainingGameResult.SetResult(activeTraining, gainedXP);
+        activeGameController.OnXPGain -= OnXPGain;
+        activeGameController.OnGameFinished -= OnGameFinished;
+        trainingGameResult.SetResult(activeTraining, gainedXP, data);
         GameEventMessage.SendEvent(uiEventStringGameResult);
     }
 

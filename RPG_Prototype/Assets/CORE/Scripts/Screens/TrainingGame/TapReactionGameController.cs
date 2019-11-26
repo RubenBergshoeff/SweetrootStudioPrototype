@@ -21,11 +21,17 @@ public class TapReactionGameController : TrainingGameController {
     private bool isTrainingRunning = false;
     private float trainingRunTime = 0;
     private int itemsDone = 0;
+    private int itemsCorrect = 0;
+    private int itemsEarly = 0;
+    private int itemsLate = 0;
 
     public override void Setup(ActiveTraining training) {
         activeTraining = training;
         trainingRunTime = 0;
         itemsDone = 0;
+        itemsCorrect = 0;
+        itemsLate = 0;
+        itemsEarly = 0;
         foreach (TapReactionItem item in reactionItems) {
             item.Setup(minWaitTime, maxWaitTime, allowedReactionTime);
             item.OnTapped += OnItemTapped;
@@ -35,15 +41,18 @@ public class TapReactionGameController : TrainingGameController {
 
     private void OnItemTimedOut(TapReactionItem item) {
         itemsDone++;
+        itemsLate++;
     }
 
     private void OnItemTapped(TapReactionItem item) {
         if (item.IsCorrect) {
             OnXPGain?.Invoke(gainedXPPerItem);
             itemsDone++;
+            itemsCorrect++;
         }
-        if (item.IsCorrect == false && item.IsTimedOut == false) {
+        else if (item.IsCorrect == false && item.IsTimedOut == false) {
             itemsDone++;
+            itemsEarly++;
         }
     }
 
@@ -65,8 +74,18 @@ public class TapReactionGameController : TrainingGameController {
         }
 
         if (trainingRunTime > maxGametime || itemsDone == reactionItems.Count) {
-            OnGameFinished?.Invoke();
+            TapReactionFeedbackData feedbackData = new TapReactionFeedbackData();
+            feedbackData.CookiesBurnt = itemsLate;
+            feedbackData.CookiesCorrect = itemsCorrect;
+            feedbackData.CookiesRaw = itemsEarly;
+            OnGameFinished?.Invoke(feedbackData);
             isTrainingRunning = false;
         }
     }
+}
+
+public class TapReactionFeedbackData : TrainingGameResultFeedbackData {
+    public int CookiesBurnt = 0;
+    public int CookiesCorrect = 0;
+    public int CookiesRaw = 0;
 }

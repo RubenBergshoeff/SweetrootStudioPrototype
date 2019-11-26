@@ -55,6 +55,7 @@ public class ActiveSkillCategory : ActiveBaseData {
 [System.Serializable]
 public class SkillCategoryTestResult {
     public SkillCategoryTest Test = null;
+    public Skill FailedSkill = null;
     public List<UnlockResult> Unlocks = new List<UnlockResult>();
     public int Score = 0;
 }
