@@ -41,6 +41,7 @@ public class TapReactionGameController : TrainingGameController {
 
     private void OnItemTimedOut(TapReactionItem item) {
         itemsDone++;
+        itemsLate++;
     }
 
     private void OnItemTapped(TapReactionItem item) {
@@ -52,9 +53,6 @@ public class TapReactionGameController : TrainingGameController {
         else if (item.IsCorrect == false && item.IsTimedOut == false) {
             itemsDone++;
             itemsEarly++;
-        }
-        else {
-            itemsLate++;
         }
     }
 
