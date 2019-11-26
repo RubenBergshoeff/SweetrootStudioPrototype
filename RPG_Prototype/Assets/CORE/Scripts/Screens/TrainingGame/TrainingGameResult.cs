@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TrainingGameResult : UIDisplayController {
 
+    [SerializeField] private Transform feedbackContainer = null;
     [SerializeField] private TextMeshProUGUI skillNameField = null;
     [SerializeField] private TextMeshProUGUI xpAmountField = null;
     [SerializeField] private Image skillSpriteImage = null;
@@ -24,6 +25,9 @@ public class TrainingGameResult : UIDisplayController {
         skillSpriteImage.sprite = activeTraining.Training.Visual;
         xpAmountField.text = gainedXP.ToString();
         feedbackData = data;
+        GameObject feedbackDisplay = Instantiate(activeTraining.Training.FeedbackController.gameObject, feedbackContainer);
+        TrainingGameResultFeedback feedbackController = feedbackDisplay.GetComponent<TrainingGameResultFeedback>();
+        feedbackController.Setup(data);
     }
 
     protected override void OnShowing() {

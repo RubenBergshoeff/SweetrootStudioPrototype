@@ -4,6 +4,7 @@ using System.Collections;
 [CreateAssetMenu]
 public class TrainingData : BaseData {
     public TrainingGameController TrainingGameController = null;
+    public TrainingGameResultFeedback FeedbackController = null;
     public Skill TargetSkill = null;
     public int XPGainTraining = 250;
 }
