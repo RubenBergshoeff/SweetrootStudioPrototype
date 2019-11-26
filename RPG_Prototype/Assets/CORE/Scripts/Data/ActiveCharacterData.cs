@@ -10,6 +10,11 @@ public class ActiveCharacterData : ActiveBaseData {
             return 0;
         }
     }
+    public CharacterData CharacterData {
+        get {
+            return Data as CharacterData;
+        }
+    }
     public List<ActiveSkillCategory> ActiveSkillCategories = new List<ActiveSkillCategory>();
     public int ProvenLevel;
     public bool HasBeenIntroduced = false;
