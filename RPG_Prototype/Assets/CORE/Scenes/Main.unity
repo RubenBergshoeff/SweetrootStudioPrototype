@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1416,15 +1416,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8298554356151431774}
     m_Modifications:
-    - target: {fileID: 3363937823943645600, guid: 53fdbdcf50b8ea744b61881a5c572269,
-        type: 3}
-      propertyPath: m_Name
-      value: TableOpenBookSkill
-      objectReference: {fileID: 0}
     - target: {fileID: 3363937823943645615, guid: 53fdbdcf50b8ea744b61881a5c572269,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.847
+      value: -4.999
       objectReference: {fileID: 0}
     - target: {fileID: 3363937823943645615, guid: 53fdbdcf50b8ea744b61881a5c572269,
         type: 3}
@@ -1476,6 +1471,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3363937823943645600, guid: 53fdbdcf50b8ea744b61881a5c572269,
+        type: 3}
+      propertyPath: m_Name
+      value: TableOpenBookSkill
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fdbdcf50b8ea744b61881a5c572269, type: 3}
 --- !u!1001 &5277066828422143475
@@ -1485,6 +1485,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5277066828125468643, guid: 4375240c189cc6541874e801b48fca45,
+        type: 3}
+      propertyPath: playerCharacterController
+      value: 
+      objectReference: {fileID: 1830253005}
     - target: {fileID: 5277066828125468669, guid: 4375240c189cc6541874e801b48fca45,
         type: 3}
       propertyPath: m_Name
@@ -1545,11 +1550,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5277066828125468643, guid: 4375240c189cc6541874e801b48fca45,
-        type: 3}
-      propertyPath: playerCharacterController
-      value: 
-      objectReference: {fileID: 1830253005}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4375240c189cc6541874e801b48fca45, type: 3}
 --- !u!1001 &5837347493682084614
@@ -1559,11 +1559,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8298554356151431774}
     m_Modifications:
-    - target: {fileID: 5837347494729574197, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
-        type: 3}
-      propertyPath: m_Name
-      value: TableHub
-      objectReference: {fileID: 0}
     - target: {fileID: 5837347494729574194, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1619,6 +1614,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5837347494729574197, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
+        type: 3}
+      propertyPath: m_Name
+      value: TableHub
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc8b0adaf9938894abfefa0e1c92c5b9, type: 3}
 --- !u!114 &5838533105833985293 stripped
@@ -1658,7 +1658,7 @@ PrefabInstance:
     - target: {fileID: 869739558358797451, guid: e3d73e16f02970241bcb3d110ec0e4a7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 4.51
       objectReference: {fileID: 0}
     - target: {fileID: 869739558358797451, guid: e3d73e16f02970241bcb3d110ec0e4a7,
         type: 3}
