@@ -3798,6 +3798,7 @@ Transform:
   - {fileID: 3363937824324457107}
   - {fileID: 3363937822976888491}
   - {fileID: 3363937823666834833}
+  - {fileID: 5819962260472541564}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7477,6 +7478,100 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8833036258668655994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5819962260472541564}
+  - component: {fileID: 8547280353887083902}
+  - component: {fileID: 4353510357491789498}
+  - component: {fileID: 3891511518261686280}
+  m_Layer: 0
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5819962260472541564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833036258668655994}
+  m_LocalRotation: {x: 0.427705, y: 0, z: 0, w: 0.90391845}
+  m_LocalPosition: {x: -0.82, y: 0.168, z: -1.262}
+  m_LocalScale: {x: 0.8375053, y: 0.3187, z: 0.3187}
+  m_Children: []
+  m_Father: {fileID: 3363937823943645615}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 50.644, y: 0, z: 0}
+--- !u!33 &8547280353887083902
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833036258668655994}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4353510357491789498
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833036258668655994}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 57d5f2894e1e8e44a85fde11cecd107f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!64 &3891511518261686280
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833036258668655994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &3363937823639281378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7484,11 +7579,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3363937822976888491}
     m_Modifications:
-    - target: {fileID: 2088727422826312994, guid: 26174d8ba75432449bf9026658c30b2a,
-        type: 3}
-      propertyPath: m_Name
-      value: beheersingsboek_MOD
-      objectReference: {fileID: 0}
     - target: {fileID: 3073706052743268145, guid: 26174d8ba75432449bf9026658c30b2a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7558,6 +7648,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4.414
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088727422826312994, guid: 26174d8ba75432449bf9026658c30b2a,
+        type: 3}
+      propertyPath: m_Name
+      value: beheersingsboek_MOD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26174d8ba75432449bf9026658c30b2a, type: 3}
