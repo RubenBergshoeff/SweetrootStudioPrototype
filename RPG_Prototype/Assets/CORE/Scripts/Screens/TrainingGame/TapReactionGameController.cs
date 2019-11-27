@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
 
 public class TapReactionGameController : TrainingGameController {
 
-    private float maxGametime {
-        get {
-            return maxWaitTime + allowedReactionTime + 1;
-        }
-    }
-
-    [SerializeField] private float minWaitTime = 6;
-    [SerializeField] private float maxWaitTime = 22;
-    [SerializeField] private float allowedReactionTime = 4f;
-    [SerializeField] private int gainedXPPerItem = 10;
+    [SerializeField] private float maxGametime = 30;
+    [SerializeField] private float minWaitTime = 2;
+    [SerializeField] private float maxWaitTime = 5;
+    [SerializeField] private float allowedReactionTime = 3f;
+    [SerializeField] private int gainedXPPerCorrectItem = 1;
+    [SerializeField] private int gainedXPPerFailedItem = 10;
+    [SerializeField] private Button doughBowlButton = null;
     [SerializeField] private List<TapReactionItem> reactionItems = new List<TapReactionItem>();
 
     private ActiveTraining activeTraining = null;
@@ -32,27 +30,19 @@ public class TapReactionGameController : TrainingGameController {
         itemsCorrect = 0;
         itemsLate = 0;
         itemsEarly = 0;
+        doughBowlButton.onClick.AddListener(TryAddItem);
         foreach (TapReactionItem item in reactionItems) {
-            item.Setup(minWaitTime, maxWaitTime, allowedReactionTime);
-            item.OnTapped += OnItemTapped;
-            item.OnTimedOut += OnItemTimedOut;
+            item.Disable();
         }
     }
 
-    private void OnItemTimedOut(TapReactionItem item) {
-        itemsDone++;
-        itemsLate++;
-    }
-
-    private void OnItemTapped(TapReactionItem item) {
-        if (item.IsCorrect) {
-            OnXPGain?.Invoke(gainedXPPerItem);
-            itemsDone++;
-            itemsCorrect++;
-        }
-        else if (item.IsCorrect == false && item.IsTimedOut == false) {
-            itemsDone++;
-            itemsEarly++;
+    private void TryAddItem() {
+        foreach (TapReactionItem item in reactionItems) {
+            if (item.IsActive == false) {
+                item.Setup(minWaitTime, maxWaitTime, allowedReactionTime);
+                item.OnTapped += OnItemTapped;
+                return;
+            }
         }
     }
 
@@ -60,8 +50,30 @@ public class TapReactionGameController : TrainingGameController {
         isTrainingRunning = true;
     }
 
+    private void OnItemTapped(TapReactionItem item, TapReactionState state) {
+        switch (state) {
+            case TapReactionState.Early:
+                OnXPGain?.Invoke(gainedXPPerFailedItem);
+                itemsEarly++;
+                break;
+            case TapReactionState.Correct:
+                OnXPGain?.Invoke(gainedXPPerCorrectItem);
+                itemsCorrect++;
+                break;
+            case TapReactionState.Late:
+                OnXPGain?.Invoke(gainedXPPerFailedItem);
+                itemsLate++;
+                break;
+        }
+        item.OnTapped -= OnItemTapped;
+    }
+
     public override void Cleanup() {
         isTrainingRunning = false;
+        doughBowlButton.onClick.RemoveListener(TryAddItem);
+        foreach (TapReactionItem item in reactionItems) {
+            item.Disable();
+        }
     }
 
     private void Update() {
@@ -69,17 +81,13 @@ public class TapReactionGameController : TrainingGameController {
 
         trainingRunTime += Time.deltaTime;
 
-        foreach (TapReactionItem item in reactionItems) {
-            item.UpdateItem(Time.deltaTime);
-        }
-
-        if (trainingRunTime > maxGametime || itemsDone == reactionItems.Count) {
+        if (trainingRunTime > maxGametime) {
             TapReactionFeedbackData feedbackData = new TapReactionFeedbackData();
             feedbackData.CookiesBurnt = itemsLate;
             feedbackData.CookiesCorrect = itemsCorrect;
             feedbackData.CookiesRaw = itemsEarly;
-            OnGameFinished?.Invoke(feedbackData);
             isTrainingRunning = false;
+            OnGameFinished?.Invoke(feedbackData);
         }
     }
 }
