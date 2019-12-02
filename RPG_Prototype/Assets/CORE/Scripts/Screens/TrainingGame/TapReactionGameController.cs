@@ -81,11 +81,20 @@ public class TapReactionGameController : TrainingGameController {
 
         trainingRunTime += Time.deltaTime;
 
-        if (trainingRunTime > maxGametime) {
+        if (Input.GetKeyDown(KeyCode.C)) {
+            itemsLate = 15;
+            itemsCorrect = 25;
+            itemsEarly = 7;
+            trainingRunTime = maxGametime;
+        }
+
+        if (trainingRunTime >= maxGametime) {
             TapReactionFeedbackData feedbackData = new TapReactionFeedbackData();
             feedbackData.CookiesBurnt = itemsLate;
             feedbackData.CookiesCorrect = itemsCorrect;
             feedbackData.CookiesRaw = itemsEarly;
+            feedbackData.GainedXPPerCorrectItem = gainedXPPerCorrectItem;
+            feedbackData.GainedXPPerFailedItem = gainedXPPerFailedItem;
             isTrainingRunning = false;
             OnGameFinished?.Invoke(feedbackData);
         }
@@ -96,4 +105,6 @@ public class TapReactionFeedbackData : TrainingGameResultFeedbackData {
     public int CookiesBurnt = 0;
     public int CookiesCorrect = 0;
     public int CookiesRaw = 0;
+    public int GainedXPPerFailedItem = 0;
+    public int GainedXPPerCorrectItem = 0;
 }
