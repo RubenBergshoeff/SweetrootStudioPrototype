@@ -16,7 +16,7 @@ MonoBehaviour:
   Visual: {fileID: 21300000, guid: 55879d612e4817e42bfe6262da91ba9e, type: 3}
   TrainingGameController: {fileID: 4013057011809419588, guid: 6c690aff4e8caba40ae5c9c7aab0469a,
     type: 3}
-  FeedbackController: {fileID: 2692567924990315005, guid: 3e67bfbf49181ba41a45ad1b6522a3f7,
+  FeedbackController: {fileID: 4830714289237774001, guid: 3e67bfbf49181ba41a45ad1b6522a3f7,
     type: 3}
   TargetSkill: {fileID: 11400000, guid: 8e7989d56c2604549bd4e1d7294d1980, type: 2}
   XPGainTraining: 250
