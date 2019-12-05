@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class TrainingGameResult : UIDisplayController {
 
     [SerializeField] private Transform feedbackContainer = null;
-    [SerializeField] private TextMeshProUGUI skillNameField = null;
-    [SerializeField] private TextMeshProUGUI xpAmountField = null;
-    [SerializeField] private Image skillSpriteImage = null;
+    //[SerializeField] private TextMeshProUGUI skillNameField = null;
+    //[SerializeField] private TextMeshProUGUI xpAmountField = null;
+    //[SerializeField] private Image skillSpriteImage = null;
 
     private TrainingGameResultFeedbackData feedbackData;
+    private TrainingGameResultFeedback feedbackController;
 
     protected override void OnVisible() {
-
+        feedbackController.OnVisible();
     }
 
     protected override void OnInvisible() {
@@ -21,12 +22,12 @@ public class TrainingGameResult : UIDisplayController {
     }
 
     public void SetResult(ActiveTraining activeTraining, int gainedXP, TrainingGameResultFeedbackData data) {
-        skillNameField.text = activeTraining.Training.Name;
-        skillSpriteImage.sprite = activeTraining.Training.Visual;
-        xpAmountField.text = gainedXP.ToString();
+        //skillNameField.text = activeTraining.Training.Name;
+        //skillSpriteImage.sprite = activeTraining.Training.Visual;
+        //xpAmountField.text = gainedXP.ToString();
         feedbackData = data;
         GameObject feedbackDisplay = Instantiate(activeTraining.Training.FeedbackController.gameObject, feedbackContainer);
-        TrainingGameResultFeedback feedbackController = feedbackDisplay.GetComponent<TrainingGameResultFeedback>();
+        feedbackController = feedbackDisplay.GetComponent<TrainingGameResultFeedback>();
         feedbackController.Setup(data);
     }
 
