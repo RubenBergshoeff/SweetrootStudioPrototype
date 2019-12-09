@@ -49,7 +49,7 @@ public class PlayerCharacterController : MonoBehaviour {
 
     private ActiveCharacterData data {
         get {
-            return SaveController.Instance.GameData.CharacterCollection.ActiveCharacter;
+            return null;// SaveController.Instance.GameData.CharacterCollection.ActiveCharacter;
         }
     }
 

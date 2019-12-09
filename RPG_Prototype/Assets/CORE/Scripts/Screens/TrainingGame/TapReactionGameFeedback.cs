@@ -7,10 +7,6 @@ using DG.Tweening;
 
 public class TapReactionGameFeedback : TrainingGameResultFeedback {
 
-    //[SerializeField] private TextMeshProUGUI textMeshRawCookie = null;
-    //[SerializeField] private TextMeshProUGUI textMeshCorrectCookie = null;
-    //[SerializeField] private TextMeshProUGUI textMeshBurntCookie = null;
-
     [SerializeField] private GameObject templateCookie = null;
     [SerializeField] private Sprite rawCookie = null;
     [SerializeField] private Sprite correctCookie = null;
@@ -28,9 +24,7 @@ public class TapReactionGameFeedback : TrainingGameResultFeedback {
         templateCookie.gameObject.SetActive(false);
         backButton.SetActive(false);
         feedbackDataTapReaction = feedbackData as TapReactionFeedbackData;
-        //textMeshRawCookie.text = feedbackDataTapReaction.CookiesRaw.ToString();
-        //textMeshCorrectCookie.text = feedbackDataTapReaction.CookiesCorrect.ToString();
-        //textMeshBurntCookie.text = feedbackDataTapReaction.CookiesBurnt.ToString();
+
         offsets = new Vector2[cookieStacks.Length];
         totalScore = 0;
         for (int i = 0; i < offsets.Length; i++) {

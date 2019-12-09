@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1331,6 +1331,21 @@ PrefabInstance:
       propertyPath: options.Array.data[3]
       value: 
       objectReference: {fileID: 1780629656}
+    - target: {fileID: 171428917388971933, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: flipoverBaking
+      value: 
+      objectReference: {fileID: 8438089875304735581}
+    - target: {fileID: 171428917388971933, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: flipoverSword
+      value: 
+      objectReference: {fileID: 1189227155}
+    - target: {fileID: 171428917388971933, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: flipoverRoyal
+      value: 
+      objectReference: {fileID: 295694535}
     - target: {fileID: 171428916675189438, guid: dff157dc04026a74c9b08bb70162b6b3,
         type: 3}
       propertyPath: ShowBehavior.OnStart.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1366,6 +1381,21 @@ PrefabInstance:
       propertyPath: options.Array.data[3]
       value: 
       objectReference: {fileID: 444824706}
+    - target: {fileID: 171428918643231543, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: flipoverLvl1
+      value: 
+      objectReference: {fileID: 1172406320}
+    - target: {fileID: 171428918643231543, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: flipoverLvl2
+      value: 
+      objectReference: {fileID: 2049621475}
+    - target: {fileID: 171428918643231543, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: flipoverLvl3
+      value: 
+      objectReference: {fileID: 1771797706}
     - target: {fileID: 171428918248728531, guid: dff157dc04026a74c9b08bb70162b6b3,
         type: 3}
       propertyPath: ShowBehavior.OnStart.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1447,6 +1477,86 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1581795866608417555, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349015282815040863, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163909440753507274, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163909440753507274, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163909440753507274, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3729146656453043445, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3729146656453043445, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822484721583291081, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822484721583291081, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822484721583291081, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822484721583291081, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822484721583291081, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 686413677412290553, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 686413677412290553, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 686413677412290553, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 686413677412290553, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 686413677412290553, guid: dff157dc04026a74c9b08bb70162b6b3,
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
@@ -1535,6 +1645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TableOpenBookSkill
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363937823421437368, guid: 53fdbdcf50b8ea744b61881a5c572269,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fdbdcf50b8ea744b61881a5c572269, type: 3}
@@ -1758,6 +1873,11 @@ PrefabInstance:
     - target: {fileID: 869739558358797451, guid: e3d73e16f02970241bcb3d110ec0e4a7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880325373794754845, guid: e3d73e16f02970241bcb3d110ec0e4a7,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

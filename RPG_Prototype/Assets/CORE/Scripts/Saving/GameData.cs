@@ -8,7 +8,8 @@ public class GameData {
     public bool IsMoodEnabled = true;
     public bool IsControlTestEnabled = true;
     public bool IsSkillTestEnabled = true;
-    public PlayerCharacterCollection CharacterCollection = new PlayerCharacterCollection();
+    public ActiveBoterkroonData BoterKroon = new ActiveBoterkroonData();
+    //public PlayerCharacterCollection CharacterCollection = new PlayerCharacterCollection();
     public PlayerMoodCollection MoodCollection = new PlayerMoodCollection();
     //public UnlockableSkillCollection Skills = new UnlockableSkillCollection();
     //public UnlockableTrainingCollection TrainingCollection = new UnlockableTrainingCollection();

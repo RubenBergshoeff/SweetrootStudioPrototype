@@ -90,13 +90,13 @@ public class SkillTestController : MonoBehaviour {
             return canContinue;
         }
 
-        int skillScore = SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.GetSkillScore(skillTestWaypoint.TargetSkill);
-        if (skillScore >= skillTestWaypoint.RequiredSkillScore) {
-            canContinue = true;
-        }
-        else {
-            currentResult.FailedSkill = skillTestWaypoint.TargetSkill;
-        }
+        //int skillScore = SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.GetSkillScore(skillTestWaypoint.TargetSkill);
+        //if (skillScore >= skillTestWaypoint.RequiredSkillScore) {
+        //    canContinue = true;
+        //}
+        //else {
+        //    currentResult.FailedSkill = skillTestWaypoint.TargetSkill;
+        //}
 
         return canContinue;
     }

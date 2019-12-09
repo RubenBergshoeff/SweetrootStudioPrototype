@@ -4,115 +4,73 @@ using System.Collections.Generic;
 using Doozy.Engine;
 using Doozy.Engine.UI;
 using System;
+using TMPro;
 
-public class BrokerSkillTestResult : BrokerBaseResult {
+public class BrokerSkillTestResult : UIDisplayController {
 
-    //[SerializeField] private PlayerCharacterController playerCharacterController = null;
-    [SerializeField] private SkillTestResult skillTestResult = null;
+    [SerializeField] private TextMeshProUGUI textmeshSkillLevel = null;
     [SerializeField] private string uiEventStringDone = "";
-    [SerializeField] private SkillTestController[] skillTestControllers = new SkillTestController[0];
 
-    private List<UnlockResult> newUnlocks = new List<UnlockResult>();
+    private int currentLevel;
 
-    private ActiveSkillCategory activeSkillCategory;
-    private SkillTestController activeSkillTestController = null;
+    public void SetResult(int currentLevel) {
+        this.currentLevel = currentLevel;
+    }
 
-    public override void SetResult(ActiveBaseData activeResult) {
-        base.SetResult(activeResult);
-        activeSkillCategory = activeResult as ActiveSkillCategory;
+    protected override void OnShowing() {
+        textmeshSkillLevel.text = "Level " + currentLevel.ToString();
     }
 
     protected override void OnVisible() {
-        base.OnVisible();
-        //    ResolveTests();
-        //    StartCoroutine(ShowTestResults());
-        StartTest();
+        CalculateResult();
+        StartCoroutine(ControlTestAnimation());
     }
 
-    private void StartTest() {
-        activeSkillTestController = GetSkillTestController(activeSkillCategory.Data);
-        if (activeSkillTestController == null) {
-            throw new System.ArgumentException("No skilltest for category: " + activeSkillCategory.Category.Name);
+    protected override void OnHiding() {
+
+    }
+
+    protected override void OnInvisible() {
+    }
+
+    private void CalculateResult() {
+        ActiveBoterkroonData boterkroon = SaveController.Instance.GameData.BoterKroon;
+
+        float currentScore = 0;
+
+        if (boterkroon.IsBakingLocked == false) {
+            currentScore += GetLastScoreFor(BoterkroonSkills.Baking) / (float)boterkroon.MaxSkillXP;
         }
-        activeSkillTestController.OnTestDone += OnTestDone;
-        activeSkillTestController.StartSequence();
+        if (boterkroon.IsSwordLocked == false) {
+            currentScore += GetLastScoreFor(BoterkroonSkills.Sword) / (float)boterkroon.MaxSkillXP;
+        }
+        if (boterkroon.IsRoyalLocked == false) {
+            currentScore += GetLastScoreFor(BoterkroonSkills.Royal) / (float)boterkroon.MaxSkillXP;
+        }
+
+        BoterkroonSkillResult result = new BoterkroonSkillResult(currentLevel, currentScore);
+        boterkroon.SkillResults.Add(result);
     }
 
-    private void OnTestDone(SkillCategoryTestResult result) {
-        activeSkillTestController.OnTestDone -= OnTestDone;
-        activeSkillCategory.TestResults.Add(result);
+    private int GetLastScoreFor(BoterkroonSkills skill) {
+        ActiveBoterkroonData boterkroon = SaveController.Instance.GameData.BoterKroon;
+        if (boterkroon.HasNewTrainingFor(skill)) {
+            boterkroon.CreateControlResult(skill);
+        }
+        var controlResults = boterkroon.GetControlResultsFor(skill);
+        if (controlResults.Count == 0) {
+            return 0;
+        }
+        foreach (var result in controlResults) {
+            result.IsNew = false;
+        }
+        return controlResults[controlResults.Count - 1].TotalXP;
+    }
 
-        skillTestResult.SetResult(activeSkillCategory);
+    private IEnumerator ControlTestAnimation() {
+        yield return new WaitForSeconds(3);
+
         GameEventMessage.SendEvent(uiEventStringDone);
     }
 
-    private SkillTestController GetSkillTestController(BaseData data) {
-        foreach (var controller in skillTestControllers) {
-            if (controller.Target == data) {
-                return controller;
-            }
-        }
-        return null;
-    }
-
-    private void ResolveTests() {
-        newUnlocks = new List<UnlockResult>();
-
-        SkillCategoryTestResult result = new SkillCategoryTestResult();
-        //result.Test = activeSkillCategory.SelectedTest;
-        int score = activeSkillCategory.GetScore();
-        //if (score < activeSkillCategory.SelectedTest.MinCategoryScore) {
-        //    score = activeSkillCategory.LastResult == null ? 0 : activeSkillCategory.LastResult.Score;
-        //}
-        result.Score = score;// Mathf.Min(score, activeSkillCategory.SelectedTest.MaxCategoryScore);
-
-        int previousScore = activeSkillCategory.LastResult == null ? 0 : activeSkillCategory.LastResult.Score;
-
-        foreach (var potentialUnlock in activeSkillCategory.Category.PotentialUnlocks) {
-            if (potentialUnlock.RequiredScore > previousScore && potentialUnlock.RequiredScore <= result.Score) {
-                newUnlocks.Add(potentialUnlock);
-            }
-        }
-
-        activeSkillCategory.TestResults.Add(result);
-
-        for (int i = newUnlocks.Count - 1; i >= 0; i--) {
-            UnlockReturn unlockReturn = SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.HandleUnlock(newUnlocks[i].ResultToUnlock);
-            if (unlockReturn != UnlockReturn.NewUnlock) {
-                newUnlocks.RemoveAt(i);
-            }
-        }
-    }
-
-
-    private IEnumerator ShowTestResults() {
-        yield return new WaitForSeconds(0.5f);
-
-        Debug.Log("TestResult Score " + activeSkillCategory.LastResult.Score);
-
-        if (newUnlocks.Count > 0) {
-            foreach (var newUnlock in newUnlocks) {
-                if (newUnlock.ShowPopup) {
-                    Debug.Log("Unlocked " + newUnlock.ResultToUnlock.Name);
-                    //ShowPopup(newUnlock);
-                }
-            }
-        }
-
-        //yield return new WaitForSeconds(0.5f);
-
-        //skillTestResult.SetResult(activeSkillCategory, newUnlocks);
-        //GameEventMessage.SendEvent(uiEventStringDone);
-    }
-
-    //private void ShowPopup(UnlockResult newUnlock) {
-    //    UIPopup popup = UIPopup.GetPopup(Popups.UNLOCK_POPUP);
-
-    //    if (popup == null) { return; }
-
-    //    PopupUnlock popupUnlock = popup.GetComponent<PopupUnlock>();
-    //    popupUnlock.Setup(newUnlock);
-
-    //    popup.Show();
-    //}
 }
