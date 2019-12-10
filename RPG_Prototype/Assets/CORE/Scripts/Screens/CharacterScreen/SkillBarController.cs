@@ -9,8 +9,12 @@ public class SkillBarController : MonoBehaviour {
 
     private void OnEnable() {
         List<float> normalizedResults = new List<float>();
+        float previousValue = 0;
         foreach (var result in SaveController.Instance.GameData.BoterKroon.GetControlResultsFor(targetSkill)) {
-
+            float newValue = result.TotalXP / (float)SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+            normalizedResults.Add(newValue - previousValue);
+            previousValue = newValue;
         }
+        multiSlider.UpdateValues(normalizedResults.ToArray());
     }
 }

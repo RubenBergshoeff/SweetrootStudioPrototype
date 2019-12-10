@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MultiLevelSlider : MonoBehaviour {
 
+    [SerializeField] private Gradient gradient;
     [SerializeField] private List<FillSlider> sliders = new List<FillSlider>();
     [SerializeField] private FillSlider templateSlider = null;
 
@@ -15,7 +16,7 @@ public class MultiLevelSlider : MonoBehaviour {
 
         float startpoint = 0;
         for (int i = 0; i < values.Length; i++) {
-            sliders[i].SetValues(startpoint, values[i]);
+            sliders[i].SetValues(startpoint, values[i], gradient.Evaluate(startpoint));
             startpoint += values[i];
         }
     }
