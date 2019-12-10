@@ -7,11 +7,15 @@ using Doozy.Engine.UI.Base;
 public class CharacterScreenController : UIDisplayController {
 
     [SerializeField] private SkillResultController skillResultController = null;
+    [SerializeField] private BannerHelper[] bannerHelpers = new BannerHelper[0];
 
     protected override void OnShowing() {
         if (SaveController.Instance.GameData.BoterKroon.SkillResults.Count > 0) {
             BoterkroonSkillResult lastSkillResult = SaveController.Instance.GameData.BoterKroon.SkillResults[SaveController.Instance.GameData.BoterKroon.SkillResults.Count - 1];
             skillResultController.UpdateView(lastSkillResult);
+            foreach (var bannerHelper in bannerHelpers) {
+                bannerHelper.UpdateFade(lastSkillResult.Score);
+            }
         }
     }
 

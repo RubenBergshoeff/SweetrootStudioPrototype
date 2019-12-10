@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public enum BoterkroonSkills {
     Baking,
@@ -8,10 +9,30 @@ public enum BoterkroonSkills {
     Royal
 }
 
+public abstract class ScoreRequirement {
+    public Func<BoterkroonSkills, float> Get;
+
+    public ScoreRequirement(Func<BoterkroonSkills, float> scoreFunc) {
+        Get = scoreFunc;
+    }
+}
+
 [System.Serializable]
 public class ActiveBoterkroonData {
 
     public readonly int MaxSkillXP = 1000;
+    public static ScoreRequirement LevelOneScoreMax
+
+    public float LevelTwoScoreMax {
+        get {
+            float requirement = 0;
+            // baking skill 0.6f mastered
+            requirement += 0.6f * 1000;
+            // sword fighting 0.3f mastered
+            requirement += 0.3f * 1000;
+            return requirement;
+        }
+    }
 
     public List<BoterkroonSkillResult> SkillResults = new List<BoterkroonSkillResult>();
 
