@@ -4,9 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum TrainingType {
+    Slow,
+    Fast
+}
+
 public class BrokerButtonTraining : MonoBehaviour {
 
     public BoterkroonSkills TargetSkill;
+    public TrainingType TrainingType;
     public Action<BoterkroonSkills> OnButtonClicked;
 
     private Button button;

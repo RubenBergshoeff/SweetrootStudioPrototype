@@ -7,6 +7,9 @@ public class SkillResultController : MonoBehaviour {
     [SerializeField] private Vector2 levelOneOffset = Vector2.zero;
     [SerializeField] private Vector2 levelTwoOffset = Vector2.zero;
     [SerializeField] private Vector2 levelThreeOffset = Vector2.zero;
+    [SerializeField] private BannerHelper bannerLvl01 = null;
+    [SerializeField] private BannerHelper bannerLvl02 = null;
+    [SerializeField] private BannerHelper bannerLvl03 = null;
 
     public void UpdateView(BoterkroonSkillResult lastResult) {
         if (lastResult.Level == 1) {
