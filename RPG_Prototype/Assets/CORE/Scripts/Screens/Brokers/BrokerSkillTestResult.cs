@@ -37,9 +37,12 @@ public class BrokerSkillTestResult : UIDisplayController {
         ActiveBoterkroonData boterkroon = SaveController.Instance.GameData.BoterKroon;
 
         float currentScore = 0;
+        float skillScore = 0;
+        bool succeededTest = true;
 
         if (boterkroon.IsBakingLocked == false) {
-            currentScore += GetLastScoreFor(BoterkroonSkills.Baking) / (float)boterkroon.MaxSkillXP;
+            succeededTest = GetSkillScore(BoterkroonSkills.Baking, out skillScore);
+            currentScore += skillScore / (float)boterkroon.MaxSkillXP;
         }
         if (boterkroon.IsSwordLocked == false) {
             currentScore += GetLastScoreFor(BoterkroonSkills.Sword) / (float)boterkroon.MaxSkillXP;
@@ -48,8 +51,15 @@ public class BrokerSkillTestResult : UIDisplayController {
             currentScore += GetLastScoreFor(BoterkroonSkills.Royal) / (float)boterkroon.MaxSkillXP;
         }
 
-        BoterkroonSkillResult result = new BoterkroonSkillResult(currentLevel, currentScore);
+        BoterkroonSkillResult result = new BoterkroonSkillResult(currentLevel, currentScore, succeededTest);
         boterkroon.SkillResults.Add(result);
+    }
+
+    private bool GetSkillScore(BoterkroonSkills skill, out float skillScore) {
+        float maxScore = BoterkroonScoreRequirements.GetMaxScoreFor(currentLevel).Skill(skill);
+        float minScore = BoterkroonScoreRequirements.GetMinScoreFor(currentLevel).Skill(skill);
+        skillScore = Mathf.Min(maxScore, GetLastScoreFor(skill));
+        return minScore <= skillScore;
     }
 
     private int GetLastScoreFor(BoterkroonSkills skill) {
