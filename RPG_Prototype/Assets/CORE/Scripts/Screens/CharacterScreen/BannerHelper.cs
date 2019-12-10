@@ -12,9 +12,4 @@ public class BannerHelper : MonoBehaviour {
         float relativeScore = (lastScore - ScoreRange.x) / (ScoreRange.y - ScoreRange.x);
         fade.anchoredPosition = new Vector2(0, (1 - relativeScore) * -665);
     }
-
-    [ContextMenu("UpdatePosition")]
-    private void UpdatePosition() {
-
-    }
 }
