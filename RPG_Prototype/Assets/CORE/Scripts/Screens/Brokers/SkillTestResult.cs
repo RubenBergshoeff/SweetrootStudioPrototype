@@ -23,16 +23,16 @@ public class SkillTestResult : UIDisplayController {
     }
 
     protected override void OnVisible() {
-        if (activeSkillCategory.LastResult.FailedSkill != null) {
-            ShowFailedFeedback(activeSkillCategory.LastResult.FailedSkill);
-        }
+        //if (activeSkillCategory.LastResult.FailedSkill != null) {
+        //    ShowFailedFeedback(activeSkillCategory.LastResult.FailedSkill);
+        //}
 
-        foreach (var unlock in activeSkillCategory.LastResult.Unlocks) {
-            var unlockReturn = SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.HandleUnlock(unlock.ResultToUnlock);
-            if (unlockReturn == UnlockReturn.NewUnlock && unlock.ShowPopup) {
-                ShowPopup(unlock);
-            }
-        }
+        //foreach (var unlock in activeSkillCategory.LastResult.Unlocks) {
+        //    var unlockReturn = SaveController.Instance.GameData.CharacterCollection.ActiveCharacter.HandleUnlock(unlock.ResultToUnlock);
+        //    if (unlockReturn == UnlockReturn.NewUnlock && unlock.ShowPopup) {
+        //        ShowPopup(unlock);
+        //    }
+        //}
     }
 
     protected override void OnHiding() {

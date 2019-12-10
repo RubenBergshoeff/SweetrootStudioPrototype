@@ -11,18 +11,13 @@ public class OptionPointFlipOver : MonoBehaviour {
         }
     }
 
-    public Action<ActiveBaseData> OnPointClicked;
+    public Action OnPointClicked;
 
     [SerializeField] private BaseData data = null;
     private FlipPlane[] flipPlanes = new FlipPlane[0];
-    private ActiveBaseData activeResultData = null;
 
     private void Awake() {
         flipPlanes = GetComponentsInChildren<FlipPlane>();
-    }
-
-    public void Initialize(ActiveBaseData activeResultData) {
-        this.activeResultData = activeResultData;
     }
 
     public void ToStartPosition() {
@@ -38,6 +33,6 @@ public class OptionPointFlipOver : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        OnPointClicked?.Invoke(activeResultData);
+        OnPointClicked?.Invoke();
     }
 }

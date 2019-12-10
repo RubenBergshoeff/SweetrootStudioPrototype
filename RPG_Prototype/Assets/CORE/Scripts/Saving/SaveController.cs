@@ -53,6 +53,18 @@ public class SaveController : MonoBehaviour {
         SceneManager.LoadScene("Main");
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            GameData.BoterKroon.IsBakingLocked = false;
+            GameData.BoterKroon.IsRoyalLocked = false;
+            GameData.BoterKroon.IsSwordLocked = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W)) {
+            GameData.BoterKroon.SkillResults.Add(new BoterkroonSkillResult(1, 3));
+        }
+    }
+
     public void SaveGame() {
         SaveGame(Instigator.User);
     }
@@ -112,10 +124,7 @@ public class SaveController : MonoBehaviour {
         GameData = new GameData();
         if (preDefinedSettings != null) {
             GameData = new GameData();
-            foreach (var characterData in preDefinedSettings.StartCharacters) {
-                ActiveCharacterData activeCharacterData = new ActiveCharacterData(characterData);
-                GameData.CharacterCollection.Characters.Add(activeCharacterData);
-            }
+            GameData.BoterKroon = new ActiveBoterkroonData();
             foreach (var moodDataSet in preDefinedSettings.StartMoodItems) {
                 GameData.MoodCollection.AddMoodData(moodDataSet.MoodData, moodDataSet.Amount);
             }

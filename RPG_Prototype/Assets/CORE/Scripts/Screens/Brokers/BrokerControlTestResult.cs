@@ -2,67 +2,39 @@
 using UnityEngine;
 using Doozy.Engine;
 using TMPro;
+using System;
 
-public class BrokerControlTestResult : BrokerBaseResult {
+public class BrokerControlTestResult : UIDisplayController {
 
-    [SerializeField] private PlayerCharacterController playerCharacterController = null;
     [SerializeField] private TextMeshProUGUI textmeshSkillName = null;
-    [SerializeField] private ControlTestResult controlTestResult = null;
     [SerializeField] private string uiEventStringDone = "";
 
-    private ActiveSkillLevel activeSkillLevel;
-    private TrainingData newTrainingData;
+    private BoterkroonSkills currentSkill;
 
-    public override void SetResult(ActiveBaseData activeResult) {
-        base.SetResult(activeResult);
-        activeSkillLevel = activeResult as ActiveSkillLevel;
-        textmeshSkillName.text = activeSkillLevel.SkillLevel.Skill.Name;
+    public void SetResult(BoterkroonSkills currentSkill) {
+        this.currentSkill = currentSkill;
+    }
+
+    protected override void OnShowing() {
+        textmeshSkillName.text = currentSkill.ToString();
     }
 
     protected override void OnVisible() {
+        SaveController.Instance.GameData.BoterKroon.CreateControlResult(currentSkill);
         StartCoroutine(ControlTestAnimation());
+    }
+
+    protected override void OnHiding() {
+
     }
 
     protected override void OnInvisible() {
     }
 
     private IEnumerator ControlTestAnimation() {
+        yield return new WaitForSeconds(3);
 
-        // test character skill
-        float previousCompletionLevel = activeSkillLevel.LastCompletionLevel;
-        float completionLevel = playerCharacterController.GetActiveSkillXP(activeSkillLevel.SkillLevel.Skill) / (float)activeSkillLevel.SkillLevel.XPCap;
-
-        yield return new WaitForSeconds(5f);
-
-        if (completionLevel >= 1) {
-            activeSkillLevel.IsCompleted = true;
-            Debug.Log("yay level completed");
-        }
-        else {
-            Debug.Log("Completion: " + completionLevel);
-        }
-        activeSkillLevel.LastCompletionLevel = Mathf.Min(completionLevel, 1);
-
-        //int previousStars = Mathf.FloorToInt(previousCompletionLevel * 3);
-        //int newStars = Mathf.FloorToInt(activeSkillLevel.LastCompletionLevel * 3);
-
-        //if (previousStars < newStars) {
-        //    ShowPopup(previousStars, newStars);
-        //    yield return new WaitForSeconds(0.3f);
-        //}
-
-        controlTestResult.SetResult(previousCompletionLevel, activeSkillLevel);
         GameEventMessage.SendEvent(uiEventStringDone);
     }
 
-    //private void ShowPopup(int oldStarAmount, int newStarAmount) {
-    //    UIPopup popup = UIPopup.GetPopup(Popups.CONTROLSTAR_POPUP);
-
-    //    if (popup == null) { return; }
-
-    //    PopupControlTestStars popupUnlock = popup.GetComponent<PopupControlTestStars>();
-    //    popupUnlock.Setup(oldStarAmount, newStarAmount);
-
-    //    popup.Show();
-    //}
 }
