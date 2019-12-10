@@ -9,14 +9,6 @@ public enum BoterkroonSkills {
     Royal
 }
 
-public class ScoreRequirement {
-    public Func<BoterkroonSkills, float> Skill;
-
-    public ScoreRequirement(Func<BoterkroonSkills, float> scoreFunc) {
-        Skill = scoreFunc;
-    }
-}
-
 [System.Serializable]
 public class ActiveBoterkroonData {
 
@@ -129,6 +121,16 @@ public class BoterkroonSkillResult {
     }
 }
 
+public class ScoreRequirement {
+    public Func<BoterkroonSkills, float> Skill;
+    public float Total;
+
+    public ScoreRequirement(Func<BoterkroonSkills, float> scoreFunc, float total) {
+        Skill = scoreFunc;
+        Total = total;
+    }
+}
+
 public static class BoterkroonScoreRequirements {
 
     public static ScoreRequirement GetMinScoreFor(int level) {
@@ -159,7 +161,7 @@ public static class BoterkroonScoreRequirements {
 
     private static ScoreRequirement MinLevelOneScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         return 0;
-    });
+    }, 0);
 
     private static ScoreRequirement MinLevelTwoScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         switch (skill) {
@@ -171,7 +173,7 @@ public static class BoterkroonScoreRequirements {
                 return 0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
         }
         throw new NotImplementedException();
-    });
+    }, 0.4f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP);
 
     private static ScoreRequirement MinLevelThreeScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         switch (skill) {
@@ -183,19 +185,19 @@ public static class BoterkroonScoreRequirements {
                 return 0.0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
         }
         throw new NotImplementedException();
-    });
+    }, (0.5f + 0.3f) * SaveController.Instance.GameData.BoterKroon.MaxSkillXP);
 
     private static ScoreRequirement MaxLevelOneScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         switch (skill) {
             case BoterkroonSkills.Baking:
-                return 0.4f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return 0.5f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
             case BoterkroonSkills.Sword:
                 return 0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
             case BoterkroonSkills.Royal:
                 return 0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
         }
         throw new NotImplementedException();
-    });
+    }, 0.5f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP);
 
     private static ScoreRequirement MaxLevelTwoScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         switch (skill) {
@@ -207,7 +209,7 @@ public static class BoterkroonScoreRequirements {
                 return 0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
         }
         throw new NotImplementedException();
-    });
+    }, (0.7f + 0.4f) * SaveController.Instance.GameData.BoterKroon.MaxSkillXP);
 
     private static ScoreRequirement MaxLevelThreeScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         switch (skill) {
@@ -219,5 +221,5 @@ public static class BoterkroonScoreRequirements {
                 return 0.5f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
         }
         throw new NotImplementedException();
-    });
+    }, (0.8f + 0.7f + 0.5f) * SaveController.Instance.GameData.BoterKroon.MaxSkillXP);
 }
