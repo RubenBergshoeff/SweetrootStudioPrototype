@@ -10,10 +10,7 @@ public class CharacterScreenController : UIDisplayController {
     [SerializeField] private BannerHelper[] bannerHelpers = new BannerHelper[0];
 
     protected override void OnShowing() {
-        if (SaveController.Instance.GameData.BoterKroon.SkillResults.Count == 0) {
-            SaveController.Instance.GameData.BoterKroon.SkillResults.Add(new BoterkroonSkillResult(1, 0, true));
-        }
-        BoterkroonSkillResult lastSkillResult = SaveController.Instance.GameData.BoterKroon.SkillResults[SaveController.Instance.GameData.BoterKroon.SkillResults.Count - 1];
+        BoterkroonSkillResult lastSkillResult = GetLastSucceededResult();
         skillResultController.UpdateView(lastSkillResult);
         foreach (var bannerHelper in bannerHelpers) {
             bannerHelper.UpdateFade(lastSkillResult.Score);
@@ -30,5 +27,14 @@ public class CharacterScreenController : UIDisplayController {
 
     protected override void OnInvisible() {
 
+    }
+
+    private BoterkroonSkillResult GetLastSucceededResult() {
+        for (int i = SaveController.Instance.GameData.BoterKroon.SkillResults.Count - 1; i >= 0; i--) {
+            if (SaveController.Instance.GameData.BoterKroon.SkillResults[i].Succeeded) {
+                return SaveController.Instance.GameData.BoterKroon.SkillResults[i];
+            }
+        }
+        return new BoterkroonSkillResult(1, 0, true);
     }
 }
