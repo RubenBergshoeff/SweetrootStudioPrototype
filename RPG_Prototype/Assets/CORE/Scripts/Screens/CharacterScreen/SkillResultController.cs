@@ -21,5 +21,16 @@ public class SkillResultController : MonoBehaviour {
         else if (lastResult.Level == 3) {
             bannerContainer.anchoredPosition = levelThreeOffset;
         }
+
+        float fadeHeight = CalculateFadeHeight(lastResult.Score);
+    }
+
+    public float CalculateFadeHeight(float score) {
+        float normalizedScore = 0;
+        if (score < BoterkroonScoreRequirements.GetMinScoreFor(2).Total) {
+            normalizedScore = score / BoterkroonScoreRequirements.GetMinScoreFor(2).Total;
+
+        }
+        return 0;
     }
 }
