@@ -21,6 +21,7 @@ public class BrokerControlTestResult : UIDisplayController {
 
     protected override void OnVisible() {
         SaveController.Instance.GameData.BoterKroon.CreateControlResult(currentSkill);
+        SaveController.Instance.GameData.BoterKroon.TurnsLeft -= 1;
         StartCoroutine(ControlTestAnimation());
     }
 

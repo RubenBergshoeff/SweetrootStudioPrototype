@@ -31,3 +31,4 @@ MonoBehaviour:
   - TrainingBrokerResult
   - NewCharacter
   - EndCharacter
+  - TurnTimer

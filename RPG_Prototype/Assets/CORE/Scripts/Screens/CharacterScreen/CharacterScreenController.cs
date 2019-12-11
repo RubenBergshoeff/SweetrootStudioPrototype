@@ -7,16 +7,10 @@ using Doozy.Engine.UI.Base;
 public class CharacterScreenController : UIDisplayController {
 
     [SerializeField] private SkillResultController skillResultController = null;
-    [SerializeField] private BannerHelper[] bannerHelpers = new BannerHelper[0];
 
     protected override void OnShowing() {
-        if (SaveController.Instance.GameData.BoterKroon.SkillResults.Count > 0) {
-            BoterkroonSkillResult lastSkillResult = SaveController.Instance.GameData.BoterKroon.SkillResults[SaveController.Instance.GameData.BoterKroon.SkillResults.Count - 1];
-            skillResultController.UpdateView(lastSkillResult);
-            foreach (var bannerHelper in bannerHelpers) {
-                bannerHelper.UpdateFade(lastSkillResult.Score);
-            }
-        }
+        BoterkroonSkillResult lastSkillResult = GetLastSucceededResult();
+        skillResultController.UpdateView(lastSkillResult);
     }
 
     protected override void OnVisible() {
@@ -29,5 +23,14 @@ public class CharacterScreenController : UIDisplayController {
 
     protected override void OnInvisible() {
 
+    }
+
+    private BoterkroonSkillResult GetLastSucceededResult() {
+        for (int i = SaveController.Instance.GameData.BoterKroon.SkillResults.Count - 1; i >= 0; i--) {
+            if (SaveController.Instance.GameData.BoterKroon.SkillResults[i].Succeeded) {
+                return SaveController.Instance.GameData.BoterKroon.SkillResults[i];
+            }
+        }
+        return new BoterkroonSkillResult(1, 0, true);
     }
 }

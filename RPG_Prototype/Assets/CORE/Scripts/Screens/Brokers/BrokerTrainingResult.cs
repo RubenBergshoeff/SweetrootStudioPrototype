@@ -56,6 +56,7 @@ public class BrokerTrainingResult : UIDisplayController {
     private void CreateTrainingResult() {
         BoterkroonTrainingResult result = new BoterkroonTrainingResult(100);
         SaveController.Instance.GameData.BoterKroon.GetTrainingResultsFor(currentskill).Add(result);
+        SaveController.Instance.GameData.BoterKroon.TurnsLeft -= 1;
     }
 
     private IEnumerator TrainingAnimation() {

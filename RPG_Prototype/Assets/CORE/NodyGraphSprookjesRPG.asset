@@ -464,7 +464,7 @@ MonoBehaviour:
     m_id: 9ccbc108-936c-4aad-860e-74fcf2091cca
     m_nodeId: 48268c2a-2461-460c-9208-bc9b2ddcdaea
     m_socketName: OutputSocket_1
-    m_value: '{"ButtonCategory":"General","ButtonName":"Unnamed","GameEvent":"GameFinished","TimeDelay":3.0,"Trigger":3}'
+    m_value: '{"ButtonCategory":"General","ButtonName":"Unnamed","GameEvent":"TrainingFinished","TimeDelay":3.0,"Trigger":3}'
     m_valueTypeQualifiedName: Doozy.Engine.UI.Connections.UIConnection, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_nodeType: 4
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_height: 152
   m_width: 216
   m_x: 528
-  m_y: 24
+  m_y: 12
   m_minimumInputSocketsCount: 1
   m_minimumOutputSocketsCount: 1
   m_graphId: 35059c0a-7fee-4ca5-baaa-b5ee8d9cf570
@@ -805,6 +805,9 @@ MonoBehaviour:
   - Category: SprookjesRPG
     InstantAction: 0
     Name: CharacterScreen
+  - Category: SprookjesRPG
+    InstantAction: 0
+    Name: TurnTimer
   m_onEnterHideViews: []
   m_onExitShowViews: []
   m_onExitHideViews:
@@ -938,7 +941,7 @@ MonoBehaviour:
   m_version: 1
   m_description: 
   m_id: 35059c0a-7fee-4ca5-baaa-b5ee8d9cf570
-  m_lastModified: 132203709858499821
+  m_lastModified: 132204594119365069
 --- !u!114 &425644309698737191
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1785,7 +1788,7 @@ MonoBehaviour:
   m_height: 80
   m_width: 120
   m_x: -180
-  m_y: -396
+  m_y: -420
   m_minimumInputSocketsCount: 1
   m_minimumOutputSocketsCount: 1
   m_graphId: 35059c0a-7fee-4ca5-baaa-b5ee8d9cf570

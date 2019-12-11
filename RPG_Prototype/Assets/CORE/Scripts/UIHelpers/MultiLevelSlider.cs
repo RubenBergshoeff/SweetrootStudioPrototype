@@ -9,6 +9,10 @@ public class MultiLevelSlider : MonoBehaviour {
     [SerializeField] private List<FillSlider> sliders = new List<FillSlider>();
     [SerializeField] private FillSlider templateSlider = null;
 
+    private void OnEnable() {
+        templateSlider.gameObject.SetActive(false);
+    }
+
     public void UpdateValues(params float[] values) {
         if (values.Length != sliders.Count) {
             UpdateSliderAmount(values.Length);

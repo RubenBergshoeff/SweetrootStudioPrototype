@@ -59,10 +59,6 @@ public class SaveController : MonoBehaviour {
             GameData.BoterKroon.IsRoyalLocked = false;
             GameData.BoterKroon.IsSwordLocked = false;
         }
-
-        if (Input.GetKeyDown(KeyCode.W)) {
-            GameData.BoterKroon.SkillResults.Add(new BoterkroonSkillResult(1, 3));
-        }
     }
 
     public void SaveGame() {

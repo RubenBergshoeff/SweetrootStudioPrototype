@@ -8,13 +8,10 @@ public class BannerHelper : MonoBehaviour {
 
     [SerializeField] private RectTransform fade = null;
 
-    public void UpdateFade(float lastScore) {
-        float relativeScore = (lastScore - ScoreRange.x) / (ScoreRange.y - ScoreRange.x);
-        fade.anchoredPosition = new Vector2(0, (1 - relativeScore) * -665);
-    }
-
-    [ContextMenu("UpdatePosition")]
-    private void UpdatePosition() {
-
+    public void UpdateFade(float height) {
+        //float relativeScore = (lastScore - ScoreRange.x) / (ScoreRange.y - ScoreRange.x);
+        float ypos = Mathf.Min(height - GetComponent<RectTransform>().anchoredPosition.y - 660, 0);
+        fade.anchoredPosition = new Vector2(0, ypos);
+        Debug.Log(height - GetComponent<RectTransform>().anchoredPosition.y);
     }
 }
