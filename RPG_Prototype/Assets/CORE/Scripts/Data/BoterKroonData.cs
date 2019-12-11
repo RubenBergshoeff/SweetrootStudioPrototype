@@ -36,7 +36,7 @@ public class ActiveBoterkroonData {
         }
         set {
             turnsLeft = value;
-            OnTurnsChanged(turnsLeft);
+            OnTurnsChanged?.Invoke(turnsLeft);
         }
     }
     private int turnsLeft = 20;
@@ -149,9 +149,11 @@ public static class BoterkroonScoreRequirements {
     public static ScoreRequirement GetMinScoreFor(int level) {
         if (level == 1) {
             return MinLevelOneScoreRequirement;
-        } else if (level == 2) {
+        }
+        else if (level == 2) {
             return MinLevelTwoScoreRequirement;
-        } else if (level == 3) {
+        }
+        else if (level == 3) {
             return MinLevelThreeScoreRequirement;
         }
         throw new NotImplementedException();
@@ -160,9 +162,11 @@ public static class BoterkroonScoreRequirements {
     public static ScoreRequirement GetMaxScoreFor(int level) {
         if (level == 1) {
             return MaxLevelOneScoreRequirement;
-        } else if (level == 2) {
+        }
+        else if (level == 2) {
             return MaxLevelTwoScoreRequirement;
-        } else if (level == 3) {
+        }
+        else if (level == 3) {
             return MaxLevelThreeScoreRequirement;
         }
         throw new NotImplementedException();
