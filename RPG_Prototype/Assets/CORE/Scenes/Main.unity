@@ -1353,7 +1353,7 @@ PrefabInstance:
     - target: {fileID: 3363937823943645615, guid: 53fdbdcf50b8ea744b61881a5c572269,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.999
+      value: -8.45
       objectReference: {fileID: 0}
     - target: {fileID: 3363937823943645615, guid: 53fdbdcf50b8ea744b61881a5c572269,
         type: 3}
@@ -1410,6 +1410,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: TableOpenBookSkill
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 3363937824165814446, guid: 53fdbdcf50b8ea744b61881a5c572269,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f188f5fd16979241afb754b0e9c6b5c, type: 2}
+=======
     - target: {fileID: 3363937823421437368, guid: 53fdbdcf50b8ea744b61881a5c572269,
         type: 3}
       propertyPath: m_IsActive
@@ -1420,6 +1427,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+>>>>>>> 05f5d761d9bbd2439a80b2c4106b4a03d2f8e5ed
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fdbdcf50b8ea744b61881a5c572269, type: 3}
 --- !u!1001 &5277066828422143475
@@ -1563,6 +1571,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: TableHub
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 5837347492893273837, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f188f5fd16979241afb754b0e9c6b5c, type: 2}
+    - target: {fileID: 461551383221031337, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+=======
     - target: {fileID: 5837347492893273838, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
         type: 3}
       propertyPath: m_IsActive
@@ -1572,6 +1591,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+>>>>>>> 05f5d761d9bbd2439a80b2c4106b4a03d2f8e5ed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc8b0adaf9938894abfefa0e1c92c5b9, type: 3}
@@ -1654,11 +1674,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 869739557841643287, guid: e3d73e16f02970241bcb3d110ec0e4a7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f188f5fd16979241afb754b0e9c6b5c, type: 2}
+=======
     - target: {fileID: 5880325373794754845, guid: e3d73e16f02970241bcb3d110ec0e4a7,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+>>>>>>> 05f5d761d9bbd2439a80b2c4106b4a03d2f8e5ed
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3d73e16f02970241bcb3d110ec0e4a7, type: 3}
 --- !u!114 &6740467252285861931 stripped
