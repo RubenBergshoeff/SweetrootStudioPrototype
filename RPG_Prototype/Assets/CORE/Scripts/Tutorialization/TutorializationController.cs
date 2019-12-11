@@ -36,7 +36,7 @@ public class TutorializationController : MonoBehaviour {
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
         RectTransform rectTransform = button.GetComponent<RectTransform>();
-        Vector2 pointPosition = new Vector2(0, (rectTransform.sizeDelta.y / 2 + 50) * (pointDirection == PointDirection.Down ? 1 : -1));
+        Vector2 pointPosition = new Vector2(0, (rectTransform.sizeDelta.y / 2 + 75) * (pointDirection == PointDirection.Down ? 1 : -1));
         originalParent = button.transform.parent;
         button.transform.SetParent(container);
         pointObject = Instantiate(pointPrefab, button.transform);
