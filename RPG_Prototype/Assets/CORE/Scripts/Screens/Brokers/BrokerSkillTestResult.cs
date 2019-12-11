@@ -42,15 +42,15 @@ public class BrokerSkillTestResult : UIDisplayController {
 
         if (boterkroon.IsBakingLocked == false) {
             succeededTest = GetSkillScore(BoterkroonSkills.Baking, out skillScore);
-            currentScore += skillScore / (float)boterkroon.MaxSkillXP;
+            currentScore += skillScore;
         }
         if (succeededTest && boterkroon.IsSwordLocked == false) {
             succeededTest = GetSkillScore(BoterkroonSkills.Sword, out skillScore);
-            currentScore += skillScore / (float)boterkroon.MaxSkillXP;
+            currentScore += skillScore;
         }
         if (succeededTest && boterkroon.IsRoyalLocked == false) {
             succeededTest = GetSkillScore(BoterkroonSkills.Royal, out skillScore);
-            currentScore += skillScore / (float)boterkroon.MaxSkillXP;
+            currentScore += skillScore;
         }
 
         BoterkroonSkillResult result = new BoterkroonSkillResult(currentLevel, currentScore, succeededTest);

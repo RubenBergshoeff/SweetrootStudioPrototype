@@ -24688,10 +24688,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillResultController: {fileID: 2408687490304624145}
-  bannerHelpers:
-  - {fileID: 3766305113207771016}
-  - {fileID: 9192322354968168913}
-  - {fileID: 392402180593527689}
 --- !u!1 &171428918112541023
 GameObject:
   m_ObjectHideFlags: 0
@@ -50560,9 +50556,9 @@ MonoBehaviour:
   levelOneOffset: {x: 500, y: 550}
   levelTwoOffset: {x: 0, y: 0}
   levelThreeOffset: {x: -500, y: -550}
-  bannerLvl01: {fileID: 0}
-  bannerLvl02: {fileID: 0}
-  bannerLvl03: {fileID: 0}
+  bannerLvl01: {fileID: 3766305113207771016}
+  bannerLvl02: {fileID: 9192322354968168913}
+  bannerLvl03: {fileID: 392402180593527689}
 --- !u!1 &8758586862018568060
 GameObject:
   m_ObjectHideFlags: 0
@@ -52310,11 +52306,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 171428918074539622}
     m_Modifications:
-    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
-        type: 3}
-      propertyPath: m_Name
-      value: SkillBar - Sword
-      objectReference: {fileID: 0}
     - target: {fileID: 8327759583294604020, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -52420,6 +52411,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
+        type: 3}
+      propertyPath: m_Name
+      value: SkillBar - Sword
+      objectReference: {fileID: 0}
     - target: {fileID: 8734141779546299920, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: targetSkill
@@ -52491,11 +52487,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 171428918074539622}
     m_Modifications:
-    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
-        type: 3}
-      propertyPath: m_Name
-      value: SkillBar - Navigatie
-      objectReference: {fileID: 0}
     - target: {fileID: 8327759583294604020, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -52601,6 +52592,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
+        type: 3}
+      propertyPath: m_Name
+      value: SkillBar - Navigatie
+      objectReference: {fileID: 0}
     - target: {fileID: 8734141779546299920, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: targetSkill
@@ -52647,11 +52643,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 171428918074539622}
     m_Modifications:
-    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
-        type: 3}
-      propertyPath: m_Name
-      value: SkillBar - Cookie
-      objectReference: {fileID: 0}
     - target: {fileID: 8327759583294604020, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -52756,6 +52747,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
+        type: 3}
+      propertyPath: m_Name
+      value: SkillBar - Cookie
       objectReference: {fileID: 0}
     - target: {fileID: 5410944110672492696, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
