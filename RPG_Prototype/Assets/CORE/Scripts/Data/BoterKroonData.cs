@@ -28,6 +28,19 @@ public class ActiveBoterkroonData {
     public bool IsSwordLocked = true;
     public bool IsRoyalLocked = true;
 
+    public Action<int> OnTurnsChanged;
+
+    public int TurnsLeft {
+        get {
+            return turnsLeft;
+        }
+        set {
+            turnsLeft = value;
+            OnTurnsChanged(turnsLeft);
+        }
+    }
+    private int turnsLeft = 20;
+
     public bool IsSkillActive(BoterkroonSkills skill) {
         switch (skill) {
             case BoterkroonSkills.Baking:
@@ -136,11 +149,9 @@ public static class BoterkroonScoreRequirements {
     public static ScoreRequirement GetMinScoreFor(int level) {
         if (level == 1) {
             return MinLevelOneScoreRequirement;
-        }
-        else if (level == 2) {
+        } else if (level == 2) {
             return MinLevelTwoScoreRequirement;
-        }
-        else if (level == 3) {
+        } else if (level == 3) {
             return MinLevelThreeScoreRequirement;
         }
         throw new NotImplementedException();
@@ -149,11 +160,9 @@ public static class BoterkroonScoreRequirements {
     public static ScoreRequirement GetMaxScoreFor(int level) {
         if (level == 1) {
             return MaxLevelOneScoreRequirement;
-        }
-        else if (level == 2) {
+        } else if (level == 2) {
             return MaxLevelTwoScoreRequirement;
-        }
-        else if (level == 3) {
+        } else if (level == 3) {
             return MaxLevelThreeScoreRequirement;
         }
         throw new NotImplementedException();

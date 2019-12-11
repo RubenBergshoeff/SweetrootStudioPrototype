@@ -23,6 +23,7 @@ public class BrokerSkillTestResult : UIDisplayController {
 
     protected override void OnVisible() {
         CalculateResult();
+        SaveController.Instance.GameData.BoterKroon.TurnsLeft -= 4;
         StartCoroutine(ControlTestAnimation());
     }
 
@@ -52,13 +53,14 @@ public class BrokerSkillTestResult : UIDisplayController {
             succeededTest = GetSkillScore(BoterkroonSkills.Royal, out skillScore);
             currentScore += skillScore;
         }
-
+        Debug.Log(currentScore);
         BoterkroonSkillResult result = new BoterkroonSkillResult(currentLevel, currentScore, succeededTest);
         boterkroon.SkillResults.Add(result);
     }
 
     private bool GetSkillScore(BoterkroonSkills skill, out float skillScore) {
         float maxScore = BoterkroonScoreRequirements.GetMaxScoreFor(currentLevel).Skill(skill);
+        Debug.Log(skill.ToString() + maxScore.ToString());
         float minScore = BoterkroonScoreRequirements.GetMinScoreFor(currentLevel).Skill(skill);
         skillScore = Mathf.Min(maxScore, GetLastScoreFor(skill));
         return minScore <= skillScore;
