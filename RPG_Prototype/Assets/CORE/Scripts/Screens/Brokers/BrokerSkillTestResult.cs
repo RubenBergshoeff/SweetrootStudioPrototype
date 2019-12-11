@@ -5,20 +5,41 @@ using Doozy.Engine;
 using Doozy.Engine.UI;
 using System;
 using TMPro;
+using UnityEngine.UI;
 
 public class BrokerSkillTestResult : UIDisplayController {
 
+    [SerializeField] private Image visualContainer = null;
+    [SerializeField] private TextMeshProUGUI textmeshVisual = null;
+
     [SerializeField] private TextMeshProUGUI textmeshSkillLevel = null;
     [SerializeField] private string uiEventStringDone = "";
+    [Space]
+    [Header("Skill Test Visuals")]
+    [SerializeField] private VisualsSkillTest visualsLvl01;
+    [SerializeField] private VisualsSkillTest visualsLvl02;
+    [SerializeField] private VisualsSkillTest visualsLvl03;
 
     private int currentLevel;
+    private BoterkroonSkillResult currentResult = null;
+    private VisualsSkillTest currentVisuals;
 
     public void SetResult(int currentLevel) {
         this.currentLevel = currentLevel;
+        if (currentLevel == 1) {
+            currentVisuals = visualsLvl01;
+        }
+        if (currentLevel == 2) {
+            currentVisuals = visualsLvl02;
+        }
+        if (currentLevel == 3) {
+            currentVisuals = visualsLvl03;
+        }
     }
 
     protected override void OnShowing() {
         textmeshSkillLevel.text = "Level " + currentLevel.ToString();
+        SetVisual(currentVisuals.Introduction);
     }
 
     protected override void OnVisible() {
@@ -54,8 +75,8 @@ public class BrokerSkillTestResult : UIDisplayController {
             currentScore += skillScore;
         }
         Debug.Log(currentScore);
-        BoterkroonSkillResult result = new BoterkroonSkillResult(currentLevel, currentScore, succeededTest);
-        boterkroon.SkillResults.Add(result);
+        currentResult = new BoterkroonSkillResult(currentLevel, currentScore, succeededTest);
+        boterkroon.SkillResults.Add(currentResult);
     }
 
     private bool GetSkillScore(BoterkroonSkills skill, out float skillScore) {
@@ -82,9 +103,37 @@ public class BrokerSkillTestResult : UIDisplayController {
     }
 
     private IEnumerator ControlTestAnimation() {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
+
+        float normalizedScore = (currentResult.Score - BoterkroonScoreRequirements.GetMinScoreFor(currentLevel).Total) / (BoterkroonScoreRequirements.GetMaxScoreFor(currentLevel).Total - BoterkroonScoreRequirements.GetMinScoreFor(currentLevel).Total);
+
+        if (normalizedScore < 0.3f) {
+            SetVisual(currentVisuals.Failed);
+        }
+        else {
+            SetVisual(currentVisuals.Succeeded);
+        }
+
+        yield return new WaitForSeconds(5);
 
         GameEventMessage.SendEvent(uiEventStringDone);
     }
 
+    private void SetVisual(VisualSkillTest visual) {
+        visualContainer.sprite = visual.Image;
+        textmeshVisual.text = visual.Text;
+    }
+}
+
+[System.Serializable]
+public class VisualsSkillTest {
+    public VisualSkillTest Introduction = null;
+    public VisualSkillTest Failed = null;
+    public VisualSkillTest Succeeded = null;
+}
+
+[System.Serializable]
+public class VisualSkillTest {
+    public Sprite Image = null;
+    public string Text = "";
 }
