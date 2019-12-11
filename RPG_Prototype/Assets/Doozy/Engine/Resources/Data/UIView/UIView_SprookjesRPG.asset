@@ -19,16 +19,17 @@ MonoBehaviour:
   - ControlTestBroker
   - ControlTestBrokerResultScore
   - ControlTestLinearMap
+  - EndCharacter
   - Hub
+  - NewCharacter
   - Settings
   - SettingsButtonOverlay
   - SkillTestBroker
   - SkillTestBrokerResultScore
   - SkillTestLinearMap
+  - StartSwitch
   - TestTypeChoice
   - TrainingBroker
   - TrainingBrokerGameResult
   - TrainingBrokerResult
-  - NewCharacter
-  - EndCharacter
   - TurnTimer

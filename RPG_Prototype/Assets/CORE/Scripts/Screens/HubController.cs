@@ -31,7 +31,6 @@ public class HubController : UIDisplayController {
     }
 
     protected override void OnShowing() {
-
     }
 
     protected override void OnHiding() {

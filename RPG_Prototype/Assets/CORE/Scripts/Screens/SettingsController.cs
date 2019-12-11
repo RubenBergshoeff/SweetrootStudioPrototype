@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SettingsController : UIDisplayController {
     [SerializeField] private Button resetDataButton;
@@ -25,5 +26,6 @@ public class SettingsController : UIDisplayController {
 
     private void OnResetDataButtonClicked() {
         SaveController.Instance.ResetGame();
+        SceneManager.LoadScene("Main");
     }
 }

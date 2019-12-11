@@ -27,6 +27,7 @@ public class ActiveBoterkroonData {
     public bool IsBakingLocked = true;
     public bool IsSwordLocked = true;
     public bool IsRoyalLocked = true;
+    public bool IsNew = true;
 
     public Action<int> OnTurnsChanged;
 
