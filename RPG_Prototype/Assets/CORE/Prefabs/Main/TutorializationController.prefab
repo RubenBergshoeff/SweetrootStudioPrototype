@@ -93,7 +93,7 @@ MonoBehaviour:
     type: 3}
   pointPrefabUp: {fileID: 3827991670280207288, guid: 07ea7dfe8a4491b44acf4cfcccd26ed2,
     type: 3}
-  textPrefab: {fileID: 2367463539770889365, guid: ac7b6e92239b99446964317a1fbda91a,
+  textPrefab: {fileID: 4125262297888892023, guid: 2862b83ee45cc95469cad610a1af6284,
     type: 3}
   testButton: {fileID: 0}
   container: {fileID: 5284775528468651811}
