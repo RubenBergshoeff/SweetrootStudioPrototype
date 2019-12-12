@@ -25,9 +25,9 @@ public class ActiveBoterkroonData {
     public List<BoterkroonTrainingResult> TrainingResultsRoyal = new List<BoterkroonTrainingResult>();
 
     public int TutorialIndex = 0;
-    public bool IsBakingLocked = true;
-    public bool IsSwordLocked = true;
-    public bool IsRoyalLocked = true;
+    public bool IsBakingLocked = false;
+    public bool IsSwordLocked = false;
+    public bool IsRoyalLocked = false;
     public bool IsNew = true;
 
     public Action<int> OnTurnsChanged;

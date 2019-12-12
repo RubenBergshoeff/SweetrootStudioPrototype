@@ -632,7 +632,10 @@ MonoBehaviour:
   - Category: SprookjesRPG
     InstantAction: 0
     Name: TrainingBrokerResult
-  m_onEnterHideViews: []
+  m_onEnterHideViews:
+  - Category: SprookjesRPG
+    InstantAction: 0
+    Name: TurnTimer
   m_onExitShowViews: []
   m_onExitHideViews:
   - Category: SprookjesRPG
@@ -728,7 +731,10 @@ MonoBehaviour:
   - Category: SprookjesRPG
     InstantAction: 0
     Name: ControlTestLinearMap
-  m_onEnterHideViews: []
+  m_onEnterHideViews:
+  - Category: SprookjesRPG
+    InstantAction: 0
+    Name: TurnTimer
   m_onExitShowViews: []
   m_onExitHideViews:
   - Category: SprookjesRPG
@@ -1078,7 +1084,7 @@ MonoBehaviour:
   m_version: 1
   m_description: 
   m_id: 35059c0a-7fee-4ca5-baaa-b5ee8d9cf570
-  m_lastModified: 132205461336898428
+  m_lastModified: 132206294496115896
 --- !u!114 &425644309698737191
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1950,7 +1956,10 @@ MonoBehaviour:
   - Category: SprookjesRPG
     InstantAction: 0
     Name: SkillTestLinearMap
-  m_onEnterHideViews: []
+  m_onEnterHideViews:
+  - Category: SprookjesRPG
+    InstantAction: 0
+    Name: TurnTimer
   m_onExitShowViews: []
   m_onExitHideViews:
   - Category: SprookjesRPG

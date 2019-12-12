@@ -1105,6 +1105,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MasterCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 171428916982783573, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 171428916982783568, guid: dff157dc04026a74c9b08bb70162b6b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1325,6 +1330,11 @@ PrefabInstance:
       propertyPath: LinkedClickableObject
       value: 
       objectReference: {fileID: 1860975214}
+    - target: {fileID: 8567623754545374347, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dff157dc04026a74c9b08bb70162b6b3, type: 3}
 --- !u!1 &1410008641092585531
@@ -1353,7 +1363,7 @@ PrefabInstance:
     - target: {fileID: 3363937823943645615, guid: 53fdbdcf50b8ea744b61881a5c572269,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.999
+      value: -10.95
       objectReference: {fileID: 0}
     - target: {fileID: 3363937823943645615, guid: 53fdbdcf50b8ea744b61881a5c572269,
         type: 3}
@@ -1418,7 +1428,7 @@ PrefabInstance:
     - target: {fileID: 8833036258668655994, guid: 53fdbdcf50b8ea744b61881a5c572269,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fdbdcf50b8ea744b61881a5c572269, type: 3}
@@ -1571,7 +1581,12 @@ PrefabInstance:
     - target: {fileID: 4821365156094375311, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837347494320824887, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc8b0adaf9938894abfefa0e1c92c5b9, type: 3}
@@ -1662,7 +1677,7 @@ PrefabInstance:
     - target: {fileID: 4175107710206557959, guid: e3d73e16f02970241bcb3d110ec0e4a7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3d73e16f02970241bcb3d110ec0e4a7, type: 3}
