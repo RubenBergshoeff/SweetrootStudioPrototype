@@ -23,3 +23,7 @@ public abstract class TutorialFragmentPointer : TutorialFragment {
     public ObjectClickTracker LinkedClickableObject;
     public RectTransform TargetTransform;
 }
+
+public abstract class TutorialFragmentText : TutorialFragment {
+    public string Text;
+}

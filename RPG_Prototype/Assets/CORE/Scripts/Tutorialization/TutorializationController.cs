@@ -16,6 +16,7 @@ public class TutorializationController : MonoBehaviour {
 
     [SerializeField] private GameObject pointPrefabDown = null;
     [SerializeField] private GameObject pointPrefabUp = null;
+    [SerializeField] private GameObject textPrefab = null;
     [SerializeField] private Button testButton = null;
     [SerializeField] private Transform container = null;
     [SerializeField] private Image canvasBackground = null;
@@ -23,6 +24,7 @@ public class TutorializationController : MonoBehaviour {
     [SerializeField] private TutorialFragment[] tutorialSequence = new TutorialFragment[0];
 
     private GameObject pointObject = null;
+    private GameObject textObject = null;
     private Transform originalParent = null;
     private bool tutorialActive = false;
 
@@ -45,7 +47,40 @@ public class TutorializationController : MonoBehaviour {
         if (currentFragment is TutorialFragmentPointer) {
             StartPointerTutorial(currentFragment as TutorialFragmentPointer);
         }
+        else if (currentFragment is TutorialFragmentText) {
+            StartTextTutorial(currentFragment as TutorialFragmentText);
+        }
         tutorialActive = true;
+    }
+
+    private void StartTextTutorial(TutorialFragmentText currentFragment) {
+        ShowTextTutorial(currentFragment.Text, true, null, currentFragment.DelayShowTime);
+    }
+
+    private void ShowTextTutorial(string text, bool showBackground = true, GameObject highlightedTarget = null, float delayShowTime = 0) {
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
+        canvasBackground.enabled = showBackground;
+        textObject = Instantiate(textPrefab, canvasGroup.transform);
+        textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = text;
+        textObject.GetComponentInChildren<Button>().onClick.AddListener(RemoveTextTutorial);
+        if (delayShowTime <= 0) {
+            canvasGroup.DOFade(1, 0.3f);
+        }
+        else {
+            StartCoroutine(Delay(delayShowTime, () => canvasGroup.DOFade(1, 0.3f)));
+        }
+    }
+
+    private void RemoveTextTutorial() {
+        textObject.GetComponentInChildren<Button>().onClick.RemoveListener(RemoveTextTutorial);
+
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
+        canvasGroup.DOFade(0, 0.3f).OnComplete(() => {
+            Destroy(textObject);
+            OnTutorialFinished();
+        });
     }
 
     private void StartPointerTutorial(TutorialFragmentPointer currentFragment) {
@@ -75,11 +110,6 @@ public class TutorializationController : MonoBehaviour {
         }
     }
 
-    [ContextMenu("Test Pointer")]
-    private void TestPointer() {
-        PointAtButton(testButton, PointDirection.Up);
-    }
-
     public void PointAtButton(Button button, PointDirection pointDirection = PointDirection.Down, float delayShowTime = 0) {
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
@@ -101,15 +131,7 @@ public class TutorializationController : MonoBehaviour {
         }
     }
 
-    private IEnumerator Delay(float time, Action action) {
-        yield return new WaitForSeconds(time);
-        action.Invoke();
-    }
-
     private void RemovePointer() {
-        canvasGroup.DOFade(0, 0.3f);
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.interactable = false;
         if (pointObject != null) {
             TutorialFragmentPointer currentFragment = tutorialSequence[SaveController.Instance.GameData.BoterKroon.TutorialIndex] as TutorialFragmentPointer;
 
@@ -122,11 +144,19 @@ public class TutorializationController : MonoBehaviour {
             }
             Destroy(pointObject);
         }
-        OnTutorialFinished();
+
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
+        canvasGroup.DOFade(0, 0.3f).OnComplete(() => { OnTutorialFinished(); });
     }
 
     private void OnTutorialFinished() {
         SaveController.Instance.GameData.BoterKroon.TutorialIndex++;
         tutorialActive = false;
+    }
+
+    private IEnumerator Delay(float time, Action action) {
+        yield return new WaitForSeconds(time);
+        action.Invoke();
     }
 }
