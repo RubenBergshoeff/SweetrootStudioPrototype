@@ -151,6 +151,7 @@ public class TutorializationController : MonoBehaviour {
     }
 
     private void OnTutorialFinished() {
+        StopAllCoroutines();
         SaveController.Instance.GameData.BoterKroon.TutorialIndex++;
         tutorialActive = false;
     }
