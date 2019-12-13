@@ -14,9 +14,11 @@ public class SkillResultController : MonoBehaviour {
     public void UpdateView(BoterkroonSkillResult lastResult) {
         if (lastResult.Level == 1) {
             bannerContainer.anchoredPosition = levelOneOffset;
-        } else if (lastResult.Level == 2) {
+        }
+        else if (lastResult.Level == 2) {
             bannerContainer.anchoredPosition = levelTwoOffset;
-        } else if (lastResult.Level == 3) {
+        }
+        else if (lastResult.Level == 3) {
             bannerContainer.anchoredPosition = levelThreeOffset;
         }
 
@@ -34,15 +36,16 @@ public class SkillResultController : MonoBehaviour {
             normalizedScore = score / BoterkroonScoreRequirements.GetMinScoreFor(2).Total;
             heightDifference = bannerLvl02.GetComponent<RectTransform>().anchoredPosition.y - bannerLvl01.GetComponent<RectTransform>().anchoredPosition.y;
             return bannerLvl01.GetComponent<RectTransform>().anchoredPosition.y + heightDifference * normalizedScore;
-        } else if (score < BoterkroonScoreRequirements.GetMinScoreFor(3).Total) {
+        }
+        else if (score < BoterkroonScoreRequirements.GetMinScoreFor(3).Total) {
             normalizedScore = (score - BoterkroonScoreRequirements.GetMinScoreFor(2).Total) / (BoterkroonScoreRequirements.GetMinScoreFor(3).Total - BoterkroonScoreRequirements.GetMinScoreFor(2).Total);
             heightDifference = bannerLvl03.GetComponent<RectTransform>().anchoredPosition.y - bannerLvl02.GetComponent<RectTransform>().anchoredPosition.y;
             return bannerLvl02.GetComponent<RectTransform>().anchoredPosition.y + heightDifference * normalizedScore;
-        } else {
+        }
+        else {
             normalizedScore = (score - BoterkroonScoreRequirements.GetMinScoreFor(3).Total) / (BoterkroonScoreRequirements.GetMaxScoreFor(3).Total - BoterkroonScoreRequirements.GetMinScoreFor(3).Total);
             heightDifference = bannerLvl03.GetComponent<RectTransform>().sizeDelta.y;
             return bannerLvl03.GetComponent<RectTransform>().anchoredPosition.y + heightDifference * normalizedScore;
         }
-        return 0;
     }
 }
