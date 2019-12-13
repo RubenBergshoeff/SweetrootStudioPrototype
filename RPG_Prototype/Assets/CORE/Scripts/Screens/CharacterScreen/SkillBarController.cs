@@ -6,8 +6,15 @@ public class SkillBarController : MonoBehaviour {
 
     [SerializeField] private BoterkroonSkills targetSkill;
     [SerializeField] private MultiLevelSlider multiSlider = null;
+    [SerializeField] private CanvasGroup canvasGroup = null;
 
     private void OnEnable() {
+        if (SaveController.Instance.GameData.BoterKroon.IsSkillActive(targetSkill)) {
+            canvasGroup.alpha = 1;
+        }
+        else {
+            canvasGroup.alpha = 0;
+        }
         List<float> normalizedResults = new List<float>();
         float previousValue = 0;
         foreach (var result in SaveController.Instance.GameData.BoterKroon.GetControlResultsFor(targetSkill)) {

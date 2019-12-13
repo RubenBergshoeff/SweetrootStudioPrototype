@@ -2,6 +2,7 @@
 using Doozy.Engine;
 using System.Collections;
 using TMPro;
+using System;
 
 public class BrokerTrainingResult : UIDisplayController {
     [SerializeField] private TextMeshProUGUI textmeshSkillName = null;
@@ -35,8 +36,20 @@ public class BrokerTrainingResult : UIDisplayController {
     }
 
     protected override void OnShowing() {
-        textmeshSkillName.text = currentskill.ToString();
+        textmeshSkillName.text = GetTrainingText(currentskill);
         CreateTrainingResult();
+    }
+
+    private string GetTrainingText(BoterkroonSkills currentskill) {
+        switch (currentskill) {
+            case BoterkroonSkills.Baking:
+                return "Bakken";
+            case BoterkroonSkills.Sword:
+                return "Zwaardvechten";
+            case BoterkroonSkills.Royal:
+                return "Onderzoeken";
+        }
+        throw new NotImplementedException();
     }
 
     protected override void OnVisible() {
