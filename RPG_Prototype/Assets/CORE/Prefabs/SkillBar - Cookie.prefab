@@ -478,6 +478,7 @@ GameObject:
   - component: {fileID: 5445557698697080057}
   - component: {fileID: 5961689484797781097}
   - component: {fileID: 8734141779546299920}
+  - component: {fileID: 7369657477726482372}
   m_Layer: 0
   m_Name: SkillBar - Cookie
   m_TagString: Untagged
@@ -557,6 +558,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSkill: 0
   multiSlider: {fileID: 6270192635873980335}
+  canvasGroup: {fileID: 7369657477726482372}
+--- !u!225 &7369657477726482372
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7664078919034414239}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8975736429238352981
 GameObject:
   m_ObjectHideFlags: 0
