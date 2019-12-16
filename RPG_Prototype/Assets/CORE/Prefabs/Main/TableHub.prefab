@@ -211,7 +211,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ea9ad44d79841264d8164e491b386581, type: 2}
+  - {fileID: 2100000, guid: 7033480ca7296d0418b8070a7b5e72bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3154,11 +3154,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5837347494729574194}
     m_Modifications:
-    - target: {fileID: 1365193044371205284, guid: fa92792b1defd9b469e440936dcdd0ac,
-        type: 3}
-      propertyPath: m_Name
-      value: MOD_BooksClosed-v2
-      objectReference: {fileID: 0}
     - target: {fileID: 2641776864829546167, guid: fa92792b1defd9b469e440936dcdd0ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3228,6 +3223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4.8468885
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365193044371205284, guid: fa92792b1defd9b469e440936dcdd0ac,
+        type: 3}
+      propertyPath: m_Name
+      value: MOD_BooksClosed-v2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa92792b1defd9b469e440936dcdd0ac, type: 3}
