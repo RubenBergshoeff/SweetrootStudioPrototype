@@ -18,7 +18,7 @@ public class SkillBarController : MonoBehaviour {
         List<float> normalizedResults = new List<float>();
         float previousValue = 0;
         foreach (var result in SaveController.Instance.GameData.BoterKroon.GetControlResultsFor(targetSkill)) {
-            float newValue = result.TotalXP / (float)SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+            float newValue = result.TotalXP / (float)BoterkroonValues.Values.MaxSkillXP;
             normalizedResults.Add(newValue - previousValue);
             previousValue = newValue;
         }

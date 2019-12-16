@@ -24,7 +24,7 @@ public class BrokerControlTestResult : UIDisplayController {
 
     protected override void OnShowing() {
         SaveController.Instance.GameData.BoterKroon.CreateControlResult(currentSkill);
-        SaveController.Instance.GameData.BoterKroon.TurnsLeft -= 1;
+        SaveController.Instance.GameData.BoterKroon.TurnsLeft -= BoterkroonValues.Values.CostControlTest;
         textmeshStorytext.text = currentVisual.Text;
         visualContainer.sprite = currentVisual.Image;
     }
@@ -46,7 +46,7 @@ public class BrokerControlTestResult : UIDisplayController {
                 return visualBaking;
             case BoterkroonSkills.Sword:
                 return visualSword;
-            case BoterkroonSkills.Royal:
+            case BoterkroonSkills.Research:
                 return visualNavigating;
         }
         throw new NotImplementedException();

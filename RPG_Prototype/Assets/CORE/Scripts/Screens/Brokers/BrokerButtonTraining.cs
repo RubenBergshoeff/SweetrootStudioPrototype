@@ -13,7 +13,7 @@ public class BrokerButtonTraining : MonoBehaviour {
 
     public BoterkroonSkills TargetSkill;
     public TrainingType TrainingType;
-    public Action<BoterkroonSkills> OnButtonClicked;
+    public Action<BoterkroonSkills, TrainingType> OnButtonClicked;
 
     private Button button;
 
@@ -25,7 +25,7 @@ public class BrokerButtonTraining : MonoBehaviour {
     }
 
     private void OnClickResult() {
-        OnButtonClicked.Invoke(TargetSkill);
+        OnButtonClicked.Invoke(TargetSkill, TrainingType);
     }
 
     private void OnDisable() {
