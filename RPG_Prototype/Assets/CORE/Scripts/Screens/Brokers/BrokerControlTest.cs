@@ -24,8 +24,8 @@ public class BrokerControlTest : UIDisplayController {
         if (boterkroon.IsSwordLocked == false) {
             SetupOption(flipoverSword, BoterkroonSkills.Sword);
         }
-        if (boterkroon.IsRoyalLocked == false) {
-            SetupOption(flipoverRoyal, BoterkroonSkills.Royal);
+        if (boterkroon.IsResearchLocked == false) {
+            SetupOption(flipoverRoyal, BoterkroonSkills.Research);
         }
     }
 
@@ -38,7 +38,7 @@ public class BrokerControlTest : UIDisplayController {
         if (boterkroon.IsSwordLocked == false) {
             flipoverSword.FlipUp();
         }
-        if (boterkroon.IsRoyalLocked == false) {
+        if (boterkroon.IsResearchLocked == false) {
             flipoverRoyal.FlipUp();
         }
     }
@@ -54,8 +54,8 @@ public class BrokerControlTest : UIDisplayController {
         if (boterkroon.IsSwordLocked == false) {
             flipoverSword.OnPointClicked -= () => PickResult(BoterkroonSkills.Sword);
         }
-        if (boterkroon.IsRoyalLocked == false) {
-            flipoverRoyal.OnPointClicked -= () => PickResult(BoterkroonSkills.Royal);
+        if (boterkroon.IsResearchLocked == false) {
+            flipoverRoyal.OnPointClicked -= () => PickResult(BoterkroonSkills.Research);
         }
     }
 

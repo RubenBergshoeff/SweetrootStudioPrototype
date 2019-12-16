@@ -44,8 +44,8 @@ public class BrokerTraining : UIDisplayController {
 
     }
 
-    private void PickResult(BoterkroonSkills result) {
-        resultController.SetResult(result);
+    private void PickResult(BoterkroonSkills skill, TrainingType trainingType) {
+        resultController.SetResult(skill, trainingType);
         GameEventMessage.SendEvent(uiEventString);
     }
 }

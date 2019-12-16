@@ -9,6 +9,7 @@ public class BrokerTrainingResult : UIDisplayController {
     [SerializeField] private string uiEventStringDone = "";
 
     private BoterkroonSkills currentskill;
+    private TrainingType currentType;
 
     //[SerializeField] private PlayerCharacterController playerCharacterController = null;
     //[SerializeField] private TMPro.TextMeshProUGUI textMeshTrainingName = null;
@@ -21,8 +22,9 @@ public class BrokerTrainingResult : UIDisplayController {
     //private ActiveTraining activeTraining;
     //private int gainedXP = 0;
 
-    public void SetResult(BoterkroonSkills result) {
+    public void SetResult(BoterkroonSkills result, TrainingType trainingType) {
         this.currentskill = result;
+        this.currentType = trainingType;
         //activeTraining = result as ActiveTraining;
         //textMeshTrainingName.text = activeTraining.Training.Name;
         //imageTraining.sprite = activeTraining.Training.Visual;
@@ -46,7 +48,7 @@ public class BrokerTrainingResult : UIDisplayController {
                 return "Bakken";
             case BoterkroonSkills.Sword:
                 return "Zwaardvechten";
-            case BoterkroonSkills.Royal:
+            case BoterkroonSkills.Research:
                 return "Onderzoeken";
         }
         throw new NotImplementedException();
@@ -67,9 +69,29 @@ public class BrokerTrainingResult : UIDisplayController {
     }
 
     private void CreateTrainingResult() {
-        BoterkroonTrainingResult result = new BoterkroonTrainingResult(100);
+        int xpGain = 0;
+        switch (currentType) {
+            case TrainingType.Slow:
+                xpGain = UnityEngine.Random.Range(BoterkroonValues.Values.NormalTrainingMinXPGain, BoterkroonValues.Values.NormalTrainingMaxXPGain);
+                SaveController.Instance.GameData.BoterKroon.TurnsLeft -= BoterkroonValues.Values.CostNormalTraining;
+                break;
+            case TrainingType.Fast:
+                float skillControl = Mathf.Max(0, GetSkillControl() - BoterkroonValues.Values.StartpointFastTrainingLerp);
+                float skillControlLerpPoint = skillControl / (1 - BoterkroonValues.Values.StartpointFastTrainingLerp);
+                xpGain = Mathf.FloorToInt(Mathf.Lerp(BoterkroonValues.Values.FastTrainingMinXPGain, BoterkroonValues.Values.FastTrainingMaxXPGain, skillControlLerpPoint));
+                SaveController.Instance.GameData.BoterKroon.TurnsLeft -= BoterkroonValues.Values.CostFastTraining;
+                break;
+        }
+        BoterkroonTrainingResult result = new BoterkroonTrainingResult(xpGain);
         SaveController.Instance.GameData.BoterKroon.GetTrainingResultsFor(currentskill).Add(result);
-        SaveController.Instance.GameData.BoterKroon.TurnsLeft -= 1;
+    }
+
+    private float GetSkillControl() {
+        int currentXPLevel = 0;
+        foreach (var trainingResult in SaveController.Instance.GameData.BoterKroon.GetTrainingResultsFor(currentskill)) {
+            currentXPLevel += trainingResult.GainedXP;
+        }
+        return currentXPLevel / BoterkroonValues.Values.MaxSkillXP;
     }
 
     private IEnumerator TrainingAnimation() {
