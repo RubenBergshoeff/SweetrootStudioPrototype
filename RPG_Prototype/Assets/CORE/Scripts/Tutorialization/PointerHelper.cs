@@ -9,11 +9,11 @@ public class PointerHelper : MonoBehaviour {
 
     private Sequence tweenSequence = null;
 
-    private void OnEnable() {
-        float ypos = rectTransform.anchoredPosition.y;
+    public void StartAnimation(PointDirection direction) {
         tweenSequence = DOTween.Sequence();
-        tweenSequence.Append(rectTransform.DOAnchorPosY(ypos - 30, 0.3f).SetEase(Ease.InOutSine));
-        tweenSequence.Append(rectTransform.DOAnchorPosY(ypos, 0.3f).SetEase(Ease.InOutSine));
+        float moveTowards = direction == PointDirection.Down ? -30 : 30;
+        tweenSequence.Append(rectTransform.DOAnchorPosY(rectTransform.anchoredPosition.y + moveTowards, 0.5f).SetEase(Ease.InOutSine));
+        tweenSequence.Append(rectTransform.DOAnchorPosY(rectTransform.anchoredPosition.y, 0.5f).SetEase(Ease.InOutSine));
         tweenSequence.SetLoops(-1);
         tweenSequence.Play();
     }

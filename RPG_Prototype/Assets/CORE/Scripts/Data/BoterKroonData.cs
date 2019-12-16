@@ -6,14 +6,11 @@ using System;
 public enum BoterkroonSkills {
     Baking,
     Sword,
-    Royal
+    Research
 }
 
 [System.Serializable]
 public class ActiveBoterkroonData {
-
-    public readonly int MaxSkillXP = 1000;
-
     public List<BoterkroonSkillResult> SkillResults = new List<BoterkroonSkillResult>();
 
     public List<BoterkroonControlResult> ControlResultsBaking = new List<BoterkroonControlResult>();
@@ -24,9 +21,10 @@ public class ActiveBoterkroonData {
     public List<BoterkroonTrainingResult> TrainingResultsSword = new List<BoterkroonTrainingResult>();
     public List<BoterkroonTrainingResult> TrainingResultsRoyal = new List<BoterkroonTrainingResult>();
 
-    public bool IsBakingLocked = true;
+    public int TutorialIndex = 0;
+    public bool IsBakingLocked = false;
     public bool IsSwordLocked = true;
-    public bool IsRoyalLocked = true;
+    public bool IsResearchLocked = true;
     public bool IsNew = true;
 
     public Action<int> OnTurnsChanged;
@@ -40,7 +38,11 @@ public class ActiveBoterkroonData {
             OnTurnsChanged?.Invoke(turnsLeft);
         }
     }
-    private int turnsLeft = 20;
+    private int turnsLeft = 0;
+
+    public ActiveBoterkroonData(int amountOfTurns) {
+        turnsLeft = amountOfTurns;
+    }
 
     public bool IsSkillActive(BoterkroonSkills skill) {
         switch (skill) {
@@ -48,8 +50,8 @@ public class ActiveBoterkroonData {
                 return !IsBakingLocked;
             case BoterkroonSkills.Sword:
                 return !IsSwordLocked;
-            case BoterkroonSkills.Royal:
-                return !IsRoyalLocked;
+            case BoterkroonSkills.Research:
+                return !IsResearchLocked;
         }
         throw new System.NotImplementedException();
     }
@@ -60,7 +62,7 @@ public class ActiveBoterkroonData {
                 return TrainingResultsBaking;
             case BoterkroonSkills.Sword:
                 return TrainingResultsSword;
-            case BoterkroonSkills.Royal:
+            case BoterkroonSkills.Research:
                 return TrainingResultsRoyal;
         }
         throw new System.NotImplementedException();
@@ -72,7 +74,7 @@ public class ActiveBoterkroonData {
                 return ControlResultsBaking;
             case BoterkroonSkills.Sword:
                 return ControlResultsSword;
-            case BoterkroonSkills.Royal:
+            case BoterkroonSkills.Research:
                 return ControlResultsRoyal;
         }
         throw new System.NotImplementedException();
@@ -87,6 +89,86 @@ public class ActiveBoterkroonData {
 
         BoterkroonControlResult result = new BoterkroonControlResult(currentXPLevel);
         GetControlResultsFor(skill).Add(result);
+    }
+
+    public BoterkroonSkillResult CreateSkillTestResult(int level) {
+        float currentScore = 0;
+        float bakingScore = 0;
+        float swordScore = 0;
+        float researchScore = 0;
+        bool succeededTest = true;
+        BoterkroonSkillResult currentResult;
+
+        if (IsSkillActive(BoterkroonSkills.Baking)) {
+            succeededTest = GetSkillScore(level, BoterkroonSkills.Baking, out bakingScore);
+            currentScore += bakingScore;
+        }
+        if (succeededTest && IsSkillActive(BoterkroonSkills.Sword)) {
+            succeededTest = GetSkillScore(level, BoterkroonSkills.Sword, out swordScore);
+            currentScore += swordScore;
+        }
+        if (succeededTest && IsSkillActive(BoterkroonSkills.Research)) {
+            succeededTest = GetSkillScore(level, BoterkroonSkills.Research, out researchScore);
+            currentScore += researchScore;
+        }
+        currentResult = new BoterkroonSkillResult(level, currentScore, succeededTest);
+        currentResult.UnlockSword = GetUnlockSword(succeededTest, bakingScore, swordScore, researchScore);
+        currentResult.UnlockResearch = GetUnlockResearch(succeededTest, bakingScore, swordScore, researchScore);
+        if (currentResult.UnlockSword) {
+            IsSwordLocked = false;
+        }
+        if (currentResult.UnlockResearch) {
+            IsResearchLocked = false;
+        }
+        SkillResults.Add(currentResult);
+        return currentResult;
+    }
+
+    private bool GetSkillScore(int currentLevel, BoterkroonSkills skill, out float skillScore) {
+        float maxScore = BoterkroonScoreRequirements.GetMaxScoreFor(currentLevel).Skill(skill);
+        float minScore = BoterkroonScoreRequirements.GetMinScoreFor(currentLevel).Skill(skill);
+        skillScore = Mathf.Min(maxScore, GetLastScoreFor(skill));
+        return minScore <= skillScore;
+    }
+
+    private int GetLastScoreFor(BoterkroonSkills skill) {
+        if (HasNewTrainingFor(skill)) {
+            CreateControlResult(skill);
+        }
+        var controlResults = GetControlResultsFor(skill);
+        if (controlResults.Count == 0) {
+            return 0;
+        }
+        foreach (var result in controlResults) {
+            result.IsNew = false;
+        }
+        return controlResults[controlResults.Count - 1].TotalXP;
+    }
+
+    private bool GetUnlockSword(bool succeededTest, float bakingScore, float swordScore, float researchScore) {
+        if (succeededTest == false) {
+            return false;
+        }
+        if (IsSkillActive(BoterkroonSkills.Sword)) {
+            return false;
+        }
+        bool bakingRequirementMet = bakingScore >= BoterkroonValues.Values.UnlockSwordMinBakeControl * BoterkroonValues.Values.MaxSkillXP;
+        bool swordRequirementMet = swordScore >= BoterkroonValues.Values.UnlockSwordSwordControl * BoterkroonValues.Values.MaxSkillXP;
+        bool researchRequirementMet = researchScore >= BoterkroonValues.Values.UnlockSwordResearchControl * BoterkroonValues.Values.MaxSkillXP;
+        return bakingRequirementMet && swordRequirementMet && researchRequirementMet;
+    }
+
+    private bool GetUnlockResearch(bool succeededTest, float bakingScore, float swordScore, float researchScore) {
+        if (succeededTest == false) {
+            return false;
+        }
+        if (IsSkillActive(BoterkroonSkills.Research)) {
+            return false;
+        }
+        bool bakingRequirementMet = bakingScore >= BoterkroonValues.Values.UnlockResearchMinBakeControl * BoterkroonValues.Values.MaxSkillXP;
+        bool swordRequirementMet = swordScore >= BoterkroonValues.Values.UnlockResearchSwordControl * BoterkroonValues.Values.MaxSkillXP;
+        bool researchRequirementMet = researchScore >= BoterkroonValues.Values.UnlockResearchResearchControl * BoterkroonValues.Values.MaxSkillXP;
+        return bakingRequirementMet && swordRequirementMet && researchRequirementMet;
     }
 
     public bool HasNewTrainingFor(BoterkroonSkills skill) {
@@ -126,6 +208,8 @@ public class BoterkroonSkillResult {
     public float Score;
     public bool Succeeded;
     public bool IsNew;
+    public bool UnlockSword;
+    public bool UnlockResearch;
 
     public BoterkroonSkillResult(int level, float score, bool succeeded) {
         this.Level = level;
@@ -180,60 +264,60 @@ public static class BoterkroonScoreRequirements {
     private static ScoreRequirement MinLevelTwoScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         switch (skill) {
             case BoterkroonSkills.Baking:
-                return 0.4f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return BoterkroonValues.Values.Lvl2MinBakeControl * BoterkroonValues.Values.MaxSkillXP;
             case BoterkroonSkills.Sword:
-                return 0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
-            case BoterkroonSkills.Royal:
-                return 0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return BoterkroonValues.Values.Lvl2MinSwordControl * BoterkroonValues.Values.MaxSkillXP;
+            case BoterkroonSkills.Research:
+                return BoterkroonValues.Values.Lvl2MinResearchControl * BoterkroonValues.Values.MaxSkillXP;
         }
         throw new NotImplementedException();
-    }, 0.4f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP);
+    }, (BoterkroonValues.Values.Lvl2MinBakeControl + BoterkroonValues.Values.Lvl2MinSwordControl + BoterkroonValues.Values.Lvl2MinResearchControl) * BoterkroonValues.Values.MaxSkillXP);
 
     private static ScoreRequirement MinLevelThreeScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         switch (skill) {
             case BoterkroonSkills.Baking:
-                return 0.5f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return BoterkroonValues.Values.Lvl3MinBakeControl * BoterkroonValues.Values.MaxSkillXP;
             case BoterkroonSkills.Sword:
-                return 0.3f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
-            case BoterkroonSkills.Royal:
-                return 0.0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return BoterkroonValues.Values.Lvl3MinSwordControl * BoterkroonValues.Values.MaxSkillXP;
+            case BoterkroonSkills.Research:
+                return BoterkroonValues.Values.Lvl3MinResearchControl * BoterkroonValues.Values.MaxSkillXP;
         }
         throw new NotImplementedException();
-    }, (0.5f + 0.3f) * SaveController.Instance.GameData.BoterKroon.MaxSkillXP);
+    }, (BoterkroonValues.Values.Lvl3MinBakeControl + BoterkroonValues.Values.Lvl3MinSwordControl + BoterkroonValues.Values.Lvl3MinResearchControl) * BoterkroonValues.Values.MaxSkillXP);
 
     private static ScoreRequirement MaxLevelOneScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         switch (skill) {
             case BoterkroonSkills.Baking:
-                return 0.5f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return BoterkroonValues.Values.Lvl1MaxBakeControl * BoterkroonValues.Values.MaxSkillXP;
             case BoterkroonSkills.Sword:
-                return 0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
-            case BoterkroonSkills.Royal:
-                return 0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return BoterkroonValues.Values.Lvl1MaxSwordControl * BoterkroonValues.Values.MaxSkillXP;
+            case BoterkroonSkills.Research:
+                return BoterkroonValues.Values.Lvl1MaxResearchControl * BoterkroonValues.Values.MaxSkillXP;
         }
         throw new NotImplementedException();
-    }, 0.5f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP);
+    }, (BoterkroonValues.Values.Lvl1MaxBakeControl + BoterkroonValues.Values.Lvl1MaxSwordControl + BoterkroonValues.Values.Lvl1MaxResearchControl) * BoterkroonValues.Values.MaxSkillXP);
 
     private static ScoreRequirement MaxLevelTwoScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         switch (skill) {
             case BoterkroonSkills.Baking:
-                return 0.6f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return BoterkroonValues.Values.Lvl2MaxBakeControl * BoterkroonValues.Values.MaxSkillXP;
             case BoterkroonSkills.Sword:
-                return 0.3f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
-            case BoterkroonSkills.Royal:
-                return 0f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return BoterkroonValues.Values.Lvl2MaxSwordControl * BoterkroonValues.Values.MaxSkillXP;
+            case BoterkroonSkills.Research:
+                return BoterkroonValues.Values.Lvl2MaxResearchControl * BoterkroonValues.Values.MaxSkillXP;
         }
         throw new NotImplementedException();
-    }, (0.7f + 0.4f) * SaveController.Instance.GameData.BoterKroon.MaxSkillXP);
+    }, (BoterkroonValues.Values.Lvl2MaxBakeControl + BoterkroonValues.Values.Lvl2MaxSwordControl + BoterkroonValues.Values.Lvl2MaxResearchControl) * BoterkroonValues.Values.MaxSkillXP);
 
     private static ScoreRequirement MaxLevelThreeScoreRequirement = new ScoreRequirement((BoterkroonSkills skill) => {
         switch (skill) {
             case BoterkroonSkills.Baking:
-                return 0.8f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return BoterkroonValues.Values.Lvl3MaxBakeControl * BoterkroonValues.Values.MaxSkillXP;
             case BoterkroonSkills.Sword:
-                return 0.7f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
-            case BoterkroonSkills.Royal:
-                return 0.5f * SaveController.Instance.GameData.BoterKroon.MaxSkillXP;
+                return BoterkroonValues.Values.Lvl3MaxSwordControl * BoterkroonValues.Values.MaxSkillXP;
+            case BoterkroonSkills.Research:
+                return BoterkroonValues.Values.Lvl3MaxResearchControl * BoterkroonValues.Values.MaxSkillXP;
         }
         throw new NotImplementedException();
-    }, (0.8f + 0.7f + 0.5f) * SaveController.Instance.GameData.BoterKroon.MaxSkillXP);
+    }, (BoterkroonValues.Values.Lvl3MaxBakeControl + BoterkroonValues.Values.Lvl3MaxSwordControl + BoterkroonValues.Values.Lvl3MaxResearchControl) * BoterkroonValues.Values.MaxSkillXP);
 }

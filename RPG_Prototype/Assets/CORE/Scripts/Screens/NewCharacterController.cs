@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class NewCharacterController : UIDisplayController {
 
+    public bool IsDone { get; private set; }
+
     [SerializeField] private Image visualContainer = null;
     [SerializeField] private TextMeshProUGUI textmeshVisual = null;
     [SerializeField] private Button backButton = null;
@@ -16,6 +18,7 @@ public class NewCharacterController : UIDisplayController {
 
     protected override void OnShowing() {
         itterator = 0;
+        IsDone = false;
         SetVisual(storyFrames[itterator]);
         itterator++;
         backButton.gameObject.SetActive(false);
@@ -43,6 +46,7 @@ public class NewCharacterController : UIDisplayController {
         }
 
         SaveController.Instance.GameData.BoterKroon.IsNew = false;
+        IsDone = true;
         backButton.gameObject.SetActive(true);
     }
 
