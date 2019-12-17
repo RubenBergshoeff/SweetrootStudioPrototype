@@ -8,24 +8,27 @@ using UnityEngine.UI;
 public class NewCharacterController : UIDisplayController {
 
     public bool IsDone { get; private set; }
-
     [SerializeField] private Image visualContainer = null;
     [SerializeField] private TextMeshProUGUI textmeshVisual = null;
     [SerializeField] private Button backButton = null;
 
     [SerializeField] private VisualSkillTest[] storyFrames = new VisualSkillTest[0];
     private int itterator = 0;
+    private bool showStory = false;
+    private bool skipWaitTime = false;
+    private float lastVisualChangeTime = 0;
 
     protected override void OnShowing() {
         itterator = 0;
+        showStory = false;
         IsDone = false;
-        SetVisual(storyFrames[itterator]);
-        itterator++;
+        NextVisual();
         backButton.gameObject.SetActive(false);
     }
 
     protected override void OnVisible() {
-        StartCoroutine(BoterkroonStoryAnimation());
+        showStory = true;
+        //    StartCoroutine(BoterkroonStoryAnimation());
     }
 
     protected override void OnHiding() {
@@ -33,7 +36,35 @@ public class NewCharacterController : UIDisplayController {
     }
 
     protected override void OnInvisible() {
+        showStory = false;
+    }
 
+    private void Update() {
+        if (showStory == false || IsDone) { return; }
+
+        if (Input.GetMouseButtonDown(0)) {
+            skipWaitTime = true;
+        }
+
+        if (lastVisualChangeTime + 5 > Time.time && skipWaitTime == false) {
+            return;
+        }
+
+        skipWaitTime = false;
+        if (itterator < storyFrames.Length) {
+            NextVisual();
+        }
+        else {
+            SaveController.Instance.GameData.BoterKroon.IsNew = false;
+            IsDone = true;
+            backButton.gameObject.SetActive(true);
+        }
+    }
+
+    private void NextVisual() {
+        lastVisualChangeTime = Time.time;
+        SetVisual(storyFrames[itterator]);
+        itterator++;
     }
 
     private IEnumerator BoterkroonStoryAnimation() {

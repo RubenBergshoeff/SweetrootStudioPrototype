@@ -5086,8 +5086,6 @@ MonoBehaviour:
   trainingHouse: {fileID: 0}
   uiEventStringToTraining: ToTraining
   uiEventStringToCharacter: ToCharacter
-  uiEventStringToNewCharacter: ToNewCharacter
-  uiEventStringToEndCharacter: ToEndCharacter
 --- !u!1 &171428917388971935
 GameObject:
   m_ObjectHideFlags: 0
@@ -34683,11 +34681,11 @@ MonoBehaviour:
   textmeshVisual: {fileID: 5471579591198010113}
   backButton: {fileID: 171428918112541020}
   storyFrames:
-  - Image: {fileID: 21300000, guid: 3d67c27f6dd6c4c4d83d93d8e4f6c1f8, type: 3}
+  - Image: {fileID: 21300000, guid: 9e87c483b41a3b04eb83fe167e9fb6a6, type: 3}
     Text: Test intro plaatje deel 1....
-  - Image: {fileID: 21300000, guid: 93a5ab9c5f796854abec59ea55723b0f, type: 3}
+  - Image: {fileID: 21300000, guid: c9c0502fb8d4eb848b925bb933436b1d, type: 3}
     Text: deel 2....
-  - Image: {fileID: 21300000, guid: 4d1695e5f71e032498948c88efe16dc5, type: 3}
+  - Image: {fileID: 21300000, guid: 64821935c56cfa449802ce1df9c5b548, type: 3}
     Text: en deel 3!
 --- !u!1 &171428918403299497
 GameObject:
@@ -49483,7 +49481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -3825}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2560, y: 1440}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4997775115699125384
@@ -56129,26 +56127,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4758214260302662041, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
-        type: 3}
-      propertyPath: RequiredView
-      value: 
-      objectReference: {fileID: 171428918074539618}
-    - target: {fileID: 4758214260302662041, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
-        type: 3}
-      propertyPath: LinkedButton
-      value: 
-      objectReference: {fileID: 171428918021426220}
-    - target: {fileID: 6805837336151303604, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
-        type: 3}
-      propertyPath: RequiredView
-      value: 
-      objectReference: {fileID: 171428917223326550}
-    - target: {fileID: 6805837336151303604, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
-        type: 3}
-      propertyPath: TargetTransform
-      value: 
-      objectReference: {fileID: 2155315796491450380}
     - target: {fileID: 47944245856734864, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
         type: 3}
       propertyPath: RequiredView
@@ -56164,16 +56142,6 @@ PrefabInstance:
       propertyPath: newCharacterController
       value: 
       objectReference: {fileID: 6417280832832694631}
-    - target: {fileID: 1914508325143372558, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
-        type: 3}
-      propertyPath: testButton
-      value: 
-      objectReference: {fileID: 171428918021426220}
-    - target: {fileID: 2856598075163919113, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
-        type: 3}
-      propertyPath: RequiredView
-      value: 
-      objectReference: {fileID: 171428918074539618}
     - target: {fileID: 4225439682311718186, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
         type: 3}
       propertyPath: RequiredView

@@ -23,7 +23,6 @@ public class SkillResultController : MonoBehaviour {
         }
 
         float fadeHeight = CalculateFadeHeight(lastResult.Score);
-        Debug.Log(fadeHeight);
         bannerLvl01.UpdateFade(fadeHeight);
         bannerLvl02.UpdateFade(fadeHeight);
         bannerLvl03.UpdateFade(fadeHeight);
