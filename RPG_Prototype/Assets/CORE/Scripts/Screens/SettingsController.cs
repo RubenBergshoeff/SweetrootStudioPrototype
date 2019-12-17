@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SettingsController : UIDisplayController {
-    [SerializeField] private Button resetDataButton;
+    [SerializeField] private Button resetDataButton = null;
 
     protected override void OnShowing() {
         resetDataButton.onClick.AddListener(OnResetDataButtonClicked);

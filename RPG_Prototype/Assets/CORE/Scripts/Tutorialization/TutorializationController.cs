@@ -17,7 +17,6 @@ public class TutorializationController : MonoBehaviour {
     [SerializeField] private GameObject pointPrefabDown = null;
     [SerializeField] private GameObject pointPrefabUp = null;
     [SerializeField] private GameObject textPrefab = null;
-    [SerializeField] private Button testButton = null;
     [SerializeField] private Transform container = null;
     [SerializeField] private Image canvasBackground = null;
     [SerializeField] private CanvasGroup canvasGroup = null;

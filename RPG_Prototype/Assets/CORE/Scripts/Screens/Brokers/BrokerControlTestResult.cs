@@ -10,9 +10,9 @@ public class BrokerControlTestResult : UIDisplayController {
     [SerializeField] private Image visualContainer = null;
     [SerializeField] private TextMeshProUGUI textmeshStorytext = null;
     [SerializeField] private string uiEventStringDone = "";
-    [SerializeField] private VisualSkillTest visualBaking;
-    [SerializeField] private VisualSkillTest visualSword;
-    [SerializeField] private VisualSkillTest visualNavigating;
+    [SerializeField] private VisualSkillTest visualBaking = new VisualSkillTest();
+    [SerializeField] private VisualSkillTest visualSword = new VisualSkillTest();
+    [SerializeField] private VisualSkillTest visualNavigating = new VisualSkillTest();
 
     private BoterkroonSkills currentSkill;
     private VisualSkillTest currentVisual;

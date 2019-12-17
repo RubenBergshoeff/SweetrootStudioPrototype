@@ -18,7 +18,6 @@ public class TapReactionGameController : TrainingGameController {
     private ActiveTraining activeTraining = null;
     private bool isTrainingRunning = false;
     private float trainingRunTime = 0;
-    private int itemsDone = 0;
     private int itemsCorrect = 0;
     private int itemsEarly = 0;
     private int itemsLate = 0;
@@ -26,7 +25,6 @@ public class TapReactionGameController : TrainingGameController {
     public override void Setup(ActiveTraining training) {
         activeTraining = training;
         trainingRunTime = 0;
-        itemsDone = 0;
         itemsCorrect = 0;
         itemsLate = 0;
         itemsEarly = 0;

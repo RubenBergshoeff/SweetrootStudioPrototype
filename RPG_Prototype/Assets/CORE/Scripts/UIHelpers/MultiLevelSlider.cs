@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MultiLevelSlider : MonoBehaviour {
 
-    [SerializeField] private Gradient gradient;
+    [SerializeField] private Gradient gradient = new Gradient();
     [SerializeField] private List<FillSlider> sliders = new List<FillSlider>();
     [SerializeField] private FillSlider templateSlider = null;
 

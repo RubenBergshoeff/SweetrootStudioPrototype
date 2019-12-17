@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillBarController : MonoBehaviour {
 
-    [SerializeField] private BoterkroonSkills targetSkill;
+    [SerializeField] private BoterkroonSkills targetSkill = BoterkroonSkills.Baking;
     [SerializeField] private MultiLevelSlider multiSlider = null;
     [SerializeField] private CanvasGroup canvasGroup = null;
 

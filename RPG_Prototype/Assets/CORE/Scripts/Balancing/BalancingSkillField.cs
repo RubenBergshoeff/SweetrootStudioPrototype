@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 
 public class BalancingSkillField : MonoBehaviour {
-    [SerializeField] private BalanceCase balanceCase;
+    [SerializeField] private BalanceCase balanceCase = BalanceCase.BestCase;
     [SerializeField] private GameObject failedIndicator = null;
     [SerializeField] private TextMeshProUGUI skillField = null;
     private BalancingDisplay balancingDisplay = null;

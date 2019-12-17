@@ -16,9 +16,9 @@ public class BrokerSkillTestResult : UIDisplayController {
     [SerializeField] private string uiEventStringDone = "";
     [Space]
     [Header("Skill Test Visuals")]
-    [SerializeField] private VisualsSkillTest visualsLvl01;
-    [SerializeField] private VisualsSkillTest visualsLvl02;
-    [SerializeField] private VisualsSkillTest visualsLvl03;
+    [SerializeField] private VisualsSkillTest visualsLvl01 = new VisualsSkillTest();
+    [SerializeField] private VisualsSkillTest visualsLvl02 = new VisualsSkillTest();
+    [SerializeField] private VisualsSkillTest visualsLvl03 = new VisualsSkillTest();
 
     private int currentLevel;
     private BoterkroonSkillResult currentResult = null;
