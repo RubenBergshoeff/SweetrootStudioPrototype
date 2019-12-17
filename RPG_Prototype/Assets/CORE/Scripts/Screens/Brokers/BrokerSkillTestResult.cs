@@ -49,6 +49,7 @@ public class BrokerSkillTestResult : UIDisplayController {
         textmeshSkillLevel.text = "Level " + currentLevel.ToString();
         currentVisual = currentVisuals.Introduction;
         lineItterator = 0;
+        IsDone = false;
         introductionFinished = false;
         skipWaitTime = false;
         UpdateVisual();
