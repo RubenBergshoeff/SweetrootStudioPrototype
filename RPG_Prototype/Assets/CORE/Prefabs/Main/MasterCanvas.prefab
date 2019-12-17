@@ -1070,13 +1070,13 @@ MonoBehaviour:
   textmeshStorytext: {fileID: 6649106184011440259}
   uiEventStringDone: ControlTestLinearMapDone
   visualBaking:
-    Image: {fileID: 21300000, guid: 6807140023f6b2346bacb73b50e53767, type: 3}
+    Image: {fileID: 21300000, guid: 9e87c483b41a3b04eb83fe167e9fb6a6, type: 3}
     Text: Boterkroon werkte zich uit de naad om koekjes te bakken.
   visualSword:
-    Image: {fileID: 21300000, guid: c063e3a7ffcc15f40a54984f301ebe6d, type: 3}
+    Image: {fileID: 21300000, guid: 64821935c56cfa449802ce1df9c5b548, type: 3}
     Text: Boterkroon zwaaide met zijn zwaard zo goed en zo kwaad als hij kon.
   visualNavigating:
-    Image: {fileID: 21300000, guid: 2dec8ef7efcb1f94795a2d59af6c622f, type: 3}
+    Image: {fileID: 21300000, guid: c9c0502fb8d4eb848b925bb933436b1d, type: 3}
     Text: Boterkroon zou zijn gelijk bewijzen in de Drakenleer Beproeving.
 --- !u!1 &171428916775557331
 GameObject:
@@ -31164,13 +31164,13 @@ MonoBehaviour:
   uiEventStringDone: SkillTestLinearMapDone
   visualsLvl01:
     Introduction:
-      Image: {fileID: 21300000, guid: 3d67c27f6dd6c4c4d83d93d8e4f6c1f8, type: 3}
+      Image: {fileID: 21300000, guid: 4a469cafa676d9c4da00beefcc45704d, type: 3}
       Text: Boterkroon probeert in de leer te komen bij de bakker...
     Failed:
-      Image: {fileID: 21300000, guid: 39670bdb6d7bc5a4f82bc465dd59a2e9, type: 3}
+      Image: {fileID: 21300000, guid: de9cce5e21c8dc144b6c2f7528686894, type: 3}
       Text: maar zijn onsmakelijke koekjes kostten de bakker gewaardeerde klanten!
     Succeeded:
-      Image: {fileID: 21300000, guid: a245f46c07f52ac4590fe3121f213d13, type: 3}
+      Image: {fileID: 21300000, guid: 267e06126aaa5d64198fedf4cbfd5b9d, type: 3}
       Text: en zijn harde werk werd gewaardeerd door volk en vaderland!
   visualsLvl02:
     Introduction:
@@ -31184,14 +31184,14 @@ MonoBehaviour:
       Text: '"Ik twijfelde zo aan je, maar jij bent een heuse ridder!"'
   visualsLvl03:
     Introduction:
-      Image: {fileID: 21300000, guid: 4d1695e5f71e032498948c88efe16dc5, type: 3}
+      Image: {fileID: 21300000, guid: 31e64aa793e898c41ada5a3dad5ceafa, type: 3}
       Text: Boterkroons heerlijke koeken trokken klanten wijd en zijd, zo ook een
         wilde draak!
     Failed:
-      Image: {fileID: 21300000, guid: aee93e538035fa5428b4cf9ec04e5dde, type: 3}
+      Image: {fileID: 21300000, guid: c2117841d5c0f294c8281531513f5620, type: 3}
       Text: Helaas kon boterkroon de draak niet vinden voor die het dorp belaagde.
     Succeeded:
-      Image: {fileID: 21300000, guid: 0d61c96528f1be04d82f7abda728448f, type: 3}
+      Image: {fileID: 21300000, guid: 8dac08f32e98c294aa52758beccf034d, type: 3}
       Text: Maar boterkroon vond de draak in zijn hol en wist hem te verslaan!
 --- !u!1 &171428918299870108
 GameObject:
