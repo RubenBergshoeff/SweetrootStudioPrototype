@@ -30641,6 +30641,7 @@ MonoBehaviour:
       - de koning was hem zo dankbaar dat hij hem adopteerde als zijn eigen zoon
         en prin
       - en Boterkroon ontving eindelijk de waardering die hij altijd al had gewild.
+  currentLevel: 0
 --- !u!1 &171428918299870108
 GameObject:
   m_ObjectHideFlags: 0
@@ -44934,6 +44935,7 @@ GameObject:
   - component: {fileID: 1844056843398569704}
   - component: {fileID: 9214324400438324430}
   - component: {fileID: 171428918717864043}
+  - component: {fileID: 5317682262314385290}
   m_Layer: 0
   m_Name: TutorializationController
   m_TagString: Untagged
@@ -44988,6 +44990,7 @@ MonoBehaviour:
   - {fileID: 2256876731641484853}
   - {fileID: 1844056843398569704}
   - {fileID: 9214324400438324430}
+  - {fileID: 171428918717864043}
   - {fileID: 171428918717864043}
 --- !u!114 &3986542354676605782
 MonoBehaviour:
@@ -45087,6 +45090,23 @@ MonoBehaviour:
   Text: Blijkbaar schiet onze Boterkroon tekort in het bakken. Probeer onze held
     te helpen om te groeien in deze vaardigheid!
   HighlightUIElement: {fileID: 2286377974833393454}
+--- !u!114 &5317682262314385290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536006965231435280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0aa1a3ec2c40c4ab8906252bcb87f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RequiredView: {fileID: 2421482603160954625}
+  DelayShowTime: 0
+  Text: Dit is de tijd die Boterkroon nog over heeft om zijn "Nog lang en gelukkig"
+    te halen. Let op, elke actie kost tijd! Succes!
+  HighlightUIElement: {fileID: 2791311580041503978}
 --- !u!1 &865456186743563135
 GameObject:
   m_ObjectHideFlags: 0
