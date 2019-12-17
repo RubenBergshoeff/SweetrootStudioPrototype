@@ -139,9 +139,9 @@ public class ActiveBoterkroonData {
         if (controlResults.Count == 0) {
             return 0;
         }
-        foreach (var result in controlResults) {
-            result.IsNew = false;
-        }
+        //foreach (var result in controlResults) {
+        //    result.IsNew = false;
+        //}
         return controlResults[controlResults.Count - 1].TotalXP;
     }
 
