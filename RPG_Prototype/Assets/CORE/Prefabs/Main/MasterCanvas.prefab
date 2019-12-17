@@ -23811,7 +23811,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls:
           - m_Target: {fileID: 0}
-            m_MethodName: SwitchToCharacterHome
+            m_MethodName: SwitchToBlack
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -30544,42 +30544,103 @@ MonoBehaviour:
     Introduction:
       Image: {fileID: 21300000, guid: 4a469cafa676d9c4da00beefcc45704d, type: 3}
       Text: Boterkroon probeert in de leer te komen bij de bakker...
-      Lines: []
+      Lines:
+      - Gezegend door De Schrijver stapt Boterkroon op het reeds uitgeschreven pad.
+      - Met de kennis die hij heeft opgedaan stapt hij naar een bakkerij in de buitenwijken
+        van de stad.
+      - ij komt een bakker tegen die bekend staat om zijn rampzalige bakkunsten en
+        daagt hem uit.
+      - Hij belooft hem dat hij volk en vaderland naar de bakkerij kan trekken.
     Failed:
       Image: {fileID: 21300000, guid: de9cce5e21c8dc144b6c2f7528686894, type: 3}
       Text: maar zijn onsmakelijke koekjes kostten de bakker gewaardeerde klanten!
-      Lines: []
+      Lines:
+      - De bakker gunt Boterkroon een kans, maar het was tevergeefs.
+      - 'Boterkroon''s bakkunsten waren nergens te bekennen en opgedane kennis kon
+        hij niet benutten, '
+      - "ingredi\xEBnten werden omgetoverd tot oneetbare massa's waardoor er een
+        voedseltekort ontstond."
+      - Met een schop onder de kont vloog Boterkroon de deur van de bakkerij uit
+        en wel met een slechtere reputatie dan voorheen.
     Succeeded:
       Image: {fileID: 21300000, guid: 267e06126aaa5d64198fedf4cbfd5b9d, type: 3}
       Text: en zijn harde werk werd gewaardeerd door volk en vaderland!
-      Lines: []
+      Lines:
+      - 'De bakker gunt Boterkroon een kans en Boterkroon gooit zijn bakkunsten in
+        de strijd. '
+      - "Met alle opgedane kennis tovert hij in rap tempo ingredi\xEBnten om tot
+        goudbruine lekkernijen. "
+      - 'Hij trekt klanten uit weide omtrek en de lekkernijen gaan als warme broodjes
+        over de toonbank. '
+      - Het dorp prijst Boterkroon voor zijn bakkunsten en hij wordt omgedoopt tot
+        bakkerbaas.
   visualsLvl02:
     Introduction:
-      Image: {fileID: 21300000, guid: 93a5ab9c5f796854abec59ea55723b0f, type: 3}
+      Image: {fileID: 21300000, guid: 6772ba519d229c24aa3d81874272bf98, type: 3}
       Text: '"Oh boterkroon, de wolf heeft de schapen in het nauw!"'
-      Lines: []
+      Lines:
+      - Op een dag hoort Boterkroon vanuit de keuken hoe een boer zijn zorgen uit
+        over zijn schapen,
+      - ' al meerdere avonden wordt zijn kudde geterroriseerd door wolven uit het
+        duistere bos. '
+      - Boterkroon ziet zijn kans schoon om nog beroemder te worden en overtuigt
+        de boer van zijn zwaardkunsten.
+      - De boer stemt toe.
     Failed:
-      Image: {fileID: 21300000, guid: 61d72213effbb36469220ad453e3ddcd, type: 3}
+      Image: {fileID: 21300000, guid: eaee2decbaadabf4f92ee0b05b627caa, type: 3}
       Text: Maar helaas, Boterkroon kon zijn vertoon niet waar maken.
-      Lines: []
+      Lines:
+      - Boterkroons praatjes zijn echter niet gegrond en binnen enkele dagen is de
+        kudde schapen volledig afgeslacht.
+      - n een veld bezaaid met tuften wol staan de boer en Boterkroon er verloren
+        bij.
+      - Zonder wol kan de boer geen kleding meer maken en gaat de stad een moeilijke
+        winter tegemoet.
     Succeeded:
-      Image: {fileID: 21300000, guid: aa151de530568ff4c8eb6c50e98e410a, type: 3}
+      Image: {fileID: 21300000, guid: 72bffa9ffabf82643bde566f15333500, type: 3}
       Text: '"Ik twijfelde zo aan je, maar jij bent een heuse ridder!"'
-      Lines: []
+      Lines:
+      - Dag en nacht waakt Boterkroon over de kudde
+      - ' en dankzij zijn kennis weet Boterkroon de wolven keer op keer te verslaan
+        tot ze er op een dag niet meer zijn. '
+      - Vol trots prijst de boer Boterkroons kunsten aan en het duurt niet lang voordat
+        Boterkroons roem de oren van de koning heeft bereikt.
+      - 'Vol vreugde van Boterkroons kunsten doopt de koning met man en macht, Boterkroon
+        om tot een ridder van de wacht. '
   visualsLvl03:
     Introduction:
       Image: {fileID: 21300000, guid: 31e64aa793e898c41ada5a3dad5ceafa, type: 3}
       Text: Boterkroons heerlijke koeken trokken klanten wijd en zijd, zo ook een
         wilde draak!
-      Lines: []
+      Lines:
+      - Met veel vreugde en trots werden verhalen over Boterkroons daden door het
+        dorp verspreid,
+      - hij werkte als ridder met veel trots en hielp mensen waar nodig.
+      - 'Op een dag riep de koning hem toe: "Jouw goudbruine lekkernijen hebben een
+        draak aangetrokken!"'
+      - 'Op zoek naar deze lekkernijen was de draak langzaam onderweg naar de stad. '
+      - De koning smeekt Boterkroon om zijn geliefde stad en koninkrijk te redden.
     Failed:
       Image: {fileID: 21300000, guid: c2117841d5c0f294c8281531513f5620, type: 3}
       Text: Helaas kon boterkroon de draak niet vinden voor die het dorp belaagde.
-      Lines: []
+      Lines:
+      - "Dagen vlogen voorbij en v\xF3\xF3r Boterkroon het wist stond de draak aan
+        de horizon. "
+      - Met zijn kennis en kunnen probeerde Boterkroon de draak te verslaan, maar
+        zijn kennis was niet diep genoeg, daardoor liet hij het leven iets te vroeg.
     Succeeded:
       Image: {fileID: 21300000, guid: 8dac08f32e98c294aa52758beccf034d, type: 3}
       Text: Maar boterkroon vond de draak in zijn hol en wist hem te verslaan!
-      Lines: []
+      Lines:
+      - 'Boterkroon zette zijn kennis in en smeedde een plan. '
+      - 'Dagen later, met de draak aan de horizon, zette Boterkroon zijn plan in
+        werking. '
+      - 'Met vers gebakken koekjes lokte Boterkroon de draak weg van het dorp, waarna
+        hij met zijn zwaard de draak versloeg. '
+      - Hij werd door de koning ontvangen met applaus en gejuich
+      - de koning was hem zo dankbaar dat hij hem adopteerde als zijn eigen zoon
+        en prin
+      - en Boterkroon ontving eindelijk de waardering die hij altijd al had gewild.
 --- !u!1 &171428918299870108
 GameObject:
   m_ObjectHideFlags: 0
@@ -33991,7 +34052,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls:
           - m_Target: {fileID: 0}
-            m_MethodName: SwitchToCharacterHome
+            m_MethodName: SwitchToBlack
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -55836,6 +55897,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491898741523355689, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491898741523355689, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
+        type: 3}
+      propertyPath: m_fontSizeMin
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491898741523355689, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
+        type: 3}
+      propertyPath: m_fontSizeMax
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6f5308d30d1aac4a801604dbfc4b6c4, type: 3}

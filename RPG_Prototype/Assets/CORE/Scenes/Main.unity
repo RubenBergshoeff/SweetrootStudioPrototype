@@ -1218,11 +1218,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MasterCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 171428916982783573, guid: dff157dc04026a74c9b08bb70162b6b3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 171428916982783568, guid: dff157dc04026a74c9b08bb70162b6b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1418,21 +1413,11 @@ PrefabInstance:
       propertyPath: ShowBehavior.OnStart.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 93108162}
-    - target: {fileID: 171428918339777030, guid: dff157dc04026a74c9b08bb70162b6b3,
-        type: 3}
-      propertyPath: ShowBehavior.OnStart.Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwitchToBlack
-      objectReference: {fileID: 0}
     - target: {fileID: 171428918074539618, guid: dff157dc04026a74c9b08bb70162b6b3,
         type: 3}
       propertyPath: ShowBehavior.OnStart.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 93108162}
-    - target: {fileID: 171428918074539618, guid: dff157dc04026a74c9b08bb70162b6b3,
-        type: 3}
-      propertyPath: ShowBehavior.OnStart.Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwitchToBlack
-      objectReference: {fileID: 0}
     - target: {fileID: 171428918582019888, guid: dff157dc04026a74c9b08bb70162b6b3,
         type: 3}
       propertyPath: ShowBehavior.OnStart.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
