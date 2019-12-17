@@ -1248,6 +1248,11 @@ PrefabInstance:
         type: 3}
       propertyPath: flipoverLvl3
       value: 
+      objectReference: {fileID: 3363937823782234568}
+    - target: {fileID: 171428918643231543, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: flipoverLvl1
+      value: 
       objectReference: {fileID: 1771797706}
     - target: {fileID: 171428918248728531, guid: dff157dc04026a74c9b08bb70162b6b3,
         type: 3}
@@ -1364,23 +1369,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3363937823421437368, guid: 53fdbdcf50b8ea744b61881a5c572269,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833036258668655994, guid: 53fdbdcf50b8ea744b61881a5c572269,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3363937824165814446, guid: 53fdbdcf50b8ea744b61881a5c572269,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e3b38461bebb28c4682e5159842c0642, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fdbdcf50b8ea744b61881a5c572269, type: 3}
+--- !u!114 &3363937823782234568 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3363937823421437253, guid: 53fdbdcf50b8ea744b61881a5c572269,
+    type: 3}
+  m_PrefabInstance: {fileID: 3363937823782234567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a1e9b1abc484749bfc9c7f5c6a7336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5277066828422143475
 PrefabInstance:
   m_ObjectHideFlags: 0

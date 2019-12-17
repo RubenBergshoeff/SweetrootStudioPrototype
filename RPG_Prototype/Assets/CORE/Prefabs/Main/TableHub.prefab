@@ -258,7 +258,6 @@ GameObject:
   - component: {fileID: 5837347493116692130}
   - component: {fileID: 5837347493116692133}
   - component: {fileID: 5837347493116692132}
-  - component: {fileID: 5837347493116692131}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -341,22 +340,6 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
---- !u!114 &5837347493116692131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5837347493116692134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
-  m_AmplitudeGain: 0.2
-  m_FrequencyGain: 0.2
-  mNoiseOffsets: {x: 758.58325, y: -556.1616, z: 296.6289}
 --- !u!1 &5837347493179673997
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +598,6 @@ GameObject:
   - component: {fileID: 5837347493413840815}
   - component: {fileID: 5837347493413840814}
   - component: {fileID: 5837347493413840801}
-  - component: {fileID: 5837347493413840800}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -698,22 +680,6 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
---- !u!114 &5837347493413840800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5837347493413840802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
-  m_AmplitudeGain: 0.6
-  m_FrequencyGain: 0.2
-  mNoiseOffsets: {x: 127.21741, y: 345.4835, z: 713.8812}
 --- !u!1 &5837347493864549991
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5837347493886823306}
   m_LocalRotation: {x: 0.000093254435, y: 0.97744495, z: -0.20633931, w: -0.045005064}
-  m_LocalPosition: {x: 0.283, y: 1.41, z: 0.417}
+  m_LocalPosition: {x: 0.3184, y: 1.5137, z: 0.5104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5837347494966830883}
@@ -1015,7 +981,6 @@ GameObject:
   - component: {fileID: 5837347494086294576}
   - component: {fileID: 5837347494086294579}
   - component: {fileID: 5837347494086294578}
-  - component: {fileID: 5837347494086294581}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1098,22 +1063,6 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
---- !u!114 &5837347494086294581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5837347494086294583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
-  m_AmplitudeGain: 0.6
-  m_FrequencyGain: 0.2
-  mNoiseOffsets: {x: 127.21741, y: 345.4835, z: 713.8812}
 --- !u!1 &5837347494320824887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,7 +1598,6 @@ GameObject:
   - component: {fileID: 5837347494966830894}
   - component: {fileID: 5837347494966830881}
   - component: {fileID: 5837347494966830880}
-  - component: {fileID: 5837347494966830895}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1732,22 +1680,6 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
---- !u!114 &5837347494966830895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5837347494966830882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
-  m_AmplitudeGain: 0.6
-  m_FrequencyGain: 0.2
-  mNoiseOffsets: {x: 127.21741, y: 345.4835, z: 713.8812}
 --- !u!1 &5837347495012572400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,6 +1745,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5837347494729574194}
     m_Modifications:
+    - target: {fileID: 1365193044371205284, guid: fa92792b1defd9b469e440936dcdd0ac,
+        type: 3}
+      propertyPath: m_Name
+      value: MOD_BooksClosed-v2
+      objectReference: {fileID: 0}
     - target: {fileID: 2641776864829546167, guid: fa92792b1defd9b469e440936dcdd0ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1882,11 +1819,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4.8468885
-      objectReference: {fileID: 0}
-    - target: {fileID: 1365193044371205284, guid: fa92792b1defd9b469e440936dcdd0ac,
-        type: 3}
-      propertyPath: m_Name
-      value: MOD_BooksClosed-v2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa92792b1defd9b469e440936dcdd0ac, type: 3}
