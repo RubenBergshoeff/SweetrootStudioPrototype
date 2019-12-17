@@ -14,15 +14,17 @@ public class NewCharacterController : UIDisplayController {
 
     [SerializeField] private VisualSkillTest[] storyFrames = new VisualSkillTest[0];
     private int itterator = 0;
+    private int lineItterator = 0;
     private bool showStory = false;
     private bool skipWaitTime = false;
     private float lastVisualChangeTime = 0;
 
     protected override void OnShowing() {
         itterator = 0;
+        lineItterator = 0;
         showStory = false;
         IsDone = false;
-        NextVisual();
+        UpdateVisual();
         backButton.gameObject.SetActive(false);
     }
 
@@ -52,7 +54,7 @@ public class NewCharacterController : UIDisplayController {
 
         skipWaitTime = false;
         if (itterator < storyFrames.Length) {
-            NextVisual();
+            UpdateVisual();
         }
         else {
             SaveController.Instance.GameData.BoterKroon.IsNew = false;
@@ -61,7 +63,7 @@ public class NewCharacterController : UIDisplayController {
         }
     }
 
-    private void NextVisual() {
+    private void UpdateVisual() {
         lastVisualChangeTime = Time.time;
         SetVisual(storyFrames[itterator]);
         itterator++;

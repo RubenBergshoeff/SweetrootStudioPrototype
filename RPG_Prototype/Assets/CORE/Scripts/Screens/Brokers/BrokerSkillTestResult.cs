@@ -90,4 +90,5 @@ public class VisualsSkillTest {
 public class VisualSkillTest {
     public Sprite Image = null;
     public string Text = "";
+    public string[] Lines = new string[0];
 }
