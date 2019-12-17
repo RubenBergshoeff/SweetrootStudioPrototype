@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectClickTracker : MonoBehaviour {
     public Action OnObjectClicked = null;
 
-    private void OnMouseDown() {
+    protected void OnMouseDown() {
         OnObjectClicked?.Invoke();
     }
 }

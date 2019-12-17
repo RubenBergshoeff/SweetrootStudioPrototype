@@ -18,10 +18,38 @@ public class CharacterScreenController : UIDisplayController {
         if (HasFailedNewSkilltest()) {
             Popups.ShowPopup(Popups.BOTERKROON_FAILEDSKILLTEST);
         }
+        if (HasDoneControlWithoutTraining()) {
+            Popups.ShowPopup(Popups.BOTERKROON_CONTROLWITHOUTTRAINING);
+        }
         if (HasUnlockedNewSkill()) {
             Popups.ShowPopup(Popups.BOTERKROON_NEWSKILL);
         }
         UpdateNewStateLastSkillTest();
+    }
+
+    private bool HasDoneControlWithoutTraining() {
+        bool bakingControlWithoutTraining = HasDoneControlWithoutTraining(BoterkroonSkills.Baking);
+        bool swordControlWithoutTraining = HasDoneControlWithoutTraining(BoterkroonSkills.Sword);
+        bool researchControlWithoutTraining = HasDoneControlWithoutTraining(BoterkroonSkills.Research);
+        return bakingControlWithoutTraining || swordControlWithoutTraining || researchControlWithoutTraining;
+    }
+
+    private bool HasDoneControlWithoutTraining(BoterkroonSkills skill) {
+        var results = SaveController.Instance.GameData.BoterKroon.GetControlResultsFor(skill);
+        if (results.Count < 2) {
+            if (results.Count > 0 && results[results.Count - 1].TotalXP == 0) {
+                results[results.Count - 1].HasBeenCheckedForDoubleControl = true;
+                return true;
+            }
+            return false;
+        }
+        if (results[results.Count - 1].HasBeenCheckedForDoubleControl == false) {
+            results[results.Count - 1].HasBeenCheckedForDoubleControl = true;
+            if (results[results.Count - 1].TotalXP == results[results.Count - 2].TotalXP) {
+                return true;
+            }
+        }
+        return false;
     }
 
     protected override void OnHiding() {
@@ -49,7 +77,7 @@ public class CharacterScreenController : UIDisplayController {
         }
         BoterkroonSkillResult lastResult = SaveController.Instance.GameData.BoterKroon.SkillResults[SaveController.Instance.GameData.BoterKroon.SkillResults.Count - 1];
         if (lastResult.IsNew) {
-            return lastResult.UnlockResearch || lastResult.UnlockSword;
+            return lastResult.UnlockResearch || lastResult.UnlockSword || lastResult.UnlockBaking;
         }
         return false;
     }

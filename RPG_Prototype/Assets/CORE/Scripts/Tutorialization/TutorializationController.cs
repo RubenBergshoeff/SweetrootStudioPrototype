@@ -70,6 +70,7 @@ public class TutorializationController : MonoBehaviour {
         textObject = Instantiate(textPrefab, canvasGroup.transform);
         textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = text;
         textObject.GetComponentInChildren<Button>().onClick.AddListener(RemoveTextTutorial);
+        textObject.GetComponentInChildren<PointerHelper>().StartAnimation(PointDirection.Down);
 
         if (highlightedUITarget != null) {
             originalParent = highlightedUITarget.transform.parent;

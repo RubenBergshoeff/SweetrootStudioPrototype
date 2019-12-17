@@ -12,9 +12,9 @@ public class StartSwitchController : UIDisplayController {
         if (SaveController.Instance.GameData.BoterKroon.IsNew) {
             GameEventMessage.SendEvent(uiEventStringToNewCharacter);
         }
-        //else if (SaveController.Instance.GameData.BoterKroon.SkillResults.Count == 0) {
-        //    GameEventMessage.SendEvent(uiEventStringToTestChoice);
-        //}
+        else if (SaveController.Instance.GameData.BoterKroon.SkillResults.Count == 0) {
+            GameEventMessage.SendEvent(uiEventStringToTestChoice);
+        }
         else {
             GameEventMessage.SendEvent(uiEventStringToCharacter);
         }

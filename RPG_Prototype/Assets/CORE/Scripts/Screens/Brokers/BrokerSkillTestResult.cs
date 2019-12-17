@@ -21,10 +21,25 @@ public class BrokerSkillTestResult : UIDisplayController {
     [SerializeField] private VisualsSkillTest visualsLvl02 = new VisualsSkillTest();
     [SerializeField] private VisualsSkillTest visualsLvl03 = new VisualsSkillTest();
 
-    private int currentLevel;
+    [SerializeField] private int currentLevel;
     private BoterkroonSkillResult currentResult = null;
-    private VisualsSkillTest currentVisuals;
+    //private VisualsSkillTest currentVisuals;
     private VisualSkillTest currentVisual;
+
+    private VisualsSkillTest currentVisuals {
+        get {
+            if (currentLevel == 1) {
+                return visualsLvl01;
+            }
+            else if (currentLevel == 2) {
+                return visualsLvl02;
+            }
+            else if (currentLevel == 3) {
+                return visualsLvl03;
+            }
+            throw new NotImplementedException();
+        }
+    }
 
     private bool introductionFinished = false;
     private int lineItterator = 0;
@@ -34,15 +49,6 @@ public class BrokerSkillTestResult : UIDisplayController {
 
     public void SetResult(int currentLevel) {
         this.currentLevel = currentLevel;
-        if (currentLevel == 1) {
-            currentVisuals = visualsLvl01;
-        }
-        if (currentLevel == 2) {
-            currentVisuals = visualsLvl02;
-        }
-        if (currentLevel == 3) {
-            currentVisuals = visualsLvl03;
-        }
     }
 
     protected override void OnShowing() {
