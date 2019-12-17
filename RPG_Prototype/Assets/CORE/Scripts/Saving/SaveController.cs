@@ -43,13 +43,14 @@ public class SaveController : MonoBehaviour {
         }
 
         GameData = new GameData();
-        LoadGame(Instigator.System);
+        LoadDefaultGame();
+        //LoadGame(Instigator.System);
         DontDestroyOnLoad(gameObject);
 
         IsInitialized = true;
     }
 
-    private void Start() {
+    public void StartGame() {
         SceneManager.LoadScene("Main");
     }
 
@@ -133,7 +134,7 @@ public class SaveController : MonoBehaviour {
     }
 
     private void OnApplicationQuit() {
-        SaveGame(Instigator.System);
+        //    SaveGame(Instigator.System);
     }
 
     private string GetSavePath() {

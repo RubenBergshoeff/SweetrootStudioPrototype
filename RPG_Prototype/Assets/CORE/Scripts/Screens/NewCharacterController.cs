@@ -53,7 +53,7 @@ public class NewCharacterController : UIDisplayController {
         }
 
         skipWaitTime = false;
-        if (itterator < storyFrames.Length) {
+        if (itterator < storyFrames.Length || lineItterator != 0) {
             UpdateVisual();
         }
         else {
@@ -64,27 +64,31 @@ public class NewCharacterController : UIDisplayController {
     }
 
     private void UpdateVisual() {
-        lastVisualChangeTime = Time.time;
-        SetVisual(storyFrames[itterator]);
-        itterator++;
-    }
-
-    private IEnumerator BoterkroonStoryAnimation() {
-        yield return new WaitForSeconds(5);
-
-        while (itterator < storyFrames.Length) {
-            SetVisual(storyFrames[itterator]);
+        SetVisual(storyFrames[itterator], lineItterator);
+        lineItterator++;
+        if (storyFrames[itterator].Lines.Length <= lineItterator) {
+            lineItterator = 0;
             itterator++;
-            yield return new WaitForSeconds(5);
         }
-
-        SaveController.Instance.GameData.BoterKroon.IsNew = false;
-        IsDone = true;
-        backButton.gameObject.SetActive(true);
+        lastVisualChangeTime = Time.time;
     }
 
-    private void SetVisual(VisualSkillTest visual) {
+    //private IEnumerator BoterkroonStoryAnimation() {
+    //    yield return new WaitForSeconds(5);
+
+    //    while (itterator < storyFrames.Length) {
+    //        SetVisual(storyFrames[itterator]);
+    //        itterator++;
+    //        yield return new WaitForSeconds(5);
+    //    }
+
+    //    SaveController.Instance.GameData.BoterKroon.IsNew = false;
+    //    IsDone = true;
+    //    backButton.gameObject.SetActive(true);
+    //}
+
+    private void SetVisual(VisualSkillTest visual, int line) {
         visualContainer.sprite = visual.Image;
-        textmeshVisual.text = visual.Text;
+        textmeshVisual.text = visual.Lines[line];
     }
 }
