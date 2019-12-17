@@ -1336,6 +1336,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8298554356151431774}
     m_Modifications:
+    - target: {fileID: 3363937823943645600, guid: 53fdbdcf50b8ea744b61881a5c572269,
+        type: 3}
+      propertyPath: m_Name
+      value: TableOpenBookSkill
+      objectReference: {fileID: 0}
     - target: {fileID: 3363937823943645615, guid: 53fdbdcf50b8ea744b61881a5c572269,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1391,11 +1396,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3363937823943645600, guid: 53fdbdcf50b8ea744b61881a5c572269,
-        type: 3}
-      propertyPath: m_Name
-      value: TableOpenBookSkill
-      objectReference: {fileID: 0}
     - target: {fileID: 3363937823421437368, guid: 53fdbdcf50b8ea744b61881a5c572269,
         type: 3}
       propertyPath: m_IsActive
@@ -1420,16 +1420,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5277066828125468643, guid: 4375240c189cc6541874e801b48fca45,
-        type: 3}
-      propertyPath: playerCharacterController
-      value: 
-      objectReference: {fileID: 1830253005}
     - target: {fileID: 5277066828125468669, guid: 4375240c189cc6541874e801b48fca45,
         type: 3}
       propertyPath: m_Name
       value: SkillTest
       objectReference: {fileID: 0}
+    - target: {fileID: 5277066828125468643, guid: 4375240c189cc6541874e801b48fca45,
+        type: 3}
+      propertyPath: playerCharacterController
+      value: 
+      objectReference: {fileID: 1830253005}
     - target: {fileID: 5277066828125468668, guid: 4375240c189cc6541874e801b48fca45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1494,6 +1494,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8298554356151431774}
     m_Modifications:
+    - target: {fileID: 5837347494729574197, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
+        type: 3}
+      propertyPath: m_Name
+      value: TableHub
+      objectReference: {fileID: 0}
     - target: {fileID: 5837347494729574194, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1548,11 +1553,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5837347494729574197, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
-        type: 3}
-      propertyPath: m_Name
-      value: TableHub
       objectReference: {fileID: 0}
     - target: {fileID: 5837347492893273838, guid: bc8b0adaf9938894abfefa0e1c92c5b9,
         type: 3}

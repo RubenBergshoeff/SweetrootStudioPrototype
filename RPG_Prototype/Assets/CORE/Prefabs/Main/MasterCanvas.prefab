@@ -3644,7 +3644,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428916982783573
 GameObject:
   m_ObjectHideFlags: 0
@@ -8425,7 +8424,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428917515829816
 GameObject:
   m_ObjectHideFlags: 0
@@ -11302,7 +11300,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428917640730205
 GameObject:
   m_ObjectHideFlags: 0
@@ -14625,7 +14622,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428917771318691
 GameObject:
   m_ObjectHideFlags: 0
@@ -18614,7 +18610,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428917974232493
 GameObject:
   m_ObjectHideFlags: 0
@@ -21026,7 +21021,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428918021426223
 GameObject:
   m_ObjectHideFlags: 0
@@ -23437,7 +23431,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428918074245918
 GameObject:
   m_ObjectHideFlags: 0
@@ -26924,7 +26917,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428918145750616
 GameObject:
   m_ObjectHideFlags: 0
@@ -30246,7 +30238,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428918248728520
 GameObject:
   m_ObjectHideFlags: 0
@@ -33768,7 +33759,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428918339777083
 GameObject:
   m_ObjectHideFlags: 0
@@ -37175,7 +37165,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428918466100544
 GameObject:
   m_ObjectHideFlags: 0
@@ -39970,7 +39959,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428918554988159
 GameObject:
   m_ObjectHideFlags: 0
@@ -42382,7 +42370,6 @@ MonoBehaviour:
     PresetName: 
   TargetLabel: 2
   TextLabel: {fileID: 0}
-  TextMeshProLabel: {fileID: 0}
 --- !u!1 &171428918582019893
 GameObject:
   m_ObjectHideFlags: 0
@@ -54169,6 +54156,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1892339312296942084}
     m_Modifications:
+    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
+        type: 3}
+      propertyPath: m_Name
+      value: BrokerOptionsControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1895792994320971691, guid: 2cffda3a4fe67dd42af497175f1fdd20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -54274,16 +54271,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
-        type: 3}
-      propertyPath: m_Name
-      value: BrokerOptionsControl
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7844886065170173486, guid: 2cffda3a4fe67dd42af497175f1fdd20,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -54339,6 +54326,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1321525455862932001}
     m_Modifications:
+    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
+        type: 3}
+      propertyPath: m_Name
+      value: BrokerOptionsControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1895792994320971691, guid: 2cffda3a4fe67dd42af497175f1fdd20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -54443,16 +54440,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
-        type: 3}
-      propertyPath: m_Name
-      value: BrokerOptionsControl
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7844886065170173486, guid: 2cffda3a4fe67dd42af497175f1fdd20,
         type: 3}
@@ -54509,6 +54496,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5155857669907936033}
     m_Modifications:
+    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
+        type: 3}
+      propertyPath: m_Name
+      value: BrokerOptionsControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1895792994320971691, guid: 2cffda3a4fe67dd42af497175f1fdd20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -54613,16 +54610,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
-        type: 3}
-      propertyPath: m_Name
-      value: BrokerOptionsControl
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7844886065170173486, guid: 2cffda3a4fe67dd42af497175f1fdd20,
         type: 3}
@@ -54679,6 +54666,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 551303668779391526}
     m_Modifications:
+    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
+        type: 3}
+      propertyPath: m_Name
+      value: BrokerOptionsControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1895792994320971691, guid: 2cffda3a4fe67dd42af497175f1fdd20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -54784,16 +54781,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
-        type: 3}
-      propertyPath: m_Name
-      value: BrokerOptionsControl
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895792994320971690, guid: 2cffda3a4fe67dd42af497175f1fdd20,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7844886065170173486, guid: 2cffda3a4fe67dd42af497175f1fdd20,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -54849,6 +54836,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6764083716320523142}
     m_Modifications:
+    - target: {fileID: 5795667206467199903, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
+        type: 3}
+      propertyPath: m_Name
+      value: TextBox
+      objectReference: {fileID: 0}
     - target: {fileID: 4250719579449724744, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -54954,11 +54946,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5795667206467199903, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
-        type: 3}
-      propertyPath: m_Name
-      value: TextBox
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6f5308d30d1aac4a801604dbfc4b6c4, type: 3}
 --- !u!114 &5471579591198010113 stripped
@@ -54986,6 +54973,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879470021352966360}
     m_Modifications:
+    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
+        type: 3}
+      propertyPath: m_Name
+      value: SkillBar - Sword
+      objectReference: {fileID: 0}
     - target: {fileID: 8327759583294604020, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55091,11 +55083,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
-        type: 3}
-      propertyPath: m_Name
-      value: SkillBar - Sword
-      objectReference: {fileID: 0}
     - target: {fileID: 5410944110672492696, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -55167,6 +55154,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5155857669907936033}
     m_Modifications:
+    - target: {fileID: 5795667206467199903, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
+        type: 3}
+      propertyPath: m_Name
+      value: TextBox
+      objectReference: {fileID: 0}
     - target: {fileID: 4250719579449724744, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55272,11 +55264,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5795667206467199903, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
-        type: 3}
-      propertyPath: m_Name
-      value: TextBox
-      objectReference: {fileID: 0}
     - target: {fileID: 7491898741523355689, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
         type: 3}
       propertyPath: m_text
@@ -55314,6 +55301,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 171428916982783568}
     m_Modifications:
+    - target: {fileID: 5123368386404855779, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
+        type: 3}
+      propertyPath: m_Name
+      value: TutorializationController
+      objectReference: {fileID: 0}
     - target: {fileID: 6559755268407535712, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55419,11 +55411,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5123368386404855779, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
-        type: 3}
-      propertyPath: m_Name
-      value: TutorializationController
-      objectReference: {fileID: 0}
     - target: {fileID: 4758214260302662041, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
         type: 3}
       propertyPath: RequiredView
@@ -55469,6 +55456,16 @@ PrefabInstance:
       propertyPath: RequiredView
       value: 
       objectReference: {fileID: 171428918074539618}
+    - target: {fileID: 4225439682311718186, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
+        type: 3}
+      propertyPath: RequiredView
+      value: 
+      objectReference: {fileID: 171428918074539618}
+    - target: {fileID: 4225439682311718186, guid: 3531878ab5d36294eaa69cfcbbb2b0c7,
+        type: 3}
+      propertyPath: HighlightUIElement
+      value: 
+      objectReference: {fileID: 2286377974833393454}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3531878ab5d36294eaa69cfcbbb2b0c7, type: 3}
 --- !u!224 &1972987514701232531 stripped
@@ -55484,6 +55481,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879470021352966360}
     m_Modifications:
+    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
+        type: 3}
+      propertyPath: m_Name
+      value: SkillBar - Navigatie
+      objectReference: {fileID: 0}
     - target: {fileID: 8327759583294604020, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55589,11 +55591,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
-        type: 3}
-      propertyPath: m_Name
-      value: SkillBar - Navigatie
-      objectReference: {fileID: 0}
     - target: {fileID: 5410944110672492696, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -55640,6 +55637,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879470021352966360}
     m_Modifications:
+    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
+        type: 3}
+      propertyPath: m_Name
+      value: SkillBar - Cookie
+      objectReference: {fileID: 0}
     - target: {fileID: 8327759583294604020, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55745,11 +55747,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7664078919034414239, guid: 5946665c299d6eb47bb36230483e9c32,
-        type: 3}
-      propertyPath: m_Name
-      value: SkillBar - Cookie
-      objectReference: {fileID: 0}
     - target: {fileID: 5410944110672492696, guid: 5946665c299d6eb47bb36230483e9c32,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -55786,6 +55783,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1892339312296942084}
     m_Modifications:
+    - target: {fileID: 5795667206467199903, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
+        type: 3}
+      propertyPath: m_Name
+      value: TextBox
+      objectReference: {fileID: 0}
     - target: {fileID: 4250719579449724744, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55890,11 +55892,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5795667206467199903, guid: f6f5308d30d1aac4a801604dbfc4b6c4,
-        type: 3}
-      propertyPath: m_Name
-      value: TextBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6f5308d30d1aac4a801604dbfc4b6c4, type: 3}

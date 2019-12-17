@@ -16,7 +16,9 @@ MonoBehaviour:
   NormalTrainingMaxXPGain: 100
   FastTrainingMinXPGain: 10
   FastTrainingMaxXPGain: 100
+  StartpointFastTrainingLerp: 0.533
   MaxSkillXP: 1000
+  TurnAmountStart: 30
   CostNormalTraining: 2
   CostFastTraining: 1
   CostControlTest: 1

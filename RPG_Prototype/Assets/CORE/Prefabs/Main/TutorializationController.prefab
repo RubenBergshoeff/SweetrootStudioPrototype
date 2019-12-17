@@ -82,10 +82,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6559755268407535712}
   - component: {fileID: 1914508325143372558}
-  - component: {fileID: 4758214260302662041}
   - component: {fileID: 47944245856734864}
-  - component: {fileID: 6805837336151303604}
-  - component: {fileID: 2856598075163919113}
+  - component: {fileID: 4225439682311718186}
   m_Layer: 0
   m_Name: TutorializationController
   m_TagString: Untagged
@@ -137,24 +135,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 5809801009319663114}
   tutorialSequence:
   - {fileID: 47944245856734864}
---- !u!114 &4758214260302662041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5123368386404855779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d92f964aede53e46a9c50d545d8c492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RequiredView: {fileID: 0}
-  DelayShowTime: 1
-  PointDirection: 0
-  LinkedButton: {fileID: 0}
-  LinkedClickableObject: {fileID: 0}
-  TargetTransform: {fileID: 0}
+  - {fileID: 4225439682311718186}
 --- !u!114 &47944245856734864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +155,7 @@ MonoBehaviour:
   LinkedClickableObject: {fileID: 0}
   TargetTransform: {fileID: 0}
   newCharacterController: {fileID: 0}
---- !u!114 &6805837336151303604
+--- !u!114 &4225439682311718186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,30 +164,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5123368386404855779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f9849be4e58504a9ed3d7ff7383fcb, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a0aa1a3ec2c40c4ab8906252bcb87f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredView: {fileID: 0}
-  DelayShowTime: 3
-  PointDirection: 1
-  LinkedButton: {fileID: 0}
-  LinkedClickableObject: {fileID: 0}
-  TargetTransform: {fileID: 0}
---- !u!114 &2856598075163919113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5123368386404855779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cbe7e905d3d7534c97816c48697029a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RequiredView: {fileID: 0}
-  DelayShowTime: 1
-  Text: Boterkroon heeft veel te leren. Laten we naar de training gaan!
+  DelayShowTime: 0
+  Text: Hier zie je hoe goed Boterkroon nu is in de vaardigheid Koekjes Bakken
+  HighlightUIElement: {fileID: 0}
 --- !u!1 &7719493062599910445
 GameObject:
   m_ObjectHideFlags: 0

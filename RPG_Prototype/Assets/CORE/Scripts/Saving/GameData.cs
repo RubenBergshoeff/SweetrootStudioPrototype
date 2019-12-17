@@ -8,7 +8,7 @@ public class GameData {
     public bool IsMoodEnabled = true;
     public bool IsControlTestEnabled = true;
     public bool IsSkillTestEnabled = true;
-    public ActiveBoterkroonData BoterKroon = new ActiveBoterkroonData(BoterkroonValues.Values.TurnAmountStart);
+    public ActiveBoterkroonData BoterKroon;
     //public PlayerCharacterCollection CharacterCollection = new PlayerCharacterCollection();
     public PlayerMoodCollection MoodCollection = new PlayerMoodCollection();
     //public UnlockableSkillCollection Skills = new UnlockableSkillCollection();
