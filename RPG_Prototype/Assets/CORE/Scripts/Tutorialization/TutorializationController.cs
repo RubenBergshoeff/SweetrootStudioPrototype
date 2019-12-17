@@ -54,16 +54,28 @@ public class TutorializationController : MonoBehaviour {
     }
 
     private void StartTextTutorial(TutorialFragmentText currentFragment) {
-        ShowTextTutorial(currentFragment.Text, true, null, currentFragment.DelayShowTime);
+        if (currentFragment is ShowTutorialTextWithUIHighlight) {
+            ShowTutorialTextWithUIHighlight uiHighlightFragment = currentFragment as ShowTutorialTextWithUIHighlight;
+            ShowTextTutorial(uiHighlightFragment.Text, true, uiHighlightFragment.HighlightUIElement, uiHighlightFragment.DelayShowTime);
+        }
+        else {
+            ShowTextTutorial(currentFragment.Text, true, null, currentFragment.DelayShowTime);
+        }
     }
 
-    private void ShowTextTutorial(string text, bool showBackground = true, GameObject highlightedTarget = null, float delayShowTime = 0) {
+    private void ShowTextTutorial(string text, bool showBackground = true, RectTransform highlightedUITarget = null, float delayShowTime = 0) {
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
         canvasBackground.enabled = showBackground;
         textObject = Instantiate(textPrefab, canvasGroup.transform);
         textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = text;
         textObject.GetComponentInChildren<Button>().onClick.AddListener(RemoveTextTutorial);
+
+        if (highlightedUITarget != null) {
+            originalParent = highlightedUITarget.transform.parent;
+            highlightedUITarget.transform.SetParent(canvasGroup.transform);
+        }
+
         if (delayShowTime <= 0) {
             canvasGroup.DOFade(1, 0.3f);
         }
@@ -74,6 +86,12 @@ public class TutorializationController : MonoBehaviour {
 
     private void RemoveTextTutorial() {
         textObject.GetComponentInChildren<Button>().onClick.RemoveListener(RemoveTextTutorial);
+
+        TutorialFragment currentFragment = tutorialSequence[SaveController.Instance.GameData.BoterKroon.TutorialIndex];
+
+        if (currentFragment is ShowTutorialTextWithUIHighlight) {
+            (currentFragment as ShowTutorialTextWithUIHighlight).HighlightUIElement.transform.SetParent(originalParent);
+        }
 
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
