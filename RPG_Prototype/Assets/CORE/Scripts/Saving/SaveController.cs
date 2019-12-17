@@ -56,7 +56,7 @@ public class SaveController : MonoBehaviour {
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Q)) {
             GameData.BoterKroon.IsBakingLocked = false;
-            GameData.BoterKroon.IsRoyalLocked = false;
+            GameData.BoterKroon.IsResearchLocked = false;
             GameData.BoterKroon.IsSwordLocked = false;
         }
     }
@@ -120,7 +120,7 @@ public class SaveController : MonoBehaviour {
         GameData = new GameData();
         if (preDefinedSettings != null) {
             GameData = new GameData();
-            GameData.BoterKroon = new ActiveBoterkroonData();
+            GameData.BoterKroon = new ActiveBoterkroonData(BoterkroonValues.Values.TurnAmountStart);
             foreach (var moodDataSet in preDefinedSettings.StartMoodItems) {
                 GameData.MoodCollection.AddMoodData(moodDataSet.MoodData, moodDataSet.Amount);
             }

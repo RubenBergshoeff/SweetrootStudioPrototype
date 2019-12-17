@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9c219cc4012e64babb32f5cf2b3a80, type: 3}
+  m_Name: BoterkroonValues
+  m_EditorClassIdentifier: 
+  NormalTrainingMinXPGain: 50
+  NormalTrainingMaxXPGain: 100
+  FastTrainingMinXPGain: 10
+  FastTrainingMaxXPGain: 100
+  StartpointFastTrainingLerp: 0.533
+  MaxSkillXP: 1000
+  TurnAmountStart: 30
+  CostNormalTraining: 2
+  CostFastTraining: 1
+  CostControlTest: 1
+  CostSkillTest: 4
+  Lvl1MaxBakeControl: 0.5
+  Lvl1MaxSwordControl: 0
+  Lvl1MaxResearchControl: 0
+  Lvl2MinBakeControl: 0.4
+  Lvl2MinSwordControl: 0
+  Lvl2MinResearchControl: 0
+  Lvl2MaxBakeControl: 0.6
+  Lvl2MaxSwordControl: 0.3
+  Lvl2MaxResearchControl: 0
+  Lvl3MinBakeControl: 0.5
+  Lvl3MinSwordControl: 0.3
+  Lvl3MinResearchControl: 0
+  Lvl3MaxBakeControl: 0.8
+  Lvl3MaxSwordControl: 0.7
+  Lvl3MaxResearchControl: 0.5
+  UnlockSwordMinBakeControl: 0.4
+  UnlockSwordSwordControl: 0
+  UnlockSwordResearchControl: 0
+  UnlockResearchMinBakeControl: 0.5
+  UnlockResearchSwordControl: 0.2
+  UnlockResearchResearchControl: 0
