@@ -12,33 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9c219cc4012e64babb32f5cf2b3a80, type: 3}
   m_Name: BoterkroonValues
   m_EditorClassIdentifier: 
-  NormalTrainingMinXPGain: 50
-  NormalTrainingMaxXPGain: 100
-  FastTrainingMinXPGain: 10
-  FastTrainingMaxXPGain: 100
+  NormalTrainingMinXPGain: 150
+  NormalTrainingMaxXPGain: 200
+  FastTrainingMinXPGain: 200
+  FastTrainingMaxXPGain: 250
+  StartpointFastTrainingLerp: 0.2
   MaxSkillXP: 1000
-  CostNormalTraining: 2
-  CostFastTraining: 1
-  CostControlTest: 1
-  CostSkillTest: 4
-  Lvl1MaxBakeControl: 0.5
-  Lvl1MaxSwordControl: 0
+  TurnAmountStart: 25
+  CostNormalTraining: 1
+  CostFastTraining: 2
+  CostControlTest: 2
+  CostSkillTest: 3
+  Lvl1MaxBakeControl: 0.4
+  Lvl1MaxSwordControl: 0.125
   Lvl1MaxResearchControl: 0
-  Lvl2MinBakeControl: 0.4
-  Lvl2MinSwordControl: 0
+  Lvl2MinBakeControl: 0.3
+  Lvl2MinSwordControl: 0.1
   Lvl2MinResearchControl: 0
-  Lvl2MaxBakeControl: 0.6
-  Lvl2MaxSwordControl: 0.3
+  Lvl2MaxBakeControl: 0.8
+  Lvl2MaxSwordControl: 0.8
   Lvl2MaxResearchControl: 0
-  Lvl3MinBakeControl: 0.5
-  Lvl3MinSwordControl: 0.3
-  Lvl3MinResearchControl: 0
-  Lvl3MaxBakeControl: 0.8
-  Lvl3MaxSwordControl: 0.7
-  Lvl3MaxResearchControl: 0.5
-  UnlockSwordMinBakeControl: 0.4
+  Lvl3MinBakeControl: 0.3
+  Lvl3MinSwordControl: 0.6
+  Lvl3MinResearchControl: 0.45
+  Lvl3MaxBakeControl: 1
+  Lvl3MaxSwordControl: 1
+  Lvl3MaxResearchControl: 1
+  UnlockSwordMinBakeControl: 0.2
   UnlockSwordSwordControl: 0
   UnlockSwordResearchControl: 0
-  UnlockResearchMinBakeControl: 0.5
-  UnlockResearchSwordControl: 0.2
+  UnlockResearchMinBakeControl: 0.35
+  UnlockResearchSwordControl: 0.45
   UnlockResearchResearchControl: 0
