@@ -48,7 +48,7 @@ public class NewCharacterController : UIDisplayController {
             skipWaitTime = true;
         }
 
-        if (lastVisualChangeTime + 5 > Time.time && skipWaitTime == false) {
+        if (/*lastVisualChangeTime + 5 > Time.time &&*/ skipWaitTime == false) {
             return;
         }
 
