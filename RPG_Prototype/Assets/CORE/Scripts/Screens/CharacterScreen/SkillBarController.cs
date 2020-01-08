@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillBarController : MonoBehaviour {
 
-    [SerializeField] private BoterkroonSkills targetSkill;
+    [SerializeField] private BoterkroonSkills targetSkill = BoterkroonSkills.Baking;
     [SerializeField] private MultiLevelSlider multiSlider = null;
     [SerializeField] private CanvasGroup canvasGroup = null;
 
@@ -17,11 +17,16 @@ public class SkillBarController : MonoBehaviour {
         }
         List<float> normalizedResults = new List<float>();
         float previousValue = 0;
+        bool hasNewValue = false;
         foreach (var result in SaveController.Instance.GameData.BoterKroon.GetControlResultsFor(targetSkill)) {
             float newValue = result.TotalXP / (float)BoterkroonValues.Values.MaxSkillXP;
             normalizedResults.Add(newValue - previousValue);
             previousValue = newValue;
+            if (result.IsNew) {
+                hasNewValue = true;
+                result.IsNew = false;
+            }
         }
-        multiSlider.UpdateValues(normalizedResults.ToArray());
+        multiSlider.UpdateValues(hasNewValue, normalizedResults.ToArray());
     }
 }

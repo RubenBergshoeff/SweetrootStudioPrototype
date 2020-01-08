@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillDependentHider : MonoBehaviour {
-    [SerializeField] private BoterkroonSkills targetSkill;
+    [SerializeField] private BoterkroonSkills targetSkill = BoterkroonSkills.Baking;
     [SerializeField] private CanvasGroup canvasGroup = null;
 
     private void OnEnable() {

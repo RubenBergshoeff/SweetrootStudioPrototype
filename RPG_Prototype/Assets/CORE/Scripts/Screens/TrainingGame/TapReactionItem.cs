@@ -21,7 +21,6 @@ public class TapReactionItem : MonoBehaviour {
     [SerializeField] private Image correctImage = null;
     [SerializeField] private Image timedOutImage = null;
 
-    private float timeAlive;
     private float startTime;
     private float allowedReactionTime;
     private bool isActive;
@@ -31,7 +30,6 @@ public class TapReactionItem : MonoBehaviour {
 
     public void Setup(float minStartTime, float maxStartTime, float allowedReactionTime) {
         isActive = true;
-        timeAlive = 0;
         this.startTime = Random.Range(minStartTime, maxStartTime);
         this.allowedReactionTime = allowedReactionTime;
         isTimedOut = false;

@@ -17,7 +17,6 @@ public class TutorializationController : MonoBehaviour {
     [SerializeField] private GameObject pointPrefabDown = null;
     [SerializeField] private GameObject pointPrefabUp = null;
     [SerializeField] private GameObject textPrefab = null;
-    [SerializeField] private Button testButton = null;
     [SerializeField] private Transform container = null;
     [SerializeField] private Image canvasBackground = null;
     [SerializeField] private CanvasGroup canvasGroup = null;
@@ -26,6 +25,7 @@ public class TutorializationController : MonoBehaviour {
     private GameObject pointObject = null;
     private GameObject textObject = null;
     private Transform originalParent = null;
+    private int originalSiblingIndex = 0;
     private bool tutorialActive = false;
 
     private void Awake() {
@@ -70,9 +70,11 @@ public class TutorializationController : MonoBehaviour {
         textObject = Instantiate(textPrefab, canvasGroup.transform);
         textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = text;
         textObject.GetComponentInChildren<Button>().onClick.AddListener(RemoveTextTutorial);
+        textObject.GetComponentInChildren<PointerHelper>().StartAnimation(PointDirection.Down);
 
         if (highlightedUITarget != null) {
             originalParent = highlightedUITarget.transform.parent;
+            originalSiblingIndex = highlightedUITarget.transform.GetSiblingIndex();
             highlightedUITarget.transform.SetParent(canvasGroup.transform);
         }
 
@@ -91,6 +93,7 @@ public class TutorializationController : MonoBehaviour {
 
         if (currentFragment is ShowTutorialTextWithUIHighlight) {
             (currentFragment as ShowTutorialTextWithUIHighlight).HighlightUIElement.transform.SetParent(originalParent);
+            (currentFragment as ShowTutorialTextWithUIHighlight).HighlightUIElement.transform.SetSiblingIndex(originalSiblingIndex);
         }
 
         canvasGroup.blocksRaycasts = false;
@@ -135,6 +138,7 @@ public class TutorializationController : MonoBehaviour {
         RectTransform rectTransform = button.GetComponent<RectTransform>();
         Vector2 pointPosition = new Vector2(0, (rectTransform.sizeDelta.y / 2 + 75) * (pointDirection == PointDirection.Down ? 1 : -1));
         originalParent = button.transform.parent;
+        originalSiblingIndex = button.transform.GetSiblingIndex();
         button.transform.SetParent(container);
         pointObject = Instantiate((pointDirection == PointDirection.Down ? pointPrefabDown : pointPrefabUp), button.transform);
         pointObject.GetComponent<RectTransform>().anchoredPosition = pointPosition;
@@ -156,6 +160,7 @@ public class TutorializationController : MonoBehaviour {
             if (currentFragment.LinkedButton != null) {
                 currentFragment.LinkedButton.onClick.RemoveListener(RemovePointer);
                 currentFragment.LinkedButton.transform.SetParent(originalParent);
+                currentFragment.LinkedButton.transform.SetSiblingIndex(originalSiblingIndex);
             }
             else {
                 currentFragment.LinkedClickableObject.OnObjectClicked -= RemovePointer;

@@ -11,8 +11,8 @@ public enum BalanceCase {
 
 public class BalancingXPField : MonoBehaviour {
     [SerializeField] private GameObject lockedIndicator = null;
-    [SerializeField] private BalanceCase balanceCase;
-    [SerializeField] private BoterkroonSkills targetSkill;
+    [SerializeField] private BalanceCase balanceCase = BalanceCase.BestCase;
+    [SerializeField] private BoterkroonSkills targetSkill = BoterkroonSkills.Baking;
     [SerializeField] private TextMeshProUGUI xpField = null;
     private BalancingDisplay balancingDisplay = null;
 

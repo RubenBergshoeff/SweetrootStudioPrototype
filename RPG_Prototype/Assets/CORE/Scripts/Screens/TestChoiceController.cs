@@ -8,6 +8,7 @@ public class TestChoiceController : UIDisplayController {
     [SerializeField] private ObjectClickTracker skillTest = null;
     [SerializeField] private string uiEventStringToSkillCatTest = "";
     [SerializeField] private string uiEventStringToSkillTest = "";
+    [SerializeField] private GameObject backButton = null;
 
     protected override void OnVisible() {
         skillCatTest.OnObjectClicked += OnSkillCatTestClicked;
@@ -24,11 +25,13 @@ public class TestChoiceController : UIDisplayController {
     }
 
     private void OnSkillTestClicked() {
-        GameEventMessage.SendEvent(uiEventStringToSkillTest);
+        if (SaveController.Instance.GameData.BoterKroon.SkillResults.Count > 0) {
+            GameEventMessage.SendEvent(uiEventStringToSkillTest);
+        }
     }
 
     protected override void OnShowing() {
-
+        backButton.SetActive(SaveController.Instance.GameData.BoterKroon.SkillResults.Count > 0);
     }
 
     protected override void OnHiding() {

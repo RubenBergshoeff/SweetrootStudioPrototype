@@ -49,19 +49,19 @@ public class BrokerControlTest : UIDisplayController {
     protected override void OnInvisible() {
         ActiveBoterkroonData boterkroon = SaveController.Instance.GameData.BoterKroon;
         if (boterkroon.IsBakingLocked == false) {
-            flipoverBaking.OnPointClicked -= () => PickResult(BoterkroonSkills.Baking);
+            flipoverBaking.OnObjectClicked -= () => PickResult(BoterkroonSkills.Baking);
         }
         if (boterkroon.IsSwordLocked == false) {
-            flipoverSword.OnPointClicked -= () => PickResult(BoterkroonSkills.Sword);
+            flipoverSword.OnObjectClicked -= () => PickResult(BoterkroonSkills.Sword);
         }
         if (boterkroon.IsResearchLocked == false) {
-            flipoverRoyal.OnPointClicked -= () => PickResult(BoterkroonSkills.Research);
+            flipoverRoyal.OnObjectClicked -= () => PickResult(BoterkroonSkills.Research);
         }
     }
 
     private void SetupOption(OptionPointFlipOver option, BoterkroonSkills skill) {
         option.gameObject.SetActive(true);
-        option.OnPointClicked += () => PickResult(skill);
+        option.OnObjectClicked += () => PickResult(skill);
         option.ToStartPosition();
     }
 

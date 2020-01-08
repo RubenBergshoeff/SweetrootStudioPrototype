@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OptionPointFlipOver : MonoBehaviour {
+public class OptionPointFlipOver : ObjectClickTracker {
 
     public BaseData Data {
         get {
             return data;
         }
     }
-
-    public Action OnPointClicked;
 
     [SerializeField] private BaseData data = null;
     private FlipPlane[] flipPlanes = new FlipPlane[0];
@@ -30,9 +28,5 @@ public class OptionPointFlipOver : MonoBehaviour {
         foreach (var plane in flipPlanes) {
             plane.FlipUp();
         }
-    }
-
-    private void OnMouseDown() {
-        OnPointClicked?.Invoke();
     }
 }

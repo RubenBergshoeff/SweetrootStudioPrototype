@@ -4,8 +4,8 @@ using TMPro;
 using UnityEngine;
 
 public class BalancingControlField : MonoBehaviour {
-    [SerializeField] private BalanceCase balanceCase;
-    [SerializeField] private BoterkroonSkills targetSkill;
+    [SerializeField] private BalanceCase balanceCase = BalanceCase.BestCase;
+    [SerializeField] private BoterkroonSkills targetSkill = BoterkroonSkills.Baking;
     [SerializeField] private TextMeshProUGUI controlField = null;
     private BalancingDisplay balancingDisplay = null;
 

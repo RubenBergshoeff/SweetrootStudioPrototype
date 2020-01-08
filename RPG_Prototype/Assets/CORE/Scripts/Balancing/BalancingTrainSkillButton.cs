@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BalancingTrainSkillButton : MonoBehaviour {
-    [SerializeField] private BoterkroonSkills targetSkill;
-    [SerializeField] private TrainingType trainingType;
+    [SerializeField] private BoterkroonSkills targetSkill = BoterkroonSkills.Baking;
+    [SerializeField] private TrainingType trainingType = TrainingType.Slow;
 
     private BalancingDisplay balancingDisplay = null;
 

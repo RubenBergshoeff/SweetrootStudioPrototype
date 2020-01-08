@@ -22,7 +22,7 @@ public class ActiveBoterkroonData {
     public List<BoterkroonTrainingResult> TrainingResultsRoyal = new List<BoterkroonTrainingResult>();
 
     public int TutorialIndex = 0;
-    public bool IsBakingLocked = false;
+    public bool IsBakingLocked = true;
     public bool IsSwordLocked = true;
     public bool IsResearchLocked = true;
     public bool IsNew = true;
@@ -114,14 +114,22 @@ public class ActiveBoterkroonData {
         currentResult = new BoterkroonSkillResult(level, currentScore, succeededTest);
         currentResult.UnlockSword = GetUnlockSword(succeededTest, bakingScore, swordScore, researchScore);
         currentResult.UnlockResearch = GetUnlockResearch(succeededTest, bakingScore, swordScore, researchScore);
+        currentResult.UnlockBaking = GetUnlockBaking();
         if (currentResult.UnlockSword) {
             IsSwordLocked = false;
         }
         if (currentResult.UnlockResearch) {
             IsResearchLocked = false;
         }
+        if (currentResult.UnlockBaking) {
+            IsBakingLocked = false;
+        }
         SkillResults.Add(currentResult);
         return currentResult;
+    }
+
+    private bool GetUnlockBaking() {
+        return IsBakingLocked;
     }
 
     private bool GetSkillScore(int currentLevel, BoterkroonSkills skill, out float skillScore) {
@@ -139,9 +147,9 @@ public class ActiveBoterkroonData {
         if (controlResults.Count == 0) {
             return 0;
         }
-        foreach (var result in controlResults) {
-            result.IsNew = false;
-        }
+        //foreach (var result in controlResults) {
+        //    result.IsNew = false;
+        //}
         return controlResults[controlResults.Count - 1].TotalXP;
     }
 
@@ -195,6 +203,7 @@ public class BoterkroonTrainingResult {
 public class BoterkroonControlResult {
     public int TotalXP;
     public bool IsNew = true;
+    public bool HasBeenCheckedForDoubleControl = false;
 
     public BoterkroonControlResult(int totalXP) {
         this.TotalXP = totalXP;
@@ -210,6 +219,7 @@ public class BoterkroonSkillResult {
     public bool IsNew;
     public bool UnlockSword;
     public bool UnlockResearch;
+    public bool UnlockBaking;
 
     public BoterkroonSkillResult(int level, float score, bool succeeded) {
         this.Level = level;
