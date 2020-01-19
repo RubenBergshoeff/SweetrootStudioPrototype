@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Doozy.Engine;
+using UnityEngine.UI;
 
 public class HubController : UIDisplayController {
     [SerializeField] private ObjectClickTracker characterHouse = null;
     [SerializeField] private ObjectClickTracker trainingHouse = null;
     [SerializeField] private string uiEventStringToTraining = "";
     [SerializeField] private string uiEventStringToCharacter = "";
+    [SerializeField] private Button toTestChoiceButton = null;
 
     private void OnCharacterHouseClicked() {
         GameEventMessage.SendEvent(uiEventStringToCharacter);
@@ -29,6 +31,7 @@ public class HubController : UIDisplayController {
     }
 
     protected override void OnShowing() {
+        toTestChoiceButton.gameObject.SetActive(SaveController.Instance.GameData.BoterKroon.TrainingResultsBaking.Count > 0);
     }
 
     protected override void OnHiding() {

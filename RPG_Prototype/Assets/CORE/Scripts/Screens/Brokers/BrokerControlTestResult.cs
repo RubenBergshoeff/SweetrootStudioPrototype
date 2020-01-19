@@ -13,6 +13,7 @@ public class BrokerControlTestResult : UIDisplayController {
     [SerializeField] private VisualSkillTest visualBaking = new VisualSkillTest();
     [SerializeField] private VisualSkillTest visualSword = new VisualSkillTest();
     [SerializeField] private VisualSkillTest visualNavigating = new VisualSkillTest();
+    [SerializeField] private Button continueButton = null;
 
     private BoterkroonSkills currentSkill;
     private VisualSkillTest currentVisual;
@@ -27,14 +28,20 @@ public class BrokerControlTestResult : UIDisplayController {
         SaveController.Instance.GameData.BoterKroon.TurnsLeft -= BoterkroonValues.Values.CostControlTest;
         textmeshStorytext.text = currentVisual.Text;
         visualContainer.sprite = currentVisual.Image;
+
+        continueButton.onClick.AddListener(OnContinueButtonClicked);
+    }
+
+    private void OnContinueButtonClicked() {
+        GameEventMessage.SendEvent(uiEventStringDone);
     }
 
     protected override void OnVisible() {
-        StartCoroutine(ControlTestAnimation());
+
     }
 
     protected override void OnHiding() {
-
+        continueButton.onClick.RemoveListener(OnContinueButtonClicked);
     }
 
     protected override void OnInvisible() {
@@ -50,12 +57,6 @@ public class BrokerControlTestResult : UIDisplayController {
                 return visualNavigating;
         }
         throw new NotImplementedException();
-    }
-
-    private IEnumerator ControlTestAnimation() {
-        yield return new WaitForSeconds(3);
-
-        GameEventMessage.SendEvent(uiEventStringDone);
     }
 
 }

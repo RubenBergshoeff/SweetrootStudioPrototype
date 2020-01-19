@@ -1448,6 +1448,11 @@ PrefabInstance:
       propertyPath: LinkedClickableObject
       value: 
       objectReference: {fileID: 1372743675}
+    - target: {fileID: 7151963184586537588, guid: dff157dc04026a74c9b08bb70162b6b3,
+        type: 3}
+      propertyPath: LinkedClickableObject
+      value: 
+      objectReference: {fileID: 8438089875304735581}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dff157dc04026a74c9b08bb70162b6b3, type: 3}
 --- !u!1 &1410008641092585531
