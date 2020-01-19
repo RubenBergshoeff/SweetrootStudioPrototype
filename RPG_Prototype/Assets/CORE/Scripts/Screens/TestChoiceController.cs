@@ -4,6 +4,8 @@ using System;
 using Doozy.Engine;
 
 public class TestChoiceController : UIDisplayController {
+
+    [SerializeField] private TutorializationController tutorialization = null;
     [SerializeField] private ObjectClickTracker skillCatTest = null;
     [SerializeField] private ObjectClickTracker skillTest = null;
     [SerializeField] private string uiEventStringToSkillCatTest = "";
@@ -21,13 +23,19 @@ public class TestChoiceController : UIDisplayController {
     }
 
     private void OnSkillCatTestClicked() {
+        if (tutorialization.TextTutorialActive) { return; }
+        if (tutorialization.TutorialActive && SaveController.Instance.GameData.BoterKroon.SkillResults.Count > 0) {
+            return;
+        }
         GameEventMessage.SendEvent(uiEventStringToSkillCatTest);
     }
 
     private void OnSkillTestClicked() {
-        if (SaveController.Instance.GameData.BoterKroon.SkillResults.Count > 0) {
-            GameEventMessage.SendEvent(uiEventStringToSkillTest);
+        if (tutorialization.TextTutorialActive) { return; }
+        if (SaveController.Instance.GameData.BoterKroon.SkillResults.Count == 0) {
+            return;
         }
+        GameEventMessage.SendEvent(uiEventStringToSkillTest);
     }
 
     protected override void OnShowing() {

@@ -8,6 +8,8 @@ using System;
 public class CharacterScreenController : UIDisplayController {
 
     [SerializeField] private SkillResultController skillResultController = null;
+    [SerializeField] private GameObject backButton = null;
+    [SerializeField] private TutorializationController tutorialization = null;
 
     protected override void OnShowing() {
         BoterkroonSkillResult lastSkillResult = GetLastSucceededResult();
@@ -97,5 +99,9 @@ public class CharacterScreenController : UIDisplayController {
             }
         }
         return new BoterkroonSkillResult(1, 0, true);
+    }
+
+    private void Update() {
+        backButton.SetActive(tutorialization.TextTutorialActive == false);
     }
 }

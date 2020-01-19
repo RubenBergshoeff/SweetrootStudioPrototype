@@ -14,6 +14,14 @@ public enum PointDirection {
 
 public class TutorializationController : MonoBehaviour {
 
+    public bool TutorialActive {
+        get {
+            return tutorialActive;
+        }
+    }
+
+    public bool TextTutorialActive { get { return textTutorialActive; } }
+
     [SerializeField] private GameObject pointPrefabDown = null;
     [SerializeField] private GameObject pointPrefabUp = null;
     [SerializeField] private GameObject textPrefab = null;
@@ -27,6 +35,7 @@ public class TutorializationController : MonoBehaviour {
     private Transform originalParent = null;
     private int originalSiblingIndex = 0;
     private bool tutorialActive = false;
+    private bool textTutorialActive = false;
 
     private void Awake() {
         canvasGroup.alpha = 0;
@@ -46,8 +55,7 @@ public class TutorializationController : MonoBehaviour {
     private void StartTutorial(TutorialFragment currentFragment) {
         if (currentFragment is TutorialFragmentPointer) {
             StartPointerTutorial(currentFragment as TutorialFragmentPointer);
-        }
-        else if (currentFragment is TutorialFragmentText) {
+        } else if (currentFragment is TutorialFragmentText) {
             StartTextTutorial(currentFragment as TutorialFragmentText);
         }
         tutorialActive = true;
@@ -57,20 +65,16 @@ public class TutorializationController : MonoBehaviour {
         if (currentFragment is ShowTutorialTextWithUIHighlight) {
             ShowTutorialTextWithUIHighlight uiHighlightFragment = currentFragment as ShowTutorialTextWithUIHighlight;
             ShowTextTutorial(uiHighlightFragment.Text, true, uiHighlightFragment.HighlightUIElement, uiHighlightFragment.DelayShowTime);
-        }
-        else {
+        } else {
             ShowTextTutorial(currentFragment.Text, true, null, currentFragment.DelayShowTime);
         }
+        textTutorialActive = true;
     }
 
     private void ShowTextTutorial(string text, bool showBackground = true, RectTransform highlightedUITarget = null, float delayShowTime = 0) {
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
         canvasBackground.enabled = showBackground;
-        textObject = Instantiate(textPrefab, canvasGroup.transform);
-        textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = text;
-        textObject.GetComponentInChildren<Button>().onClick.AddListener(RemoveTextTutorial);
-        textObject.GetComponentInChildren<PointerHelper>().StartAnimation(PointDirection.Down);
 
         if (highlightedUITarget != null) {
             originalParent = highlightedUITarget.transform.parent;
@@ -78,10 +82,14 @@ public class TutorializationController : MonoBehaviour {
             highlightedUITarget.transform.SetParent(canvasGroup.transform);
         }
 
+        textObject = Instantiate(textPrefab, canvasGroup.transform);
+        textObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = text;
+        textObject.GetComponentInChildren<Button>().onClick.AddListener(RemoveTextTutorial);
+        textObject.GetComponentInChildren<PointerHelper>().StartAnimation(PointDirection.Down);
+
         if (delayShowTime <= 0) {
             canvasGroup.DOFade(1, 0.3f);
-        }
-        else {
+        } else {
             StartCoroutine(Delay(delayShowTime, () => canvasGroup.DOFade(1, 0.3f)));
         }
     }
@@ -102,13 +110,13 @@ public class TutorializationController : MonoBehaviour {
             Destroy(textObject);
             OnTutorialFinished();
         });
+        textTutorialActive = false;
     }
 
     private void StartPointerTutorial(TutorialFragmentPointer currentFragment) {
         if (currentFragment.LinkedButton != null) {
             PointAtButton(currentFragment.LinkedButton, currentFragment.PointDirection, currentFragment.DelayShowTime);
-        }
-        else {
+        } else {
             PointAtSceneObject(currentFragment.TargetTransform, currentFragment.LinkedClickableObject, currentFragment.PointDirection, currentFragment.DelayShowTime);
         }
     }
@@ -125,8 +133,7 @@ public class TutorializationController : MonoBehaviour {
         linkedClickableObject.OnObjectClicked += RemovePointer;
         if (delayShowTime <= 0) {
             canvasGroup.DOFade(1, 0.3f);
-        }
-        else {
+        } else {
             StartCoroutine(Delay(delayShowTime, () => canvasGroup.DOFade(1, 0.3f)));
         }
     }
@@ -147,8 +154,7 @@ public class TutorializationController : MonoBehaviour {
         button.onClick.AddListener(RemovePointer);
         if (delayShowTime <= 0) {
             canvasGroup.DOFade(1, 0.3f);
-        }
-        else {
+        } else {
             StartCoroutine(Delay(delayShowTime, () => canvasGroup.DOFade(1, 0.3f)));
         }
     }
@@ -161,8 +167,7 @@ public class TutorializationController : MonoBehaviour {
                 currentFragment.LinkedButton.onClick.RemoveListener(RemovePointer);
                 currentFragment.LinkedButton.transform.SetParent(originalParent);
                 currentFragment.LinkedButton.transform.SetSiblingIndex(originalSiblingIndex);
-            }
-            else {
+            } else {
                 currentFragment.LinkedClickableObject.OnObjectClicked -= RemovePointer;
             }
             Destroy(pointObject);

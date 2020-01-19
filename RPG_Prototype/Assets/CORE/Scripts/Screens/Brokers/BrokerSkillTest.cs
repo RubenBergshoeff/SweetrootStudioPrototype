@@ -6,6 +6,7 @@ using Doozy.Engine;
 
 public class BrokerSkillTest : UIDisplayController {
 
+    [SerializeField] private TutorializationController tutorialization = null;
     [SerializeField] private BrokerSkillTestResult resultController = null;
     [SerializeField] private string uiEventString = "";
     [SerializeField] private GameObject backButton = null;
@@ -48,6 +49,7 @@ public class BrokerSkillTest : UIDisplayController {
         if (SaveController.Instance.GameData.BoterKroon.SkillResults.Count == 0) {
             if (result != 1) { return; }
         }
+        if (tutorialization.TextTutorialActive) { return; }
         resultController.SetResult(result);
         GameEventMessage.SendEvent(uiEventString);
     }
