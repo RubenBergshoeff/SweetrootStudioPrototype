@@ -3,69 +3,61 @@ using Doozy.Engine;
 using System.Collections;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class BrokerTrainingResult : UIDisplayController {
-    [SerializeField] private TextMeshProUGUI textmeshSkillName = null;
+
+    [SerializeField] private Image visualContainer = null;
+    [SerializeField] private TextMeshProUGUI textmeshStorytext = null;
+    [SerializeField] private Button continueButton = null;
     [SerializeField] private string uiEventStringDone = "";
+    [SerializeField] private VisualSkillTest visualBaking = new VisualSkillTest();
+    [SerializeField] private VisualSkillTest visualSword = new VisualSkillTest();
+    [SerializeField] private VisualSkillTest visualNavigating = new VisualSkillTest();
 
     private BoterkroonSkills currentskill;
     private TrainingType currentType;
-
-    //[SerializeField] private PlayerCharacterController playerCharacterController = null;
-    //[SerializeField] private TMPro.TextMeshProUGUI textMeshTrainingName = null;
-    //[SerializeField] private UnityEngine.UI.Image imageTraining = null;
-    //[SerializeField] private TrainingGameResult trainingGameResult = null;
-    //[SerializeField] private Transform gameControllerContainer = null;
-    //[SerializeField] private string uiEventStringGameResult = "";
-
-    //private TrainingGameController activeGameController = null;
-    //private ActiveTraining activeTraining;
-    //private int gainedXP = 0;
+    private VisualSkillTest currentVisual;
 
     public void SetResult(BoterkroonSkills result, TrainingType trainingType) {
         this.currentskill = result;
         this.currentType = trainingType;
-        //activeTraining = result as ActiveTraining;
-        //textMeshTrainingName.text = activeTraining.Training.Name;
-        //imageTraining.sprite = activeTraining.Training.Visual;
-        //activeGameController = CreateActiveGameController(activeTraining);
-        //activeGameController.Setup(activeTraining);
-        //activeGameController.OnXPGain += OnXPGain;
-        //activeGameController.OnGameFinished += OnGameFinished;
-        //gainedXP = 0;
-        //Debug.Log(activeTraining.Data.Name);
-        //Debug.Log(activeTraining.Training.TargetSkill.Name);
+        this.currentVisual = GetVisual(result);
     }
 
     protected override void OnShowing() {
-        textmeshSkillName.text = GetTrainingText(currentskill);
         CreateTrainingResult();
+        textmeshStorytext.text = currentVisual.Lines[0];
+        visualContainer.sprite = currentVisual.Image;
+        continueButton.onClick.AddListener(OnContinueClicked);
     }
 
-    private string GetTrainingText(BoterkroonSkills currentskill) {
-        switch (currentskill) {
-            case BoterkroonSkills.Baking:
-                return "Bakken";
-            case BoterkroonSkills.Sword:
-                return "Zwaardvechten";
-            case BoterkroonSkills.Research:
-                return "Onderzoeken";
-        }
-        throw new NotImplementedException();
+    private void OnContinueClicked() {
+        GameEventMessage.SendEvent(uiEventStringDone);
     }
 
     protected override void OnVisible() {
-        //activeGameController.StartTraining();
-        StartCoroutine(TrainingAnimation());
+
     }
 
     protected override void OnHiding() {
-
+        continueButton.onClick.RemoveListener(OnContinueClicked);
     }
 
     protected override void OnInvisible() {
-        //Destroy(activeGameController.gameObject);
-        //activeGameController = null;
+
+    }
+
+    private VisualSkillTest GetVisual(BoterkroonSkills result) {
+        switch (result) {
+            case BoterkroonSkills.Baking:
+                return visualBaking;
+            case BoterkroonSkills.Sword:
+                return visualSword;
+            case BoterkroonSkills.Research:
+                return visualNavigating;
+        }
+        throw new NotImplementedException();
     }
 
     private void CreateTrainingResult() {
@@ -93,28 +85,4 @@ public class BrokerTrainingResult : UIDisplayController {
         }
         return currentXPLevel / BoterkroonValues.Values.MaxSkillXP;
     }
-
-    private IEnumerator TrainingAnimation() {
-        yield return new WaitForSeconds(3);
-
-        GameEventMessage.SendEvent(uiEventStringDone);
-    }
-
-    //private void OnGameFinished(TrainingGameResultFeedbackData data) {
-    //    activeGameController.Cleanup();
-    //    playerCharacterController.AddTrainingResult(activeTraining.Training, gainedXP);
-    //    activeGameController.OnXPGain -= OnXPGain;
-    //    activeGameController.OnGameFinished -= OnGameFinished;
-    //    trainingGameResult.SetResult(activeTraining, gainedXP, data);
-    //    GameEventMessage.SendEvent(uiEventStringGameResult);
-    //}
-
-    //private void OnXPGain(int xpAmount) {
-    //    gainedXP += xpAmount;
-    //}
-
-    //private TrainingGameController CreateActiveGameController(ActiveTraining activeTraining) {
-    //    GameObject trainingControllerObject = Instantiate(activeTraining.Training.TrainingGameController.gameObject, gameControllerContainer);
-    //    return trainingControllerObject.GetComponent<TrainingGameController>();
-    //}
 }
