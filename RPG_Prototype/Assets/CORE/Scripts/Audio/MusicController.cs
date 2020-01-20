@@ -24,6 +24,11 @@ public class MusicController : MonoBehaviour {
 
     private void PlayTrack(AudioClip clip) {
         if (currentSource != null) {
+            if (currentSource.clip == clip) {
+                return;
+            }
+        }
+        if (currentSource != null) {
             StartCoroutine(FadeOut(currentSource, 0.5f));
         }
         currentSource = gameObject.AddComponent<AudioSource>();

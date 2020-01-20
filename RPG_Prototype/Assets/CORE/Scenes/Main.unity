@@ -1647,7 +1647,7 @@ PrefabInstance:
     - target: {fileID: 171428918021426221, guid: dff157dc04026a74c9b08bb70162b6b3,
         type: 3}
       propertyPath: OnClick.OnTrigger.SoundData.SoundName
-      value: Bubble Pop
+      value: No Sound
       objectReference: {fileID: 0}
     - target: {fileID: 171428918112541021, guid: dff157dc04026a74c9b08bb70162b6b3,
         type: 3}
