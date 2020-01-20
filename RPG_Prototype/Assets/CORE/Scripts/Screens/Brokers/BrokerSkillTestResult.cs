@@ -12,6 +12,8 @@ public class BrokerSkillTestResult : UIDisplayController {
     public bool IsDone { get; private set; }
     [SerializeField] private Image visualContainer = null;
     [SerializeField] private TextMeshProUGUI textmeshVisual = null;
+    [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] private AudioClip pageFlipClip = null;
 
     [SerializeField] private TextMeshProUGUI textmeshSkillLevel = null;
     [SerializeField] private string uiEventStringDone = "";
@@ -30,11 +32,9 @@ public class BrokerSkillTestResult : UIDisplayController {
         get {
             if (currentLevel == 1) {
                 return visualsLvl01;
-            }
-            else if (currentLevel == 2) {
+            } else if (currentLevel == 2) {
                 return visualsLvl02;
-            }
-            else if (currentLevel == 3) {
+            } else if (currentLevel == 3) {
                 return visualsLvl03;
             }
             throw new NotImplementedException();
@@ -92,8 +92,7 @@ public class BrokerSkillTestResult : UIDisplayController {
 
         if (lineItterator != 0) {
             UpdateVisual();
-        }
-        else {
+        } else {
             if (introductionFinished == false) {
                 introductionFinished = true;
                 float normalizedScore = (currentResult.Score - BoterkroonScoreRequirements.GetMinScoreFor(currentLevel).Total) / (BoterkroonScoreRequirements.GetMaxScoreFor(currentLevel).Total - BoterkroonScoreRequirements.GetMinScoreFor(currentLevel).Total);
@@ -101,13 +100,11 @@ public class BrokerSkillTestResult : UIDisplayController {
                 if (normalizedScore < 0.3f) {
                     currentVisual = (currentVisuals.Failed);
                     UpdateVisual();
-                }
-                else {
+                } else {
                     currentVisual = (currentVisuals.Succeeded);
                     UpdateVisual();
                 }
-            }
-            else {
+            } else {
                 IsDone = true;
                 GameEventMessage.SendEvent(uiEventStringDone);
             }
@@ -115,6 +112,7 @@ public class BrokerSkillTestResult : UIDisplayController {
     }
 
     private void UpdateVisual() {
+        audioSource.PlayOneShot(pageFlipClip);
         SetVisual(currentVisual, lineItterator);
         lineItterator++;
         if (currentVisual.Lines.Length <= lineItterator) {

@@ -13,11 +13,14 @@ public class NewCharacterController : UIDisplayController {
     [SerializeField] private Button backButton = null;
 
     [SerializeField] private VisualSkillTest[] storyFrames = new VisualSkillTest[0];
+    [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] private AudioClip pageFlipClip = null;
     private int itterator = 0;
     private int lineItterator = 0;
     private bool showStory = false;
     private bool skipWaitTime = false;
     private float lastVisualChangeTime = 0;
+
 
     protected override void OnShowing() {
         itterator = 0;
@@ -55,8 +58,7 @@ public class NewCharacterController : UIDisplayController {
         skipWaitTime = false;
         if (itterator < storyFrames.Length || lineItterator != 0) {
             UpdateVisual();
-        }
-        else {
+        } else {
             SaveController.Instance.GameData.BoterKroon.IsNew = false;
             IsDone = true;
             backButton.gameObject.SetActive(true);
@@ -64,6 +66,7 @@ public class NewCharacterController : UIDisplayController {
     }
 
     private void UpdateVisual() {
+        audioSource.PlayOneShot(pageFlipClip);
         SetVisual(storyFrames[itterator], lineItterator);
         lineItterator++;
         if (storyFrames[itterator].Lines.Length <= lineItterator) {
