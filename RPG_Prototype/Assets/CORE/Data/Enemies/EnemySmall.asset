@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7a0889a49dcc34cb76e297dceafeae, type: 3}
+  m_Name: EnemySmall
+  m_EditorClassIdentifier: 
+  Name: Small Enemy
+  Visual: {fileID: 21300000, guid: 88415b7027efe9c45bb85080d3d9a62b, type: 3}
+  StatPower:
+    level: 1
+  StatMagic:
+    level: 1
+  ArenaImage: {fileID: 21300000, guid: f49096df3b4ff84468ff1f967b7d9a48, type: 3}
+  NewTrainingData: {fileID: 0}

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4252e9b271d0e438c67a45d51d24d3, type: 3}
+  m_Name: SkillCat01
+  m_EditorClassIdentifier: 
+  Name: Roodkapje
+  Visual: {fileID: 21300000, guid: 13a86bd5f583f4e4c816ad19bb3d6913, type: 3}
+  color: {r: 0.9622642, g: 0.73119605, b: 0.35857958, a: 1}
+  Tests:
+  - Name: Skill Category Test 01
+    Level: 1
+    MinCategoryScore: 0
+    MaxCategoryScore: 30
+  - Name: Skill Category Test 02
+    Level: 2
+    MinCategoryScore: 15
+    MaxCategoryScore: 45
+  - Name: Skill Category Test 03
+    Level: 3
+    MinCategoryScore: 30
+    MaxCategoryScore: 60
+  PotentialUnlocks:
+  - RequiredScore: 5
+    ResultToUnlock: {fileID: 11400000, guid: bd24d4e3f88a3ed4ba0ddf5b421f6c93, type: 2}
+    ShowPopup: 1
+  - RequiredScore: 5
+    ResultToUnlock: {fileID: 11400000, guid: 8b04d68762b41ba41afd0e049929e4d7, type: 2}
+    ShowPopup: 1
